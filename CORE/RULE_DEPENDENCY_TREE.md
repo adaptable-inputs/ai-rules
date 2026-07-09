@@ -220,14 +220,19 @@ Required sections for deep technical docs:
 - `CI-CD/GITHUB_ACTIONS.md`, `CI-CD/GITLAB.md`
 
 ## Conflict Resolution Rules
-When two rules seem to conflict, resolve in this order:
+This procedure is authoritative for the whole ruleset. No other doc may define a
+different order. When two rules seem to conflict, resolve in this order:
 1. Check if one rule is from a more specific semantic layer.
 2. Check whether the specific doc declares an explicit override.
-3. If no explicit override exists, keep the broader rule and align the specific
-   doc in a follow-up.
-4. For security/compliance constraints, prefer stricter behavior by default.
-5. If ambiguity remains, document the decision and create an explicit rule
-   update issue.
+3. If no explicit override exists, keep the broader rule.
+4. For security/compliance constraints, apply the stricter behavior.
+5. If ambiguity remains, apply the broader rule and record the decision.
+
+An agent resolving a conflict mid-task must apply the outcome of this procedure,
+complete the task, and report the conflict in its final summary. It must not
+stop work, and must not treat "file an issue" as a prerequisite for proceeding.
+Aligning the specific doc and filing any issue are separate follow-up actions
+for a human maintainer.
 
 ## Redundancy and Override Policy
 Allowed:

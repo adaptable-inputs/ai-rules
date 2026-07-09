@@ -28,8 +28,12 @@ Those belong in their respective domains (`LANGUAGE/**`, `FRAMEWORK/**`,
 - Apply CORE guidance by default before any domain-specific specialization.
 - Do not weaken CORE constraints in downstream docs unless an explicit override
   is documented and justified in the specialized doc.
-- If a downstream rule conflicts with CORE and no explicit override exists,
-  treat CORE as authoritative and raise a follow-up issue.
+- Resolve rule conflicts using the Conflict Resolution Rules in
+  [RULE_DEPENDENCY_TREE.md](RULE_DEPENDENCY_TREE.md). That procedure is
+  authoritative; do not apply a different order here.
+- Never block a task on an unresolved conflict. Apply the resolution the
+  procedure yields, complete the task, and report the conflict in your final
+  summary so a human can file the follow-up.
 
 ## Files
 - [VERSION_CONTROL_SYSTEM.md](VERSION_CONTROL_SYSTEM.md) - Commit/branch/PR workflow, issue linkage, and VCS hygiene.
