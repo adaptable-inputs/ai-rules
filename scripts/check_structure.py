@@ -64,6 +64,8 @@ KEYWORD_CONVERTED = {
     "LIBRARY/LIBRARY.md",
     "REVIEW/REVIEW.md",
     "CORE/DEPENDENCY_SELECTION.md",
+    "TEST/GUARDS.md",
+    "TEST/WITHHELD_SUITES.md",
     "ARCHITECTURE/CIRCUIT_BREAKER.md",
     "ARCHITECTURE/CLEAN_ARCHITECTURE.md",
     "ARCHITECTURE/CQRS.md",
@@ -531,6 +533,59 @@ def check_no_exhaustive_read() -> None:
                  f"AI.md Loading Protocol instead")
 
 
+# Every doc that loads on EVERY task, and the authorization for it. `always` is a
+# tax on all work, so it is granted, not assumed. A new doc defaults to
+# `conditional`; promoting one to `always` means adding it here, deliberately.
+ALWAYS_AUTHORIZED = {
+    "CORE/NORMATIVE_LANGUAGE.md":   "an agent cannot read any keyword without it",
+    "CORE/CORE.md":                 "the cross-cutting baseline every doc inherits",
+    "CORE/RULE_DEPENDENCY_TREE.md": "precedence and conflict resolution for every doc",
+    "CORE/VERSION_CONTROL_SYSTEM.md": "every change is committed",
+    "CORE/LOGGING.md":              "log safety binds any code that emits a log line",
+    "CORE/CODE_REVIEW_PLATFORM.md": "every change is reviewed",
+    "COMPLIANCE/LICENSES.md":       "license compatibility binds every project",
+    "DESIGN/CLEAN_CODE.md":         "applies to any code written",
+    "DESIGN/COGNITIVE_COMPLEXITY.md": "applies to any code written",
+    "DESIGN/EARLY_RETURN.md":       "applies to any code written",
+    "DESIGN/SOLID.md":              "applies to any code written",
+    "LANGUAGE/CONVENTIONS.md":      "applies to every language",
+    "LANGUAGE/READABILITY.md":      "applies to every language",
+    "SECURITY/SECURITY.md":         "security is not opt-in",
+    "TEST/TEST.md":                 "every behaviour change is tested",
+}
+
+
+def check_always_is_authorized() -> None:
+    """`load: always` is a tax on every task, and MUST be granted explicitly.
+
+    A rule that governs a narrow situation belongs behind a `when` clause. Adding
+    "Withheld Verification Suites" and "Guards Are Code" to TEST/TEST.md -- an
+    always-loaded doc -- put 800 tokens of benchmark-isolation rules into every
+    implementation task in every project. Both are now conditional docs.
+    """
+    for p in md_files():
+        meta = _applies_to(p)
+        if not meta or meta.get("load") != "always":
+            continue
+        r = rel(p)
+        if r not in ALWAYS_AUTHORIZED:
+            fail(f"{r}: load: always is unauthorized. Every task in every project "
+                 f"pays for it. Use load: conditional with a `when` clause, or add "
+                 f"{r} to ALWAYS_AUTHORIZED with the reason it governs all work")
+
+    for r, reason in ALWAYS_AUTHORIZED.items():
+        target = ROOT / r
+        if not target.exists():
+            fail(f"ALWAYS_AUTHORIZED names {r}, which does not exist")
+            continue
+        meta = _applies_to(target)
+        if meta and meta.get("load") != "always":
+            fail(f"ALWAYS_AUTHORIZED grants {r} but it is load: {meta.get('load')}; "
+                 f"remove the stale grant")
+        if len(reason.split()) < 4:
+            fail(f"ALWAYS_AUTHORIZED[{r}] gives no reason it governs all work")
+
+
 def check_no_rules_in_indexes() -> None:
     """An index navigates; it does not legislate.
 
@@ -674,6 +729,7 @@ def main() -> int:
     check_override_notes()
     check_no_exhaustive_read()
     check_compliance_failsafe()
+    check_always_is_authorized()
     check_no_rules_in_indexes()
     check_keyword_ratchet()
     if errors:

@@ -57,6 +57,24 @@ under its own heading.
   `scripts/check_structure.py` records the exemption in `NON_CATEGORY_DIRS`; add any future non-category directory there
   too.
 
+## Scope Is Conditional by Default
+A doc marked `load: always` is read on every task, in every project, forever. That is a tax levied on all work, so it
+MUST be granted rather than assumed.
+
+- A new rule doc MUST default to `load: conditional` with a `when` clause naming the situation it governs.
+- `load: always` MUST be authorized explicitly, by an entry in `ALWAYS_AUTHORIZED` in `scripts/check_structure.py`
+  stating why the doc governs all work. `check_always_is_authorized()` rejects any unauthorized always-loaded doc, and
+  any grant whose reason is missing or whose doc is no longer always-loaded.
+- A rule that governs a narrow situation MUST NOT be added to an always-loaded doc because that doc is topically
+  adjacent. Adjacency is not scope.
+- Before adding to an always-loaded doc, MUST ask what fraction of tasks the rule binds. If the answer is "few", the
+  rule belongs behind a `when` clause.
+
+This rule exists because it was broken. Rules for withheld benchmark suites and for authoring checkers were added to
+`TEST/TEST.md`, which loads on every task; they cost every implementation task in every project roughly 800 tokens to
+read guidance about a situation it was not in. Both are now `TEST/WITHHELD_SUITES.md` and `TEST/GUARDS.md`, conditional
+on the task that needs them.
+
 ## Generated Artifacts
 `MANIFEST.md` is generated from every doc's `applies_to` frontmatter and MUST NOT be hand-edited. It is what an agent
 reads to decide which docs to load, so a stale manifest silently hides a rule; CI fails the build when it drifts.

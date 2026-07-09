@@ -108,38 +108,6 @@ reviewer's head decays on the first rename.
 - When a requirement is removed, its tests MUST be removed in the same change. A test that traces to nothing is either
   dead or evidence the requirement still exists.
 
-## Guards Are Code, and Obey These Rules
-A guard is a checker, a linter, a CI gate, a pre-commit hook, or a test that certifies other work. Guards are trusted
-more than the code they inspect and reviewed less, so they MUST meet every standard they impose.
-
-- A guard MUST be covered by a test that fails when the guard is removed or weakened. An uncovered guard is an assertion
-  that it works.
-- A guard MUST NOT exempt itself from the project's coding standard, review, or coverage requirements. If a standard
-  does not fit the guard, MUST change the standard or the guard, and MUST NOT silently exclude it.
-- A guard's own failure MUST be loud. It MUST exit non-zero, MUST name what it inspected, and MUST report how many items
-  it inspected, so that "checked nothing" and "found nothing" are distinguishable in its output.
-- A guard MUST refuse to run rather than report success, when its inputs are missing, empty, or unreadable.
-- A guard MUST fail on a stale exemption. An allowlist entry whose target no longer exists, or no longer violates, is
-  cover for the next one.
-- Every exemption a guard grants MUST name what it exempts and state why the check cannot apply. An exemption without a
-  justification is an unchecked case with a nicer name.
-
-## Withheld Verification Suites
-Applies when a suite certifies work whose author MUST NOT see it: a benchmark arm, an evaluation, an acceptance suite
-written by another party. An author who sees the suite implements its assertions instead of the specification, and the
-suite then certifies nothing.
-
-- A withheld suite MUST be absent from the author's workspace at every moment the author is working, not merely
-  unmentioned. Presence is exposure.
-- MUST run the suite against a copy of the author's work, never in the author's tree. An artifact left behind after one
-  run is still present during the next.
-- MUST treat a toolchain diagnostic that names the suite as exposure. A compiler error quoting a test's path and a
-  missing symbol discloses the contract as surely as reading the file does.
-- The specification MUST name every operation the suite calls. Otherwise the author cannot compile against a suite it is
-  forbidden to read, and the pressure to look is structural rather than a lapse of discipline.
-- MUST audit each author's full transcript and produced sources for the suite's paths, symbols, and assertions before
-  accepting any result measured against it. An audit that scans nothing MUST fail.
-
 ## CI and Reporting Expectations
 - MUST run relevant tests before opening a PR.
 - MUST report what was executed and what was not.
@@ -156,3 +124,7 @@ When delivering a change, include:
 
 ## Override Notes
 - Security-sensitive scenarios MUST also satisfy `SECURITY/SECURITY.md`.
+
+## Files
+- [GUARDS.md](GUARDS.md) - Obligations on a checker, linter, or CI gate.
+- [WITHHELD_SUITES.md](WITHHELD_SUITES.md) - Isolation of a suite withheld from the author.

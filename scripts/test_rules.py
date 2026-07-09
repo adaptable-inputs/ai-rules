@@ -657,6 +657,44 @@ class TestComplianceFailsafe(unittest.TestCase):
 # --------------------------------------------------------------------------
 # The guards obey the rules they impose
 # --------------------------------------------------------------------------
+class TestAlwaysIsAuthorized(unittest.TestCase):
+    """Covers check_always_is_authorized(). `load: always` is read on every task
+    in every project; it is granted, never assumed."""
+
+    def test_corpus_passes(self):
+        rc, out = run_structure(ROOT)
+        self.assertEqual(rc, 0, out)
+
+    def test_unauthorized_always_doc_is_caught(self):
+        with Sandbox() as repo:
+            p = repo / "DESIGN" / "ZZZ.md"
+            p.write_text('---\napplies_to:\n  load: "always"\n---\n# Z\n- MUST do a thing.\n',
+                         encoding="utf-8")
+            (repo / "DESIGN" / "DESIGN.md").write_text(
+                (repo / "DESIGN" / "DESIGN.md").read_text(encoding="utf-8")
+                + "- [ZZZ.md](ZZZ.md) - A narrow rule.\n", encoding="utf-8")
+            rc, out = run_structure(repo)
+            self.assertEqual(rc, 1, out)
+            self.assertIn("load: always is unauthorized", out)
+
+    def test_stale_grant_is_caught(self):
+        with Sandbox() as repo:
+            cs = repo / "scripts" / "check_structure.py"
+            s = cs.read_text(encoding="utf-8")
+            cs.write_text(s.replace(
+                'ALWAYS_AUTHORIZED = {',
+                'ALWAYS_AUTHORIZED = {\n    "TEST/GUARDS.md": "a stale grant, this doc is conditional",',
+                1), encoding="utf-8")
+            rc, out = run_structure(repo)
+            self.assertEqual(rc, 1, out)
+            self.assertIn("remove the stale grant", out)
+
+    def test_every_grant_states_a_reason(self):
+        for doc, reason in cs.ALWAYS_AUTHORIZED.items():
+            self.assertGreaterEqual(len(reason.split()), 4,
+                                    f"{doc}: grant has no usable reason")
+
+
 class TestGuardsConform(unittest.TestCase):
     """TEST/TEST.md: "A guard MUST be covered by a test that fails when the guard
     is removed or weakened." Guards are trusted more than the code they inspect

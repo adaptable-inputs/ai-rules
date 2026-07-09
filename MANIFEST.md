@@ -36,7 +36,7 @@ open a category index.
 - `SECURITY/SECURITY.md` *(annex)*
 - `TEST/TEST.md` *(annex)*
 
-## conditional (76)
+## conditional (78)
 
 - `ARCHITECTURE/CIRCUIT_BREAKER.md` *(annex)* - when and how to apply circuit breakers to remote
   dependencies. Load when the project calls remote dependencies.
@@ -196,6 +196,12 @@ open a category index.
   protection. Load when libraries: `resilience4j`.
 - `LIBRARY/SELENIUM.md` *(annex)* - Selenium E2E automation patterns for stable browser testing.
   Load when libraries: `selenium`.
+- `TEST/GUARDS.md` - rules a guard must obey, because a guard is trusted more than the code it
+  inspects. Load when the change adds or modifies a checker, linter, CI gate, pre-commit hook, or
+  any test that certifies other work.
+- `TEST/WITHHELD_SUITES.md` - isolation rules for a verification suite the author of the work is
+  forbidden to read. Load when a suite certifies work whose author must not see it: a benchmark arm,
+  an evaluation, or an acceptance suite written by another party.
 
 ## task (3)
 
