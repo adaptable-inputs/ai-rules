@@ -20,15 +20,15 @@ Guidance for AI agents to use early return and guard clauses effectively.
 
 ## Defaults and Guardrails
 - SHOULD prefer early return/guard clauses to keep the happy path linear.
-- Validate inputs and preconditions early; on invalid or error states, return
-  (or exit) immediately.
-- Reduce nested branching depth before extracting deeper abstractions.
-- Keep guard clauses small and intent-revealing.
-- Keep return points semantically obvious; do not scatter unrelated exits.
-- For simple two-branch value selection with no side effects, prefer a single
-  ternary expression for return/assignment instead of verbose `if` blocks.
-- In ternary guard expressions, keep the exceptional case first:
-  `condition ? exceptional : happy` (for example `value == null ? null : map(value)`).
+- MUST validate inputs and preconditions early; on invalid or error states, return (or exit) immediately.
+- SHOULD reduce nested branching depth before extracting deeper abstractions.
+- SHOULD keep guard clauses small and intent-revealing.
+- SHOULD keep return points semantically obvious, and SHOULD NOT scatter
+  unrelated exits.
+- For simple two-branch value selection with no side effects, SHOULD prefer a single ternary expression for
+  return/assignment instead of verbose `if` blocks.
+- In ternary guard expressions, SHOULD keep the exceptional case first: `condition ? exceptional : happy` (for example
+  `value == null ? null : map(value)`).
 
 Use early return carefully when control-flow exits could bypass critical
 cleanup/consistency behavior:
@@ -129,5 +129,5 @@ target = value == null ? null : map(value);
   exceptional and happy outcomes.
 
 ## Override Notes
-- Language/framework docs may narrow early-return style for specific paradigms,
-  but should keep the default preference for reduced nesting and explicit flow.
+- Language/framework docs MAY narrow early-return style for specific paradigms,
+  but SHOULD keep the default preference for reduced nesting and explicit flow.

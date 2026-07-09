@@ -17,35 +17,35 @@ Guidance for AI agents applying SOLID principles pragmatically.
   companion docs that apply alongside this file.
 
 ## SRP: Single Responsibility Principle
-- Keep modules with one primary reason to change.
-- Separate orchestration, policy, and IO responsibilities.
+- SHOULD keep modules with one primary reason to change.
+- SHOULD separate orchestration, policy, and IO responsibilities.
 - SHOULD avoid classes that mix domain logic, persistence, and transport concerns.
 
 ## OCP: Open/Closed Principle
-- Design extension seams where change vectors are expected.
+- SHOULD design extension seams where change vectors are expected.
 - SHOULD prefer composition/polymorphism over branching explosion for variants.
 - SHOULD avoid speculative abstractions without credible extension need.
 
 ## LSP: Liskov Substitution Principle
-- Subtypes must honor base type contracts.
+- Subtypes MUST honor base type contracts.
 - MUST NOT strengthen preconditions or weaken postconditions.
-- Keep behavioral compatibility explicit in inheritance hierarchies.
+- SHOULD keep behavioral compatibility explicit in inheritance hierarchies.
 
 ## ISP: Interface Segregation Principle
 - SHOULD prefer narrow interfaces focused on client needs.
 - SHOULD avoid large kitchen-sink interfaces.
-- Keep interface methods cohesive and role-specific.
+- SHOULD keep interface methods cohesive and role-specific.
 
 ## DIP: Dependency Inversion Principle
-- Depend on abstractions across boundary seams.
-- Keep high-level policy independent from low-level framework details.
-- Compose implementations at outer boundaries.
+- SHOULD depend on abstractions across boundary seams.
+- SHOULD keep high-level policy independent from low-level framework details.
+- SHOULD compose implementations at outer boundaries.
 
 ## Tradeoff Guidance
 - SOLID is a decision aid, not a hard quota.
 - SHOULD prefer simple direct code when extension pressure is low.
-- Introduce abstraction when it reduces expected change cost.
-- Document deliberate deviations when pragmatic constraints apply.
+- SHOULD introduce abstraction when it reduces expected change cost.
+- MUST document deliberate deviations when pragmatic constraints apply.
 
 ## High-Risk Pitfalls
 1. Over-abstraction from dogmatic SOLID application.
@@ -88,5 +88,5 @@ Do:    split read and write interfaces by client need.
 - Add regression tests when refactoring responsibilities/interfaces.
 
 ## Override Notes
-- Framework constraints may require pragmatic compromises, but contract
+- Framework constraints MAY require pragmatic compromises, but contract
   compatibility and boundary isolation principles remain mandatory.

@@ -39,6 +39,10 @@ CONDITIONAL_KEYS = {"languages", "frameworks", "libraries", "tools", "when"}
 # See CORE/NORMATIVE_LANGUAGE.md.
 KEYWORD_CONVERTED = {
     "CORE/CORE.md",
+    "DESIGN/CLEAN_CODE.md",
+    "DESIGN/COGNITIVE_COMPLEXITY.md",
+    "DESIGN/EARLY_RETURN.md",
+    "DESIGN/SOLID.md",
     "CORE/CODE_REVIEW_PLATFORM.md",
     "CORE/LOGGING.md",
     "CORE/RULE_DEPENDENCY_TREE.md",
@@ -55,18 +59,21 @@ LABEL_BULLET = re.compile(r"^[A-Z][\w /.+-]{0,32}:")
 # A normative bullet opens with a bare imperative verb. Noun phrases
 # ("External API contracts...", "Tests executed...") are list items, and
 # third-person verbs ("Inherits...") are statements of fact. Neither is an
-# obligation. "Scope" is deliberately absent: it appears as a section name
-# ("Scope and applicability") far more often than as a rule verb.
+# obligation. "Scope" and "Override" are deliberately absent: both appear as
+# section names ("Scope and applicability", "Override notes ...") far more often
+# than as rule verbs, and produced false positives.
 # Extend this list when a new rule verb appears.
 IMPERATIVE_VERBS = frozenset("""
-Add Align Alert Apply Avoid Bound Centralize Choose Classify Commit Configure
-Control Cover Create Declare Define Deny Distinguish Document Emit Encode
-Enforce Ensure Evaluate Expose Fail Handle Highlight Include Inherit Interpret
-Introduce Isolate Keep Limit Link Log Maintain Make Mark Minimize Mock Name
-Normalize Optimize Pin Place Preserve Prefer Propagate Provide Publish Push
-Quarantine Redact Reply Report Require Reset Resolve Respect Return Reuse Review
-Rotate Run Separate Set Split Start Store Throw Track Treat Update Use
-Validate Verify Wrap
+Add Align Alert Apply Avoid Be Block Bound Centralize Choose Classify Commit
+Compose Configure Control Cover Create Declare Define Deny Depend Design
+Distinguish Document Emit Encode Enforce Ensure Evaluate Expose Extract Fail
+Follow Handle Highlight Ignore Include Inherit Interpret Introduce Isolate Keep
+Limit Link Log Maintain Make Mark Merge Minimize Mix Mock Name Normalize
+Optimize Pin Place Prefer Preserve Prioritize Propagate Provide Publish
+Push Put Quarantine Redact Reduce Rely Remove Rename Replace Reply Report
+Require Reset Resolve Respect Return Reuse Review Rotate Run Separate Set Ship
+Split Start Store Strengthen Swallow Throw Track Treat Update Use Validate
+Verify Weaken Wrap
 """.split())
 
 KEYWORD = re.compile(r"\b(MUST NOT|MUST|SHOULD NOT|SHOULD|MAY)\b")
@@ -274,9 +281,16 @@ def check_keyword_ratchet() -> None:
             # introduces a list. Neither is an obligation.
             if text.rstrip().endswith(":") or LABEL_BULLET.match(text):
                 continue
+            # "If coverage targets are not met, document gaps" is a rule whose
+            # verb sits after the condition. Look past the leading clause.
+            probe = text
+            lead = re.match(r"(?:If|When|For|Once|After|During|In)\b[^,]*, (.+)$", probe)
+            if lead:
+                probe = lead.group(1)
+                probe = probe[0].upper() + probe[1:] if probe else probe
             # An imperative opens with a bare verb. "Follow-up issue refs" is a
             # noun phrase, so reject a hyphenated continuation.
-            w = re.match(r"([A-Z][a-z]+)(-?)", text)
+            w = re.match(r"([A-Z][a-z]+)(-?)", probe)
             if not w or w.group(2) == "-" or w.group(1) not in IMPERATIVE_VERBS:
                 continue
             fail(f"{rel_path}:{n}: normative bullet has no obligation keyword "

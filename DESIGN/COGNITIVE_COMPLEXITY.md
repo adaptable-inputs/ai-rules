@@ -17,11 +17,11 @@ Guidance for AI agents to control method-level cognitive complexity.
 - Inherit responsibility and abstraction guidance from `DESIGN/SOLID.md`.
 
 ## Cognitive Complexity Targets
-- Enforced limit for new methods: cognitive complexity `<= 15`.
-- Encouraged limit for altered existing methods: cognitive complexity `<= 15`.
-- Temporary tolerance for altered legacy methods: up to `20` is acceptable only
-  when behavior risk is high and the PR includes a documented reduction plan.
-- If an altered legacy method stays above `20`, create or link a follow-up
+- New methods MUST have cognitive complexity `<= 15`.
+- Altered existing methods SHOULD have cognitive complexity `<= 15`.
+- Altered legacy methods MAY reach `20` only when behavior risk is high and the
+  PR includes a documented reduction plan.
+- If an altered legacy method stays above `20`, MUST create or link a follow-up
   issue with an explicit reduction plan.
 
 Definition used in this document:
@@ -32,24 +32,22 @@ These thresholds align with typical static-analysis defaults (for example SonarQ
 and common IDE plugin conventions.
 
 ## Metric Determination and Evidence
-Use the strongest available source in this order:
+An agent MUST use the strongest available source in this order:
 1. SonarQube/SonarCloud result for the branch/PR (preferred when available).
 2. IDE/static-analysis plugin result (for example SonarLint/IntelliJ plugin).
 3. Agent-side estimate when no tool result is available.
 
-When using an estimate, state that it is an estimate and apply the same
-thresholds conservatively.
+When using an estimate, an agent MUST state that it is an estimate and MUST apply
+the same thresholds conservatively.
 
 ## Complexity Reduction Heuristics
-- Extract nested decision logic into named methods with single responsibility.
+- SHOULD extract nested decision logic into named methods with single responsibility.
 - SHOULD prefer early return/guard clauses to flatten nested condition pyramids.
-- Separate orchestration from domain decision logic.
-- Replace branch-heavy variant handling with Strategy/Polymorphism where
-  variation is stable.
-- Keep cross-cutting concerns out of core methods (use focused wrappers/aspects
-  only for the cross-cutting concerns listed in `DESIGN/AOP.md`).
-- Use `DESIGN/EARLY_RETURN.md` for guard-clause defaults, guardrails, and
-  caveats.
+- SHOULD separate orchestration from domain decision logic.
+- SHOULD replace branch-heavy variant handling with Strategy/Polymorphism where variation is stable.
+- SHOULD keep cross-cutting concerns out of core methods (use focused wrappers/aspects only for the cross-cutting
+  concerns listed in `DESIGN/AOP.md`).
+- MUST use `DESIGN/EARLY_RETURN.md` for guard-clause defaults, guardrails, and caveats.
 
 ## High-Risk Pitfalls
 1. Treating metric thresholds as optional suggestions for new code.
@@ -93,6 +91,6 @@ Do:    attach Sonar/plugin metric or a documented estimate rationale.
   follow-up issue/PR notes.
 
 ## Override Notes
-- Language/framework docs may impose different local thresholds when justified,
-  but they must not weaken the enforced new-method limit without explicit
+- Language/framework docs MAY impose different local thresholds when justified,
+  but they MUST NOT weaken the enforced new-method limit without explicit
   rationale and review.

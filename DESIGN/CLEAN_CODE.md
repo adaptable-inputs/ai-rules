@@ -10,8 +10,8 @@ review.
 ## Scope
 - Define practical code-quality rules for maintainability and clarity.
 - Apply this file across languages/frameworks as a minimum baseline.
-- Specialized docs may add stricter/idiomatic constraints; explicit overrides
-  must be documented and justified.
+- Specialized docs MAY add stricter/idiomatic constraints; explicit overrides
+  MUST be documented and justified.
 
 ## Semantic Dependencies
 - Inherit naming baseline from `LANGUAGE/CONVENTIONS.md`.
@@ -19,39 +19,39 @@ review.
 - Inherit design constraints from `DESIGN/SOLID.md`.
 
 ## Core Principles
-- Prioritize clarity over cleverness.
-- Keep code intent obvious for future maintainers.
-- Keep responsibilities cohesive and boundaries explicit.
+- SHOULD prioritize clarity over cleverness.
+- SHOULD keep code intent obvious for future maintainers.
+- SHOULD keep responsibilities cohesive and boundaries explicit.
 - SHOULD prefer incremental improvement over large speculative rewrites.
 
 ## Naming and Intent
-- Use precise, domain-driven names.
+- SHOULD use precise, domain-driven names.
 - SHOULD avoid ambiguous abbreviations.
-- Keep naming consistent across module boundaries.
-- Rename related symbols/comments when intent changes.
+- MUST keep naming consistent across module boundaries.
+- MUST rename related symbols/comments when intent changes.
 
 ## Function and Method Design
-- Keep functions focused on one responsibility.
+- SHOULD keep functions focused on one responsibility.
 - SHOULD avoid long parameter lists; group related data into value objects.
 - SHOULD prefer guard clauses over deep nested conditionals.
-- Keep side effects explicit.
+- MUST keep side effects explicit.
 
 ## Error Handling
-- Fail fast on invalid input/invariants.
-- Use meaningful exception/error types.
+- MUST fail fast on invalid input/invariants.
+- SHOULD use meaningful exception/error types.
 - MUST NOT swallow errors silently.
-- Keep error paths observable and actionable.
+- SHOULD keep error paths observable and actionable.
 
 ## Duplication and Abstraction
-- Remove duplication that increases maintenance risk.
+- SHOULD remove duplication that increases maintenance risk.
 - SHOULD avoid premature abstraction with unclear reuse value.
-- Extract shared behavior when duplication is stable and semantic.
-- Keep abstractions aligned to domain concepts, not accidental code shape.
+- SHOULD extract shared behavior when duplication is stable and semantic.
+- SHOULD keep abstractions aligned to domain concepts, not accidental code shape.
 
 ## Module and Dependency Hygiene
-- Keep modules cohesive and dependency direction clear.
+- SHOULD keep modules cohesive and dependency direction clear.
 - SHOULD avoid cyclic dependencies.
-- Keep public APIs minimal and stable.
+- SHOULD keep public APIs minimal and stable.
 - SHOULD avoid hidden coupling through globals/static mutable state.
 
 ## High-Risk Pitfalls
@@ -96,5 +96,5 @@ Do:    wait for stable repeated pattern, then extract meaningfully.
 - Ensure refactors keep existing behavior stable unless intentionally changed.
 
 ## Override Notes
-- Framework/language docs may prescribe idiomatic structures, but clean-code
+- Framework/language docs MAY prescribe idiomatic structures, but clean-code
   clarity and cohesion constraints remain mandatory.
