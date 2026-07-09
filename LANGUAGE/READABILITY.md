@@ -15,51 +15,47 @@ Guidance for AI agents on writing code with low cognitive load.
 - Inherit design constraints from `DESIGN/CLEAN_CODE.md` and `DESIGN/SOLID.md`.
 - `LANGUAGE/CONVENTIONS.md` is a companion baseline that applies alongside this
   file.
-- Language/framework docs may specialize patterns but must preserve readability
+- Language/framework docs MAY specialize patterns but MUST preserve readability
   and explainability constraints.
 
 ## Core Principles
-- Optimize for future readers first, then for terse implementation.
+- SHOULD optimize for future readers first, then for terse implementation.
 - SHOULD prefer explicitness over cleverness.
-- Keep one level of abstraction per function where practical.
-- Make control flow and error flow immediately visible.
+- SHOULD keep one level of abstraction per function where practical.
+- SHOULD make control flow and error flow immediately visible.
 
 ## Cognitive Complexity Rules
-- Keep functions focused on one responsibility.
+- SHOULD keep functions focused on one responsibility.
 - SHOULD avoid deep nesting; prefer guard clauses and early returns.
-- Split large conditional trees into named predicates or strategy objects.
+- SHOULD split large conditional trees into named predicates or strategy objects.
 - SHOULD avoid mixing orchestration, transformation, and IO concerns in one function.
 - SHOULD prefer clear linear flow over intertwined branching.
-- Use `DESIGN/EARLY_RETURN.md` for focused early-return defaults and guardrails.
+- MUST use `DESIGN/EARLY_RETURN.md` for focused early-return defaults and guardrails.
 
 ## Expression and Statement Clarity
 - SHOULD avoid cascading ternary expressions.
-- For simple two-branch guard mappings, prefer a single ternary return or
-  assignment over verbose `if` blocks.
-- In ternary guard mappings, keep exceptional case first:
-  `condition ? exceptional : happy`.
+- For simple two-branch guard mappings, SHOULD prefer a single ternary return or assignment over verbose `if` blocks.
+- In ternary guard mappings, SHOULD keep exceptional case first: `condition ? exceptional : happy`.
 - SHOULD avoid deeply nested function calls in a single line when intent is unclear.
-- Introduce intermediate variables for non-trivial expressions.
-- Name intermediate values semantically, not mechanically.
-- Keep boolean logic readable; extract complex predicates into named helpers.
+- SHOULD introduce intermediate variables for non-trivial expressions.
+- SHOULD name intermediate values semantically, not mechanically.
+- SHOULD keep boolean logic readable; extract complex predicates into named helpers.
 
 ## Function and Module Shape
-- Keep function length proportionate to complexity.
-- Keep parameter lists small and coherent; use value objects for grouped
-  concepts.
-- Keep related logic close; avoid jumping across distant utility modules for
-  core business flow.
+- SHOULD keep function length proportionate to complexity.
+- SHOULD keep parameter lists small and coherent; use value objects for grouped concepts.
+- SHOULD keep related logic close; avoid jumping across distant utility modules for core business flow.
 - SHOULD prefer small cohesive modules over large mixed-responsibility files.
 
 ## Comments and Documentation
 - SHOULD prefer self-explanatory code over explanatory comments.
-- Use comments for intent, invariants, and non-obvious tradeoffs.
-- Remove or update comments when code changes.
+- SHOULD use comments for intent, invariants, and non-obvious tradeoffs.
+- MUST remove or update comments when code changes.
 - SHOULD avoid narrative comments that duplicate code step-by-step.
 
 ## Error Path Readability
-- Keep happy path and failure path clearly separated.
-- Use explicit error types/messages that communicate cause and recovery context.
+- SHOULD keep happy path and failure path clearly separated.
+- SHOULD use explicit error types/messages that communicate cause and recovery context.
 - SHOULD avoid broad error-handling blocks that hide control flow outcomes.
 
 ## High-Risk Pitfalls
@@ -140,5 +136,5 @@ result = value == null ? null : map(value);
 - Validate that extraction/refactor steps did not alter side effects.
 
 ## Override Notes
-- Language/framework docs may define local idioms (for example React hooks,
-  Java stream style) but should still satisfy these readability constraints.
+- Language/framework docs MAY define local idioms (for example React hooks,
+  Java stream style) but SHOULD still satisfy these readability constraints.

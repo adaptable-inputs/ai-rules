@@ -11,59 +11,57 @@ Defines baseline testing expectations for all stacks and domains.
 
 ## Semantic Dependencies (Upstream Rules)
 - Inherits `CORE/CORE.md` and `CORE/RULE_DEPENDENCY_TREE.md` precedence.
-- Security-sensitive scenarios must also satisfy `SECURITY/SECURITY.md`.
-- Language/framework/library-specific test techniques may specialize this
-  baseline but must not weaken it without explicit rationale.
+- Security-sensitive scenarios MUST also satisfy `SECURITY/SECURITY.md`.
+- Language/framework/library-specific test techniques MAY specialize this
+  baseline but MUST NOT weaken it without explicit rationale.
 
 ## Testing Defaults
-- Add or update tests for every behavior change.
+- MUST add or update tests for every behavior change.
 - SHOULD prefer deterministic and isolated tests.
-- Keep test suites fast enough for frequent CI execution.
-- Use risk-based depth: higher business/security impact requires stronger test
-  coverage across layers.
+- SHOULD keep test suites fast enough for frequent CI execution.
+- MUST use risk-based depth: higher business/security impact requires stronger test coverage across layers.
 
 ## Test Strategy by Layer
 - Unit tests:
-  - Default first choice for business logic.
-  - Must be fast, isolated, and behavior-focused.
+  - SHOULD be the default first choice for business logic.
+  - MUST be fast, isolated, and behavior-focused.
 - Integration tests:
-  - Required for boundaries (DB, queues, file systems, external services).
-  - Validate wiring, contracts, and transactional behavior.
+  - MUST be used for boundaries (DB, queues, file systems, external services).
+  - MUST validate wiring, contracts, and transactional behavior.
 - End-to-end tests:
-  - Cover critical user/value flows only.
-  - Keep suite small, stable, and non-flaky.
+  - MUST cover critical user/value flows only.
+  - MUST keep suite small, stable, and non-flaky.
 
 ## Determinism and Flakiness Control
 - SHOULD avoid reliance on wall-clock time, random seeds, network timing, and shared
   mutable state without explicit control.
-- Use stable fixtures and explicit setup/teardown.
-- Control time/randomness with test doubles where feasible.
-- Quarantine and fix flaky tests; do not normalize flaky behavior as acceptable.
+- MUST use stable fixtures and explicit setup/teardown.
+- SHOULD control time/randomness with test doubles where feasible.
+- MUST quarantine and fix flaky tests; do not normalize flaky behavior as acceptable.
 
 ## Mocks, Stubs, and Fakes
-- Mock boundaries, not core behavior under test.
+- MUST mock boundaries, not core behavior under test.
 - SHOULD avoid over-mocking that hides integration risks.
-- Use fakes/stubs for dependencies that are slow, non-deterministic, or
-  unavailable in the test environment.
-- Reset shared test doubles between tests to avoid cross-test coupling.
+- SHOULD use fakes/stubs for dependencies that are slow, non-deterministic, or unavailable in the test environment.
+- MUST reset shared test doubles between tests to avoid cross-test coupling.
 
 ## Data and Fixtures
-- Keep fixtures in test-only paths.
+- MUST keep fixtures in test-only paths.
 - MUST NOT ship test fixtures in production artifacts.
 - SHOULD prefer minimal fixture data that expresses intent clearly.
-- Use scenario-based datasets for edge and failure-path coverage.
+- SHOULD use scenario-based datasets for edge and failure-path coverage.
 
 ## Coverage and Confidence
-- High line coverage alone is insufficient; prioritize meaningful assertions and
+- High line coverage alone is insufficient; MUST prioritize meaningful assertions and
   branch/error-path validation.
-- Cover happy paths, edge cases, failure modes, and regression paths.
-- If coverage targets are not met, document exact gaps and risk rationale.
+- MUST cover happy paths, edge cases, failure modes, and regression paths.
+- If coverage targets are not met, MUST document exact gaps and risk rationale.
 
 ## CI and Reporting Expectations
-- Run relevant tests before opening a PR.
-- Report what was executed and what was not.
-- In CI, fail builds on test failures.
-- Publish actionable reports/artifacts for failed runs when available.
+- MUST run relevant tests before opening a PR.
+- MUST report what was executed and what was not.
+- In CI, MUST fail builds on test failures.
+- SHOULD publish actionable reports/artifacts for failed runs when available.
 
 ## High-Risk Pitfalls
 1. Changing behavior without adding/updating tests.
@@ -111,6 +109,6 @@ When delivering a change, include:
 - Follow-up issue references for deferred test debt.
 
 ## Override Notes
-- Downstream docs may specialize this baseline (for example framework-specific
-  testing patterns), but must not reduce determinism, coverage of critical
+- Downstream docs MAY specialize this baseline (for example framework-specific
+  testing patterns), but MUST NOT reduce determinism, coverage of critical
   paths, or reporting clarity without explicit justification.

@@ -42,11 +42,29 @@ KEYWORD_CONVERTED = {
     "CORE/CODE_REVIEW_PLATFORM.md",
     "CORE/LOGGING.md",
     "CORE/VERSION_CONTROL_SYSTEM.md",
+    "LANGUAGE/CONVENTIONS.md",
+    "LANGUAGE/READABILITY.md",
     "SECURITY/SECURITY.md",
+    "TEST/TEST.md",
 }
 
 # "Xcode: `DerivedData/`, ..." - a label introducing a list, not a rule.
-LABEL_BULLET = re.compile(r"^[A-Z][\w /.+-]{0,24}:")
+LABEL_BULLET = re.compile(r"^[A-Z][\w /.+-]{0,32}:")
+
+# A normative bullet opens with a bare imperative verb. Noun phrases
+# ("External API contracts...", "Tests executed...") are list items, and
+# third-person verbs ("Inherits...") are statements of fact. Neither is an
+# obligation. Extend this list when a new rule verb appears.
+IMPERATIVE_VERBS = frozenset("""
+Add Align Alert Apply Avoid Bound Centralize Choose Classify Commit Configure
+Control Cover Create Declare Define Deny Distinguish Document Emit Encode
+Enforce Ensure Evaluate Expose Fail Handle Highlight Include Inherit Interpret
+Introduce Isolate Keep Limit Link Log Maintain Make Mark Minimize Mock Name
+Normalize Optimize Pin Place Preserve Prefer Propagate Provide Publish Push
+Quarantine Redact Reply Report Require Reset Resolve Respect Return Reuse Review
+Rotate Run Scope Separate Set Split Start Store Throw Track Treat Use Validate
+Verify Wrap
+""".split())
 
 KEYWORD = re.compile(r"\b(MUST NOT|MUST|SHOULD NOT|SHOULD|MAY)\b")
 TOP_BULLET = re.compile(r"^[-*] (.*)$")
@@ -56,6 +74,7 @@ DESCRIPTIVE_PREFIXES = (
     "Terminology", "Authoring Notes", "Override Notes", "Layer Details",
     "Code Review Checklist", "Testing Guidance", "High-Risk", "Do / Don",
     "Keywords", "Default Force", "Conflicts", "Applying Keywords",
+    "Validation Notes",
 )
 
 errors: list[str] = []
@@ -252,8 +271,10 @@ def check_keyword_ratchet() -> None:
             # introduces a list. Neither is an obligation.
             if text.rstrip().endswith(":") or LABEL_BULLET.match(text):
                 continue
-            # An imperative opens with a capitalised bare verb.
-            if not re.match(r"[A-Z][a-z]+\b", text):
+            # An imperative opens with a bare verb. "Follow-up issue refs" is a
+            # noun phrase, so reject a hyphenated continuation.
+            w = re.match(r"([A-Z][a-z]+)(-?)", text)
+            if not w or w.group(2) == "-" or w.group(1) not in IMPERATIVE_VERBS:
                 continue
             fail(f"{rel_path}:{n}: normative bullet has no obligation keyword "
                  f"(file is in KEYWORD_CONVERTED): {text[:60]!r}")
