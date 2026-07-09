@@ -20,17 +20,15 @@ Guidance for AI agents implementing and reviewing TypeScript code.
   `SECURITY/SECURITY.md`, `TEST/TEST.md`, `CORE/LOGGING.md`.
 - Inherit naming/readability expectations from:
   `LANGUAGE/CONVENTIONS.md`, `LANGUAGE/READABILITY.md`.
-- Framework docs may further specialize TypeScript usage, but must not weaken
+- Framework docs MAY further specialize TypeScript usage, but MUST NOT weaken
   type-safety and runtime-safety constraints.
 
 ## Compiler and Project Defaults
 - Enable and keep strict mode enabled (`"strict": true`).
-- Treat type errors as blocking for merges in CI.
-- Keep `noImplicitOverride`, `noUncheckedIndexedAccess`, and
-  `exactOptionalPropertyTypes` enabled unless a documented project constraint
-  prevents it.
-- Keep `skipLibCheck` disabled by default for long-term correctness;
-  enable only with explicit rationale.
+- SHOULD treat type errors as blocking for merges in CI.
+- SHOULD keep `noImplicitOverride`, `noUncheckedIndexedAccess`, and `exactOptionalPropertyTypes` enabled unless a
+  documented project constraint prevents it.
+- SHOULD keep `skipLibCheck` disabled by default for long-term correctness; enable only with explicit rationale.
 
 ## Typing Strategy
 - SHOULD prefer precise domain types over broad primitives and ad-hoc objects.
@@ -40,14 +38,14 @@ Guidance for AI agents implementing and reviewing TypeScript code.
   If unavoidable at a boundary, isolate it and narrow immediately.
 - SHOULD prefer `unknown` for untrusted inputs and narrow with type guards.
 - Model state variants with discriminated unions instead of boolean flags.
-- Use `readonly` for immutable APIs and value objects.
+- SHOULD use `readonly` for immutable APIs and value objects.
 
 ## Domain Types vs Ad-Hoc Objects
 - Use this default split:
   domain type for semantic data with meaning and invariants;
   ad-hoc object for local, short-lived, mechanical data.
-- Treat ad-hoc objects as local implementation details.
-  Promote them to named types once they start shaping domain contracts.
+- SHOULD treat ad-hoc objects as local implementation details. Promote them to named types once they start shaping
+  domain contracts.
 
 ### Require Named Domain Types When
 - Data crosses a boundary:
@@ -76,28 +74,27 @@ Guidance for AI agents implementing and reviewing TypeScript code.
   (for example pricing, tax, policy, risk, authorization).
 - MUST NOT accept `object`, `Record<string, unknown>`, or `any` for
   domain-shaped data contracts.
-- In public APIs, prefer named parameter/return types;
-  callers may still pass inline literals when structural typing permits.
+- In public APIs, SHOULD prefer named parameter/return types; callers MAY still pass inline literals when structural
+  typing permits.
 
 ## Runtime Boundary Rules
 - TypeScript types do not validate runtime data.
-- Validate untrusted external data at boundaries (HTTP, queue, env, file).
+- SHOULD validate untrusted external data at boundaries (HTTP, queue, env, file).
 - Convert validated payloads into internal domain types before deeper logic.
 - MUST NOT expose transport-layer DTOs as internal domain models by default.
 
 ## Nullability and Optionality
-- Keep `null`/`undefined` handling explicit.
+- SHOULD keep `null`/`undefined` handling explicit.
 - SHOULD avoid non-null assertions (`!`) unless a documented invariant exists.
 - SHOULD prefer control-flow narrowing and guard functions over assertions.
-- Use optional properties intentionally; avoid optional fields for required
-  lifecycle states.
+- SHOULD use optional properties intentionally; avoid optional fields for required lifecycle states.
 
 ## API and Module Design
-- Keep public API signatures stable and explicit.
+- SHOULD keep public API signatures stable and explicit.
 - SHOULD prefer return types that communicate failure explicitly
   (`Result`-like unions, typed errors) for expected error paths.
 - SHOULD avoid large "utility" modules mixing unrelated concerns.
-- Keep module side effects explicit and minimal.
+- SHOULD keep module side effects explicit and minimal.
 
 ## Naming Conventions
 - Variables, parameters, properties, and functions: `camelCase`.
@@ -106,33 +103,32 @@ Guidance for AI agents implementing and reviewing TypeScript code.
 - `const` values:
   use `camelCase` for local/runtime values;
   use `UPPER_SNAKE_CASE` only for shared true constants.
-- Treat abbreviations as one word for casing (`userId`, `httpServer`).
+- SHOULD treat abbreviations as one word for casing (`userId`, `httpServer`).
 
 ## Enums and Alternatives
 - SHOULD prefer union literals (`type Status = "Draft" | "Published"`) when values
   are simple and no runtime enum object is required.
-- Use enums when runtime reflection/iteration or interop requires them.
+- SHOULD use enums when runtime reflection/iteration or interop requires them.
 - SHOULD avoid heterogeneous enums.
 - SHOULD prefer explicit string values for externally persisted or serialized enums.
 
 ## Error Handling
-- Throw `Error` subclasses with actionable context.
+- SHOULD throw `Error` subclasses with actionable context.
 - MUST NOT throw raw strings or untyped objects.
-- Preserve error cause chains when wrapping.
-- For async paths, ensure rejected promises are observed and handled.
+- SHOULD preserve error cause chains when wrapping.
+- For async paths, SHOULD ensure rejected promises are observed and handled.
 
 ## Decorators and JSDoc Order
-- For decorated classes, place JSDoc immediately above the top-most decorator.
-- Keep decorators contiguous and directly above the class declaration.
+- For decorated classes, SHOULD place JSDoc immediately above the top-most decorator.
+- SHOULD keep decorators contiguous and directly above the class declaration.
 - MUST NOT place JSDoc between a decorator and the class declaration.
-- Use one ordering style consistently across the codebase to avoid formatter and
-  tooling ambiguity.
+- SHOULD use one ordering style consistently across the codebase to avoid formatter and tooling ambiguity.
 
 ## Performance and Build Hygiene
 - SHOULD avoid unnecessary type-level complexity that harms compile performance.
-- Keep deeply recursive conditional types bounded and documented.
+- SHOULD keep deeply recursive conditional types bounded and documented.
 - SHOULD avoid broad barrel exports that cause accidental import bloat.
-- Use `import type` whenever an import is referenced only in type positions.
+- SHOULD use `import type` whenever an import is referenced only in type positions.
 
 ## High-Risk Pitfalls
 1. Using `any` broadly and losing type guarantees.
@@ -240,5 +236,5 @@ list):
 
 ## Override Notes
 - This file narrows JavaScript baseline by enforcing static typing discipline.
-- Framework docs may add TS framework idioms (for example React props typing),
-  but must keep strict boundary validation and safe narrowing rules.
+- Framework docs MAY add TS framework idioms (for example React props typing),
+  but MUST keep strict boundary validation and safe narrowing rules.

@@ -23,35 +23,35 @@ infrastructure changes.
   `CORE/VERSION_CONTROL_SYSTEM.md`.
 
 ## Defaults
-- Keep templates declarative, parameterized, and environment-aware.
-- Keep stack boundaries cohesive and ownership explicit.
+- SHOULD keep templates declarative, parameterized, and environment-aware.
+- SHOULD keep stack boundaries cohesive and ownership explicit.
 - SHOULD prefer nested stacks/modules for reuse over copy-pasted large templates.
-- Keep change sets as the default review path before stack updates.
-- Keep stack policies/termination protection enabled for critical stacks.
+- SHOULD keep change sets as the default review path before stack updates.
+- SHOULD keep stack policies/termination protection enabled for critical stacks.
 
 ## Change Set and Update Rules
-- Create and review change sets before executing updates.
-- Block execution when change sets show unexpected replacement/deletion impact.
-- Keep production updates gated with explicit approvals.
-- Keep rollback behavior enabled unless a bounded exception is documented.
+- SHOULD create and review change sets before executing updates.
+- MUST block execution when change sets show unexpected replacement/deletion impact.
+- SHOULD keep production updates gated with explicit approvals.
+- MUST keep rollback behavior enabled unless a bounded exception is documented.
 
 ## Stack Governance
-- Keep stack naming conventions stable across environments.
-- Separate environments/accounts to reduce blast radius.
-- Keep resource tags/metadata mandatory for ownership and cost governance.
+- SHOULD keep stack naming conventions stable across environments.
+- SHOULD separate environments/accounts to reduce blast radius.
+- SHOULD keep resource tags/metadata mandatory for ownership and cost governance.
 - SHOULD avoid unmanaged/manual changes outside stack control.
 
 ## Drift, Import, and Migration
-- Run drift detection for critical stacks regularly.
-- Use resource import and stack refactor workflows deliberately and documented.
-- Validate replacement impact before updates on stateful resources.
-- Keep migration and rollback steps explicit for high-impact changes.
+- SHOULD run drift detection for critical stacks regularly.
+- SHOULD use resource import and stack refactor workflows deliberately and documented.
+- SHOULD validate replacement impact before updates on stateful resources.
+- SHOULD keep migration and rollback steps explicit for high-impact changes.
 
 ## Secrets and Access
 - MUST NOT hardcode secrets in templates or parameter defaults.
 - Retrieve secrets through secure references/services.
-- Keep IAM permissions least-privilege for deploy roles.
-- Keep stack outputs free of sensitive data where possible.
+- MUST keep IAM permissions least-privilege for deploy roles.
+- SHOULD keep stack outputs free of sensitive data where possible.
 
 ## High-Risk Pitfalls
 1. Updating stacks without reviewed change sets.
@@ -97,6 +97,6 @@ Do:    reference secrets from managed secret services.
 - Test migration/import paths for complex stack evolution.
 
 ## Override Notes
-- Project-specific CloudFormation patterns may narrow implementation details,
+- Project-specific CloudFormation patterns MAY narrow implementation details,
   but change-set review discipline, stack protection, least privilege, and
   secret hygiene remain mandatory.

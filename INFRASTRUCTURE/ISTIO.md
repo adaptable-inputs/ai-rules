@@ -19,29 +19,29 @@ Guidance for AI agents implementing and reviewing Istio service mesh policies.
 - Inherit security constraints from `SECURITY/SECURITY.md`.
 
 ## Defaults
-- Keep traffic policies explicit and versioned.
-- Keep retries/timeouts bounded and aligned with service SLOs.
-- Use progressive rollout patterns for risky changes.
-- Keep policy scope minimal (namespace/service targeted).
+- SHOULD keep traffic policies explicit and versioned.
+- SHOULD keep retries/timeouts bounded and aligned with service SLOs.
+- SHOULD use progressive rollout patterns for risky changes.
+- SHOULD keep policy scope minimal (namespace/service targeted).
 
 ## Traffic Management Rules
-- Define clear routing intent in VirtualService rules.
+- SHOULD define clear routing intent in VirtualService rules.
 - SHOULD avoid conflicting route matches and overlapping wildcard policies.
 - Coordinate retries, timeouts, and outlier detection to avoid traffic storms.
-- Use canary/weighted rollout for high-risk changes.
-- Keep gateway ingress exposure tightly controlled.
+- SHOULD use canary/weighted rollout for high-risk changes.
+- SHOULD keep gateway ingress exposure tightly controlled.
 
 ## Security Rules
-- Enforce mTLS according to environment policy.
-- Use AuthorizationPolicy with least privilege.
-- Keep trust-domain and identity assumptions explicit.
+- MUST enforce mTLS according to environment policy.
+- MUST use AuthorizationPolicy with least privilege.
+- MUST keep trust-domain and identity assumptions explicit.
 - SHOULD avoid permissive policies as long-term defaults.
 
 ## Observability and Operations
-- Ensure mesh telemetry is enabled and consumed meaningfully.
-- Track latency, error rate, retry count, and outlier ejection behavior.
-- Alert on policy-induced failures (5xx spikes, route blackholes).
-- Keep config changes auditable and rollback-ready.
+- SHOULD ensure mesh telemetry is enabled and consumed meaningfully.
+- SHOULD track latency, error rate, retry count, and outlier ejection behavior.
+- SHOULD alert on policy-induced failures (5xx spikes, route blackholes).
+- SHOULD keep config changes auditable and rollback-ready.
 
 ## High-Risk Pitfalls
 1. Overlapping route rules creating nondeterministic behavior.
@@ -86,5 +86,5 @@ Do:    weighted canary progression with observability gates.
 - Monitor mesh metrics during rollout validation.
 
 ## Override Notes
-- Platform governance may enforce stricter mesh controls, but explicit traffic
+- Platform governance MAY enforce stricter mesh controls, but explicit traffic
   safety, least privilege, and observability constraints here remain mandatory.

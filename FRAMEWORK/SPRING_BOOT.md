@@ -24,47 +24,45 @@ Guidance for AI agents implementing and reviewing Spring Boot applications.
 ## Defaults
 - SHOULD prefer constructor injection (for example with Lombok
   `@RequiredArgsConstructor`), avoid field injection.
-- Keep controllers thin; move orchestration/business rules into services or
-  use-case classes.
-- Keep persistence logic in repositories/adapters, not controllers.
+- SHOULD keep controllers thin; move orchestration/business rules into services or use-case classes.
+- SHOULD keep persistence logic in repositories/adapters, not controllers.
 - SHOULD prefer explicit DTOs for API boundaries.
-- Use `@ConfigurationProperties` for structured config over scattered
-  `@Value` usage.
+- SHOULD use `@ConfigurationProperties` for structured config over scattered `@Value` usage.
 
 ## Configuration and Profiles
-- Keep configuration keys stable and documented.
-- Use profile/environment separation intentionally.
-- Keep defaults safe for local/dev and override via environment for production.
-- Validate critical configuration at startup.
+- SHOULD keep configuration keys stable and documented.
+- SHOULD use profile/environment separation intentionally.
+- SHOULD keep defaults safe for local/dev and override via environment for production.
+- SHOULD validate critical configuration at startup.
 
 ## Web and API Layer
-- Validate request payloads with Bean Validation.
-- Keep exception-to-response mapping centralized (`@ControllerAdvice`).
-- Use consistent API error payload shapes with trace correlation.
+- SHOULD validate request payloads with Bean Validation.
+- SHOULD keep exception-to-response mapping centralized (`@ControllerAdvice`).
+- SHOULD use consistent API error payload shapes with trace correlation.
 - SHOULD avoid exposing internal exception details to clients.
 
 ## Transactions and Persistence
-- Keep transaction boundaries explicit and use-case aligned.
+- SHOULD keep transaction boundaries explicit and use-case aligned.
 - SHOULD avoid long transactions with remote/network calls inside.
-- Choose JPA or jOOQ intentionally per query complexity.
+- SHOULD choose JPA or jOOQ intentionally per query complexity.
 - SHOULD avoid Open Session in View reliance for business-critical flows.
 
 ## Asynchrony and Scheduling
-- Use async/scheduling only with explicit thread pool configuration.
-- Keep background job idempotency and retry policy explicit.
-- Propagate correlation context where observability requires it.
+- SHOULD use async/scheduling only with explicit thread pool configuration.
+- SHOULD keep background job idempotency and retry policy explicit.
+- SHOULD propagate correlation context where observability requires it.
 
 ## Observability
-- Use structured logging with correlation IDs.
-- Expose health/readiness checks meaningfully.
-- Emit metrics for key business and dependency operations.
-- Keep log/metric cardinality controlled.
+- SHOULD use structured logging with correlation IDs.
+- SHOULD expose health/readiness checks meaningfully.
+- SHOULD emit metrics for key business and dependency operations.
+- SHOULD keep log/metric cardinality controlled.
 
 ## Security Baseline
-- Enforce authentication/authorization at endpoint and service boundaries.
-- Keep secrets out of code/config files; use secret management paths.
-- Validate and sanitize external input.
-- Apply least privilege for outbound clients and data access.
+- MUST enforce authentication/authorization at endpoint and service boundaries.
+- MUST keep secrets out of code/config files; use secret management paths.
+- MUST validate and sanitize external input.
+- MUST apply least privilege for outbound clients and data access.
 
 ## High-Risk Pitfalls
 1. Business logic in controllers.
@@ -111,6 +109,6 @@ Do:    typed @ConfigurationProperties with validation.
 - Add tests for configuration binding/validation of critical properties.
 
 ## Override Notes
-- Library docs (JPA, jOOQ, Resilience4j, etc.) may add stricter rules for
+- Library docs (JPA, jOOQ, Resilience4j, etc.) MAY add stricter rules for
   specific integrations, but Spring Boot layering, configuration, and boundary
   constraints here remain mandatory.

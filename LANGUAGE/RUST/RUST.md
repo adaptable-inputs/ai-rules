@@ -19,40 +19,40 @@ Guidance for AI agents implementing and reviewing Rust code.
   `TEST/TEST.md`, and `CORE/LOGGING.md`.
 - Inherit shared language constraints from `LANGUAGE/CONVENTIONS.md` and
   `LANGUAGE/READABILITY.md`.
-- Framework/library-specific Rust docs may specialize API usage but must not
+- Framework/library-specific Rust docs MAY specialize API usage but MUST NOT
   weaken this baseline.
 
 ## Defaults
 - SHOULD prefer explicit ownership and lifetimes over workaround cloning.
-- Keep type/state invariants encoded in types where practical.
-- Use `Result`/`Option` explicitly and avoid panic-driven normal flow.
-- Keep `unsafe` usage minimal, justified, and encapsulated.
-- Keep public API surfaces small and stable.
+- SHOULD keep type/state invariants encoded in types where practical.
+- SHOULD use `Result`/`Option` explicitly and avoid panic-driven normal flow.
+- SHOULD keep `unsafe` usage minimal, justified, and encapsulated.
+- SHOULD keep public API surfaces small and stable.
 
 ## Ownership and API Design
-- Design APIs that communicate ownership/borrowing intent clearly.
+- SHOULD design APIs that communicate ownership/borrowing intent clearly.
 - SHOULD avoid unnecessary `clone()` in hot paths; address lifetime design first.
-- Keep module boundaries cohesive and explicit.
-- Keep trait abstractions purposeful, not premature.
+- SHOULD keep module boundaries cohesive and explicit.
+- SHOULD keep trait abstractions purposeful, not premature.
 
 ## Error Handling and Panics
-- Use domain-specific error enums/structs with contextual information.
-- Propagate recoverable failures via `Result`.
+- SHOULD use domain-specific error enums/structs with contextual information.
+- SHOULD propagate recoverable failures via `Result`.
 - Reserve `panic!` for unrecoverable programmer invariants.
-- Preserve source context when mapping lower-level errors.
+- SHOULD preserve source context when mapping lower-level errors.
 
 ## Async and Concurrency Rules
-- Keep async boundaries explicit and runtime-aware.
+- SHOULD keep async boundaries explicit and runtime-aware.
 - SHOULD avoid blocking operations on async executors.
-- Keep shared mutable state synchronized and minimized.
-- Use channels/message passing where it improves clarity and safety.
-- Keep cancellation/timeout behavior explicit for external IO.
+- SHOULD keep shared mutable state synchronized and minimized.
+- SHOULD use channels/message passing where it improves clarity and safety.
+- SHOULD keep cancellation/timeout behavior explicit for external IO.
 
 ## Unsafe and FFI Boundaries
-- Isolate `unsafe` blocks behind safe APIs and documented invariants.
-- Keep FFI boundary contracts explicit about ownership/lifetime/thread safety.
-- Add targeted tests around unsafe-critical behavior.
-- Review unsafe code with extra scrutiny in PRs.
+- SHOULD isolate `unsafe` blocks behind safe APIs and documented invariants.
+- SHOULD keep FFI boundary contracts explicit about ownership/lifetime/thread safety.
+- SHOULD add targeted tests around unsafe-critical behavior.
+- SHOULD review unsafe code with extra scrutiny in PRs.
 
 ## High-Risk Pitfalls
 1. Excess cloning to bypass ownership design issues.
@@ -98,6 +98,6 @@ Do:    use async-compatible clients or isolate blocking work explicitly.
 - Add regression tests for previously observed bug classes.
 
 ## Override Notes
-- Project-specific Rust conventions may add stricter patterns, but explicit
+- Project-specific Rust conventions MAY add stricter patterns, but explicit
   ownership contracts, safe error handling, bounded unsafe usage, and async
   runtime safety remain mandatory.

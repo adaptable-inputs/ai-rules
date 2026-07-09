@@ -19,40 +19,40 @@ Guidance for AI agents implementing and reviewing Kotlin code.
   `TEST/TEST.md`, and `CORE/LOGGING.md`.
 - Inherit shared language constraints from `LANGUAGE/CONVENTIONS.md` and
   `LANGUAGE/READABILITY.md`.
-- Framework/library-specific Kotlin docs may specialize API usage but must not
+- Framework/library-specific Kotlin docs MAY specialize API usage but MUST NOT
   weaken this baseline.
 
 ## Defaults
-- Keep null-safety explicit and avoid defeating type guarantees.
+- SHOULD keep null-safety explicit and avoid defeating type guarantees.
 - SHOULD prefer immutable data and explicit state transitions.
-- Use coroutines for structured async/concurrent workflows.
-- Keep exceptions specific and boundary mapping explicit.
-- Keep domain logic separated from framework/runtime plumbing.
+- SHOULD use coroutines for structured async/concurrent workflows.
+- SHOULD keep exceptions specific and boundary mapping explicit.
+- SHOULD keep domain logic separated from framework/runtime plumbing.
 
 ## Null-Safety and Type Contracts
 - Model optionality with nullable types intentionally.
 - SHOULD avoid `!!` unless a bounded invariant is proven and documented.
-- Keep DTO/domain nullability contracts explicit and consistent.
+- SHOULD keep DTO/domain nullability contracts explicit and consistent.
 - SHOULD prefer sealed/value types for constrained domain state where suitable.
 
 ## Coroutines and Concurrency Rules
-- Use structured concurrency with explicit parent scope ownership.
+- SHOULD use structured concurrency with explicit parent scope ownership.
 - SHOULD avoid `GlobalScope` for application business workflows.
-- Keep dispatcher selection explicit for IO/CPU-sensitive paths.
-- Propagate cancellation signals and timeouts for external calls.
-- Prevent shared mutable-state races with explicit synchronization.
+- SHOULD keep dispatcher selection explicit for IO/CPU-sensitive paths.
+- SHOULD propagate cancellation signals and timeouts for external calls.
+- MUST prevent shared mutable-state races with explicit synchronization.
 
 ## Exception and Resource Handling
-- Throw/map specific exceptions with actionable context.
+- SHOULD throw/map specific exceptions with actionable context.
 - MUST NOT swallow exceptions silently.
-- Use `use {}` and lifecycle-aware resource management for deterministic cleanup.
-- Preserve cause chains when wrapping exceptions at boundaries.
+- SHOULD use `use {}` and lifecycle-aware resource management for deterministic cleanup.
+- SHOULD preserve cause chains when wrapping exceptions at boundaries.
 
 ## API and Module Design
-- Keep module/package boundaries cohesive and dependency direction explicit.
-- Keep extension functions focused and avoid hidden side effects.
-- Keep companion objects/static-like usage minimal and intentional.
-- Keep configuration and secrets outside code.
+- SHOULD keep module/package boundaries cohesive and dependency direction explicit.
+- SHOULD keep extension functions focused and avoid hidden side effects.
+- SHOULD keep companion objects/static-like usage minimal and intentional.
+- MUST keep configuration and secrets outside code.
 
 ## High-Risk Pitfalls
 1. Frequent `!!` usage that bypasses null-safety contracts.
@@ -98,6 +98,6 @@ Do:    propagate cancellation and set explicit timeout boundaries.
 - Add regression tests for previously observed bug classes.
 
 ## Override Notes
-- Project-specific Kotlin conventions may add stricter patterns, but null-safety
+- Project-specific Kotlin conventions MAY add stricter patterns, but null-safety
   integrity, structured concurrency, explicit error handling, and boundary
   cohesion remain mandatory.

@@ -18,27 +18,27 @@ Guidance for AI agents implementing and reviewing Selenium-based tests.
 - Use with complementary unit/component tests; avoid over-reliance on E2E.
 
 ## Defaults
-- Keep Selenium suite focused on critical cross-browser flows.
-- Use explicit waits and resilient locators.
-- Keep tests isolated from each other.
-- Keep browser/environment setup reproducible.
+- SHOULD keep Selenium suite focused on critical cross-browser flows.
+- SHOULD use explicit waits and resilient locators.
+- SHOULD keep tests isolated from each other.
+- SHOULD keep browser/environment setup reproducible.
 
 ## Locator and Wait Rules
 - SHOULD prefer stable locators (IDs/data-test attributes/accessible labels).
 - SHOULD avoid brittle xpath/CSS selectors tied to transient layout.
-- Use explicit waits with clear conditions.
+- SHOULD use explicit waits with clear conditions.
 - SHOULD avoid sleep-based synchronization.
 
 ## Test Architecture
-- Use page objects or equivalent abstraction for repeated interactions.
-- Keep assertions close to user-observable behavior.
-- Keep test setup/teardown explicit and reusable.
-- Keep parallel execution safe regarding shared data/state.
+- SHOULD use page objects or equivalent abstraction for repeated interactions.
+- SHOULD keep assertions close to user-observable behavior.
+- SHOULD keep test setup/teardown explicit and reusable.
+- SHOULD keep parallel execution safe regarding shared data/state.
 
 ## Grid and Runtime Management
-- Keep browser/version matrix intentional and documented.
-- Keep Selenium Grid resources sized for workload.
-- Isolate flaky environment issues from test logic defects.
+- SHOULD keep browser/version matrix intentional and documented.
+- SHOULD keep Selenium Grid resources sized for workload.
+- SHOULD isolate flaky environment issues from test logic defects.
 - Capture logs/screenshots on failure.
 
 ## High-Risk Pitfalls
@@ -83,6 +83,6 @@ Do:    seed/reset state per test scenario.
 - Validate driver/browser version compatibility regularly.
 
 ## Override Notes
-- Project-specific UI automation standards may add stricter page-object or
+- Project-specific UI automation standards MAY add stricter page-object or
   locator conventions, but deterministic wait/locator/isolation rules remain
   mandatory.

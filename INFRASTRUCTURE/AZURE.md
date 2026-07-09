@@ -24,34 +24,34 @@ and operations choices.
   `CORE/VERSION_CONTROL_SYSTEM.md`.
 
 ## Defaults
-- Use subscription/resource-group isolation for environments and ownership.
-- Apply least privilege RBAC by default for identities and automation.
-- Keep network access private by default; expose public endpoints intentionally.
+- SHOULD use subscription/resource-group isolation for environments and ownership.
+- MUST apply least privilege RBAC by default for identities and automation.
+- SHOULD keep network access private by default; expose public endpoints intentionally.
 - Enable encryption at rest/in transit for sensitive data paths.
-- Keep tagging standards mandatory for ownership, environment, and cost center.
+- SHOULD keep tagging standards mandatory for ownership, environment, and cost center.
 
 ## Identity and Access Guardrails
 - SHOULD prefer managed identities and short-lived auth flows over static secrets.
-- Keep privileged role assignments minimal, time-bound, and auditable.
-- Restrict cross-subscription access with explicit scopes and conditions.
-- Treat broad built-in role assignments as exceptions requiring justification.
+- MUST keep privileged role assignments minimal, time-bound, and auditable.
+- MUST restrict cross-subscription access with explicit scopes and conditions.
+- MUST treat broad built-in role assignments as exceptions requiring justification.
 
 ## Network and Data Protection
-- Keep virtual network and NSG intent explicit and least-open.
+- MUST keep virtual network and NSG intent explicit and least-open.
 - SHOULD avoid unrestricted inbound/outbound rules unless explicitly justified.
-- Keep critical data services private and fronted by controlled access paths.
-- Enforce key-management and secret-store controls where required.
+- MUST keep critical data services private and fronted by controlled access paths.
+- MUST enforce key-management and secret-store controls where required.
 
 ## Logging, Audit, and Detection
-- Keep platform activity/audit logs enabled and retained per policy.
-- Centralize diagnostic logs and metrics for actionable analysis.
+- SHOULD keep platform activity/audit logs enabled and retained per policy.
+- SHOULD centralize diagnostic logs and metrics for actionable analysis.
 - Enable detection controls for threat and misconfiguration signals.
-- Keep alert ownership and escalation routing explicit.
+- SHOULD keep alert ownership and escalation routing explicit.
 
 ## Reliability and Operational Safety
-- Keep region/zone resilience assumptions explicit for critical workloads.
-- Use staged rollout for risky platform changes.
-- Keep backup/restore and disaster-recovery procedures tested.
+- SHOULD keep region/zone resilience assumptions explicit for critical workloads.
+- SHOULD use staged rollout for risky platform changes.
+- SHOULD keep backup/restore and disaster-recovery procedures tested.
 - Monitor quota/limit headroom and scaling boundaries proactively.
 
 ## High-Risk Pitfalls
@@ -99,6 +99,6 @@ Do:    enforce activity and resource diagnostics with monitored alerting.
 - Validate rollout/rollback behavior for high-impact changes.
 
 ## Override Notes
-- Project-specific Azure conventions may narrow implementation details, but
+- Project-specific Azure conventions MAY narrow implementation details, but
   least-privilege identity, private-by-default networking, auditability, and
   operational resilience controls remain mandatory.

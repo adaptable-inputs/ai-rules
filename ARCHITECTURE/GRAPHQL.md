@@ -16,14 +16,14 @@ Guidance for AI agents implementing and reviewing GraphQL APIs.
   `SECURITY/SECURITY.md`, `TEST/TEST.md`, `CORE/LOGGING.md`.
 - Inherit architecture constraints from `ARCHITECTURE/ARCHITECTURE.md` and
   `ARCHITECTURE/N_PLUS_1.md`.
-- Framework/library docs may specialize implementation details but should keep
+- Framework/library docs MAY specialize implementation details but SHOULD keep
   GraphQL contract and query-safety constraints.
 
 ## Schema Design Defaults
 - SHOULD prefer schema-first design with explicit contracts.
-- Use clear domain naming for types, fields, and operations.
-- Keep type nullability intentional; avoid accidental nullable sprawl.
-- Separate input and output models explicitly.
+- SHOULD use clear domain naming for types, fields, and operations.
+- SHOULD keep type nullability intentional; avoid accidental nullable sprawl.
+- SHOULD separate input and output models explicitly.
 - SHOULD avoid exposing persistence-internal shape directly in schema.
 
 ## Evolution and Compatibility
@@ -33,33 +33,33 @@ Guidance for AI agents implementing and reviewing GraphQL APIs.
 - Version at graph/domain boundary only when compatibility cannot be preserved.
 
 ## Resolver Architecture
-- Keep resolvers thin orchestration layers.
+- SHOULD keep resolvers thin orchestration layers.
 - Move business logic to services/use cases, not resolver glue code.
-- Keep per-field resolvers side-effect-free for query operations.
-- Validate and authorize at resolver boundaries consistently.
+- SHOULD keep per-field resolvers side-effect-free for query operations.
+- MUST validate and authorize at resolver boundaries consistently.
 
 ## Query Safety and Performance
-- Prevent N+1 with batching/data loaders.
-- Enforce query depth and complexity limits.
-- Apply rate limiting and cost controls for abusive queries.
+- SHOULD prevent N+1 with batching/data loaders.
+- MUST enforce query depth and complexity limits.
+- MUST apply rate limiting and cost controls for abusive queries.
 - Paginate list fields by default where cardinality can grow.
-- Keep expensive fields explicit and documented.
+- SHOULD keep expensive fields explicit and documented.
 
 ## Caching and Consistency
-- Define cacheability and invalidation strategy per field/resource class.
+- SHOULD define cacheability and invalidation strategy per field/resource class.
 - SHOULD avoid caching staleness-sensitive data without clear TTL/invalidation rules.
-- Keep mutation side effects explicit for downstream cache invalidation.
+- SHOULD keep mutation side effects explicit for downstream cache invalidation.
 
 ## Error Handling
-- Keep GraphQL errors machine-readable via `extensions.code` (or equivalent).
-- Distinguish authorization, validation, and internal failures.
+- SHOULD keep GraphQL errors machine-readable via `extensions.code` (or equivalent).
+- MUST distinguish authorization, validation, and internal failures.
 - SHOULD avoid leaking sensitive internals in error messages.
-- Ensure partial-data-with-errors behavior is intentional and documented.
+- SHOULD ensure partial-data-with-errors behavior is intentional and documented.
 
 ## Security Baseline
-- Enforce auth/authz consistently across query and mutation paths.
-- Validate input payloads before domain execution.
-- Prevent introspection abuse in production when policy requires restriction.
+- MUST enforce auth/authz consistently across query and mutation paths.
+- MUST validate input payloads before domain execution.
+- MUST prevent introspection abuse in production when policy requires restriction.
 - Monitor query patterns for scraping/amplification behavior.
 
 ## High-Risk Pitfalls
@@ -111,5 +111,5 @@ Do:    add new field, deprecate old field, publish migration window.
 - Test deprecation compatibility for legacy clients.
 
 ## Override Notes
-- Framework-specific GraphQL libraries may change wiring patterns, but schema
+- Framework-specific GraphQL libraries MAY change wiring patterns, but schema
   compatibility, query-safety, and authorization rules here remain mandatory.

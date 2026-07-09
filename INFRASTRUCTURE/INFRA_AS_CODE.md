@@ -22,45 +22,41 @@ changes.
   `CI-CD/CI-CD.md`, and `CORE/VERSION_CONTROL_SYSTEM.md`.
 
 ## IaC Defaults
-- Keep infrastructure declarative, versioned, and reproducible.
-- Treat IaC as the source of truth; avoid manual console drift.
-- Keep changes small, reviewable, and environment-scoped.
+- SHOULD keep infrastructure declarative, versioned, and reproducible.
+- SHOULD treat IaC as the source of truth; avoid manual console drift.
+- SHOULD keep changes small, reviewable, and environment-scoped.
 - SHOULD prefer immutable replacements over ad-hoc in-place mutation for high-risk
   components where feasible.
 
 ## Change Management and Approval Gates
-- Require plan/preview output before apply for every non-trivial change.
-- Separate plan generation from apply execution in CI/CD where possible.
-- Gate production apply with explicit approval controls.
-- Block apply when plan/preview shows unexpected destructive impact.
+- MUST require plan/preview output before apply for every non-trivial change.
+- SHOULD separate plan generation from apply execution in CI/CD where possible.
+- MUST gate production apply with explicit approval controls.
+- MUST block apply when plan/preview shows unexpected destructive impact.
 
 ## State, Drift, and Convergence
-- Keep state backends protected, access-controlled, and auditable.
-- Use locking/concurrency controls to avoid concurrent apply corruption.
-- Run periodic drift detection and reconcile intentionally.
+- SHOULD keep state backends protected, access-controlled, and auditable.
+- MUST use locking/concurrency controls to avoid concurrent apply corruption.
+- SHOULD run periodic drift detection and reconcile intentionally.
 - MUST NOT normalize unmanaged/manual changes as acceptable steady state.
 
 ## Secrets, Identity, and Access
 - MUST NOT commit secrets or static privileged keys in IaC code or variables.
 - SHOULD prefer short-lived credentials (for example OIDC/workload identity) over
   long-lived static credentials.
-- Enforce least privilege for provisioning identities and runtime roles.
-- Keep sensitive outputs minimized and redacted in logs/artifacts.
+- MUST enforce least privilege for provisioning identities and runtime roles.
+- MUST keep sensitive outputs minimized and redacted in logs/artifacts.
 
 ## Environment and Isolation Rules
-- Keep dev/test/stage/prod separation explicit in code and state.
-- Prevent cross-environment resource references unless explicitly required and
-  reviewed.
-- Keep naming/tagging/ownership metadata mandatory for auditability and cost
-  control.
+- SHOULD keep dev/test/stage/prod separation explicit in code and state.
+- MUST prevent cross-environment resource references unless explicitly required and reviewed.
+- SHOULD keep naming/tagging/ownership metadata mandatory for auditability and cost control.
 
 ## Reliability and Rollback
-- Define rollback strategy before risky changes (revert, redeploy, or
-  replacement path).
-- Validate dependency ordering for create/update/delete operations.
+- MUST define rollback strategy before risky changes (revert, redeploy, or replacement path).
+- SHOULD validate dependency ordering for create/update/delete operations.
 - SHOULD prefer staged rollout for broad-impact infrastructure changes.
-- Keep disaster-recovery-sensitive resources protected from accidental
-  destruction.
+- MUST keep disaster-recovery-sensitive resources protected from accidental destruction.
 
 ## High-Risk Pitfalls
 1. Applying changes without reviewing plan/preview output.
@@ -108,5 +104,5 @@ Do:    use secret managers and short-lived identity federation.
 - Test drift detection and reconciliation for critical stacks.
 
 ## Override Notes
-- Tool-specific IaC docs may specialize implementation details, but plan/apply
+- Tool-specific IaC docs MAY specialize implementation details, but plan/apply
   gating, state safety, least privilege, and drift governance remain mandatory.

@@ -19,26 +19,26 @@ Guidance for AI agents implementing and reviewing MapStruct mappings.
 
 ## Defaults
 - SHOULD prefer MapStruct for repetitive structural mapping.
-- Keep mapping logic explicit and compile-time verified.
-- Keep mappers focused per bounded context/boundary.
-- Keep business logic out of mappers.
+- SHOULD keep mapping logic explicit and compile-time verified.
+- SHOULD keep mappers focused per bounded context/boundary.
+- SHOULD keep business logic out of mappers.
 
 ## Mapping Policy
 - SHOULD prefer explicit field mappings when names differ.
-- Configure unmapped target policy intentionally (fail fast for unexpected gaps).
-- Keep update mappings (`@MappingTarget`) explicit about null handling.
-- Keep nested/collection mappings readable and test-covered.
+- SHOULD configure unmapped target policy intentionally (fail fast for unexpected gaps).
+- SHOULD keep update mappings (`@MappingTarget`) explicit about null handling.
+- SHOULD keep nested/collection mappings readable and test-covered.
 
 ## Null and Default Handling
-- Define null value strategy intentionally.
+- SHOULD define null value strategy intentionally.
 - SHOULD avoid surprising defaults that hide missing source data.
-- Keep partial-update semantics explicit and predictable.
+- SHOULD keep partial-update semantics explicit and predictable.
 
 ## Composition and Reuse
-- Split large mappers into cohesive units.
-- Reuse helper mappers for shared value transformations.
+- SHOULD split large mappers into cohesive units.
+- SHOULD reuse helper mappers for shared value transformations.
 - SHOULD avoid circular mapper dependencies.
-- Keep generated code reviewable via explicit annotations/config.
+- SHOULD keep generated code reviewable via explicit annotations/config.
 
 ## High-Risk Pitfalls
 1. Silent unmapped fields after DTO evolution.
@@ -81,5 +81,5 @@ Do:    define null-value property mapping strategy explicitly.
 - Validate compile-time mapping failures are surfaced in CI.
 
 ## Override Notes
-- Project-specific mapping standards may require stricter mapper granularity,
+- Project-specific mapping standards MAY require stricter mapper granularity,
   but explicitness and business-logic separation here remain mandatory.

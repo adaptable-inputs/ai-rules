@@ -21,35 +21,35 @@ Guidance for AI agents implementing and reviewing Ansible automation changes.
   `CORE/VERSION_CONTROL_SYSTEM.md`.
 
 ## Defaults
-- Keep playbooks idempotent and deterministic.
-- Keep role boundaries cohesive and reusable.
-- Keep inventory and variable scopes explicit per environment.
+- MUST keep playbooks idempotent and deterministic.
+- SHOULD keep role boundaries cohesive and reusable.
+- SHOULD keep inventory and variable scopes explicit per environment.
 - SHOULD prefer module-based tasks over shell/command calls where possible.
-- Keep privilege escalation explicit, minimal, and auditable.
+- MUST keep privilege escalation explicit, minimal, and auditable.
 
 ## Execution and Change Rules
-- Run syntax checks/lint before execution in shared branches.
-- Use check mode/dry-run for preview where supported.
-- Keep high-impact plays gated with explicit approval in CI workflows.
-- Keep rollback/remediation steps documented for risky changes.
+- SHOULD run syntax checks/lint before execution in shared branches.
+- SHOULD use check mode/dry-run for preview where supported.
+- SHOULD keep high-impact plays gated with explicit approval in CI workflows.
+- SHOULD keep rollback/remediation steps documented for risky changes.
 
 ## Inventory and Variable Governance
-- Keep inventory ownership and environment boundaries explicit.
+- SHOULD keep inventory ownership and environment boundaries explicit.
 - SHOULD avoid global variable sprawl; keep variable precedence predictable.
 - MUST NOT embed secrets in plaintext variable files.
-- Use vault/secret-manager integrations for sensitive values.
+- MUST use vault/secret-manager integrations for sensitive values.
 
 ## Role and Task Discipline
-- Keep tasks small and focused; avoid monolithic playbooks.
-- Keep handlers explicit for service restart/reload side effects.
+- SHOULD keep tasks small and focused; avoid monolithic playbooks.
+- SHOULD keep handlers explicit for service restart/reload side effects.
 - SHOULD avoid hidden cross-host coupling and ordering assumptions.
-- Use tags intentionally for scoped execution paths.
+- SHOULD use tags intentionally for scoped execution paths.
 
 ## Security and Access
-- Keep SSH/API credentials out of repository content.
-- Enforce least privilege for automation accounts.
+- MUST keep SSH/API credentials out of repository content.
+- MUST enforce least privilege for automation accounts.
 - SHOULD avoid broad `become: true` defaults across all tasks.
-- Keep logs free of sensitive values (`no_log` where needed).
+- MUST keep logs free of sensitive values (`no_log` where needed).
 
 ## High-Risk Pitfalls
 1. Non-idempotent shell scripts masquerading as configuration management.
@@ -95,6 +95,6 @@ Do:    scope privilege escalation only to tasks that require it.
 - Test rollback/remediation procedures for critical automation paths.
 
 ## Override Notes
-- Project-specific Ansible patterns may narrow implementation details, but
+- Project-specific Ansible patterns MAY narrow implementation details, but
   idempotency, secret hygiene, least privilege, and environment isolation
   remain mandatory.

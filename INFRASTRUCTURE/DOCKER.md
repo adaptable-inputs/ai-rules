@@ -19,34 +19,34 @@ Guidance for AI agents implementing and reviewing Docker containerization.
 - Inherit infrastructure constraints from `INFRASTRUCTURE/INFRASTRUCTURE.md`.
 
 ## Defaults
-- Use multi-stage builds for production images.
-- Pin base image versions/digests intentionally.
-- Keep runtime images minimal and dependency-scoped.
-- Run as non-root user by default.
-- Keep image build deterministic and cache-friendly.
+- SHOULD use multi-stage builds for production images.
+- MUST pin base image versions/digests intentionally.
+- SHOULD keep runtime images minimal and dependency-scoped.
+- SHOULD run as non-root user by default.
+- SHOULD keep image build deterministic and cache-friendly.
 
 ## Dockerfile Hygiene
 - Order layers for cache efficiency (dependencies before changing sources).
-- Minimize `COPY . .`; copy only required files per stage.
-- Keep build-time and runtime dependencies separated.
-- Use explicit `WORKDIR`, `USER`, and `ENTRYPOINT`/`CMD` semantics.
+- SHOULD minimize `COPY . .`; copy only required files per stage.
+- SHOULD keep build-time and runtime dependencies separated.
+- SHOULD use explicit `WORKDIR`, `USER`, and `ENTRYPOINT`/`CMD` semantics.
 - SHOULD avoid shell form when exec form is clearer/safer.
 
 ## Security Baseline
 - MUST NOT bake secrets into images or layers.
-- Use runtime secret injection and environment-specific provisioning.
-- Remove package-manager caches and temporary build artifacts.
-- Keep CVE scanning in CI for base and app layers.
+- MUST use runtime secret injection and environment-specific provisioning.
+- SHOULD remove package-manager caches and temporary build artifacts.
+- MUST keep CVE scanning in CI for base and app layers.
 - Drop unnecessary Linux capabilities at runtime where platform allows.
 
 ## Runtime and Operability
-- Add health checks when service behavior allows meaningful probes.
-- Keep graceful shutdown behavior compatible with container orchestration.
-- Log to stdout/stderr for platform aggregation.
-- Keep timezone/locale behavior explicit when domain-critical.
+- SHOULD add health checks when service behavior allows meaningful probes.
+- SHOULD keep graceful shutdown behavior compatible with container orchestration.
+- SHOULD log to stdout/stderr for platform aggregation.
+- SHOULD keep timezone/locale behavior explicit when domain-critical.
 
 ## Performance and Size
-- Keep final image size controlled; remove unused tooling/binaries.
+- SHOULD keep final image size controlled; remove unused tooling/binaries.
 - SHOULD prefer distroless/slim bases when compatibility permits.
 - SHOULD avoid unnecessary layer churn that invalidates cache frequently.
 
@@ -92,5 +92,5 @@ Do:    inject secrets at runtime via platform secret store.
 - Validate runtime user/permissions and secret injection behavior.
 
 ## Override Notes
-- Kubernetes/Helm/Istio docs may define runtime orchestration policies, but
+- Kubernetes/Helm/Istio docs MAY define runtime orchestration policies, but
   image hardening and reproducibility constraints here remain mandatory.

@@ -25,21 +25,20 @@ Guidance for AI agents applying Aspect-Oriented Programming responsibly.
 - Retry/circuit-breaker wrappers.
 
 ## Boundaries and Guardrails
-- Keep domain business rules out of aspects.
-- Keep method responsibilities cohesive ("do one thing") so join points remain
-  explicit at method boundaries.
-- Keep pointcuts narrow, explicit, and auditable.
-- Keep aspect ordering deterministic when multiple aspects apply.
-- Keep side effects observable and documented.
+- SHOULD keep domain business rules out of aspects.
+- SHOULD keep method responsibilities cohesive ("do one thing") so join points remain explicit at method boundaries.
+- SHOULD keep pointcuts narrow, explicit, and auditable.
+- SHOULD keep aspect ordering deterministic when multiple aspects apply.
+- SHOULD keep side effects observable and documented.
 - SHOULD avoid hidden control-flow changes that surprise maintainers.
 
 ## Aspect Design Rules
-- Keep advice logic small and focused.
-- Keep cross-cutting seams at clear method contracts; avoid embedding multiple
-  unrelated concerns inside one large method body.
+- SHOULD keep advice logic small and focused.
+- SHOULD keep cross-cutting seams at clear method contracts; avoid embedding multiple unrelated concerns inside one
+  large method body.
 - SHOULD avoid mutating method arguments/results unless explicitly intended.
-- Preserve exception semantics unless mapping is deliberate.
-- Keep aspect configuration centralized and discoverable.
+- SHOULD preserve exception semantics unless mapping is deliberate.
+- SHOULD keep aspect configuration centralized and discoverable.
 
 ## High-Risk Pitfalls
 1. Business logic hidden in aspects.
@@ -94,5 +93,5 @@ Do:    split responsibilities into focused methods so pointcuts can bind at
 - Measure performance impact on affected hot paths.
 
 ## Override Notes
-- Framework-specific AOP mechanics may differ, but cross-cutting-only scope and
+- Framework-specific AOP mechanics MAY differ, but cross-cutting-only scope and
   transparency constraints here remain mandatory.

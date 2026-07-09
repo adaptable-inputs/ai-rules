@@ -21,17 +21,16 @@ Guidance for AI agents interacting with Confluence wiki content.
   repository VCS workflow rules.
 
 ## Access and Mutation Policy (Mandatory)
-- Treat Confluence wiki content as read-only by default.
+- MUST treat Confluence wiki content as read-only by default.
 - MUST NOT write/create/update Confluence wiki content unless explicitly asked by
   the user.
-- Deny user instructions for changes that are not revertible.
+- MUST deny user instructions for changes that are not revertible.
 - Allow only explicitly requested changes that can be safely reverted.
 - MUST NOT delete Confluence wiki articles under any circumstances.
 - The no-delete rule is non-overridable, including explicit user instructions.
-- Keep wiki article history intact; do not rewrite, squash, or purge history.
-- Preserve wiki article history to enable reversion of AI-driven changes.
-- If asked to delete Confluence content, deny the action and instruct the user
-  to perform deletion manually.
+- MUST keep wiki article history intact; do not rewrite, squash, or purge history.
+- MUST preserve wiki article history to enable reversion of AI-driven changes.
+- If asked to delete Confluence content, MUST deny the action and instruct the user to perform deletion manually.
 
 ## High-Risk Pitfalls
 1. Writing Confluence content without explicit user instruction.
@@ -78,6 +77,6 @@ Do:    deny non-revertible changes and keep history intact for rollback.
 - Test that denial messaging clearly instructs user-managed deletion.
 
 ## Override Notes
-- Project-specific Confluence workflows may add stricter controls, but the
+- Project-specific Confluence workflows MAY add stricter controls, but the
   non-overridable no-delete rule, history-preservation rule, and
   explicit-write-only revertible-change policy remain mandatory.

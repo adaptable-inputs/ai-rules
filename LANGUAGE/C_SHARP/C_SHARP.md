@@ -19,39 +19,39 @@ Guidance for AI agents implementing and reviewing C#/.NET code.
   `TEST/TEST.md`, and `CORE/LOGGING.md`.
 - Inherit shared language constraints from `LANGUAGE/CONVENTIONS.md` and
   `LANGUAGE/READABILITY.md`.
-- Framework/library-specific C#/.NET docs may specialize API usage but must not
+- Framework/library-specific C#/.NET docs MAY specialize API usage but MUST NOT
   weaken this baseline.
 
 ## Defaults
 - Enable and respect nullable reference type warnings.
 - SHOULD prefer explicit dependency injection over static/global dependencies.
-- Keep async flows truly asynchronous end-to-end for IO paths.
-- Keep exceptions specific, contextual, and centrally mapped at boundaries.
-- Keep domain logic separated from transport/persistence concerns.
+- SHOULD keep async flows truly asynchronous end-to-end for IO paths.
+- SHOULD keep exceptions specific, contextual, and centrally mapped at boundaries.
+- SHOULD keep domain logic separated from transport/persistence concerns.
 
 ## Nullability and API Contracts
-- Treat nullable annotations as part of API contract.
+- SHOULD treat nullable annotations as part of API contract.
 - SHOULD avoid returning null where an explicit optional/result model is clearer.
-- Validate external inputs at boundaries and fail fast with clear errors.
-- Keep DTO/domain model nullability intent explicit and consistent.
+- SHOULD validate external inputs at boundaries and fail fast with clear errors.
+- SHOULD keep DTO/domain model nullability intent explicit and consistent.
 
 ## Async, Concurrency, and Cancellation
-- Use `async`/`await` for IO-bound work; avoid sync-over-async patterns.
-- Propagate `CancellationToken` for request-scoped operations.
+- SHOULD use `async`/`await` for IO-bound work; avoid sync-over-async patterns.
+- SHOULD propagate `CancellationToken` for request-scoped operations.
 - SHOULD avoid blocking calls (`.Result`, `.Wait()`) in async paths.
-- Keep shared mutable state synchronized and minimized.
+- SHOULD keep shared mutable state synchronized and minimized.
 
 ## Exception and Resource Handling
-- Throw and map specific exception types with actionable context.
+- SHOULD throw and map specific exception types with actionable context.
 - MUST NOT swallow exceptions silently.
-- Use `using`/`await using` for deterministic disposal.
-- Preserve inner exception/root cause when wrapping.
+- SHOULD use `using`/`await using` for deterministic disposal.
+- SHOULD preserve inner exception/root cause when wrapping.
 
 ## Architectural Boundaries
-- Keep dependency direction explicit and testable.
-- Keep service classes cohesive with one primary responsibility.
+- SHOULD keep dependency direction explicit and testable.
+- SHOULD keep service classes cohesive with one primary responsibility.
 - SHOULD avoid static utility sprawl for domain behavior.
-- Keep configuration and secrets out of code.
+- MUST keep configuration and secrets out of code.
 
 ## High-Risk Pitfalls
 1. Ignoring nullable warnings and relying on runtime null failures.
@@ -97,6 +97,6 @@ Do:    catch specific exceptions and preserve context.
 - Add regression tests for previously observed bug classes.
 
 ## Override Notes
-- Project-specific C#/.NET conventions may add stricter patterns, but nullable
+- Project-specific C#/.NET conventions MAY add stricter patterns, but nullable
   contract integrity, async/cancellation safety, explicit error handling, and
   boundary separation remain mandatory.

@@ -18,40 +18,38 @@ Guidance for AI agents implementing and reviewing Kubernetes manifests.
 - Inherit security constraints from `SECURITY/SECURITY.md`.
 
 ## Defaults
-- Define `requests` and `limits` for CPU/memory explicitly.
-- Configure `readinessProbe` and `livenessProbe` meaningfully.
-- Keep deployments declarative and idempotent.
-- Keep labels/annotations consistent and queryable.
-- Use namespaces and RBAC intentionally.
+- SHOULD define `requests` and `limits` for CPU/memory explicitly.
+- SHOULD configure `readinessProbe` and `livenessProbe` meaningfully.
+- MUST keep deployments declarative and idempotent.
+- SHOULD keep labels/annotations consistent and queryable.
+- SHOULD use namespaces and RBAC intentionally.
 
 ## Workload and Rollout Rules
 - SHOULD prefer rolling updates with controlled surge/unavailable values.
-- Keep replica counts and autoscaling policy explicit.
+- SHOULD keep replica counts and autoscaling policy explicit.
 - SHOULD avoid mutable image tags (`latest`) in production.
-- Use `PodDisruptionBudget` for critical services.
-- Keep rollout/rollback strategy documented for critical apps.
+- SHOULD use `PodDisruptionBudget` for critical services.
+- SHOULD keep rollout/rollback strategy documented for critical apps.
 
 ## Security Baseline
-- Run containers as non-root where possible.
-- Use explicit `securityContext` fields (`runAsNonRoot`,
-  `readOnlyRootFilesystem`, `allowPrivilegeEscalation`,
+- SHOULD run containers as non-root where possible.
+- MUST use explicit `securityContext` fields (`runAsNonRoot`, `readOnlyRootFilesystem`, `allowPrivilegeEscalation`,
   `capabilities`, `seccompProfile`) as applicable.
-- Set safe values intentionally (for example
-  `allowPrivilegeEscalation: false`, drop unnecessary capabilities).
-- Apply least privilege RBAC for service accounts.
-- Keep secrets in dedicated secret resources, not plain config maps.
-- Restrict network reachability with network policies where applicable.
+- MUST set safe values intentionally (for example `allowPrivilegeEscalation: false`, drop unnecessary capabilities).
+- MUST apply least privilege RBAC for service accounts.
+- MUST keep secrets in dedicated secret resources, not plain config maps.
+- SHOULD restrict network reachability with network policies where applicable.
 
 ## Configuration and Secrets
-- Separate config by environment with controlled overlays.
-- Keep config maps/secrets versioned and auditable.
+- SHOULD separate config by environment with controlled overlays.
+- MUST keep config maps/secrets versioned and auditable.
 - SHOULD avoid coupling runtime behavior to undocumented env vars.
 
 ## Observability and Operations
-- Expose metrics/logging in a platform-compatible way.
-- Track pod restarts, crash loops, and probe failures.
+- SHOULD expose metrics/logging in a platform-compatible way.
+- SHOULD track pod restarts, crash loops, and probe failures.
 - Monitor resource saturation and eviction risk.
-- Keep alerting tied to service SLO indicators.
+- SHOULD keep alerting tied to service SLO indicators.
 
 ## High-Risk Pitfalls
 1. Missing resource requests causing noisy-neighbor instability.
@@ -97,5 +95,5 @@ Do:    tune startup/readiness/liveness thresholds to app behavior.
 - Test autoscaling/resource behavior under representative load.
 
 ## Override Notes
-- Helm/Istio docs may define additional layer-specific constraints, but
+- Helm/Istio docs MAY define additional layer-specific constraints, but
   Kubernetes runtime safety and security controls here remain mandatory.

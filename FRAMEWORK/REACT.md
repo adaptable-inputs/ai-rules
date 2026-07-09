@@ -22,10 +22,10 @@ Guidance for AI agents implementing and reviewing React projects.
   `SECURITY/SECURITY.md`, `TEST/TEST.md`, `CORE/LOGGING.md`.
 
 ## Defaults
-- Use functional components and hooks.
-- Keep components small and focused.
+- SHOULD use functional components and hooks.
+- SHOULD keep components small and focused.
 - SHOULD prefer composition over inheritance.
-- Treat `useEffect` as a controlled escape hatch, not a default tool.
+- SHOULD treat `useEffect` as a controlled escape hatch, not a default tool.
 
 ## Naming Conventions
 - This section only defines React-specific naming rules.
@@ -34,20 +34,20 @@ Guidance for AI agents implementing and reviewing React projects.
 - Non-React symbol naming follows general TypeScript conventions.
 
 ## State and Data
-- Keep state minimal and local where possible.
+- SHOULD keep state minimal and local where possible.
 - SHOULD avoid prop drilling by introducing context sparingly.
 - SHOULD avoid unnecessary re-renders; memoize only when it matters.
 - Derive values during render when possible.
 - SHOULD prefer framework/server data-loading primitives over client `useEffect` fetching.
 
 ## Testing
-- Follow general testing expectations in `TEST/TEST.md`.
-- Use this file's effect-specific checklist and tests for `useEffect` behavior.
+- SHOULD follow general testing expectations in `TEST/TEST.md`.
+- SHOULD use this file's effect-specific checklist and tests for `useEffect` behavior.
 
 ## `useEffect` Policy
 Effects keep non-React systems in sync; keep React-only derivations in render.
 
-Use `useEffect` when your component must connect, subscribe, schedule, observe,
+Use `useEffect` when your component MUST connect, subscribe, schedule, observe,
 or cancel external work.
 
 ### Allowed Uses
@@ -74,7 +74,7 @@ or cancel external work.
 
 ## SSR and Hydration Notes
 - `useEffect` does not run during server rendering.
-- If SSR/hydration is possible, avoid `window` / `document` reads during render.
+- If SSR/hydration is possible, SHOULD avoid `window` / `document` reads during render.
 - Guard browser-only logic in effects or safe initializers.
 
 ## High-Risk `useEffect` Pitfalls
@@ -94,30 +94,26 @@ or cancel external work.
    effect A sets state to trigger effect B, creating fragile temporal coupling.
 
 ## Safer Patterns and Alternatives
-- Keep effects small and single-purpose.
+- SHOULD keep effects small and single-purpose.
 - Co-locate setup and cleanup in the same effect.
 - Keep effect callbacks synchronous:
   never mark the effect callback `async`; use an inner async function.
-- Effect callbacks may return only cleanup or nothing.
-- Keep dependency arrays honest; do not suppress `react-hooks/exhaustive-deps`
-  without a documented reason.
+- Effect callbacks MAY return only cleanup or nothing.
+- SHOULD keep dependency arrays honest; do not suppress `react-hooks/exhaustive-deps` without a documented reason.
 - If adding a dependency causes a loop, redesign the flow instead of deleting
   the dependency.
-- Use functional state updates to avoid stale closure bugs in intervals/callbacks.
-- Use refs for mutable, non-render state that should not retrigger rendering.
-- Extract repeated side-effect behavior into focused custom hooks.
-- For subscription-style state (for example window size), prefer custom hooks
-  based on `useSyncExternalStore`.
+- SHOULD use functional state updates to avoid stale closure bugs in intervals/callbacks.
+- SHOULD use refs for mutable, non-render state that SHOULD NOT retrigger rendering.
+- SHOULD extract repeated side-effect behavior into focused custom hooks.
+- For subscription-style state (for example window size), SHOULD prefer custom hooks based on `useSyncExternalStore`.
 - SHOULD avoid effect chains:
   use one cohesive effect, or model flow with explicit actions/reducer/state machine.
-- Handle non-abort async errors explicitly (state/reporting); do not `throw`
-  from fire-and-forget async effect tasks.
-  Throwing inside async effect tasks often becomes an unhandled rejection outside
-  React error boundaries.
-- If your React version supports `useEffectEvent`, use it for non-reactive
-  callback reads instead of stale closure workarounds.
-- Use `useLayoutEffect` only for DOM read/write that must run before paint.
-- `useLayoutEffect` may warn in SSR; prefer `useEffect` unless pre-paint DOM
+- SHOULD handle non-abort async errors explicitly (state/reporting); do not `throw` from fire-and-forget async effect
+  tasks. Throwing inside async effect tasks often becomes an unhandled rejection outside React error boundaries.
+- If your React version supports `useEffectEvent`, SHOULD use it for non-reactive callback reads instead of stale
+  closure workarounds.
+- SHOULD use `useLayoutEffect` only for DOM read/write that MUST run before paint.
+- `useLayoutEffect` MAY warn in SSR; prefer `useEffect` unless pre-paint DOM
   reads/writes are required.
 
 ## Do / Don't Examples
@@ -290,7 +286,7 @@ function WindowWidthGood() {
 ## Dependency Rules
 - MUST NOT mark an effect callback `async`; create an inner async function.
 - Effect callbacks return either cleanup or nothing.
-- If an effect reads a reactive value, include it in dependencies.
+- If an effect reads a reactive value, SHOULD include it in dependencies.
 - If adding a dependency breaks behavior, fix the design; do not hide the dep.
 - SHOULD avoid inline object/function dependencies unless they are intentionally unstable.
 - Stabilize dependencies only at true boundaries (`useMemo` / `useCallback`).
@@ -310,7 +306,7 @@ function WindowWidthGood() {
 - Does async work abort or ignore stale requests on dependency change?
 - Can older async responses overwrite newer state?
 - Is render code safe if SSR/hydration exists (no unguarded browser globals)?
-- Is there effect chaining that should be replaced by explicit actions?
+- Is there effect chaining that SHOULD be replaced by explicit actions?
 - Are inline dependencies causing unnecessary effect churn?
 - Would extracting a custom hook reduce duplicated side-effect logic?
 - Are lint suppressions for hooks justified and minimal?
@@ -325,5 +321,5 @@ function WindowWidthGood() {
 - If SSR/hydration is relevant, test render paths that avoid browser globals.
 
 ## Override Notes
-- Project-specific React conventions may add stricter patterns, but effect
+- Project-specific React conventions MAY add stricter patterns, but effect
   safety, dependency clarity, and SSR/hydration guardrails remain mandatory.

@@ -22,49 +22,47 @@ Guidance for AI agents implementing and reviewing Pulumi infrastructure changes.
   `CORE/VERSION_CONTROL_SYSTEM.md`.
 
 ## Defaults
-- Pin Pulumi CLI and provider/plugin versions for reproducibility.
-- Keep stacks environment-scoped with explicit ownership boundaries.
-- Keep stack config explicit and minimize implicit defaults for critical values.
-- Keep infrastructure logic deterministic and free of hidden side effects.
-- Keep project code modular; separate reusable components from stack entrypoints.
+- MUST pin Pulumi CLI and provider/plugin versions for reproducibility.
+- SHOULD keep stacks environment-scoped with explicit ownership boundaries.
+- SHOULD keep stack config explicit and minimize implicit defaults for critical values.
+- SHOULD keep infrastructure logic deterministic and free of hidden side effects.
+- SHOULD keep project code modular; separate reusable components from stack entrypoints.
 
 ## Preview and Update Rules
-- Run `pulumi preview` and review the diff before `pulumi up`.
-- Apply changes through gated CI/CD workflows for shared environments.
-- Block updates when preview includes unexpected replacements/deletions.
-- Keep non-interactive execution for automated environments.
+- SHOULD run `pulumi preview` and review the diff before `pulumi up`.
+- SHOULD apply changes through gated CI/CD workflows for shared environments.
+- MUST block updates when preview includes unexpected replacements/deletions.
+- SHOULD keep non-interactive execution for automated environments.
 
 ## Policy as Code and Organizational Guardrails
-- Enforce Pulumi policy checks (for example, Policy Packs/CrossGuard) in shared
-  environments.
-- Run required policy checks as part of preview/update gates in CI.
-- Block updates when required policies fail unless an explicit, approved,
-  time-bounded exception exists.
-- Keep policy versions and exception approvals auditable.
+- MUST enforce Pulumi policy checks (for example, Policy Packs/CrossGuard) in shared environments.
+- MUST run required policy checks as part of preview/update gates in CI.
+- MUST block updates when required policies fail unless an explicit, approved, time-bounded exception exists.
+- SHOULD keep policy versions and exception approvals auditable.
 
 ## Stack and State Governance
-- Use secure backend/state storage and controlled access.
-- Keep stack isolation strict across dev/test/stage/prod.
+- SHOULD use secure backend/state storage and controlled access.
+- SHOULD keep stack isolation strict across dev/test/stage/prod.
 - SHOULD avoid sharing one stack across unrelated systems/teams.
-- Keep state access audited and least-privilege.
+- MUST keep state access audited and least-privilege.
 
 ## Config and Secret Handling
-- Use Pulumi secret config for sensitive values.
+- MUST use Pulumi secret config for sensitive values.
 - MUST NOT commit plaintext secrets in stack config files.
 - SHOULD prefer short-lived workload identity over static cloud credentials.
-- Keep sensitive outputs minimized and redacted in logs.
+- MUST keep sensitive outputs minimized and redacted in logs.
 
 ## Component and Dependency Discipline
-- Keep component abstractions cohesive and narrowly scoped.
+- SHOULD keep component abstractions cohesive and narrowly scoped.
 - SHOULD avoid hidden provider selection; pass provider context explicitly.
-- Keep cross-stack references explicit, versioned, and bounded.
-- Prevent cyclic dependencies across stacks/components.
+- SHOULD keep cross-stack references explicit, versioned, and bounded.
+- SHOULD prevent cyclic dependencies across stacks/components.
 
 ## Drift and Migration
-- Run periodic previews for drift detection on critical stacks.
-- Keep import/refactor operations explicit and documented.
-- Validate replacement impact before updates that can recreate resources.
-- Keep rollback/recovery steps documented for high-impact changes.
+- SHOULD run periodic previews for drift detection on critical stacks.
+- SHOULD keep import/refactor operations explicit and documented.
+- SHOULD validate replacement impact before updates that can recreate resources.
+- SHOULD keep rollback/recovery steps documented for high-impact changes.
 
 ## High-Risk Pitfalls
 1. Unpinned provider/plugin versions causing non-deterministic updates.
@@ -110,6 +108,6 @@ Do:    keep stacks narrowly scoped by environment and ownership.
 - Test rollback/recovery procedures for broad-impact updates.
 
 ## Override Notes
-- Project-specific Pulumi patterns may narrow implementation details, but
+- Project-specific Pulumi patterns MAY narrow implementation details, but
   version pinning, preview-review discipline, state safety, and secret hygiene
   remain mandatory.

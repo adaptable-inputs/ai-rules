@@ -19,26 +19,26 @@ Guidance for AI agents implementing and reviewing Go code.
   `TEST/TEST.md`, and `CORE/LOGGING.md`.
 - Inherit shared language constraints from `LANGUAGE/CONVENTIONS.md` and
   `LANGUAGE/READABILITY.md`.
-- Framework/library-specific Go docs may specialize API usage but must not
+- Framework/library-specific Go docs MAY specialize API usage but MUST NOT
   weaken this baseline.
 
 ## Defaults
 - SHOULD prefer simple, explicit code over abstraction-heavy indirection.
-- Keep package boundaries cohesive with clear ownership.
-- Return errors explicitly and handle them near boundaries.
-- Use `context.Context` consistently for request-scoped cancellation/timeouts.
-- Keep dependencies minimal and maintainable.
+- SHOULD keep package boundaries cohesive with clear ownership.
+- SHOULD return errors explicitly and handle them near boundaries.
+- SHOULD use `context.Context` consistently for request-scoped cancellation/timeouts.
+- SHOULD keep dependencies minimal and maintainable.
 
 ## API and Package Design
-- Keep exported APIs small and stable.
-- Use interfaces at boundaries where polymorphism is required, not everywhere.
-- Keep package init logic minimal and side-effect free.
+- SHOULD keep exported APIs small and stable.
+- SHOULD use interfaces at boundaries where polymorphism is required, not everywhere.
+- SHOULD keep package init logic minimal and side-effect free.
 - SHOULD avoid cyclic package dependencies and hidden global coupling.
 
 ## Error Handling and Resource Safety
-- Return rich, contextual errors and preserve root cause context.
+- SHOULD return rich, contextual errors and preserve root cause context.
 - MUST NOT ignore returned errors.
-- Keep panic usage exceptional (programmer errors/unrecoverable states).
+- SHOULD keep panic usage exceptional (programmer errors/unrecoverable states).
 - Close resources deterministically (`defer` with explicit error handling where
   needed).
 
@@ -48,7 +48,7 @@ Guidance for AI agents implementing and reviewing Go code.
 - Guard shared state explicitly when unavoidable.
 - SHOULD avoid goroutine leaks; ensure cancellation and completion paths exist.
 - Pass `context.Context` as first parameter for request-scoped operations.
-- Keep timeouts/deadlines explicit for external IO.
+- SHOULD keep timeouts/deadlines explicit for external IO.
 
 ## High-Risk Pitfalls
 1. Ignoring errors and assuming happy-path behavior.
@@ -94,6 +94,6 @@ Do:    define clear cancellation and completion paths.
 - Add regression tests for previous bug classes.
 
 ## Override Notes
-- Project-specific Go conventions may add stricter patterns, but explicit error
+- Project-specific Go conventions MAY add stricter patterns, but explicit error
   handling, context discipline, concurrency safety, and deterministic resource
   management remain mandatory.

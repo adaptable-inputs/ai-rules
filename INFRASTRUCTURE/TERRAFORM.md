@@ -23,42 +23,42 @@ changes.
   `CORE/VERSION_CONTROL_SYSTEM.md`.
 
 ## Defaults
-- Pin Terraform version and provider versions with explicit constraints.
-- Use remote state backends with locking enabled.
-- Keep module boundaries clear and reusable; avoid monolithic root configs.
-- Keep variable and output contracts explicit and documented.
+- MUST pin Terraform version and provider versions with explicit constraints.
+- SHOULD use remote state backends with locking enabled.
+- SHOULD keep module boundaries clear and reusable; avoid monolithic root configs.
+- SHOULD keep variable and output contracts explicit and documented.
 - SHOULD prefer declarative data sources over imperative external scripts.
 
 ## Planning and Apply Rules
-- Run `terraform fmt` and `terraform validate` before plan/apply.
+- SHOULD run `terraform fmt` and `terraform validate` before plan/apply.
 - Generate and review plan output for every non-trivial change.
-- Use non-interactive, reviewed apply workflows in CI for shared environments.
-- Block apply when plan includes unexpected destructive operations.
+- SHOULD use non-interactive, reviewed apply workflows in CI for shared environments.
+- MUST block apply when plan includes unexpected destructive operations.
 
 ## State and Workspace Governance
-- Store state in secured remote backend, never in VCS.
+- SHOULD store state in secured remote backend, never in VCS.
 - Scope state per environment/workload to reduce blast radius.
-- Use locks to prevent concurrent apply corruption.
-- Use workspaces intentionally; avoid hidden multi-environment coupling.
-- Keep state access audited and least-privilege.
+- MUST use locks to prevent concurrent apply corruption.
+- SHOULD use workspaces intentionally; avoid hidden multi-environment coupling.
+- MUST keep state access audited and least-privilege.
 
 ## Module and Dependency Discipline
-- Keep modules cohesive with clear inputs/outputs.
+- SHOULD keep modules cohesive with clear inputs/outputs.
 - SHOULD avoid circular module dependencies and hidden provider coupling.
-- Keep provider aliases explicit when multi-account/multi-region applies.
+- SHOULD keep provider aliases explicit when multi-account/multi-region applies.
 - SHOULD prefer explicit `depends_on` only when implicit graph is insufficient.
 
 ## Secrets and Sensitive Data
 - MUST NOT commit secrets in `.tf`, `.tfvars`, or generated plan artifacts.
-- Mark sensitive outputs as `sensitive = true`.
+- MUST mark sensitive outputs as `sensitive = true`.
 - Source secrets from secure stores and runtime injection paths.
-- Keep CI logs redacted for sensitive values.
+- MUST keep CI logs redacted for sensitive values.
 
 ## Drift, Import, and Migration
-- Run periodic drift checks (`terraform plan`) for critical environments.
-- Use `import` and `moved` blocks deliberately during migration/refactors.
-- Keep migration steps documented for state/schema changes.
-- Validate replacement impact before forcing resource recreation.
+- SHOULD run periodic drift checks (`terraform plan`) for critical environments.
+- SHOULD use `import` and `moved` blocks deliberately during migration/refactors.
+- SHOULD keep migration steps documented for state/schema changes.
+- SHOULD validate replacement impact before forcing resource recreation.
 
 ## High-Risk Pitfalls
 1. Unpinned providers causing unreviewed behavior changes.
@@ -104,6 +104,6 @@ Do:    review plan diff and apply through gated workflow.
 - Test rollback/recovery path for destructive or broad-impact changes.
 
 ## Override Notes
-- Project-specific Terraform patterns may narrow implementation details, but
+- Project-specific Terraform patterns MAY narrow implementation details, but
   version pinning, plan-review discipline, state safety, and secret hygiene
   remain mandatory.

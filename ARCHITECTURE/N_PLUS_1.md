@@ -28,31 +28,31 @@ Guidance for AI agents preventing and detecting N+1 query patterns.
 - Watch for query execution inside loops over parent entities.
 - Watch for lazy-loaded relation access in serialization/rendering loops.
 - In GraphQL, watch per-field resolver DB calls without DataLoader/batching.
-- Use query counters and SQL logs in test/profiling environments.
+- SHOULD use query counters and SQL logs in test/profiling environments.
 
 ## Prevention Strategy
 - Query parents first.
-- Collect parent keys.
+- SHOULD collect parent keys.
 - Fetch children/related data in one batch (`IN`, joins, dedicated loaders).
 - Reconstruct response graph in memory.
-- Keep batch size and pagination controls explicit.
+- SHOULD keep batch size and pagination controls explicit.
 
 ## ORM-Specific Guardrails
 - SHOULD prefer explicit fetch joins/entity graphs/projections for known access paths.
 - SHOULD avoid broad eager loading by default; tune fetch plans per use case.
-- Keep lazy loading away from view/serialization layers.
-- Validate generated SQL for non-trivial ORM queries.
+- SHOULD keep lazy loading away from view/serialization layers.
+- SHOULD validate generated SQL for non-trivial ORM queries.
 
 ## GraphQL/Resolver Guardrails
-- Use per-request DataLoader or equivalent batching abstraction.
-- Ensure loaders are request-scoped to prevent cache leakage across users.
+- SHOULD use per-request DataLoader or equivalent batching abstraction.
+- SHOULD ensure loaders are request-scoped to prevent cache leakage across users.
 - Batch by field/resource shape with deterministic key mapping.
 - SHOULD avoid nested resolver-side queries without loader mediation.
 
 ## Performance and Correctness Tradeoffs
 - SHOULD prefer predictable query count over highly dynamic implicit loading.
 - SHOULD avoid giant fetch joins that explode row multiplicity without pagination.
-- Keep response payload size aligned with use-case requirements.
+- SHOULD keep response payload size aligned with use-case requirements.
 - Combine pagination with batching to bound memory and query costs.
 
 ## High-Risk Pitfalls
@@ -103,5 +103,5 @@ Do:    project explicitly to DTO with preloaded required fields.
 - Track and alert on unexpected query count growth in performance tests.
 
 ## Override Notes
-- Framework/library docs may define API-specific mechanisms, but anti-N+1
+- Framework/library docs MAY define API-specific mechanisms, but anti-N+1
   guarantees and query-count predictability in this file remain mandatory.

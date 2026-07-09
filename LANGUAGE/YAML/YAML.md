@@ -18,40 +18,40 @@ Guidance for AI agents implementing and reviewing YAML configuration files.
 - Inherit security constraints from `SECURITY/SECURITY.md`.
 - Inherit naming/readability constraints from
   `LANGUAGE/CONVENTIONS.md` and `LANGUAGE/READABILITY.md`.
-- Tool-specific docs (Kubernetes, Helm, GitLab) may specialize schema rules but
-  must preserve these baseline safety constraints.
+- Tool-specific docs (Kubernetes, Helm, GitLab) MAY specialize schema rules but
+  MUST preserve these baseline safety constraints.
 
 ## Defaults
-- Keep YAML files deterministic and explicit.
+- SHOULD keep YAML files deterministic and explicit.
 - SHOULD prefer spaces over tabs (tabs are invalid in YAML indentation).
-- Keep indentation consistent (typically 2 spaces unless ecosystem demands 4).
-- Keep keys stable and semantically named.
-- Keep list item structure consistent across entries.
+- SHOULD keep indentation consistent (typically 2 spaces unless ecosystem demands 4).
+- SHOULD keep keys stable and semantically named.
+- SHOULD keep list item structure consistent across entries.
 
 ## Type and Parsing Safety
 - Quote ambiguous scalars when type ambiguity is risky (`on`, `off`, `yes`,
   `no`, version-like numbers, leading-zero values).
 - SHOULD prefer explicit booleans and numbers when schema expects them.
 - SHOULD avoid relying on parser-specific coercion behavior.
-- Keep date/time values explicit and consistently formatted.
+- SHOULD keep date/time values explicit and consistently formatted.
 
 ## Anchors, Aliases, and Merge Keys
-- Use anchors/aliases sparingly and only when they improve maintainability.
+- SHOULD use anchors/aliases sparingly and only when they improve maintainability.
 - SHOULD avoid deep merge trees that obscure effective configuration.
 - SHOULD prefer explicit repetition over complex indirection when readability suffers.
-- Document non-obvious anchor/merge usage in nearby comments.
+- SHOULD document non-obvious anchor/merge usage in nearby comments.
 
 ## Secrets and Security
 - MUST NOT commit plaintext secrets in YAML files.
-- Use secret references/injection mechanisms provided by target platform.
-- Keep environment-specific secret values outside source control.
-- Validate secret key names and expected presence in deployment pipelines.
+- MUST use secret references/injection mechanisms provided by target platform.
+- MUST keep environment-specific secret values outside source control.
+- MUST validate secret key names and expected presence in deployment pipelines.
 
 ## Environment and Drift Management
-- Keep base and environment overlays aligned with clear override intent.
+- SHOULD keep base and environment overlays aligned with clear override intent.
 - SHOULD avoid copy-paste divergence across environment files.
-- Track schema version fields explicitly when supported.
-- Keep default values safe; production overrides should be minimal and explicit.
+- SHOULD track schema version fields explicitly when supported.
+- SHOULD keep default values safe; production overrides SHOULD be minimal and explicit.
 
 ## High-Risk Pitfalls
 1. Indentation errors producing silent semantic changes.
@@ -137,6 +137,6 @@ prod:
 - Add checks preventing committed secrets.
 
 ## Override Notes
-- Platform/tool docs may add schema-specific constraints.
+- Platform/tool docs MAY add schema-specific constraints.
 - Baseline parsing safety and secret-handling rules in this file remain
   mandatory.

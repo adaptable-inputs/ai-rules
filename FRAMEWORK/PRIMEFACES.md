@@ -21,41 +21,40 @@ Guidance for AI agents implementing and reviewing PrimeFaces/JSF projects.
   `SECURITY/SECURITY.md`, `TEST/TEST.md`, `CORE/LOGGING.md`.
 
 ## Defaults
-- Keep JSF views presentation-focused.
-- Keep business logic in services/use-cases, not backing beans.
-- Use explicit bean scopes (`@RequestScoped`, `@ViewScoped`, `@SessionScoped`)
-  based on lifecycle need.
+- SHOULD keep JSF views presentation-focused.
+- SHOULD keep business logic in services/use-cases, not backing beans.
+- SHOULD use explicit bean scopes (`@RequestScoped`, `@ViewScoped`, `@SessionScoped`) based on lifecycle need.
 - SHOULD prefer reusable composites/components for repeated UI patterns.
 
 ## State and Scope Rules
-- Keep view/session state minimal.
+- SHOULD keep view/session state minimal.
 - SHOULD avoid storing large mutable graphs in session scope.
-- Keep conversation state explicit; clear state on flow completion.
+- SHOULD keep conversation state explicit; clear state on flow completion.
 - MUST NOT use broader scope than needed.
 
 ## Component and Ajax Usage
-- Keep partial updates targeted (`update`/`process` scopes explicit).
+- SHOULD keep partial updates targeted (`update`/`process` scopes explicit).
 - SHOULD avoid broad page re-renders for small interactions.
-- Keep component IDs stable and predictable.
+- SHOULD keep component IDs stable and predictable.
 - SHOULD prefer declarative component configuration over heavy imperative JS hacks.
 
 ## Validation and Error Handling
-- Use Bean Validation for model constraints.
-- Keep validation messages user-actionable.
-- Handle conversion/validation failures consistently.
+- SHOULD use Bean Validation for model constraints.
+- SHOULD keep validation messages user-actionable.
+- SHOULD handle conversion/validation failures consistently.
 - SHOULD avoid swallowing backend exceptions in UI layer.
 
 ## Performance Baseline
-- Minimize component tree complexity in heavy pages.
+- SHOULD minimize component tree complexity in heavy pages.
 - SHOULD avoid unnecessary nested forms/components.
 - Lazy-load large datasets where possible.
 - Profile expensive render phases and optimize high-cost components.
 
 ## Security Baseline
-- Enforce authorization on backend operations, not only UI rendering.
+- MUST enforce authorization on backend operations, not only UI rendering.
 - Protect against CSRF/XSS with framework and platform controls.
 - SHOULD avoid exposing sensitive data in hidden fields/view state.
-- Keep file upload and input handling strictly validated.
+- MUST keep file upload and input handling strictly validated.
 
 ## High-Risk Pitfalls
 1. Business logic embedded in backing beans/view code.
@@ -100,5 +99,5 @@ Do:    delegate to service/use-case layer.
 - Add performance checks for heavy pages/components where needed.
 
 ## Override Notes
-- Project-specific JSF conventions may add view-structure constraints, but scope
+- Project-specific JSF conventions MAY add view-structure constraints, but scope
   minimization, layering, and security rules in this file remain mandatory.

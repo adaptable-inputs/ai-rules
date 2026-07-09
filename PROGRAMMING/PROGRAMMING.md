@@ -28,14 +28,14 @@ Guidance for AI agents executing implementation tasks.
   `BUILD_TOOLS/**`, `INFRASTRUCTURE/**`, and `CI-CD/**`.
 
 ## Ruleset Read Gate (Mandatory)
-- Start every programming task by reading the complete ai-rules ruleset.
+- SHOULD start every programming task by reading the complete ai-rules ruleset.
 - "Complete ai-rules ruleset" means every Markdown file transitively reachable
   from the baseline entry point `AI.md`.
 - In downstream-projects, also read every Markdown file transitively reachable
   from the downstream extension entry point described in
   `AI-RULES/DOWNSTREAM-PROJECT.md`.
 - MUST NOT skip reachable Markdown files and do not pick files ad-hoc.
-- After the full read is complete, irrelevant rules may be removed from active
+- After the full read is complete, irrelevant rules MAY be removed from active
   context.
 
 ## Default Execution Workflow
@@ -60,30 +60,28 @@ Guidance for AI agents executing implementation tasks.
 7. Summarize changes, risks, and validation evidence.
 
 ## Implementation Quality Rules
-- Keep changes scoped; avoid unrelated refactors.
+- SHOULD keep changes scoped; avoid unrelated refactors.
 - SHOULD prefer explicit, readable logic over compact clever solutions.
-- Keep boundaries clear (domain vs transport vs infrastructure).
-- Keep side effects explicit and controlled.
-- Preserve backward compatibility unless change explicitly requires breakage.
+- SHOULD keep boundaries clear (domain vs transport vs infrastructure).
+- SHOULD keep side effects explicit and controlled.
+- SHOULD preserve backward compatibility unless change explicitly requires breakage.
 
 ## Dependency and Tooling Decisions
 - SHOULD avoid new dependencies unless necessary and justified.
-- Evaluate new dependencies using `FRAMEWORK/FRAMEWORK.md`,
-  `LIBRARY/LIBRARY.md`, and `COMPLIANCE/LICENSES.md`.
-- Keep runtime/build impact of dependency additions explicit.
+- SHOULD evaluate new dependencies using `FRAMEWORK/FRAMEWORK.md`, `LIBRARY/LIBRARY.md`, and `COMPLIANCE/LICENSES.md`.
+- SHOULD keep runtime/build impact of dependency additions explicit.
 
 ## Verification Requirements
-- Add tests for new behavior and bug fixes.
-- Add regression tests before risky refactors where behavior is ambiguous.
-- Run relevant checks locally/CI and report outcomes.
+- SHOULD add tests for new behavior and bug fixes.
+- SHOULD add regression tests before risky refactors where behavior is ambiguous.
+- SHOULD run relevant checks locally/CI and report outcomes.
 - If checks were not run, state why and expected risk.
 
 ## Delivery and Documentation
-- Update user/developer docs when behavior or usage changes.
-- Keep commit/PR summaries explicit about what changed and why.
-- Document notable tradeoffs and deferred follow-ups.
-- Include the completion status contract defined in
-  `CORE/VERSION_CONTROL_SYSTEM.md`.
+- SHOULD update user/developer docs when behavior or usage changes.
+- SHOULD keep commit/PR summaries explicit about what changed and why.
+- SHOULD document notable tradeoffs and deferred follow-ups.
+- SHOULD include the completion status contract defined in `CORE/VERSION_CONTROL_SYSTEM.md`.
 
 ## High-Risk Pitfalls
 1. Implementing without reading semantic parent rules.
@@ -127,6 +125,6 @@ Do:    justify necessity, review license/security, and document impact.
 - Include performance-sensitive checks where applicable.
 
 ## Override Notes
-- Task-specific overlays (`PLAN/PLAN.md`, `REVIEW/CODE_REVIEW.md`) may adjust
+- Task-specific overlays (`PLAN/PLAN.md`, `REVIEW/CODE_REVIEW.md`) MAY adjust
   output format, but implementation safety/verification requirements here
   remain mandatory.

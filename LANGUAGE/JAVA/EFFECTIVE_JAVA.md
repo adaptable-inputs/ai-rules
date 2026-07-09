@@ -24,51 +24,48 @@ codebases.
 ## Core Design Preferences
 - SHOULD prefer static factories over constructors when they improve readability,
   caching, or subtype flexibility.
-- Use builders for objects with many optional parameters or invariants.
+- SHOULD use builders for objects with many optional parameters or invariants.
 - SHOULD prefer immutable value types and make defensive copies of mutable state.
 - SHOULD prefer composition over inheritance unless subtype truly models an `is-a`
   relationship.
-- Minimize visibility of classes/members; keep APIs as small as possible.
+- SHOULD minimize visibility of classes/members; keep APIs as small as possible.
 
 ## Equality and Identity
 - Override `equals` and `hashCode` together when value semantics apply.
-- Keep equality consistent with domain meaning; avoid including volatile or
-  derived fields unintentionally.
-- Keep `toString` useful for diagnostics but free of secrets.
+- SHOULD keep equality consistent with domain meaning; avoid including volatile or derived fields unintentionally.
+- MUST keep `toString` useful for diagnostics but free of secrets.
 
 ## Generics and Collections
 - SHOULD prefer generic types over raw types.
 - Favor lists over arrays for API boundaries unless primitive array performance
   is required.
-- Use bounded wildcards intentionally (`? extends`, `? super`) to improve API
-  flexibility.
+- SHOULD use bounded wildcards intentionally (`? extends`, `? super`) to improve API flexibility.
 - SHOULD prefer empty collections over `null` returns.
 
 ## Optional and Nullability
-- Return `Optional<T>` when absence is part of API semantics.
+- SHOULD return `Optional<T>` when absence is part of API semantics.
 - SHOULD avoid `Optional` in fields/parameters unless there is a strong documented
   reason.
 - MUST NOT use `Optional.get()` without presence checks.
 
 ## Exceptions and Resource Management
-- Throw domain-relevant exception types with actionable context.
-- Use checked exceptions only for recoverable conditions.
-- Use try-with-resources for closeable resources.
+- SHOULD throw domain-relevant exception types with actionable context.
+- SHOULD use checked exceptions only for recoverable conditions.
+- SHOULD use try-with-resources for closeable resources.
 - MUST NOT ignore exceptions; if suppressed intentionally, document rationale.
 
 ## Concurrency Guidance
 - SHOULD prefer immutable/shared-nothing designs over synchronization.
-- Use high-level concurrency abstractions (`ExecutorService`,
-  `CompletableFuture`, Structured Concurrency/virtual-thread APIs where
-  available) over ad-hoc thread creation.
-- Document thread-safety guarantees for shared components.
+- SHOULD use high-level concurrency abstractions (`ExecutorService`, `CompletableFuture`, Structured
+  Concurrency/virtual-thread APIs where available) over ad-hoc thread creation.
+- SHOULD document thread-safety guarantees for shared components.
 - SHOULD avoid exposing mutable static state.
 
 ## Serialization and Compatibility
 - SHOULD prefer explicit DTO/schema mappers over default Java serialization.
-- If Java serialization is unavoidable, declare `serialVersionUID` and treat
-  serialized forms as compatibility contracts.
-- Validate invariants after deserialization.
+- If Java serialization is unavoidable, SHOULD declare `serialVersionUID` and treat serialized forms as compatibility
+  contracts.
+- SHOULD validate invariants after deserialization.
 
 ## High-Risk Pitfalls
 1. Mutable value objects used as map/set keys.

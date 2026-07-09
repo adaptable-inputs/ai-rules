@@ -24,34 +24,34 @@ configuration and operations choices.
   `CORE/VERSION_CONTROL_SYSTEM.md`.
 
 ## Defaults
-- Use org/folder/project hierarchy for environment and ownership isolation.
-- Apply least privilege IAM by default for users, service accounts, and groups.
-- Keep network access private by default; expose public endpoints intentionally.
+- SHOULD use org/folder/project hierarchy for environment and ownership isolation.
+- MUST apply least privilege IAM by default for users, service accounts, and groups.
+- SHOULD keep network access private by default; expose public endpoints intentionally.
 - Enable encryption and key-management controls for sensitive data paths.
-- Keep labeling standards mandatory for ownership, environment, and cost center.
+- SHOULD keep labeling standards mandatory for ownership, environment, and cost center.
 
 ## Identity and Access Guardrails
 - SHOULD prefer workload identity federation and short-lived credentials.
-- Minimize broad primitive roles and high-privilege grants.
-- Keep service-account key creation heavily restricted and monitored.
-- Keep cross-project access explicit and least-privilege.
+- MUST minimize broad primitive roles and high-privilege grants.
+- MUST keep service-account key creation heavily restricted and monitored.
+- MUST keep cross-project access explicit and least-privilege.
 
 ## Network and Data Protection
-- Keep VPC/firewall intent explicit and least-open.
+- MUST keep VPC/firewall intent explicit and least-open.
 - SHOULD avoid broad ingress/egress rules unless explicitly justified.
-- Keep sensitive services private behind controlled access layers.
-- Enforce key-management and secret handling controls for regulated data paths.
+- MUST keep sensitive services private behind controlled access layers.
+- MUST enforce key-management and secret handling controls for regulated data paths.
 
 ## Logging, Audit, and Detection
-- Keep audit logging enabled at required levels for critical services.
-- Centralize logs/metrics for operational and security analysis.
+- SHOULD keep audit logging enabled at required levels for critical services.
+- SHOULD centralize logs/metrics for operational and security analysis.
 - Enable detection/monitoring controls for threat and misconfiguration signals.
-- Keep alert ownership and escalation routing explicit.
+- SHOULD keep alert ownership and escalation routing explicit.
 
 ## Reliability and Operational Safety
-- Keep multi-zone/region resilience assumptions explicit for critical workloads.
-- Use staged rollout for risky platform changes.
-- Keep backup/restore and disaster-recovery procedures tested.
+- SHOULD keep multi-zone/region resilience assumptions explicit for critical workloads.
+- SHOULD use staged rollout for risky platform changes.
+- SHOULD keep backup/restore and disaster-recovery procedures tested.
 - Monitor quotas, API limits, and scaling boundaries proactively.
 
 ## High-Risk Pitfalls
@@ -101,6 +101,6 @@ Do:    enable and retain audit logs with monitored alerting.
 - Validate rollout/rollback behavior for high-impact changes.
 
 ## Override Notes
-- Project-specific GCP conventions may narrow implementation details, but
+- Project-specific GCP conventions MAY narrow implementation details, but
   least-privilege identity, private-by-default networking, auditability, and
   operational resilience controls remain mandatory.

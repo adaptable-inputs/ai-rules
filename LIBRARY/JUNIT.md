@@ -17,37 +17,37 @@ Guidance for AI agents implementing and reviewing JUnit tests.
 - Inherit language/readability baselines from
   `LANGUAGE/JAVA/JAVA.md`, `LANGUAGE/CONVENTIONS.md`, and
   `LANGUAGE/READABILITY.md`.
-- Companion test-library docs may specialize mocking/integration behavior.
+- Companion test-library docs MAY specialize mocking/integration behavior.
 
 ## Defaults
-- Use JUnit 5.
-- Keep tests deterministic and isolated.
-- Use descriptive test names based on behavior and expectation.
-- Keep one primary assertion intent per test.
+- SHOULD use JUnit 5.
+- SHOULD keep tests deterministic and isolated.
+- SHOULD use descriptive test names based on behavior and expectation.
+- SHOULD keep one primary assertion intent per test.
 - SHOULD prefer Arrange-Act-Assert structure.
 
 ## Test Design Rules
 - Test observable behavior, not implementation details.
 - SHOULD prefer small focused tests over large scenario monoliths.
-- Keep setup explicit and local; avoid hidden magic fixtures.
+- SHOULD keep setup explicit and local; avoid hidden magic fixtures.
 - SHOULD avoid shared mutable state across tests.
-- Use nested tests only when they improve readability and context.
+- SHOULD use nested tests only when they improve readability and context.
 
 ## Lifecycle and Fixtures
 - Default to per-test instance lifecycle unless a clear optimization need exists.
-- Use `@BeforeEach`/`@AfterEach` for isolation-safe setup/cleanup.
-- Keep expensive shared fixtures explicit and immutable when possible.
+- SHOULD use `@BeforeEach`/`@AfterEach` for isolation-safe setup/cleanup.
+- SHOULD keep expensive shared fixtures explicit and immutable when possible.
 
 ## Parameterized and Edge Testing
-- Use parameterized tests for input matrix coverage.
-- Include boundary, invalid, and edge-case scenarios.
-- Keep parameter sources readable and domain-relevant.
+- SHOULD use parameterized tests for input matrix coverage.
+- SHOULD include boundary, invalid, and edge-case scenarios.
+- SHOULD keep parameter sources readable and domain-relevant.
 
 ## Flakiness Controls
 - SHOULD avoid real network/time randomness in unit tests.
-- Use fake clocks and controlled randomness where needed.
+- SHOULD use fake clocks and controlled randomness where needed.
 - SHOULD avoid order-dependent tests.
-- Keep concurrency tests deterministic and bounded.
+- SHOULD keep concurrency tests deterministic and bounded.
 
 ## High-Risk Pitfalls
 1. Shared mutable fixture state causing test order dependence.
@@ -91,6 +91,6 @@ Do:    include invalid input and boundary cases.
 - Keep CI reports readable with failing-test diagnostics.
 
 ## Override Notes
-- Library/framework test docs (for example Mockito and Spring test slices) may
+- Library/framework test docs (for example Mockito and Spring test slices) MAY
   add specialization, but JUnit determinism and clarity constraints remain
   mandatory.

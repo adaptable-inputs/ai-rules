@@ -22,39 +22,38 @@ Guidance for AI agents implementing and reviewing microservice architecture.
 ## Adoption Criteria
 - SHOULD prefer modular monolith first unless there is a clear need for independent
   scaling, deployment cadence, ownership, or isolation.
-- Define measurable reasons for each service split.
+- SHOULD define measurable reasons for each service split.
 - SHOULD avoid splitting by technical layers; split by business capability.
 
 ## Service Boundary Rules
 - Each service owns a clear domain capability and bounded context.
-- Keep APIs small, stable, and domain-oriented.
+- SHOULD keep APIs small, stable, and domain-oriented.
 - SHOULD avoid shared domain model libraries that force lockstep releases.
-- Keep ownership explicit (team/service accountability).
+- SHOULD keep ownership explicit (team/service accountability).
 
 ## Data Ownership and Consistency
 - Each service owns its data store/schema.
 - SHOULD avoid shared database writes across services.
-- Use explicit integration patterns for cross-service consistency
-  (events, sagas, compensating actions).
+- SHOULD use explicit integration patterns for cross-service consistency (events, sagas, compensating actions).
 - MUST NOT assume distributed transactions by default.
 
 ## Communication Strategy
 - SHOULD prefer asynchronous messaging for decoupled workflows.
-- Use synchronous calls only when immediate response is required.
+- SHOULD use synchronous calls only when immediate response is required.
 - Timebox and protect remote calls with timeout/retry/circuit-breaker patterns.
-- Keep contracts versioned and backward-compatible.
+- SHOULD keep contracts versioned and backward-compatible.
 
 ## Reliability and Operability
-- Design for partial failures and graceful degradation.
-- Include correlation IDs across service boundaries.
-- Keep health/readiness checks meaningful.
+- SHOULD design for partial failures and graceful degradation.
+- SHOULD include correlation IDs across service boundaries.
+- SHOULD keep health/readiness checks meaningful.
 - Instrument latency, error rate, saturation, and queue lag.
-- Keep service startup/shutdown behavior predictable.
+- SHOULD keep service startup/shutdown behavior predictable.
 
 ## Security Baseline
-- Enforce service-to-service authentication and authorization.
-- Apply least privilege for data and network access.
-- Validate all incoming payloads at service boundaries.
+- MUST enforce service-to-service authentication and authorization.
+- MUST apply least privilege for data and network access.
+- MUST validate all incoming payloads at service boundaries.
 - SHOULD avoid exposing internal topology details via public errors.
 
 ## High-Risk Pitfalls
@@ -102,6 +101,6 @@ Do:    add replacement field, deprecate old field, monitor usage before removal.
 - Run failure-injection scenarios for dependency outages.
 
 ## Override Notes
-- Framework and infrastructure docs may define implementation mechanics, but
+- Framework and infrastructure docs MAY define implementation mechanics, but
   boundary ownership, compatibility, and resilience constraints here remain
   mandatory.

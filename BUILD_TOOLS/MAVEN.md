@@ -19,38 +19,36 @@ Guidance for AI agents implementing and reviewing Maven builds.
 - Inherit CI gating expectations from `CI-CD/CI-CD.md`.
 
 ## Defaults
-- Use Maven Wrapper (`mvnw`, `mvnw.cmd`, `.mvn/wrapper/*`) for reproducible
-  builds.
-- Keep plugin and dependency versions explicitly pinned.
-- Keep build lifecycle predictable and avoid hidden side effects in profiles.
-- Keep parent/BOM usage intentional and documented.
+- SHOULD use Maven Wrapper (`mvnw`, `mvnw.cmd`, `.mvn/wrapper/*`) for reproducible builds.
+- SHOULD keep plugin and dependency versions explicitly pinned.
+- SHOULD keep build lifecycle predictable and avoid hidden side effects in profiles.
+- SHOULD keep parent/BOM usage intentional and documented.
 
 ## Dependency and Plugin Management
-- Centralize versions with `dependencyManagement`/BOM when more than one module
-  depends on the same artifact.
+- SHOULD centralize versions with `dependencyManagement`/BOM when more than one module depends on the same artifact.
 - SHOULD avoid floating versions (`LATEST`, `RELEASE`, version ranges) in production
   builds.
-- Keep plugin versions pinned; avoid implicit plugin-version resolution.
-- Minimize duplicate transitive dependency paths and exclusions.
+- SHOULD keep plugin versions pinned; avoid implicit plugin-version resolution.
+- SHOULD minimize duplicate transitive dependency paths and exclusions.
 
 ## Profile and Environment Rules
-- Keep profiles explicit and purpose-driven.
+- SHOULD keep profiles explicit and purpose-driven.
 - SHOULD avoid profiles that change core artifact semantics unexpectedly.
 - SHOULD prefer environment-independent default build; use profiles for explicit
   deployment/runtime variations.
-- Document required profile combinations for release builds.
+- SHOULD document required profile combinations for release builds.
 
 ## Reproducibility and CI
-- Use wrapper in CI, not system Maven.
-- Keep CI build flags deterministic (`-B`, optionally `-ntp` etc.).
-- Ensure clean build paths for release (`clean verify`/project standard).
+- SHOULD use wrapper in CI, not system Maven.
+- SHOULD keep CI build flags deterministic (`-B`, optionally `-ntp` etc.).
+- SHOULD ensure clean build paths for release (`clean verify`/project standard).
 - Cache dependencies safely keyed by pom/wrapper/runtime version.
 
 ## Security and Supply Chain
-- Use trusted artifact repositories and explicit mirror config.
-- Keep repository credentials out of source-controlled settings.
+- MUST use trusted artifact repositories and explicit mirror config.
+- MUST keep repository credentials out of source-controlled settings.
 - Enable dependency and plugin vulnerability/license checks in CI.
-- Treat custom plugin executions as code with security review.
+- MUST treat custom plugin executions as code with security review.
 
 ## VCS Ignore Additions
 Add these when using Maven (if not already covered by baseline ignores):
@@ -109,6 +107,6 @@ Do:    plugin with pinned version in pluginManagement/build plugins.
 - Run vulnerability/license scan on dependency updates.
 
 ## Override Notes
-- Project-specific release processes may add stricter Maven workflow rules, but
+- Project-specific release processes MAY add stricter Maven workflow rules, but
   wrapper usage, deterministic versioning, and supply-chain controls remain
   mandatory.

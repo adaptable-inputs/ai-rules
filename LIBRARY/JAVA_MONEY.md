@@ -27,26 +27,23 @@ values in Java.
   for monetary values in Java.
 - Model business monetary amounts as `MonetaryAmount` (or domain wrappers
   around it), not `BigDecimal` alone.
-- Keep currency explicit for every monetary value.
-- Centralize rounding rules with JavaMoney rounding operators.
-- Restrict `BigDecimal` usage to integration boundaries where JavaMoney cannot
-  be used directly.
+- SHOULD keep currency explicit for every monetary value.
+- SHOULD centralize rounding rules with JavaMoney rounding operators.
+- SHOULD restrict `BigDecimal` usage to integration boundaries where JavaMoney cannot be used directly.
 
 ## Modeling and API Design
-- Use `MonetaryAmount` in domain/service method parameters and return types.
+- SHOULD use `MonetaryAmount` in domain/service method parameters and return types.
 - MUST NOT pass `(BigDecimal amount, String currency)` pairs through internal
   APIs.
-- Keep conversion to/from persistence and transport models in boundary adapters.
-- Use dedicated domain value objects when additional invariants are required
-  (for example non-negative totals).
+- SHOULD keep conversion to/from persistence and transport models in boundary adapters.
+- SHOULD use dedicated domain value objects when additional invariants are required (for example non-negative totals).
 
 ## Arithmetic, Rounding, and Currency Conversion
 - Perform business arithmetic via `MonetaryAmount` operations.
-- Define legal rounding behavior once per use case (for example tax, invoice
-  total, payout) and reuse it.
-- Validate currency compatibility before arithmetic and comparison.
-- Use JavaMoney conversion providers for FX conversion; do not hand-roll
-  exchange-rate math in core business code.
+- SHOULD define legal rounding behavior once per use case (for example tax, invoice total, payout) and reuse it.
+- SHOULD validate currency compatibility before arithmetic and comparison.
+- SHOULD use JavaMoney conversion providers for FX conversion; do not hand-roll exchange-rate math in core business
+  code.
 
 ## High-Risk Pitfalls
 1. Representing money as bare `BigDecimal` without currency.

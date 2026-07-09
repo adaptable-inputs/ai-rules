@@ -21,10 +21,10 @@ Guidance for AI agents implementing and reviewing Clean Architecture patterns.
 
 ## Core Rules
 - Dependencies point inward toward domain policy.
-- Domain and use-case layers must not depend on frameworks, DB clients, or web
+- Domain and use-case layers MUST NOT depend on frameworks, DB clients, or web
   adapters.
 - Outer layers implement interfaces defined by inner layers.
-- Keep business policy independent from delivery and persistence details.
+- SHOULD keep business policy independent from delivery and persistence details.
 
 ## Layer Responsibilities
 - Domain:
@@ -37,20 +37,20 @@ Guidance for AI agents implementing and reviewing Clean Architecture patterns.
   DB, message bus, network clients, framework integration.
 
 ## Boundary Contracts
-- Define ports/interfaces at policy boundaries.
-- Keep boundary DTOs stable and explicit.
+- SHOULD define ports/interfaces at policy boundaries.
+- SHOULD keep boundary DTOs stable and explicit.
 - SHOULD avoid leaking framework-specific annotations/types into domain core.
-- Keep mapping between boundary DTOs and domain models explicit.
+- SHOULD keep mapping between boundary DTOs and domain models explicit.
 
 ## Dependency Injection and Composition
-- Compose concrete dependencies at outermost composition root.
+- SHOULD compose concrete dependencies at outermost composition root.
 - Inject abstractions into use cases.
 - SHOULD avoid service locators and hidden global singletons in core policy.
 
 ## Transaction and Side-Effect Placement
-- Keep side effects in outer layers/gateways.
-- Keep use-case logic deterministic where possible.
-- Keep transaction scope aligned with use-case boundary.
+- SHOULD keep side effects in outer layers/gateways.
+- SHOULD keep use-case logic deterministic where possible.
+- SHOULD keep transaction scope aligned with use-case boundary.
 - SHOULD avoid domain-layer calls directly to infrastructure.
 
 ## High-Risk Pitfalls
@@ -96,5 +96,5 @@ Do:    inject interface implementation via outer-layer wiring.
 - Add regression tests when moving code across layers.
 
 ## Override Notes
-- Framework docs may prescribe wiring patterns, but dependency direction and
+- Framework docs MAY prescribe wiring patterns, but dependency direction and
   boundary-isolation rules in this file remain mandatory.

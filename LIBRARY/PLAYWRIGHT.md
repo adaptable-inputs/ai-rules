@@ -20,28 +20,27 @@ Guidance for AI agents implementing and reviewing Playwright tests.
 
 ## Defaults
 - Focus E2E tests on critical user journeys.
-- Keep tests deterministic with isolated test data/state.
-- Use robust locators (`getByRole`, test IDs via `data-testid` +
-  `getByTestId`) over brittle CSS/XPath chains.
-- Use Playwright auto-waiting and explicit assertions.
-- Keep setup/teardown reusable through fixtures.
+- SHOULD keep tests deterministic with isolated test data/state.
+- SHOULD use robust locators (`getByRole`, test IDs via `data-testid` + `getByTestId`) over brittle CSS/XPath chains.
+- SHOULD use Playwright auto-waiting and explicit assertions.
+- SHOULD keep setup/teardown reusable through fixtures.
 
 ## Locator and Interaction Rules
 - SHOULD prefer accessible-role/text/test-id locators.
 - SHOULD avoid selectors tied to fragile DOM structure.
-- Keep waits condition-based, not sleep-based.
-- Keep user actions explicit and semantically aligned.
+- SHOULD keep waits condition-based, not sleep-based.
+- SHOULD keep user actions explicit and semantically aligned.
 
 ## Flakiness Controls
 - SHOULD avoid real third-party dependencies when stubbing is possible.
-- Isolate each test scenario state.
-- Use retries sparingly; fix root cause first.
-- Keep parallelization aware of shared-resource contention.
+- SHOULD isolate each test scenario state.
+- SHOULD use retries sparingly; fix root cause first.
+- SHOULD keep parallelization aware of shared-resource contention.
 
 ## Debuggability and Artifacts
 - Capture traces/screenshots/videos on failure according to policy.
-- Keep logs/artifacts easy to correlate with failed scenario.
-- Use step-level diagnostics for complex flows.
+- SHOULD keep logs/artifacts easy to correlate with failed scenario.
+- SHOULD use step-level diagnostics for complex flows.
 
 ## High-Risk Pitfalls
 1. Brittle selectors coupled to markup churn.
@@ -85,5 +84,5 @@ Do:    create/seed needed state per test fixture.
 - Keep test runtime budget monitored and optimized.
 
 ## Override Notes
-- Project-specific E2E policy may define stricter locator/test-ID conventions,
+- Project-specific E2E policy MAY define stricter locator/test-ID conventions,
   but determinism and stable-locator constraints here remain mandatory.

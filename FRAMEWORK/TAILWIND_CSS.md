@@ -15,40 +15,39 @@ Guidance for AI agents implementing and reviewing Tailwind CSS code.
 ## Semantic Dependencies
 - Inherit CSS baseline from `LANGUAGE/CSS/CSS.md`.
 - Inherit HTML accessibility baseline from `LANGUAGE/HTML/HTML.md`.
-- Project/framework-specific docs may add component conventions, but should
+- Project/framework-specific docs MAY add component conventions, but SHOULD
   preserve this file's maintainability constraints.
 
 ## Defaults
 - SHOULD prefer utility-first styling with clear class grouping by concern
   (layout, spacing, typography, color, state).
-- Keep class lists readable and intentional.
-- Use design tokens via Tailwind theme configuration instead of ad-hoc values.
+- SHOULD keep class lists readable and intentional.
+- SHOULD use design tokens via Tailwind theme configuration instead of ad-hoc values.
 - SHOULD prefer component extraction when class lists become repetitive or complex.
 
 ## Utility and Composition Rules
-- Keep utilities local to component intent.
+- SHOULD keep utilities local to component intent.
 - SHOULD avoid giant one-off class strings with many conditionals.
 - SHOULD prefer reusable abstractions for repeated UI patterns.
-- Use `@apply` sparingly and only when it improves maintainability.
-- Keep variant usage (`sm:`, `md:`, `hover:`, `focus:`) predictable and minimal.
+- SHOULD use `@apply` sparingly and only when it improves maintainability.
+- SHOULD keep variant usage (`sm:`, `md:`, `hover:`, `focus:`) predictable and minimal.
 
 ## Design System Alignment
-- Centralize colors, spacing, typography scales in config.
+- SHOULD centralize colors, spacing, typography scales in config.
 - SHOULD avoid arbitrary values unless genuinely required.
-- Keep naming aligned with design language, not implementation details.
-- Review custom plugins/utilities for long-term maintainability.
+- SHOULD keep naming aligned with design language, not implementation details.
+- SHOULD review custom plugins/utilities for long-term maintainability.
 
 ## Accessibility and UX
-- Preserve focus-visible states.
-- Ensure color contrast compliance.
-- Ensure disabled/loading/error states are visually and semantically clear.
+- SHOULD preserve focus-visible states.
+- SHOULD ensure color contrast compliance.
+- SHOULD ensure disabled/loading/error states are visually and semantically clear.
 - SHOULD avoid motion-heavy transitions without reduced-motion consideration.
 
 ## Performance Baseline
-- Ensure content paths are configured so unused classes are purged.
+- SHOULD ensure content paths are configured so unused classes are purged.
 - SHOULD avoid dynamically constructed class names that evade static extraction.
-- Keep generated CSS size bounded and monitored through the project's build and
-  delivery standards.
+- SHOULD keep generated CSS size bounded and monitored through the project's build and delivery standards.
 - SHOULD prefer stable class composition over runtime string-generation complexity.
 
 ## High-Risk Pitfalls
@@ -94,6 +93,6 @@ Do:    map known variants to explicit class strings.
 - Validate production build output to ensure unused class purge works.
 
 ## Override Notes
-- Project-specific design system docs may define stricter token/component
+- Project-specific design system docs MAY define stricter token/component
   constraints, but accessibility and maintainability baseline here remains
   mandatory.

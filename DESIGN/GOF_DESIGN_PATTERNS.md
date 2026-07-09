@@ -17,9 +17,9 @@ Guidance for AI agents applying GoF patterns pragmatically.
 - Inherit architecture boundary constraints from `ARCHITECTURE/**`.
 
 ## Pattern Selection Principles
-- Use patterns to reduce concrete change cost for known change vectors.
+- SHOULD use patterns to reduce concrete change cost for known change vectors.
 - MUST NOT introduce patterns solely for textbook conformity.
-- Keep pattern intent explicit in naming/docs when it aids maintainability.
+- SHOULD keep pattern intent explicit in naming/docs when it aids maintainability.
 - SHOULD prefer simpler direct code when variation pressure is low.
 
 ## Creational Pattern Guidance
@@ -96,5 +96,5 @@ Do:    isolate conversion in dedicated Adapter.
 - Add regression tests when refactoring branch logic into patterns.
 
 ## Override Notes
-- Framework conventions may impose structural patterns implicitly, but pattern
-  adoption should remain intent-driven and complexity-aware.
+- Framework conventions MAY impose structural patterns implicitly, but pattern
+  adoption SHOULD remain intent-driven and complexity-aware.

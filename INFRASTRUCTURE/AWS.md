@@ -23,36 +23,36 @@ and operations choices.
   `CORE/VERSION_CONTROL_SYSTEM.md`.
 
 ## Defaults
-- Use multi-account strategies for environment and blast-radius isolation.
-- Apply least privilege IAM by default for users, roles, and services.
-- Keep network access private by default; expose public endpoints intentionally.
+- SHOULD use multi-account strategies for environment and blast-radius isolation.
+- MUST apply least privilege IAM by default for users, roles, and services.
+- SHOULD keep network access private by default; expose public endpoints intentionally.
 - Enable encryption in transit and at rest for sensitive data paths.
-- Keep tagging standards mandatory for ownership, environment, and cost center.
+- SHOULD keep tagging standards mandatory for ownership, environment, and cost center.
 
 ## Identity and Access Guardrails
 - SHOULD prefer role assumption and short-lived credentials over long-lived static
   access keys.
-- Keep human admin access behind strong MFA and audit controls.
-- Restrict cross-account trust with explicit conditions and least privilege.
-- Review wildcard permissions (`*`) and high-risk actions as exceptions only.
+- MUST keep human admin access behind strong MFA and audit controls.
+- MUST restrict cross-account trust with explicit conditions and least privilege.
+- MUST review wildcard permissions (`*`) and high-risk actions as exceptions only.
 
 ## Network and Data Protection
-- Keep VPC, subnet, and security-group intent explicit and least-open.
+- MUST keep VPC, subnet, and security-group intent explicit and least-open.
 - SHOULD avoid unrestricted ingress/egress rules unless explicitly justified.
-- Keep data services private and fronted by controlled access layers.
-- Enforce key-management policy and rotation where required.
+- MUST keep data services private and fronted by controlled access layers.
+- MUST enforce key-management policy and rotation where required.
 
 ## Logging, Audit, and Detection
-- Keep account/org audit logs enabled and protected from tampering.
-- Keep service/application logs centralized and queryable.
+- SHOULD keep account/org audit logs enabled and protected from tampering.
+- SHOULD keep service/application logs centralized and queryable.
 - Enable detection/monitoring controls for threat and misconfiguration events.
-- Keep alert routing and escalation ownership explicit.
+- SHOULD keep alert routing and escalation ownership explicit.
 
 ## Reliability and Operational Safety
-- Keep region/AZ resilience assumptions explicit for critical workloads.
-- Use staged rollout for risky platform changes.
-- Keep backup/restore and disaster-recovery procedures tested.
-- Keep quotas/limits and scaling boundaries monitored proactively.
+- SHOULD keep region/AZ resilience assumptions explicit for critical workloads.
+- SHOULD use staged rollout for risky platform changes.
+- SHOULD keep backup/restore and disaster-recovery procedures tested.
+- SHOULD keep quotas/limits and scaling boundaries monitored proactively.
 
 ## High-Risk Pitfalls
 1. Single-account designs with no blast-radius isolation.
@@ -99,6 +99,6 @@ Do:    enable immutable audit trails with monitored alerting.
 - Validate staged rollout and rollback procedures for high-impact changes.
 
 ## Override Notes
-- Project-specific AWS conventions may narrow implementation details, but
+- Project-specific AWS conventions MAY narrow implementation details, but
   least-privilege identity, private-by-default networking, auditability, and
   operational resilience controls remain mandatory.

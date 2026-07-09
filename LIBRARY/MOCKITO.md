@@ -18,22 +18,22 @@ Guidance for AI agents implementing and reviewing Mockito-based tests.
 - Mockito guidance specializes mocking behavior only.
 
 ## Defaults
-- Mock external collaborators, not value objects.
+- SHOULD mock external collaborators, not value objects.
 - SHOULD prefer constructor injection in production code to simplify mocking.
-- Keep stubbing minimal and explicit.
-- Verify behavior only where interaction contract matters.
+- SHOULD keep stubbing minimal and explicit.
+- SHOULD verify behavior only where interaction contract matters.
 - SHOULD prefer state/observable outcome assertions over interaction-heavy assertions.
 
 ## Stubbing Rules
 - Stub only methods exercised by test scenario.
 - SHOULD avoid broad deep-stub patterns unless no alternative.
-- Keep `when`/`then` setup readable and scenario-focused.
-- Use argument matchers consistently (avoid mixed raw + matcher misuse).
+- SHOULD keep `when`/`then` setup readable and scenario-focused.
+- SHOULD use argument matchers consistently (avoid mixed raw + matcher misuse).
 
 ## Verification Rules
-- Verify meaningful interactions, not every call by default.
-- Use explicit/precise verification for critical side effects
-  (for example once/never checks and argument constraints).
+- SHOULD verify meaningful interactions, not every call by default.
+- SHOULD use explicit/precise verification for critical side effects (for example once/never checks and argument
+  constraints).
 - SHOULD prefer strict stubbing to catch unused or mismatched stubs.
 - SHOULD avoid over-verifying call counts in non-critical paths.
 - SHOULD prefer `verifyNoMoreInteractions` sparingly and intentionally.
@@ -85,5 +85,5 @@ Do:    scenario-local stubs used by current test only.
 - Add regression tests for previously flaky mock interactions.
 
 ## Override Notes
-- Framework-specific test utilities may supplement Mockito usage, but mocking
+- Framework-specific test utilities MAY supplement Mockito usage, but mocking
   boundary discipline and readability constraints here remain mandatory.

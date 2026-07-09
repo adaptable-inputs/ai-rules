@@ -18,15 +18,13 @@ Guidance for AI agents implementing and reviewing Lombok usage.
 - Inherit design/readability constraints from `DESIGN/CLEAN_CODE.md`.
 
 ## Defaults
-- Use Lombok to remove low-value boilerplate while preserving clarity.
-- If Lombok is available, implement simple constructors with Lombok annotations
-  (`@NoArgsConstructor`, `@AllArgsConstructor`, `@RequiredArgsConstructor`).
-- For dependency injection, prefer `@RequiredArgsConstructor` as the default
-  constructor strategy.
-- If Lombok is available, implement ordinary getters/setters with
-  `@Getter`/`@Setter`.
-- If Lombok is available, declare loggers with the Lombok annotation matching
-  the project's logging backend (`@Slf4j` for SLF4J).
+- SHOULD use Lombok to remove low-value boilerplate while preserving clarity.
+- If Lombok is available, SHOULD implement simple constructors with Lombok annotations (`@NoArgsConstructor`,
+  `@AllArgsConstructor`, `@RequiredArgsConstructor`).
+- For dependency injection, SHOULD prefer `@RequiredArgsConstructor` as the default constructor strategy.
+- If Lombok is available, SHOULD implement ordinary getters/setters with `@Getter`/`@Setter`.
+- If Lombok is available, SHOULD declare loggers with the Lombok annotation matching the project's logging backend
+  (`@Slf4j` for SLF4J).
 - SHOULD prefer `@Builder` for complex immutable object construction.
 - SHOULD prefer explicit annotations over broad convenience annotations when behavior
   matters.
@@ -36,9 +34,8 @@ Guidance for AI agents implementing and reviewing Lombok usage.
   methods only when logic/validation is needed.
 - Constructor annotations: use Lombok constructor annotations for simple
   constructor shapes instead of handwritten constructor boilerplate.
-- For dependency injection use cases, prefer `@RequiredArgsConstructor`; use
-  `@NoArgsConstructor`/`@AllArgsConstructor` only when framework or boundary
-  requirements demand those shapes.
+- For dependency injection use cases, SHOULD prefer `@RequiredArgsConstructor`; use
+  `@NoArgsConstructor`/`@AllArgsConstructor` only when framework or boundary requirements demand those shapes.
 - Logging annotations (`@Slf4j`, `@Log4j2`, etc.): required for logger fields
   instead of manual logger instance declarations.
 - `@Value` (`lombok.Value`): prefer for immutable DTO/value objects.
@@ -51,21 +48,20 @@ Guidance for AI agents implementing and reviewing Lombok usage.
 - Lombok/Jakarta nullness annotations are fallback only:
   use `@lombok.NonNull` and `@jakarta.annotation.Nullable` only when JSpecify
   is not available.
-- Keep null contracts explicit on fields, parameters, and return types under
-  the active nullness annotation strategy.
+- SHOULD keep null contracts explicit on fields, parameters, and return types under the active nullness annotation
+  strategy.
 - MUST NOT choose Lombok nullness annotations when JSpecify is present.
 
 ## Risky Annotations and Guardrails
 - `@SneakyThrows`: use only with explicit rationale and bounded scope.
 - `@Builder.Default`: verify semantics for null/optional behavior.
 - `@SuperBuilder`: use cautiously; avoid deep inheritance complexity.
-- Keep generated behavior understandable to reviewers.
+- SHOULD keep generated behavior understandable to reviewers.
 
 ## Tooling and Build Consistency
-- Ensure annotation processing is enabled in build and IDE.
-- Keep `lombok.config` committed and consistent.
-- Configure `lombok.copyableAnnotations` for framework-required constructor
-  annotations where needed.
+- SHOULD ensure annotation processing is enabled in build and IDE.
+- SHOULD keep `lombok.config` committed and consistent.
+- SHOULD configure `lombok.copyableAnnotations` for framework-required constructor annotations where needed.
 - SHOULD avoid IDE/build mismatch where generated code differs.
 
 ## High-Risk Pitfalls
@@ -149,6 +145,6 @@ Do:    use JSpecify when available; otherwise use @lombok.NonNull and
 - If project policy prefers explicit boilerplate in critical modules, follow
   stricter module policy. Baseline rule: favor clarity over annotation density.
 - Explicit specialization in this doc: when Lombok is available, constructor,
-  ordinary accessor, and logger boilerplate should be Lombok-generated.
+  ordinary accessor, and logger boilerplate SHOULD be Lombok-generated.
 - Nullness specialization: JSpecify always takes precedence; Lombok/Jakarta
   nullness annotations are fallback only when JSpecify is unavailable.

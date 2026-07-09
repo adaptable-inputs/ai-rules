@@ -22,40 +22,39 @@ Guidance for AI agents implementing and reviewing Svelte projects.
   `SECURITY/SECURITY.md`, `TEST/TEST.md`, `CORE/LOGGING.md`.
 
 ## Defaults
-- Keep components focused and small.
+- SHOULD keep components focused and small.
 - SHOULD prefer explicit props/events/store boundaries over hidden cross-component
   coupling.
-- Keep business logic outside template markup when complexity grows.
+- SHOULD keep business logic outside template markup when complexity grows.
 - SHOULD prefer derived/reactive values for view state over duplicated mutable state.
 
 ## Reactivity and State Rules
-- Keep one source of truth for each state concern.
+- SHOULD keep one source of truth for each state concern.
 - SHOULD avoid cascading reactive statements that create implicit update loops.
-- Use stores for cross-component/shared state.
-- Keep component-local state local unless there is clear sharing need.
+- SHOULD use stores for cross-component/shared state.
+- SHOULD keep component-local state local unless there is clear sharing need.
 - SHOULD avoid mutating shared objects in-place without explicit intent.
 
 ## Side Effects and Lifecycle
-- Keep setup/teardown side effects explicit in lifecycle hooks.
-- For dependency-driven side effects, use controlled reactive blocks
-  (`$:` in Svelte 3/4, or `$effect` when using Svelte 5+ runes) and avoid
-  uncontrolled reactive side-effect chains.
+- SHOULD keep setup/teardown side effects explicit in lifecycle hooks.
+- For dependency-driven side effects, SHOULD use controlled reactive blocks (`$:` in Svelte 3/4, or `$effect` when using
+  Svelte 5+ runes) and avoid uncontrolled reactive side-effect chains.
 - Clean up subscriptions/listeners/timers in teardown paths.
 - SHOULD avoid running heavy side effects during rendering paths.
 - Guard browser-only APIs when SSR/hydration is relevant.
 
 ## Template and Accessibility
 - SHOULD prefer semantic HTML and accessible controls.
-- Ensure keyboard/focus behavior for interactive elements.
-- Keep template expressions simple; extract complex logic into script section.
+- SHOULD ensure keyboard/focus behavior for interactive elements.
+- SHOULD keep template expressions simple; extract complex logic into script section.
 - SHOULD avoid duplicated conditional fragments when component extraction improves
   readability.
 
 ## Performance Baseline
 - SHOULD avoid unnecessary store subscriptions and broad reactive dependencies.
-- Use keyed each-blocks for stable list updates.
-- Keep expensive computations memoized/derived outside repeated render logic.
-- Split large components by feature boundary.
+- SHOULD use keyed each-blocks for stable list updates.
+- SHOULD keep expensive computations memoized/derived outside repeated render logic.
+- SHOULD split large components by feature boundary.
 
 ## High-Risk Pitfalls
 1. Hidden reactive dependency chains causing update surprises.
@@ -101,6 +100,6 @@ Do:    keyed list rendering with stable identity.
 - If SSR is used, test browser-guarded paths and hydration behavior.
 
 ## Override Notes
-- Project-specific SvelteKit conventions may add routing/data-loading rules, but
+- Project-specific SvelteKit conventions MAY add routing/data-loading rules, but
   reactivity clarity, cleanup safety, and accessibility constraints remain
   mandatory.

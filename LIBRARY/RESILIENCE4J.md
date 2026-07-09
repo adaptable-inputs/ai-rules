@@ -19,10 +19,10 @@ Guidance for AI agents implementing and reviewing Resilience4j policies.
 - Inherit observability requirements from `CORE/LOGGING.md`.
 
 ## Defaults
-- Keep resilience policy per dependency/use case, not one global profile.
-- Keep policies explicit and externally configurable where practical.
-- Start conservative and tune using production telemetry.
-- Keep fallback behavior correctness-preserving.
+- SHOULD keep resilience policy per dependency/use case, not one global profile.
+- SHOULD keep policies explicit and externally configurable where practical.
+- SHOULD start conservative and tune using production telemetry.
+- SHOULD keep fallback behavior correctness-preserving.
 
 ## Policy Composition Rules
 - Retry only transient failures.
@@ -33,17 +33,16 @@ Guidance for AI agents implementing and reviewing Resilience4j policies.
 - Coordinate policies to avoid amplification loops.
 
 ## Configuration Guardrails
-- Keep retry attempts bounded with backoff + jitter.
+- SHOULD keep retry attempts bounded with backoff + jitter.
 - SHOULD avoid retrying non-retryable business exceptions.
-- Keep circuit-breaker thresholds/window sizes aligned with traffic profile.
-- Keep bulkhead pool/queue settings aligned with capacity planning.
-- Keep rate-limit and timeout values documented per dependency SLA.
+- SHOULD keep circuit-breaker thresholds/window sizes aligned with traffic profile.
+- SHOULD keep bulkhead pool/queue settings aligned with capacity planning.
+- SHOULD keep rate-limit and timeout values documented per dependency SLA.
 
 ## Observability and Operations
 - Export metrics for policy activations and outcomes.
-- Log state transitions and fallback activations with dependency context.
-- Alert on sustained breaker open states, retry storms, and bulkhead rejection
-  spikes.
+- SHOULD log state transitions and fallback activations with dependency context.
+- SHOULD alert on sustained breaker open states, retry storms, and bulkhead rejection spikes.
 
 ## High-Risk Pitfalls
 1. Retrying non-idempotent operations.
@@ -90,5 +89,5 @@ Do:    tune per dependency latency/error profile.
 - Test fallback outcomes for correctness.
 
 ## Override Notes
-- Framework integrations may vary (annotations, decorators, functional APIs),
+- Framework integrations MAY vary (annotations, decorators, functional APIs),
   but policy correctness and observability constraints here remain mandatory.

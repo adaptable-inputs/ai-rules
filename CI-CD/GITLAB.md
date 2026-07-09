@@ -19,42 +19,41 @@ Guidance for AI agents implementing and reviewing GitLab CI/CD pipelines.
 - Inherit VCS workflow requirements from `CORE/VERSION_CONTROL_SYSTEM.md`.
 
 ## Pipeline Defaults
-- Keep pipelines deterministic and fast-fail.
-- Separate stages clearly (lint, build, test, security, package, deploy).
-- Keep job boundaries explicit and cache/artifact strategy intentional.
-- Keep pipeline behavior branch/tag-aware with explicit rules.
+- SHOULD keep pipelines deterministic and fast-fail.
+- SHOULD separate stages clearly (lint, build, test, security, package, deploy).
+- SHOULD keep job boundaries explicit and cache/artifact strategy intentional.
+- SHOULD keep pipeline behavior branch/tag-aware with explicit rules.
 
 ## Quality Gates
-- Treat lint, tests, and security scans as merge/release gates.
-- Keep required gates non-optional for protected branches.
-- Publish test and coverage reports for review visibility.
-- Fail pipeline on critical dependency/security findings per policy.
+- MUST treat lint, tests, and security scans as merge/release gates.
+- MUST keep required gates non-optional for protected branches.
+- SHOULD publish test and coverage reports for review visibility.
+- MUST fail pipeline on critical dependency/security findings per policy.
 
 ## Release Pipeline Rules
 - Release pipelines are triggered by semantic version tags
   (for example `vMAJOR.MINOR.PATCH`).
-- Release pipelines must run full build/test/security checks.
-- Release artifacts and reports must be reproducible from tag alone.
-- Keep release jobs immutable and auditable.
-- Keep rollback and re-run strategy documented.
+- Release pipelines MUST run full build/test/security checks.
+- Release artifacts and reports MUST be reproducible from tag alone.
+- SHOULD keep release jobs immutable and auditable.
+- SHOULD keep rollback and re-run strategy documented.
 
 ## Secrets and Security
-- Use masked/protected CI variables for credentials.
+- MUST use masked/protected CI variables for credentials.
 - MUST NOT echo secrets in job logs.
-- Restrict deployment jobs to protected branches/tags and required approvals.
-- Pin container images used by CI jobs where possible.
+- MUST restrict deployment jobs to protected branches/tags and required approvals.
+- SHOULD pin container images used by CI jobs where possible.
 
 ## Caching and Artifacts
-- Use caches for dependency acceleration with safe keys
-  (lockfiles/runtime versions).
-- Use artifacts for reproducible stage handoff, not implicit workspace state.
-- Keep artifact retention policy explicit and cost-aware.
+- SHOULD use caches for dependency acceleration with safe keys (lockfiles/runtime versions).
+- SHOULD use artifacts for reproducible stage handoff, not implicit workspace state.
+- SHOULD keep artifact retention policy explicit and cost-aware.
 
 ## Observability and Debuggability
-- Keep job logs actionable and concise.
-- Emit clear failure context (what failed, where, likely next action).
-- Track pipeline duration/flakiness trends.
-- Keep flaky tests quarantined and actively remediated.
+- SHOULD keep job logs actionable and concise.
+- SHOULD emit clear failure context (what failed, where, likely next action).
+- SHOULD track pipeline duration/flakiness trends.
+- SHOULD keep flaky tests quarantined and actively remediated.
 
 ## High-Risk Pitfalls
 1. Optional quality gates on protected branches.
@@ -99,5 +98,5 @@ Do:    enforce full gate chain before publish/deploy.
 - Track and reduce flaky job/test incidence.
 
 ## Override Notes
-- Project-specific delivery policies may add stricter approvals/compliance gates,
+- Project-specific delivery policies MAY add stricter approvals/compliance gates,
   but deterministic quality-gated pipelines and secret hygiene remain mandatory.

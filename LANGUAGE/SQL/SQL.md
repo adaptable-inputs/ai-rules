@@ -20,41 +20,40 @@ Guidance for AI agents implementing and reviewing SQL.
 - Inherit naming/readability constraints from
   `LANGUAGE/CONVENTIONS.md` and `LANGUAGE/READABILITY.md`.
 - Inherit architecture guidance from `ARCHITECTURE/N_PLUS_1.md` where relevant.
-- Library docs (JPA/jOOQ) may specialize query construction but must preserve
+- Library docs (JPA/jOOQ) MAY specialize query construction but MUST preserve
   this baseline.
 
 ## Defaults
 - Parameterize all external values; avoid string-concatenated SQL.
-- Keep queries explicit and readable; avoid hidden implicit behavior.
+- SHOULD keep queries explicit and readable; avoid hidden implicit behavior.
 - Select only needed columns; avoid `SELECT *` in production paths.
-- Use clear aliasing and deterministic ordering when order matters.
-- Keep transaction scope minimal and explicit.
+- SHOULD use clear aliasing and deterministic ordering when order matters.
+- SHOULD keep transaction scope minimal and explicit.
 
 ## Data Modeling and Schema Evolution
-- Use explicit primary keys and foreign key constraints unless there is a
-  documented reason not to.
-- Keep migrations forward-only and idempotent where feasible.
+- SHOULD use explicit primary keys and foreign key constraints unless there is a documented reason not to.
+- SHOULD keep migrations forward-only and idempotent where feasible.
 - SHOULD prefer additive schema changes for compatibility.
 - Backfill large data in batches to avoid long locks.
 
 ## Query Performance Rules
-- Design indexes for real access patterns, not assumptions.
-- Validate query plans for hot-path queries.
+- SHOULD design indexes for real access patterns, not assumptions.
+- SHOULD validate query plans for hot-path queries.
 - SHOULD avoid N+1 query patterns; batch or join intentionally.
-- Use pagination for large result sets.
-- Be explicit with join cardinality and filtering predicates.
+- SHOULD use pagination for large result sets.
+- SHOULD be explicit with join cardinality and filtering predicates.
 
 ## Transaction and Consistency Rules
-- Keep transactions short; avoid user/network waits inside transactions.
+- SHOULD keep transactions short; avoid user/network waits inside transactions.
 - Pick isolation levels intentionally based on correctness needs.
-- Handle deadlocks and transient failures with bounded retries.
-- Keep write ordering deterministic when consistency depends on it.
+- SHOULD handle deadlocks and transient failures with bounded retries.
+- SHOULD keep write ordering deterministic when consistency depends on it.
 
 ## Security Rules
 - MUST NOT interpolate untrusted input into SQL strings.
-- Minimize granted DB privileges by role.
+- MUST minimize granted DB privileges by role.
 - SHOULD avoid returning sensitive columns unless required.
-- Treat migration scripts as security-sensitive artifacts.
+- MUST treat migration scripts as security-sensitive artifacts.
 
 ## High-Risk Pitfalls
 1. SQL injection from dynamic string concatenation.
@@ -124,5 +123,5 @@ never string-interpolate `IN (...)` values.
 - Test authorization/role constraints for sensitive operations.
 
 ## Override Notes
-- ORM/framework docs may adjust implementation style but must preserve
+- ORM/framework docs MAY adjust implementation style but MUST preserve
   parameterization, transaction safety, and query-plan awareness defined here.

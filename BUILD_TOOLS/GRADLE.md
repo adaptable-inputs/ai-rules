@@ -19,41 +19,40 @@ Guidance for AI agents implementing and reviewing Gradle builds.
 - Inherit CI expectations from `CI-CD/CI-CD.md`.
 
 ## Defaults
-- Use Gradle Wrapper (`gradlew`, `gradlew.bat`, `gradle/wrapper/*`).
-- Pin plugin and dependency versions explicitly.
+- SHOULD use Gradle Wrapper (`gradlew`, `gradlew.bat`, `gradle/wrapper/*`).
+- MUST pin plugin and dependency versions explicitly.
 - SHOULD prefer Kotlin DSL for new builds unless project standard is Groovy DSL.
-- Keep build scripts declarative and deterministic.
+- SHOULD keep build scripts declarative and deterministic.
 
 ## Dependency and Plugin Management
-- Centralize versions via version catalogs or clear convention mechanism.
+- SHOULD centralize versions via version catalogs or clear convention mechanism.
 - SHOULD avoid dynamic versions (`latest.release`, `+`) in production builds.
-- Keep plugin management explicit.
-- Keep dependency constraints clear in multi-module projects.
+- SHOULD keep plugin management explicit.
+- SHOULD keep dependency constraints clear in multi-module projects.
 
 ## Task and Build Logic Design
-- Keep custom tasks small and deterministic.
+- SHOULD keep custom tasks small and deterministic.
 - SHOULD avoid heavy imperative logic in build scripts when plugins/conventions are
   more maintainable.
-- Isolate build logic into a convention plugin when the same logic is needed by
-  more than one module.
-- Keep task inputs/outputs declared for caching correctness.
+- SHOULD isolate build logic into a convention plugin when the same logic is needed by more than one module.
+- SHOULD keep task inputs/outputs declared for caching correctness.
 
 ## Performance and Caching
-- Use configuration cache/build cache intentionally and keep builds compatible.
+- SHOULD use configuration cache/build cache intentionally and keep builds compatible.
 - SHOULD avoid tasks with hidden side effects that break caching.
-- Keep build scans/metrics to identify bottlenecks in CI.
-- Keep parallelism settings explicit and environment-aware.
+- SHOULD keep build scans/metrics to identify bottlenecks in CI.
+- SHOULD keep parallelism settings explicit and environment-aware.
 
 ## Multi-Module Governance
-- Keep module boundaries explicit and acyclic.
+- SHOULD keep module boundaries explicit and acyclic.
 - SHOULD avoid broad allprojects/subprojects mutation patterns that hide coupling.
-- Keep dependency direction aligned with architecture boundaries.
+- SHOULD keep dependency direction aligned with architecture boundaries.
 
 ## Security and Supply Chain
-- Use trusted repositories and explicit repository declarations.
-- Keep credentials out of committed files.
+- MUST use trusted repositories and explicit repository declarations.
+- MUST keep credentials out of committed files.
 - Scan dependencies/plugins for vulnerabilities and license compliance.
-- Treat custom plugin code as production code for review/security.
+- MUST treat custom plugin code as production code for review/security.
 
 ## VCS Ignore Additions
 Add these when using Gradle (if not already covered by baseline ignores):
@@ -105,5 +104,5 @@ Do:    task declares inputs/outputs and deterministic behavior.
 - Run vulnerability/license checks for dependency/plugin updates.
 
 ## Override Notes
-- Project convention plugins may add stricter rules, but wrapper usage,
+- Project convention plugins MAY add stricter rules, but wrapper usage,
   deterministic versioning, and secure supply-chain controls remain mandatory.

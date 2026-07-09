@@ -19,33 +19,33 @@ Guidance for AI agents implementing and reviewing Ruby code.
   `TEST/TEST.md`, and `CORE/LOGGING.md`.
 - Inherit shared language constraints from `LANGUAGE/CONVENTIONS.md` and
   `LANGUAGE/READABILITY.md`.
-- Framework/library-specific Ruby docs may specialize API usage but must not
+- Framework/library-specific Ruby docs MAY specialize API usage but MUST NOT
   weaken this baseline.
 
 ## Defaults
 - SHOULD prefer explicit object contracts over ad-hoc dynamic behavior.
-- Keep domain logic separate from framework/transport concerns.
-- Keep side effects explicit and isolated to boundary layers.
-- Keep dependency usage minimal and maintainable.
-- Validate external input at boundaries before domain operations.
+- SHOULD keep domain logic separate from framework/transport concerns.
+- SHOULD keep side effects explicit and isolated to boundary layers.
+- SHOULD keep dependency usage minimal and maintainable.
+- SHOULD validate external input at boundaries before domain operations.
 
 ## API and Object Design
-- Keep class/module responsibilities cohesive.
-- Use explicit method arguments and return expectations for critical paths.
+- SHOULD keep class/module responsibilities cohesive.
+- SHOULD use explicit method arguments and return expectations for critical paths.
 - SHOULD avoid metaprogramming for core business logic when plain Ruby is clearer.
-- Keep mutation boundaries intentional and documented.
+- SHOULD keep mutation boundaries intentional and documented.
 
 ## Error Handling and Reliability
 - Raise/map specific exceptions with contextual information.
 - MUST NOT rescue broad exceptions without bounded rationale.
-- Keep retries/timeouts explicit for external dependencies.
-- Preserve root cause context when mapping errors at boundaries.
+- SHOULD keep retries/timeouts explicit for external dependencies.
+- SHOULD preserve root cause context when mapping errors at boundaries.
 
 ## State and Side-Effect Control
 - SHOULD avoid hidden global state and implicit mutable singletons.
-- Keep transactional boundaries explicit for stateful operations.
-- Keep IO operations at service/adapter boundaries for testability.
-- Keep logging redacted and purpose-minimal for sensitive fields.
+- SHOULD keep transactional boundaries explicit for stateful operations.
+- SHOULD keep IO operations at service/adapter boundaries for testability.
+- MUST keep logging redacted and purpose-minimal for sensitive fields.
 
 ## High-Risk Pitfalls
 1. Overuse of metaprogramming that obscures behavior contracts.
@@ -91,6 +91,6 @@ Do:    isolate IO at clear service/adapter boundaries.
 - Add regression tests for previously observed bug classes.
 
 ## Override Notes
-- Project-specific Ruby conventions may add stricter patterns, but explicit
+- Project-specific Ruby conventions MAY add stricter patterns, but explicit
   contracts, bounded error handling, clear side-effect boundaries, and boundary
   validation remain mandatory.

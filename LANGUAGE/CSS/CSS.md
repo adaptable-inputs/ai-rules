@@ -18,42 +18,41 @@ Guidance for AI agents implementing and reviewing CSS.
 - Inherit naming/readability guidance from
   `LANGUAGE/CONVENTIONS.md` and `LANGUAGE/READABILITY.md`.
 - Inherit security constraints from `SECURITY/SECURITY.md`.
-- Framework styling docs (for example Tailwind) may specialize patterns but
-  should not weaken accessibility or maintainability constraints.
+- Framework styling docs (for example Tailwind) MAY specialize patterns but
+  SHOULD NOT weaken accessibility or maintainability constraints.
 
 ## Defaults
 - SHOULD prefer low-specificity, composable selectors.
-- Use design tokens/variables for colors, spacing, typography, and sizing.
-- Keep style concerns separate from markup structure where practical.
+- SHOULD use design tokens/variables for colors, spacing, typography, and sizing.
+- SHOULD keep style concerns separate from markup structure where practical.
 - SHOULD prefer modern layout systems (`flex`, `grid`) over float/position hacks.
-- Keep responsive behavior mobile-first unless project constraints differ.
+- SHOULD keep responsive behavior mobile-first unless project constraints differ.
 
 ## Selector and Specificity Rules
 - SHOULD avoid IDs in selectors for styling.
-- Keep selector depth shallow.
+- SHOULD keep selector depth shallow.
 - SHOULD avoid `!important` except for controlled utility/override cases with
   documented rationale.
 - SHOULD prefer class-based selectors over element and descendant-heavy chains.
-- Keep state styles explicit (`is-active`, `has-error` patterns).
+- SHOULD keep state styles explicit (`is-active`, `has-error` patterns).
 
 ## Architecture and Reuse
-- Use consistent naming strategy (BEM/utility/component-based) per project.
+- SHOULD use consistent naming strategy (BEM/utility/component-based) per project.
 - Co-locate component styles with component ownership boundaries.
 - SHOULD avoid global leakage; scope styles where tooling supports it.
-- Remove dead styles during refactors.
+- SHOULD remove dead styles during refactors.
 
 ## Accessibility and UX Baseline
-- Preserve visible focus indicators for keyboard navigation.
-- Ensure color contrast meets accessibility requirements.
+- SHOULD preserve visible focus indicators for keyboard navigation.
+- SHOULD ensure color contrast meets accessibility requirements.
 - MUST NOT communicate state by color alone.
-- Respect user preferences (`prefers-reduced-motion`, dark mode policy where
-  applicable).
+- SHOULD respect user preferences (`prefers-reduced-motion`, dark mode policy where applicable).
 
 ## Performance Baseline
 - SHOULD avoid expensive selectors and overly broad wildcard patterns.
 - SHOULD avoid unnecessary layout thrash via frequent class/style mutations.
-- Keep animation properties to performant transforms/opacity when possible.
-- Limit large paint-heavy effects on scrolling/high-frequency interactions.
+- SHOULD keep animation properties to performant transforms/opacity when possible.
+- SHOULD limit large paint-heavy effects on scrolling/high-frequency interactions.
 
 ## High-Risk Pitfalls
 1. Specificity wars requiring escalating selectors or `!important`.
@@ -115,5 +114,5 @@ button:focus-visible {
 
 ## Override Notes
 - Framework-specific styling systems (Tailwind, CSS-in-JS, component-scoped
-  styles) may specialize implementation details but must keep these baseline
+  styles) MAY specialize implementation details but MUST keep these baseline
   accessibility and maintainability constraints.

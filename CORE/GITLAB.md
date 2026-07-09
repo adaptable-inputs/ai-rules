@@ -27,13 +27,13 @@ review lifecycle rules.
 - "review thread" is a discussion.
 
 ## GitLab Specializations
-- Respect MR gates, including required checks and required approvals.
+- MUST respect MR gates, including required checks and required approvals.
 - MUST NOT use force-merge behavior to skip required gates.
-- Use GitLab code suggestions for small, localized fixes.
+- SHOULD use GitLab code suggestions for small, localized fixes.
 
 ## Review Thread Ownership
 GitLab applies the baseline in `CORE/CODE_REVIEW_PLATFORM.md` without override:
-only the author of a review comment may resolve that discussion. There is no
+only the author of a review comment MAY resolve that discussion. There is no
 maintainer-resolution exception on GitLab.
 
 ## High-Risk Pitfalls
@@ -63,5 +63,5 @@ Do:    fix the pipeline, or ask the user how to proceed.
 - Verify no force-merge or gate-bypass actions were used.
 
 ## Override Notes
-- Project-specific GitLab governance may be stricter. The baseline mandates in
+- Project-specific GitLab governance MAY be stricter. The baseline mandates in
   `CORE/CODE_REVIEW_PLATFORM.md` remain in force; GitLab declares no override.

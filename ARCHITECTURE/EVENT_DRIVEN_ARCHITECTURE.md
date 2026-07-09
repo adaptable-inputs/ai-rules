@@ -21,43 +21,42 @@ Guidance for AI agents implementing and reviewing event-driven systems.
 
 ## Event Contract Design
 - Model events as facts about completed domain actions.
-- Use stable, domain-driven event names.
-- Keep payloads explicit and minimal; avoid leaking internal persistence shape.
-- Include metadata for tracing and diagnostics
-  (`eventId`, `occurredAt`, `producer`, `correlationId`, `traceId`).
-- Keep contracts versioned and backward-compatible by default.
+- SHOULD use stable, domain-driven event names.
+- SHOULD keep payloads explicit and minimal; avoid leaking internal persistence shape.
+- SHOULD include metadata for tracing and diagnostics (`eventId`, `occurredAt`, `producer`, `correlationId`, `traceId`).
+- SHOULD keep contracts versioned and backward-compatible by default.
 
 ## Delivery and Processing Semantics
 - Assume at-least-once delivery unless infrastructure guarantees a stronger
   delivery model.
-- Make handlers idempotent.
-- Define deduplication strategy for repeated deliveries.
-- Treat ordering guarantees as explicit contracts, not assumptions.
+- MUST make handlers idempotent.
+- SHOULD define deduplication strategy for repeated deliveries.
+- SHOULD treat ordering guarantees as explicit contracts, not assumptions.
 - SHOULD avoid hard dependency on global ordering unless required and documented.
 
 ## Reliability Patterns
-- Use retries for transient failures with backoff/jitter.
+- SHOULD use retries for transient failures with backoff/jitter.
 - Route poison messages to dead-letter queues/topics.
-- Keep retry limits bounded and observable.
-- Separate business rejection from technical retryable failure.
+- SHOULD keep retry limits bounded and observable.
+- SHOULD separate business rejection from technical retryable failure.
 
 ## Consistency and Workflow Design
-- Use eventual consistency intentionally for cross-boundary workflows.
-- Document consistency expectations and SLA (propagation delays, compensation).
-- Use sagas/compensations for multi-step distributed workflows.
+- SHOULD use eventual consistency intentionally for cross-boundary workflows.
+- SHOULD document consistency expectations and SLA (propagation delays, compensation).
+- SHOULD use sagas/compensations for multi-step distributed workflows.
 - SHOULD avoid hidden coupling via undocumented event dependencies.
 
 ## Security and Governance
-- Validate event payloads at producer and consumer boundaries.
+- MUST validate event payloads at producer and consumer boundaries.
 - MUST NOT include secrets in event payloads.
-- Enforce producer/consumer access controls per topic/stream.
-- Keep schema registry or equivalent governance controls where available.
+- MUST enforce producer/consumer access controls per topic/stream.
+- SHOULD keep schema registry or equivalent governance controls where available.
 
 ## Observability
 - Correlate event flow with `traceId`/`correlationId`.
 - Monitor throughput, lag, retry count, DLQ volume, and processing latency.
-- Log consumer failures with event identity and attempt metadata.
-- Alert on sustained DLQ growth and lag thresholds.
+- SHOULD log consumer failures with event identity and attempt metadata.
+- SHOULD alert on sustained DLQ growth and lag thresholds.
 
 ## High-Risk Pitfalls
 1. Non-idempotent consumers producing duplicate side effects.
@@ -104,6 +103,6 @@ Do:    send invalid message to DLQ with failure reason metadata.
 - Add load/lag tests for throughput-sensitive consumers.
 
 ## Override Notes
-- Broker-specific library docs may change implementation details, but idempotency,
+- Broker-specific library docs MAY change implementation details, but idempotency,
   compatibility, retry safety, and observability constraints here remain
   mandatory.

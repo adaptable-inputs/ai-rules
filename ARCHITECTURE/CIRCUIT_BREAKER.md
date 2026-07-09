@@ -15,25 +15,22 @@ Guidance for AI agents implementing and reviewing circuit breaker patterns.
 - Inherit architecture baseline from `ARCHITECTURE/ARCHITECTURE.md`.
 - Inherit cross-cutting defaults from
   `SECURITY/SECURITY.md`, `TEST/TEST.md`, `CORE/LOGGING.md`.
-- Service communication architecture docs may specialize breaker usage for their
+- Service communication architecture docs MAY specialize breaker usage for their
   communication patterns.
 
 ## Placement Rules
-- Place circuit breakers at every remote dependency boundary: HTTP, gRPC,
-  database, and message broker clients.
+- SHOULD place circuit breakers at every remote dependency boundary: HTTP, gRPC, database, and message broker clients.
 - MUST NOT apply circuit breakers to in-memory pure operations.
-- Keep breaker scope aligned with dependency blast radius.
+- SHOULD keep breaker scope aligned with dependency blast radius.
 
 ## Configuration Defaults
-- Configure timeout, failure-rate threshold, sliding window size, and half-open
-  probe behavior explicitly.
-- Keep retry policy coordinated with breaker settings to avoid storm loops.
-- Use per-dependency configuration; avoid one global profile for all
-  integrations.
-- Keep defaults conservative and tune from production telemetry.
+- SHOULD configure timeout, failure-rate threshold, sliding window size, and half-open probe behavior explicitly.
+- SHOULD keep retry policy coordinated with breaker settings to avoid storm loops.
+- SHOULD use per-dependency configuration; avoid one global profile for all integrations.
+- SHOULD keep defaults conservative and tune from production telemetry.
 
 ## Fallback Strategy
-- Use fallback only when correctness is preserved.
+- SHOULD use fallback only when correctness is preserved.
 - SHOULD prefer explicit degraded mode responses over silent stale/incorrect data.
 - SHOULD avoid fallback chains that hide systemic failures.
 - Record fallback activation as observable event.
@@ -42,14 +39,13 @@ Guidance for AI agents implementing and reviewing circuit breaker patterns.
 - Closed: normal operation.
 - Open: short-circuit calls for cooldown period.
 - Half-open: allow limited probes to test recovery.
-- Keep transitions observable in logs/metrics/events.
+- SHOULD keep transitions observable in logs/metrics/events.
 
 ## Observability Requirements
-- Emit metrics for call outcomes, breaker state transitions, and short-circuit
-  counts.
-- Log contextual events on open/close transitions with dependency identity.
-- Alert on sustained open state and high fallback rates.
-- Track user-facing degradation tied to breaker events.
+- SHOULD emit metrics for call outcomes, breaker state transitions, and short-circuit counts.
+- SHOULD log contextual events on open/close transitions with dependency identity.
+- SHOULD alert on sustained open state and high fallback rates.
+- SHOULD track user-facing degradation tied to breaker events.
 
 ## High-Risk Pitfalls
 1. Circuit breaker applied too broadly, masking healthy dependencies.
@@ -94,6 +90,6 @@ Do:    bounded retries with jitter and breaker-aware policy.
 - Test recovery behavior after dependency returns healthy.
 
 ## Override Notes
-- Library/framework docs may prescribe implementation API (for example
+- Library/framework docs MAY prescribe implementation API (for example
   Resilience4j annotations), but placement, correctness, and observability
   constraints in this file remain mandatory.

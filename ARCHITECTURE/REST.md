@@ -18,15 +18,15 @@ Guidance for AI agents implementing and reviewing REST-style APIs.
   mandatory cross-cutting constraints).
 - Inherit architecture boundaries from `ARCHITECTURE/ARCHITECTURE.md` and
   `ARCHITECTURE/CLEAN_ARCHITECTURE.md`.
-- Specialized framework docs may refine implementation details but should keep
+- Specialized framework docs MAY refine implementation details but SHOULD keep
   protocol/contract constraints here.
 
 ## Resource and URI Design
 - Model APIs around resources and domain capabilities, not UI internals.
-- Keep URIs noun-based and stable.
-- Use plural resource names for collections.
-- Keep hierarchy shallow; avoid deeply nested paths when IDs suffice.
-- Use explicit sub-resources only when ownership relationship is clear.
+- SHOULD keep URIs noun-based and stable.
+- SHOULD use plural resource names for collections.
+- SHOULD keep hierarchy shallow; avoid deeply nested paths when IDs suffice.
+- SHOULD use explicit sub-resources only when ownership relationship is clear.
 
 ## HTTP Method Semantics
 - `GET`: safe and read-only.
@@ -37,40 +37,36 @@ Guidance for AI agents implementing and reviewing REST-style APIs.
 - MUST NOT overload methods with mismatched behavior.
 
 ## Status Codes and Error Model
-- Use standard status codes consistently.
-- Return machine-readable error payloads with stable fields
-  (`code`, `message`, `details`, `traceId`).
-- Distinguish validation failures (`4xx`) from server/dependency failures
-  (`5xx`).
+- SHOULD use standard status codes consistently.
+- SHOULD return machine-readable error payloads with stable fields (`code`, `message`, `details`, `traceId`).
+- SHOULD distinguish validation failures (`4xx`) from server/dependency failures (`5xx`).
 - SHOULD avoid returning `200` for failed operations.
 
 ## Versioning and Compatibility
 - SHOULD prefer backward-compatible additive changes.
 - Deprecate before removal and document timelines.
 - Version APIs only when compatibility cannot be preserved.
-- Keep response fields stable; avoid semantic field repurposing.
+- SHOULD keep response fields stable; avoid semantic field repurposing.
 
 ## Pagination, Filtering, and Sorting
 - Paginate list endpoints by default when cardinality can grow.
-- Keep filtering/sorting parameters explicit and validated.
-- Ensure pagination ordering is deterministic.
-- Return pagination metadata when useful (`total`, `nextCursor`, etc.).
+- SHOULD keep filtering/sorting parameters explicit and validated.
+- SHOULD ensure pagination ordering is deterministic.
+- SHOULD return pagination metadata when useful (`total`, `nextCursor`, etc.).
 
 ## Concurrency and Idempotency
-- Support idempotency keys for retry-prone create endpoints when needed.
-- Use conditional requests (`ETag`, `If-Match`) for optimistic concurrency where
-  applicable.
-- Document retry-safe operations clearly.
+- SHOULD support idempotency keys for retry-prone create endpoints when needed.
+- SHOULD use conditional requests (`ETag`, `If-Match`) for optimistic concurrency where applicable.
+- SHOULD document retry-safe operations clearly.
 
 ## Caching and Performance
-- Use cache headers intentionally for cacheable responses.
+- SHOULD use cache headers intentionally for cacheable responses.
 - SHOULD avoid over-fetching payloads; use targeted representations.
-- Keep response times predictable for hot paths and monitor SLA-critical
-  endpoints.
+- SHOULD keep response times predictable for hot paths and monitor SLA-critical endpoints.
 
 ## Security Baseline
-- Enforce authentication and authorization at resource boundaries.
-- Validate and sanitize all input parameters/body fields.
+- MUST enforce authentication and authorization at resource boundaries.
+- MUST validate and sanitize all input parameters/body fields.
 - MUST NOT expose internal stack traces or sensitive fields in responses.
 - Rate-limit and monitor abusive access patterns.
 
@@ -123,5 +119,5 @@ Do:    GET /orders?cursor=...&limit=50 with deterministic ordering
 - Test backward compatibility for non-breaking API evolution.
 
 ## Override Notes
-- Framework docs may define controller/handler idioms, but REST contract,
+- Framework docs MAY define controller/handler idioms, but REST contract,
   compatibility, and security requirements in this file remain authoritative.

@@ -18,36 +18,36 @@ Guidance for AI agents implementing and reviewing Helm charts.
 - Inherit security constraints from `SECURITY/SECURITY.md`.
 
 ## Defaults
-- Keep charts small, purpose-focused, and versioned.
-- Keep values explicit and documented.
-- Keep templates readable; avoid over-abstracted logic.
-- Keep environment overrides controlled and minimal.
+- SHOULD keep charts small, purpose-focused, and versioned.
+- SHOULD keep values explicit and documented.
+- SHOULD keep templates readable; avoid over-abstracted logic.
+- SHOULD keep environment overrides controlled and minimal.
 
 ## Chart Structure and Values Governance
-- Keep default `values.yaml` safe and production-aware.
+- SHOULD keep default `values.yaml` safe and production-aware.
 - Group values by domain concern (image, resources, probes, ingress, etc.).
 - SHOULD avoid hidden behavior behind implicit defaults.
 - SHOULD prefer explicit booleans/enums over magic strings.
-- Keep backward compatibility for chart consumers when evolving values.
+- SHOULD keep backward compatibility for chart consumers when evolving values.
 
 ## Templating Rules
 - SHOULD prefer simple, readable template expressions.
 - SHOULD avoid deep nested conditionals in templates.
-- Use helper templates for repeated fragments.
-- Validate required values explicitly (fail early with clear messages).
+- SHOULD use helper templates for repeated fragments.
+- SHOULD validate required values explicitly (fail early with clear messages).
 - SHOULD avoid business logic in chart templates.
 
 ## Release and Upgrade Strategy
-- Use semantic versioning for charts.
-- Document breaking value/schema changes clearly.
+- SHOULD use semantic versioning for charts.
+- SHOULD document breaking value/schema changes clearly.
 - SHOULD prefer additive changes and deprecation windows.
-- Keep rollback strategy tested for critical services.
+- SHOULD keep rollback strategy tested for critical services.
 
 ## Security and Secret Handling
 - MUST NOT commit plaintext secrets in chart values.
 - Integrate secret management mechanisms (sealed/external secrets) as policy
   requires.
-- Keep service account and security context defaults least-privilege.
+- MUST keep service account and security context defaults least-privilege.
 
 ## High-Risk Pitfalls
 1. Template complexity making rendered output unpredictable.
@@ -91,5 +91,5 @@ Do:    keep templates declarative and infrastructure-focused.
 - Test upgrade and rollback paths in staging for critical charts.
 
 ## Override Notes
-- Platform-specific deployment policies may add stricter requirements, but chart
+- Platform-specific deployment policies MAY add stricter requirements, but chart
   readability, values governance, and secret safety here remain mandatory.

@@ -17,7 +17,7 @@ Guidance for AI agents implementing and reviewing shell scripts.
 - Inherit security constraints from `SECURITY/SECURITY.md`.
 - Inherit readability conventions from `LANGUAGE/CONVENTIONS.md` and
   `LANGUAGE/READABILITY.md`.
-- Build/CI docs may specialize execution contexts but must preserve safety
+- Build/CI docs MAY specialize execution contexts but MUST preserve safety
   constraints here.
 
 ## Defaults
@@ -26,35 +26,35 @@ Guidance for AI agents implementing and reviewing shell scripts.
 - Enable strict mode for Bash scripts:
   `set -euo pipefail` and safe `IFS` handling when needed.
 - Quote variable expansions by default (`"$var"`).
-- Use functions to structure scripts; keep `main` flow explicit.
-- Keep scripts idempotent where practical.
+- SHOULD use functions to structure scripts; keep `main` flow explicit.
+- SHOULD keep scripts idempotent where practical.
 
 ## Error Handling and Exit Behavior
-- Fail fast on command failures unless explicitly handling error cases.
-- Use explicit error messages for failure paths (`echo ... >&2`).
+- MUST fail fast on command failures unless explicitly handling error cases.
+- SHOULD use explicit error messages for failure paths (`echo ... >&2`).
 - Check required commands and inputs early.
-- For cleanup logic, use `trap` handlers.
-- Keep exit codes meaningful and consistent.
+- For cleanup logic, SHOULD use `trap` handlers.
+- SHOULD keep exit codes meaningful and consistent.
 
 ## Security Guardrails
 - MUST NOT build shell commands by concatenating untrusted input.
 - SHOULD avoid `eval` unless there is no alternative and input is tightly controlled.
 - MUST NOT print secrets/tokens to logs.
-- Use least-privilege execution; avoid unnecessary `sudo`.
-- Validate file paths and arguments before destructive operations.
+- MUST use least-privilege execution; avoid unnecessary `sudo`.
+- MUST validate file paths and arguments before destructive operations.
 
 ## Portability and Environment
-- Be explicit about shell features requiring Bash vs POSIX sh.
+- SHOULD be explicit about shell features requiring Bash vs POSIX sh.
 - SHOULD avoid relying on environment-specific behavior without checks.
-- Use `command -v` for dependency checks.
+- SHOULD use `command -v` for dependency checks.
 - SHOULD avoid hidden reliance on interactive shell state.
 
 ## Data and Loop Handling
 - SHOULD prefer arrays over word-splitting where Bash arrays are available.
-- Use `read -r` to preserve backslashes.
+- SHOULD use `read -r` to preserve backslashes.
 - SHOULD avoid parsing command output with brittle text assumptions when machine-
   readable alternatives exist.
-- Be careful with globbing and empty-match behavior.
+- SHOULD be careful with globbing and empty-match behavior.
 
 ## High-Risk Pitfalls
 1. Unquoted expansions causing word splitting and glob injection.
@@ -109,9 +109,9 @@ tar -czf backup.tar.gz -- "$INPUT_PATH"
 - Run static analysis (`shellcheck`) in CI.
 - Test scripts in clean environments (minimal env vars).
 - Test failure paths and non-zero exit behavior.
-- Test idempotency where scripts may run repeatedly.
+- Test idempotency where scripts MAY run repeatedly.
 - Add integration tests for critical automation scripts.
 
 ## Override Notes
-- CI/build-tool docs may prescribe runtime wrappers/entrypoints, but strict
+- CI/build-tool docs MAY prescribe runtime wrappers/entrypoints, but strict
   quoting, safety, and injection guardrails here remain mandatory.

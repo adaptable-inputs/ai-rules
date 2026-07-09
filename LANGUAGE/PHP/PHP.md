@@ -19,33 +19,33 @@ Guidance for AI agents implementing and reviewing PHP code.
   `TEST/TEST.md`, and `CORE/LOGGING.md`.
 - Inherit shared language constraints from `LANGUAGE/CONVENTIONS.md` and
   `LANGUAGE/READABILITY.md`.
-- Framework/library-specific PHP docs may specialize API usage but must not
+- Framework/library-specific PHP docs MAY specialize API usage but MUST NOT
   weaken this baseline.
 
 ## Defaults
 - Enable strict typing mode (`declare(strict_types=1)`) for application code.
-- Keep function and public API type declarations explicit.
-- Keep business logic separated from transport/framework glue code.
-- Keep configuration and secrets outside source code.
-- Keep dependency surface minimal and justified.
+- SHOULD keep function and public API type declarations explicit.
+- SHOULD keep business logic separated from transport/framework glue code.
+- MUST keep configuration and secrets outside source code.
+- SHOULD keep dependency surface minimal and justified.
 
 ## Typing and API Contracts
 - Type parameters, return values, and properties where supported.
 - SHOULD avoid mixed/dynamic shapes for core domain contracts.
-- Use value objects/DTOs for structured domain data.
-- Validate external input at boundaries before domain processing.
+- SHOULD use value objects/DTOs for structured domain data.
+- SHOULD validate external input at boundaries before domain processing.
 
 ## Error and Resource Handling
-- Throw/map specific exception types with actionable context.
+- SHOULD throw/map specific exception types with actionable context.
 - MUST NOT suppress errors silently.
-- Use deterministic cleanup for external resources (files/sockets/locks).
-- Keep error-to-response mapping explicit at API boundaries.
+- SHOULD use deterministic cleanup for external resources (files/sockets/locks).
+- SHOULD keep error-to-response mapping explicit at API boundaries.
 
 ## State and Side-Effect Control
 - SHOULD avoid hidden mutable globals and implicit state.
-- Keep side effects explicit in service boundaries.
-- Keep static state and singleton usage minimal and intentional.
-- Keep IO interactions isolated for testability.
+- SHOULD keep side effects explicit in service boundaries.
+- SHOULD keep static state and singleton usage minimal and intentional.
+- SHOULD keep IO interactions isolated for testability.
 
 ## High-Risk Pitfalls
 1. Running with loose typing and implicit coercion in domain logic.
@@ -91,6 +91,6 @@ Do:    validate and normalize boundary input first.
 - Add regression tests for previously observed bug classes.
 
 ## Override Notes
-- Project-specific PHP conventions may add stricter patterns, but strict type
+- Project-specific PHP conventions MAY add stricter patterns, but strict type
   discipline, explicit boundary validation, safe error handling, and clear
   side-effect boundaries remain mandatory.

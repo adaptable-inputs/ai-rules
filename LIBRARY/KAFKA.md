@@ -20,37 +20,37 @@ Guidance for AI agents implementing and reviewing Apache Kafka usage.
   `SECURITY/SECURITY.md` and `CORE/LOGGING.md`.
 
 ## Defaults
-- Use clear domain-based topic naming and ownership.
-- Keep schema evolution backward-compatible by default.
-- Design consumers for at-least-once delivery semantics.
-- Keep producer/consumer configs explicit and version-controlled.
+- SHOULD use clear domain-based topic naming and ownership.
+- SHOULD keep schema evolution backward-compatible by default.
+- SHOULD design consumers for at-least-once delivery semantics.
+- SHOULD keep producer/consumer configs explicit and version-controlled.
 
 ## Topic and Schema Rules
-- Keep topic partitioning strategy aligned with throughput/order requirements.
-- Keep retention/compaction policy intentional.
-- Use schema registry/contract governance where available.
+- SHOULD keep topic partitioning strategy aligned with throughput/order requirements.
+- SHOULD keep retention/compaction policy intentional.
+- SHOULD use schema registry/contract governance where available.
 - SHOULD avoid leaking internal model churn into public event contracts.
 
 ## Producer Rules
-- Keep key strategy intentional for partition affinity/order semantics.
+- SHOULD keep key strategy intentional for partition affinity/order semantics.
 - Enable idempotent producer settings (`enable.idempotence` with compatible
   `acks`/retry configuration) where retry-duplicate suppression is required.
-- Treat producer idempotence as a producer-session guarantee only; handle
-  end-to-end deduplication/idempotency at consumer/workflow boundaries.
-- Handle send failures with clear retry/error policy.
+- SHOULD treat producer idempotence as a producer-session guarantee only; handle end-to-end deduplication/idempotency at
+  consumer/workflow boundaries.
+- SHOULD handle send failures with clear retry/error policy.
 - SHOULD avoid fire-and-forget publishing without observability.
 
 ## Consumer Rules
-- Keep handlers idempotent and retry-safe.
-- Distinguish transient vs permanent processing failures.
+- MUST keep handlers idempotent and retry-safe.
+- SHOULD distinguish transient vs permanent processing failures.
 - Route poison messages to DLQ with context.
-- Keep offset commit strategy aligned with processing semantics.
+- SHOULD keep offset commit strategy aligned with processing semantics.
 
 ## Observability and Operations
 - Monitor lag, throughput, retry rates, and DLQ volume.
-- Track rebalance frequency and consumer health.
-- Log processing failures with topic/partition/offset context.
-- Alert on sustained lag and retry storms.
+- SHOULD track rebalance frequency and consumer health.
+- SHOULD log processing failures with topic/partition/offset context.
+- SHOULD alert on sustained lag and retry storms.
 
 ## High-Risk Pitfalls
 1. Non-idempotent consumers producing duplicate side effects.
@@ -94,5 +94,5 @@ Do:    send to DLQ with reason metadata.
 - Add load/lag tests for throughput-sensitive consumers.
 
 ## Override Notes
-- Broker/platform-specific settings may vary, but contract compatibility,
+- Broker/platform-specific settings MAY vary, but contract compatibility,
   idempotency, and observability constraints here remain mandatory.

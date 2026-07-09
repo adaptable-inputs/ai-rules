@@ -16,41 +16,40 @@ Guidance for AI agents managing Node.js dependencies (npm, Yarn, pnpm).
 - Inherit security constraints from `SECURITY/SECURITY.md`.
 - Inherit compliance constraints from `COMPLIANCE/LICENSES.md`.
 - Inherit CI pipeline constraints from `CI-CD/CI-CD.md`.
-- Tool-specific alternatives (for example Bun) may specialize behavior but must
+- Tool-specific alternatives (for example Bun) MAY specialize behavior but MUST
   preserve reproducibility/supply-chain controls.
 
 ## Defaults
-- Use one package manager per repository.
-- Keep a single authoritative lockfile committed.
-- Pin Node runtime version (`.nvmrc`, `engines`, toolchain config).
-- Use deterministic install mode in CI (`npm ci`, `pnpm install --frozen-lockfile`,
-  etc.).
-- Keep scripts explicit and side-effect aware.
+- SHOULD use one package manager per repository.
+- MUST keep a single authoritative lockfile committed.
+- MUST pin Node runtime version (`.nvmrc`, `engines`, toolchain config).
+- MUST use deterministic install mode in CI (`npm ci`, `pnpm install --frozen-lockfile`, etc.).
+- SHOULD keep scripts explicit and side-effect aware.
 
 ## Dependency Policy
 - SHOULD prefer stable, maintained packages with compatible licenses.
-- Minimize runtime dependencies; avoid redundant utility overlap.
-- Pin major versions deliberately; upgrade with changelog review.
-- Use overrides/resolutions intentionally and document rationale.
+- SHOULD minimize runtime dependencies; avoid redundant utility overlap.
+- MUST pin major versions deliberately; upgrade with changelog review.
+- SHOULD use overrides/resolutions intentionally and document rationale.
 
 ## Script and Workspace Rules
-- Keep package scripts composable and predictable.
+- SHOULD keep package scripts composable and predictable.
 - SHOULD avoid scripts that depend on implicit global tools.
-- For monorepos, keep workspace boundaries explicit.
+- For monorepos, SHOULD keep workspace boundaries explicit.
 - SHOULD avoid cross-package script coupling without clear contracts.
 
 ## Supply-Chain and Security Guardrails
 - MUST NOT commit auth tokens in `.npmrc`.
-- Use secret-injection in CI for registry credentials.
+- MUST use secret-injection in CI for registry credentials.
 - Enable dependency vulnerability scanning in CI.
-- Verify integrity/signature mechanisms where supported.
+- SHOULD verify integrity/signature mechanisms where supported.
 - SHOULD avoid automatic postinstall script trust for unknown packages.
 
 ## Performance and Reliability
-- Use caching in CI keyed by lockfile and runtime version.
+- MUST use caching in CI keyed by lockfile and runtime version.
 - SHOULD avoid unnecessary reinstall churn.
-- Keep node_modules out of VCS.
-- Keep install/build logs actionable and fail fast on dependency errors.
+- SHOULD keep node_modules out of VCS.
+- SHOULD keep install/build logs actionable and fail fast on dependency errors.
 
 ## VCS Ignore Additions
 Add these when using Node tooling (if not already in baseline ignore list):
@@ -101,6 +100,6 @@ Do:    inject registry auth at CI runtime only.
 - Test workspace script execution for changed packages.
 
 ## Override Notes
-- Specialized package-manager docs may narrow manager-specific behavior, but
+- Specialized package-manager docs MAY narrow manager-specific behavior, but
   lockfile discipline, deterministic installs, and secret/supply-chain safety
   here remain mandatory.

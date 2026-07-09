@@ -28,44 +28,35 @@ Guidance for AI agents implementing and reviewing Ionic applications.
 ## Defaults and Guardrails
 - SHOULD prefer Ionic with Capacitor for modern mobile and web delivery.
 - SHOULD prefer official Ionic UI components before creating custom equivalents.
-- Keep UI concerns in pages/components and platform integration in dedicated
-  services/adapters.
-- Keep native plugin usage behind small abstractions to simplify testing and
-  platform fallbacks.
-- Keep loading, empty, offline, and error states explicit for each critical
-  mobile flow.
-- Keep permission usage minimal and only request permissions when needed by a
-  user-initiated action.
+- SHOULD keep UI concerns in pages/components and platform integration in dedicated services/adapters.
+- SHOULD keep native plugin usage behind small abstractions to simplify testing and platform fallbacks.
+- SHOULD keep loading, empty, offline, and error states explicit for each critical mobile flow.
+- SHOULD keep permission usage minimal and only request permissions when needed by a user-initiated action.
 
 ## Navigation and Lifecycle
-- Keep route definitions explicit and feature-oriented.
-- Use Ionic page lifecycle hooks only for page-level side effects that cannot
-  be modeled cleanly with framework-native patterns.
-- Ensure navigation-triggered async work is cancelable to avoid stale updates
-  after fast route changes.
-- Keep back-navigation behavior deterministic across iOS, Android, and web.
+- SHOULD keep route definitions explicit and feature-oriented.
+- SHOULD use Ionic page lifecycle hooks only for page-level side effects that cannot be modeled cleanly with
+  framework-native patterns.
+- SHOULD ensure navigation-triggered async work is cancelable to avoid stale updates after fast route changes.
+- SHOULD keep back-navigation behavior deterministic across iOS, Android, and web.
 
 ## Native Bridge and Plugin Policy
 - SHOULD prefer official Capacitor plugins before third-party plugins.
-- Validate plugin maintenance, platform support, and permission footprint
-  before adoption.
-- Keep platform checks centralized in service boundaries, not scattered through
-  page components.
-- Provide graceful fallback behavior when a capability is unavailable on web
-  or in restricted device contexts.
+- SHOULD validate plugin maintenance, platform support, and permission footprint before adoption.
+- SHOULD keep platform checks centralized in service boundaries, not scattered through page components.
+- SHOULD provide graceful fallback behavior when a capability is unavailable on web or in restricted device contexts.
 
 ## Performance and UX
-- Keep first-screen rendering lightweight and lazy-load deeper route trees.
+- SHOULD keep first-screen rendering lightweight and lazy-load deeper route trees.
 - SHOULD avoid unnecessary re-renders and large synchronous work on interaction paths.
-- Keep list rendering efficient (`trackBy`/stable keys, incremental loading).
-- Keep touch interactions responsive and avoid blocking animations with heavy
-  synchronous logic.
+- SHOULD keep list rendering efficient (`trackBy`/stable keys, incremental loading).
+- SHOULD keep touch interactions responsive and avoid blocking animations with heavy synchronous logic.
 
 ## Security
 - MUST NOT render untrusted HTML in Ionic views.
 - MUST NOT persist secrets in plaintext storage.
-- Keep token/session storage strategy aligned with project security policy.
-- Validate deep-link and external-intent inputs before navigation or execution.
+- MUST keep token/session storage strategy aligned with project security policy.
+- MUST validate deep-link and external-intent inputs before navigation or execution.
 
 ## High-Risk Pitfalls
 1. Direct plugin calls spread across page components.
@@ -161,6 +152,6 @@ export function isNativeMobile(): boolean {
 - Test list-heavy screens on low-end device emulation for responsiveness.
 
 ## Override Notes
-- Project-specific mobile requirements may add stricter delivery constraints,
+- Project-specific mobile requirements MAY add stricter delivery constraints,
   but plugin-boundary isolation, permission discipline, and fallback safety
   remain mandatory.

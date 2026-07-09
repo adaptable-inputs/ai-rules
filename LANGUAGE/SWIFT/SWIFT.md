@@ -19,40 +19,40 @@ Guidance for AI agents implementing and reviewing Swift code.
   `TEST/TEST.md`, and `CORE/LOGGING.md`.
 - Inherit shared language constraints from `LANGUAGE/CONVENTIONS.md` and
   `LANGUAGE/READABILITY.md`.
-- Framework/library-specific Swift docs may specialize API usage but must not
+- Framework/library-specific Swift docs MAY specialize API usage but MUST NOT
   weaken this baseline.
 
 ## Defaults
 - SHOULD prefer value semantics (`struct`, immutable state) when practical.
-- Keep optional handling explicit and avoid force-unwrapping in runtime paths.
-- Use Swift concurrency (`async`/`await`, actors) with explicit isolation.
-- Keep API contracts and error paths explicit and testable.
-- Keep domain logic separate from UI/framework lifecycle code.
+- SHOULD keep optional handling explicit and avoid force-unwrapping in runtime paths.
+- SHOULD use Swift concurrency (`async`/`await`, actors) with explicit isolation.
+- SHOULD keep API contracts and error paths explicit and testable.
+- SHOULD keep domain logic separate from UI/framework lifecycle code.
 
 ## Optionals and Type Contracts
 - Model absence with optionals intentionally.
 - SHOULD avoid `!` unless a bounded invariant is proven and documented.
-- Keep boundary parsing/validation explicit for external input.
-- Use enums/value objects for constrained domain states where suitable.
+- SHOULD keep boundary parsing/validation explicit for external input.
+- SHOULD use enums/value objects for constrained domain states where suitable.
 
 ## Concurrency and Isolation Rules
-- Use structured concurrency for async workflows.
-- Use actors or other safe synchronization for shared mutable state.
+- SHOULD use structured concurrency for async workflows.
+- SHOULD use actors or other safe synchronization for shared mutable state.
 - SHOULD avoid blocking the main actor with long-running work.
-- Keep cancellation and timeout behavior explicit for external IO.
-- Keep task ownership/lifecycle clear to avoid orphaned async work.
+- SHOULD keep cancellation and timeout behavior explicit for external IO.
+- SHOULD keep task ownership/lifecycle clear to avoid orphaned async work.
 
 ## Error and Resource Handling
-- Throw/map specific errors with actionable context.
+- SHOULD throw/map specific errors with actionable context.
 - MUST NOT suppress errors silently.
-- Use deterministic cleanup for files/network/resources.
-- Preserve cause context when mapping low-level failures.
+- SHOULD use deterministic cleanup for files/network/resources.
+- SHOULD preserve cause context when mapping low-level failures.
 
 ## API and Module Boundaries
-- Keep module boundaries cohesive with explicit dependency direction.
-- Keep protocol abstractions purposeful, not premature.
-- Keep side effects isolated at service/adaptor boundaries.
-- Keep configuration/secrets outside code.
+- SHOULD keep module boundaries cohesive with explicit dependency direction.
+- SHOULD keep protocol abstractions purposeful, not premature.
+- SHOULD keep side effects isolated at service/adaptor boundaries.
+- MUST keep configuration/secrets outside code.
 
 ## High-Risk Pitfalls
 1. Force-unwrapping optionals in normal runtime paths.
@@ -98,6 +98,6 @@ Do:    move heavy work off main actor and update UI intentionally.
 - Add regression tests for previously observed bug classes.
 
 ## Override Notes
-- Project-specific Swift conventions may add stricter patterns, but optional
+- Project-specific Swift conventions MAY add stricter patterns, but optional
   safety, structured concurrency/isolation, explicit error handling, and clear
   boundary separation remain mandatory.

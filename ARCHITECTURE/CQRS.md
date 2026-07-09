@@ -23,36 +23,34 @@ Responsibility Segregation (CQRS) architectures.
   `SECURITY/SECURITY.md`, `TEST/TEST.md`, `CORE/LOGGING.md`.
 
 ## CQRS Decision Rules
-- Use CQRS only when command and query concerns have materially different
-  scaling, consistency, or model complexity.
+- SHOULD use CQRS only when command and query concerns have materially different scaling, consistency, or model
+  complexity.
 - MUST NOT apply CQRS by default for simple CRUD domains.
-- Document why separation is needed before introducing additional moving parts.
+- SHOULD document why separation is needed before introducing additional moving parts.
 
 ## Command-Side Rules
 - Commands represent intent to change state and enforce domain invariants.
-- Keep command handlers transactional and explicit about side effects.
-- Validate authorization and invariants before state mutation.
-- Ensure command handling is idempotent for retry-prone paths.
+- SHOULD keep command handlers transactional and explicit about side effects.
+- MUST validate authorization and invariants before state mutation.
+- MUST ensure command handling is idempotent for retry-prone paths.
 
 ## Query-Side Rules
-- Queries must be read-only and must not mutate domain state.
-- Optimize read models for consumer needs; do not force write-model shape on
-  read use cases.
-- Keep query contracts explicit and stable.
-- Make staleness expectations explicit when using eventually consistent reads.
+- Queries MUST be read-only and MUST NOT mutate domain state.
+- SHOULD optimize read models for consumer needs; do not force write-model shape on read use cases.
+- SHOULD keep query contracts explicit and stable.
+- SHOULD make staleness expectations explicit when using eventually consistent reads.
 
 ## Consistency and Projection Rules
-- Treat eventual consistency as an explicit product contract.
-- Define projection update strategy and recovery behavior (replay/rebuild).
-- Keep projection handlers idempotent and replay-safe.
-- Track projection lag and expose operational signals for stale reads.
+- SHOULD treat eventual consistency as an explicit product contract.
+- SHOULD define projection update strategy and recovery behavior (replay/rebuild).
+- MUST keep projection handlers idempotent and replay-safe.
+- SHOULD track projection lag and expose operational signals for stale reads.
 
 ## Reliability and Operability
-- Use correlation IDs to trace command-to-projection flow.
-- Bound retries with a maximum attempt count, then route poison
-  events/messages to a dead-letter destination.
-- Emit structured logs for command execution and projection failures.
-- Alert on sustained projection lag, retry storms, and replay failures.
+- SHOULD use correlation IDs to trace command-to-projection flow.
+- SHOULD bound retries with a maximum attempt count, then route poison events/messages to a dead-letter destination.
+- SHOULD emit structured logs for command execution and projection failures.
+- SHOULD alert on sustained projection lag, retry storms, and replay failures.
 
 ## High-Risk Pitfalls
 1. Adopting CQRS without concrete scaling/complexity need.
@@ -99,6 +97,6 @@ Do:    dedupe by eventId/version and apply projection updates once.
 - Add operational tests/alerts for lag thresholds and failure recovery.
 
 ## Override Notes
-- Framework/library docs may define CQRS implementation mechanics, but command/
+- Framework/library docs MAY define CQRS implementation mechanics, but command/
   query separation, consistency contracts, and operability constraints in this
   file remain mandatory.

@@ -22,29 +22,29 @@ Guidance for AI agents implementing and reviewing jOOQ-based data access.
 
 ## Defaults
 - SHOULD prefer generated jOOQ types for compile-time safety.
-- Keep SQL logic in data-access boundaries, not service/controller layers.
-- Keep query composition readable and explicit.
+- SHOULD keep SQL logic in data-access boundaries, not service/controller layers.
+- SHOULD keep query composition readable and explicit.
 - SHOULD prefer explicit projections over broad row mapping where possible.
-- Keep transaction boundaries aligned with use-case orchestration.
+- SHOULD keep transaction boundaries aligned with use-case orchestration.
 
 ## Query Composition Rules
-- Extract reusable query fragments only when readability improves.
+- SHOULD extract reusable query fragments only when readability improves.
 - SHOULD avoid giant chained query builders with hidden conditions.
-- Keep joins/conditions explicit and index-aware.
+- SHOULD keep joins/conditions explicit and index-aware.
 - Parameterize all external values.
-- Validate generated SQL and query plans for hot paths.
+- SHOULD validate generated SQL and query plans for hot paths.
 
 ## Code Generation and Schema Alignment
-- Keep jOOQ codegen in sync with schema migrations.
-- Treat generated source as build artifact (do not hand-edit).
-- Pin generator/runtime versions consistently.
-- Validate diff impact when schema changes.
+- SHOULD keep jOOQ codegen in sync with schema migrations.
+- SHOULD treat generated source as build artifact (do not hand-edit).
+- MUST pin generator/runtime versions consistently.
+- SHOULD validate diff impact when schema changes.
 
 ## Transaction and Consistency
-- Use transactional context explicitly for write workflows.
+- SHOULD use transactional context explicitly for write workflows.
 - SHOULD avoid mixing conflicting ORM contexts in same transaction without clear
   strategy.
-- Keep retries/locking behavior intentional for conflict-prone operations.
+- SHOULD keep retries/locking behavior intentional for conflict-prone operations.
 
 ## High-Risk Pitfalls
 1. Query builder chains too complex to review.
@@ -88,5 +88,5 @@ Do:    regenerate jOOQ sources as part of migration/build workflow.
 - Test transaction rollback/conflict behavior.
 
 ## Override Notes
-- JPA may be used for simpler CRUD domains, but jOOQ usage should preserve SQL
+- JPA MAY be used for simpler CRUD domains, but jOOQ usage SHOULD preserve SQL
   clarity, codegen alignment, and transaction safety constraints here.

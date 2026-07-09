@@ -21,29 +21,29 @@ Guidance for AI agents implementing and reviewing JPA-based persistence.
   parents above.
 
 ## Defaults
-- Keep entities persistence-focused; keep business workflows in services.
+- SHOULD keep entities persistence-focused; keep business workflows in services.
 - SHOULD prefer explicit mappings for non-trivial columns/relations.
-- Use `@Enumerated(EnumType.STRING)` for enums.
+- SHOULD use `@Enumerated(EnumType.STRING)` for enums.
 - SHOULD prefer LAZY associations by default; fetch explicitly per use case.
-- Keep transaction boundaries explicit and use-case aligned.
+- SHOULD keep transaction boundaries explicit and use-case aligned.
 
 ## Mapping and Entity Design
-- Keep equals/hashCode on entities identity-safe.
+- SHOULD keep equals/hashCode on entities identity-safe.
 - SHOULD avoid exposing mutable collections directly.
-- Keep cascade rules minimal and intentional.
+- SHOULD keep cascade rules minimal and intentional.
 - SHOULD avoid bidirectional relationships unless they add real query/navigation value.
-- Keep embeddables/value objects for cohesive grouped fields.
+- SHOULD keep embeddables/value objects for cohesive grouped fields.
 
 ## Query and Fetch Strategy
 - SHOULD avoid N+1 via fetch joins/entity graphs/DTO projections.
 - SHOULD prefer explicit queries for non-trivial reads.
 - SHOULD avoid large object graph loading when only subset fields are needed.
-- Validate generated SQL for critical queries.
+- SHOULD validate generated SQL for critical queries.
 
 ## Transaction and Consistency
-- Keep transactions short; avoid remote IO inside transaction scope.
-- Be explicit about locking strategy for concurrency-sensitive writes.
-- Handle optimistic lock exceptions intentionally.
+- SHOULD keep transactions short; avoid remote IO inside transaction scope.
+- MUST be explicit about locking strategy for concurrency-sensitive writes.
+- SHOULD handle optimistic lock exceptions intentionally.
 - SHOULD avoid Open Session in View dependence for core business behavior.
 
 ## High-Risk Pitfalls
@@ -94,6 +94,6 @@ Do:    isolate external call from persistence transaction boundary.
 - Test serialization boundaries to avoid lazy-loading surprises.
 
 ## Override Notes
-- jOOQ or custom SQL may be preferred for complex query/reporting scenarios.
-- JPA-specific convenience should not override query predictability and
+- jOOQ or custom SQL MAY be preferred for complex query/reporting scenarios.
+- JPA-specific convenience SHOULD NOT override query predictability and
   transaction safety constraints.

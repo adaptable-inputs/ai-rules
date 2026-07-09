@@ -28,14 +28,14 @@ Guidance for AI agents performing code and rules-document reviews.
 - Severity levels are defined by this document's local severity model.
 
 ## Ruleset Read Gate (Mandatory)
-- Start every review task by reading the complete ai-rules ruleset.
+- SHOULD start every review task by reading the complete ai-rules ruleset.
 - "Complete ai-rules ruleset" means every Markdown file transitively reachable
   from the baseline entry point `AI.md`.
 - In downstream-projects, also read every Markdown file transitively reachable
   from the downstream extension entry point described in
   `AI-RULES/DOWNSTREAM-PROJECT.md`.
 - MUST NOT skip reachable Markdown files and do not pick files ad-hoc.
-- After the full read is complete, irrelevant rules may be removed from active
+- After the full read is complete, irrelevant rules MAY be removed from active
   context.
 
 ## Review Priority Order
@@ -55,7 +55,7 @@ Guidance for AI agents performing code and rules-document reviews.
 - `Low`: minor quality issue or consistency gap.
 
 ## Finding Format Requirements
-Each finding should include:
+Each finding SHOULD include:
 - severity,
 - impacted file/path reference,
 - concrete issue description,
@@ -63,22 +63,22 @@ Each finding should include:
 - actionable remediation guidance.
 
 ## Review Coverage Expectations
-- Validate behavior changes against tests.
-- Validate boundary adherence to semantic parent docs.
-- Validate dependency additions for maturity/license/security fit.
-- Validate error-handling and observability for failure paths.
-- Validate migration/compatibility implications where relevant.
+- SHOULD validate behavior changes against tests.
+- SHOULD validate boundary adherence to semantic parent docs.
+- SHOULD validate dependency additions for maturity/license/security fit.
+- SHOULD validate error-handling and observability for failure paths.
+- SHOULD validate migration/compatibility implications where relevant.
 
 ## Dependency Review Rules
 - New dependencies require explicit justification.
 - Reject niche/unmaintained dependencies unless strong rationale exists.
-- Verify license compatibility with `COMPLIANCE/LICENSES.md`.
+- SHOULD verify license compatibility with `COMPLIANCE/LICENSES.md`.
 - Check overlap/redundancy with existing dependencies.
 
 ## Output Quality Rules
-- Prioritize concrete findings over summaries.
+- SHOULD prioritize concrete findings over summaries.
 - SHOULD avoid vague comments; anchor findings to code locations.
-- Distinguish confirmed issues from assumptions/questions.
+- SHOULD distinguish confirmed issues from assumptions/questions.
 - State verification gaps explicitly (what was not tested/checked).
 
 ## High-Risk Pitfalls
@@ -117,5 +117,5 @@ Do:    state which checks were run and what remains unverified.
 - Is final output concise, concrete, and decision-useful?
 
 ## Override Notes
-- Project-specific review policy may define extra gates, but severity-first,
+- Project-specific review policy MAY define extra gates, but severity-first,
   actionable, evidence-based review output here remains mandatory.

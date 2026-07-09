@@ -21,46 +21,44 @@ workflows.
 - Inherit VCS workflow requirements from `CORE/VERSION_CONTROL_SYSTEM.md`.
 
 ## Workflow Defaults
-- Keep workflows deterministic and fail fast.
-- Separate jobs/stages clearly (lint, build, test, security, package, deploy).
-- Keep triggers (`on:`) explicit and minimal by event/branch/path.
-- Keep permissions explicit with least privilege at workflow and job level.
-- Pin third-party actions by full commit SHA rather than floating tags.
+- SHOULD keep workflows deterministic and fail fast.
+- SHOULD separate jobs/stages clearly (lint, build, test, security, package, deploy).
+- SHOULD keep triggers (`on:`) explicit and minimal by event/branch/path.
+- MUST keep permissions explicit with least privilege at workflow and job level.
+- MUST pin third-party actions by full commit SHA rather than floating tags.
 
 ## Quality Gates
-- Treat lint, tests, and security scans as merge/release gates.
-- Keep required gates non-optional for protected branches.
-- Publish test, lint, and coverage reports for review visibility.
-- Fail workflows on critical dependency/security findings per policy.
+- MUST treat lint, tests, and security scans as merge/release gates.
+- MUST keep required gates non-optional for protected branches.
+- SHOULD publish test, lint, and coverage reports for review visibility.
+- MUST fail workflows on critical dependency/security findings per policy.
 
 ## Release Workflow Rules
 - Release workflows are triggered by semantic version tags
   (for example `vMAJOR.MINOR.PATCH`) or explicit release dispatch.
-- Release workflows must run full build/test/security checks.
-- Release artifacts and reports must be reproducible from tag alone.
-- Keep release workflows immutable and auditable.
-- Keep rollback and rerun strategy documented.
+- Release workflows MUST run full build/test/security checks.
+- Release artifacts and reports MUST be reproducible from tag alone.
+- SHOULD keep release workflows immutable and auditable.
+- SHOULD keep rollback and rerun strategy documented.
 
 ## Secrets and Security
-- Use GitHub Secrets/Variables and environment protection rules for credentials.
+- MUST use GitHub Secrets/Variables and environment protection rules for credentials.
 - MUST NOT print secrets or sensitive payloads in workflow logs.
 - SHOULD prefer OIDC-based short-lived cloud credentials over long-lived static keys.
-- Restrict deploy jobs to protected branches/tags and required approvals.
-- Keep `GITHUB_TOKEN` permissions minimal; elevate only where required.
+- MUST restrict deploy jobs to protected branches/tags and required approvals.
+- MUST keep `GITHUB_TOKEN` permissions minimal; elevate only where required.
 
 ## Caching and Artifacts
-- Use caches for dependency acceleration with safe keys
-  (lockfiles/runtime versions).
-- Use artifacts for reproducible cross-job handoff, not implicit workspace
-  assumptions.
-- Keep artifact retention policy explicit and cost-aware.
-- Keep matrix strategies bounded to avoid excessive CI spend/noise.
+- SHOULD use caches for dependency acceleration with safe keys (lockfiles/runtime versions).
+- SHOULD use artifacts for reproducible cross-job handoff, not implicit workspace assumptions.
+- SHOULD keep artifact retention policy explicit and cost-aware.
+- SHOULD keep matrix strategies bounded to avoid excessive CI spend/noise.
 
 ## Observability and Debuggability
-- Keep workflow/job logs actionable and concise.
-- Emit clear failure context (what failed, where, likely next action).
-- Track workflow duration/flakiness trends.
-- Keep flaky tests/jobs quarantined and actively remediated.
+- SHOULD keep workflow/job logs actionable and concise.
+- SHOULD emit clear failure context (what failed, where, likely next action).
+- SHOULD track workflow duration/flakiness trends.
+- SHOULD keep flaky tests/jobs quarantined and actively remediated.
 
 ## High-Risk Pitfalls
 1. Floating action versions introducing unreviewed behavior changes.
@@ -107,6 +105,6 @@ Do:    enforce full gate chain before publish/deploy.
 - Verify deploy jobs honor environment protections/required approvals.
 
 ## Override Notes
-- Project-specific delivery policies may add stricter approvals/compliance
+- Project-specific delivery policies MAY add stricter approvals/compliance
   gates, but deterministic quality-gated workflows, least-privilege
   permissions, and secret hygiene remain mandatory.

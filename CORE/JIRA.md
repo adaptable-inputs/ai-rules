@@ -24,9 +24,9 @@ Guidance for AI agents creating and updating Jira tickets and Jira summaries.
 ## General Jira Guidance
 - Keep ticket intent explicit: problem, scope, acceptance criteria, and
   validation focus.
-- Keep descriptions structured and scannable; avoid large prose blocks.
-- Keep acceptance criteria testable and observable.
-- Keep language factual and implementation-neutral where possible.
+- SHOULD keep descriptions structured and scannable; avoid large prose blocks.
+- SHOULD keep acceptance criteria testable and observable.
+- SHOULD keep language factual and implementation-neutral where possible.
 - MUST link related code-delivery artifacts (branch, PR/MR, release notes)
   when reporting status.
 
@@ -38,8 +38,8 @@ Guidance for AI agents creating and updating Jira tickets and Jira summaries.
 - Without explicit request, add clarifications/status in comments only.
 - If a description appears wrong or incomplete, propose changes in a comment
   and wait for explicit approval before editing the description.
-- When explicit edit approval exists, keep changes minimal, preserve original
-  intent, and record what changed in a comment.
+- When explicit edit approval exists, SHOULD keep changes minimal, preserve original intent, and record what changed in
+  a comment.
 
 ## Jira Ticket Description Templates
 Use these templates when creating new Jira tickets or when explicitly asked to
@@ -144,9 +144,8 @@ rewrite a description.
 ```
 
 ## Jira Summary Templates (Mandatory Fields)
-- Keep implementation bullets short and non-detailed.
-- Include all MRs/PRs in every delivery summary; do not omit partial or
-  supporting merge requests.
+- SHOULD keep implementation bullets short and non-detailed.
+- SHOULD include all MRs/PRs in every delivery summary; do not omit partial or supporting merge requests.
 - MUST include PO and QA guidance on what to validate.
 
 ### 1. Single-Ticket Delivery Summary
@@ -238,6 +237,6 @@ Do:    include explicit PO outcomes and QA scenarios to validate.
 - Validate ticket comments distinguish facts, assumptions, and blockers.
 
 ## Override Notes
-- Project-specific Jira workflows may add mandatory custom fields, but the
+- Project-specific Jira workflows MAY add mandatory custom fields, but the
   explicit-ticket-edit authorization rule and summary completeness rules here
   remain mandatory.

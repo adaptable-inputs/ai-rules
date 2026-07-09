@@ -23,24 +23,25 @@ Keywords are written in uppercase. Their meaning follows RFC 2119.
 | `SHOULD NOT` | Strong recommendation against. | Only with a stated reason. |
 | `MAY` | Genuinely optional. | Yes, freely. |
 
-## Default Force
-Not every statement in this repository carries a keyword yet. Until conversion
-is complete, an agent MUST read them as follows:
-- An imperative bullet with no keyword has `MUST` force. "Use dedicated feature
-  branches" is a requirement, not a suggestion.
+## Reading Statements Without a Keyword
+Conversion is complete: every document an agent can load carries explicit
+keywords, and `KEYWORD_CONVERTED` in `scripts/check_structure.py` lists them all.
+CI fails if any of them regains a keyword-less normative statement.
+
+An agent MUST read the remaining keyword-less text as follows:
 - Non-imperative prose (headings, explanations, examples) is descriptive and
   carries no obligation.
 - A nested bullet under a lead-in such as "only when all of the following are
   true:" states a condition, not an obligation, and takes no keyword.
+- A "Label: value" bullet introduces a list and takes no keyword.
+- A bullet in a Scope, Semantic Dependencies, Code Review Checklist, Testing
+  Guidance, or High-Risk Pitfalls section states a fact or asks a question. It
+  carries no obligation.
 
-Documents that have completed conversion are listed in `KEYWORD_CONVERTED` in
-`scripts/check_structure.py`. CI fails if one of them regains a keyword-less
-normative statement. That list only grows; the default above governs everything
-not yet on it.
-
-This default is deliberately strict: it preserves the force these rules already
-had before keywords were introduced. It is a migration aid, not a licence to
-omit keywords.
+Should a document ever be added without keywords, an imperative bullet in it has
+`MUST` force. This fallback is deliberately strict: it preserves the force a
+rule already carries rather than silently demoting it. It is a safety net, not a
+licence to omit keywords.
 
 ## Authoring Rules
 - Every new or edited normative statement MUST contain exactly one keyword.
