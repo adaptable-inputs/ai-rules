@@ -4,8 +4,7 @@ applies_to:
 ---
 # BUILD_TOOLS
 
-Build-tool layer contract for dependency management, build reproducibility, and
-artifact-generation workflow.
+Build-tool layer contract for dependency management, build reproducibility, and artifact-generation workflow.
 
 ## Files
 - [BUN.md](BUN.md) - Bun package manager guidance.

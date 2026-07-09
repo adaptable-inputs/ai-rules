@@ -9,8 +9,7 @@ applies_to:
 ---
 # GITLAB
 
-Guidance for AI agents using GitLab for branch protection, merge requests, and
-review lifecycle rules.
+Guidance for AI agents using GitLab for branch protection, merge requests, and review lifecycle rules.
 
 ## Terminology Mapping
 - "change request" is a merge request (MR).
@@ -22,6 +21,5 @@ review lifecycle rules.
 - SHOULD use GitLab code suggestions for small, localized fixes.
 
 ## Review Thread Ownership
-GitLab applies the baseline in `CORE/CODE_REVIEW_PLATFORM.md` without override:
-only the author of a review comment MAY resolve that discussion. There is no
-maintainer-resolution exception on GitLab.
+GitLab applies the baseline in `CORE/CODE_REVIEW_PLATFORM.md` without override: only the author of a review comment MAY
+resolve that discussion. There is no maintainer-resolution exception on GitLab.

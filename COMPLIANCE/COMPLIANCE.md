@@ -4,8 +4,8 @@ applies_to:
 ---
 # COMPLIANCE
 
-Compliance-layer contract for legal, licensing, and governance constraints that
-MUST be preserved across all technology choices.
+Compliance-layer contract for legal, licensing, and governance constraints that MUST be preserved across all technology
+choices.
 
 ## Files
 - [LICENSES.md](LICENSES.md) - License compliance and allowed licenses.

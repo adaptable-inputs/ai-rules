@@ -48,8 +48,7 @@ applies_to:
 - Is keyboard accessibility preserved for all interactions?
 - Do controls have accessible names and clear labels?
 - Is heading/landmark structure valid and navigable?
-- Is every interpolated value escaped, and every HTML string sanitized before
-  insertion?
+- Is every interpolated value escaped, and every HTML string sanitized before insertion?
 - Are duplicate IDs and invalid nesting avoided?
 - Are form validation/error semantics accessible?
 

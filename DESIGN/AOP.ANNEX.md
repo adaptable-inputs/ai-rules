@@ -12,8 +12,8 @@ applies_to:
 3. Undocumented aspect ordering conflicts.
 4. Aspects swallowing exceptions and hiding failures.
 5. Performance overhead from heavy around-advice on hot paths.
-6. Mixed-responsibility methods where desired cross-cutting boundary exists
-   only inside method internals (not at method contracts).
+6. Mixed-responsibility methods where desired cross-cutting boundary exists only inside method internals
+   (not at method contracts).
 
 ## Do / Don't Examples
 ### 1. Cross-Cutting Classification
@@ -48,8 +48,7 @@ Do:    split responsibilities into focused methods so pointcuts can bind at
 - Is aspect ordering defined and safe?
 - Are side effects/exception semantics explicit?
 - Is aspect behavior observable through logs/metrics/tests?
-- Is base code organized with cohesive methods so pointcuts can target
-  contract-level boundaries cleanly?
+- Is base code organized with cohesive methods so pointcuts can target contract-level boundaries cleanly?
 - Would explicit composition be clearer than AOP for this case?
 
 ## Testing Guidance

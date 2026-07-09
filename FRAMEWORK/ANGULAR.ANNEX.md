@@ -15,8 +15,7 @@ applies_to:
 6. Heavy template logic or methods that recompute on every check.
 7. Writing to parent state during change detection (`NG0100` class errors).
 8. Raw DOM writes (`innerHTML`, `ElementRef`) bypassing sanitization.
-9. Component-level duplicated HTTP concerns instead of interceptor/service
-   boundaries.
+9. Component-level duplicated HTTP concerns instead of interceptor/service boundaries.
 10. Assuming `HttpClient<T>` generics validate runtime payload shape.
 11. Async error paths missing UI state updates, creating stuck spinners.
 12. Root-scoped effects/subscriptions with no explicit lifetime strategy.
@@ -146,21 +145,15 @@ export class ProfileCardGood {
 ```
 
 ## Code Review Checklist for Angular
-- Is each component focused on presentation, with business logic extracted where
-  sensible?
+- Is each component focused on presentation, with business logic extracted where sensible?
 - Could this state derivation be `computed` instead of `effect()`?
-- If `effect()` is used, is there a clear reason it cannot be
-  `computed`/`linkedSignal`?
-- Are RxJS/signal boundaries explicit (`toSignal()` / `toObservable()`) where
-  crossing reactive models?
-- Is one reactive model used per template, with a clear reason documented when
-  mixing `Observable` and signal styles?
+- If `effect()` is used, is there a clear reason it cannot be `computed`/`linkedSignal`?
+- Are RxJS/signal boundaries explicit (`toSignal()` / `toObservable()`) where crossing reactive models?
+- Is one reactive model used per template, with a clear reason documented when mixing `Observable` and signal styles?
 - If `toSignal()` / `toObservable()` are created outside an injection context
-  (for example utility modules/static functions), is an explicit `Injector`
-  (or equivalent cleanup strategy) provided?
+  (for example utility modules/static functions), is an explicit `Injector` (or equivalent cleanup strategy) provided?
 - Are manual subscriptions avoided or cleaned with `takeUntilDestroyed`?
-- If `takeUntilDestroyed()` is parameterless, is the usage site in an injection
-  context?
+- If `takeUntilDestroyed()` is parameterless, is the usage site in an injection context?
 - Are RxJS flows composed (no nested subscriptions)?
 - Do all `@for` loops use stable `track` keys?
 - Is `$index` used only for static lists and identity tracking avoided?
@@ -169,28 +162,22 @@ export class ProfileCardGood {
 - Are cross-cutting HTTP concerns implemented via interceptors/services?
 - Are loading/error states explicit, and are async failures surfaced safely?
 - Is direct DOM access avoided or explicitly sanitized?
-- For DOM post-render integrations, is `afterRenderEffect` used with hydration
-  caveats considered?
+- For DOM post-render integrations, is `afterRenderEffect` used with hydration caveats considered?
 - Are effects/subscriptions in root-provided services intentionally long-lived?
 - Is zoneless configuration intentional for the Angular version in use?
 - Is code safe for SSR/hydration (no unguarded browser globals in render)?
 - Are forms typed, and are async validators performance-aware?
-- Are route boundaries lazy-loaded where they improve startup without causing
-  deep waterfalls?
+- Are route boundaries lazy-loaded where they improve startup without causing deep waterfalls?
 
 ## Testing Guidance for Angular-Specific Risks
 - Follow general testing expectations in `TEST/TEST.md`.
-- Add focused tests for `effect()` / signal interactions when side effects are
-  intentional.
+- Add focused tests for `effect()` / signal interactions when side effects are intentional.
 - Test list rendering updates for stable identity behavior in `@for` blocks.
 - Test request cancellation/race behavior for route-driven data loading.
 - Test manual subscription teardown on component destroy.
-- For root-provided services, test or document lifetime expectations for
-  long-lived subscriptions/effects.
+- For root-provided services, test or document lifetime expectations for long-lived subscriptions/effects.
 - Test `OnPush` components with immutable input updates.
-- Test typed form validators (sync and async), including invalid and edge-case
-  states.
-- If using zoneless change detection, ensure tests rely on Angular's scheduling
-  signals instead of manual `detectChanges()` defaults.
-- If SSR/hydration is relevant, test browser-global guards and hydration-safe
-  render paths.
+- Test typed form validators (sync and async), including invalid and edge-case states.
+- If using zoneless change detection, ensure tests rely on Angular's scheduling signals instead of manual
+  `detectChanges()` defaults.
+- If SSR/hydration is relevant, test browser-global guards and hydration-safe render paths.

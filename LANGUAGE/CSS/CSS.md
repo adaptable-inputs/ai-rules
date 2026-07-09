@@ -22,8 +22,7 @@ Guidance for AI agents implementing and reviewing CSS.
 ## Selector and Specificity Rules
 - SHOULD avoid IDs in selectors for styling.
 - SHOULD keep selector depth shallow.
-- SHOULD avoid `!important` except for controlled utility/override cases with
-  documented rationale.
+- SHOULD avoid `!important` except for controlled utility/override cases with documented rationale.
 - SHOULD prefer class-based selectors over element and descendant-heavy chains.
 - SHOULD keep state styles explicit (`is-active`, `has-error` patterns).
 

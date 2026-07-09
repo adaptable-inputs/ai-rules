@@ -97,18 +97,14 @@ String message = String.format(
 - Are public APIs stable and domain-oriented?
 - Are concurrency assumptions documented and safe?
 - Are stream usages readable and side-effect free?
-- Are literal-template strings with variables using `String.format(...)`
-  instead of `+` concatenation?
+- Are literal-template strings with variables using `String.format(...)` instead of `+` concatenation?
 - Are persistence and transport concerns separated from domain types?
-- Are monetary values modeled with JavaMoney and explicit currency instead of
-  `float`/`double` or bare `BigDecimal`?
+- Are monetary values modeled with JavaMoney and explicit currency instead of `float`/`double` or bare `BigDecimal`?
 
 ## Testing Guidance for Java
 - Test null/absence behavior for public APIs.
 - Test exception mapping and preserved causes.
 - Test mutability boundaries (defensive copy and immutability expectations).
 - Test concurrency-sensitive code for race and visibility risks.
-- Add regression tests for previous bug classes (state leaks, conversion errors,
-  mapper issues).
-- Test rounding, scaling, and currency/unit conversion behavior for exact-value
-  domains.
+- Add regression tests for previous bug classes (state leaks, conversion errors, mapper issues).
+- Test rounding, scaling, and currency/unit conversion behavior for exact-value domains.

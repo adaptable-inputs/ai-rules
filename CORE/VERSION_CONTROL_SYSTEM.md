@@ -7,16 +7,15 @@ applies_to:
 Guidance for version control system usage (Git and others).
 
 ## Commit Messages
-- MUST include the ticket or issue identifier and ticket/issue title (or a
-  concise equivalent summary aligned with that title).
+- MUST include the ticket or issue identifier and ticket/issue title
+  (or a concise equivalent summary aligned with that title).
 - Example format: `<ticket-or-issue-id> <ticket-or-issue-title>: <change>`.
 - MAY add optional context about what changed and why when it improves clarity.
 - MUST mark breaking changes explicitly.
 
 ## Branch and PR/MR Workflow
 - MUST follow this execution order for implementation concerns:
-  `plan -> dedicated branch -> implement -> PR/MR -> review -> merge (if
-  permitted, typically by maintainers)`.
+  `plan -> dedicated branch -> implement -> PR/MR -> review -> merge (if permitted, typically by maintainers)`.
 - MUST link each implementation concern to one issue/ticket and keep branch/PR/MR scope aligned to that single concern.
 - MUST create a dedicated branch for each new concern being implemented (usually one issue/ticket).
 - MUST keep each branch scoped to that single concern.
@@ -28,8 +27,8 @@ Guidance for version control system usage (Git and others).
   which target branch to use and suggest the most likely one.
 - If you cannot create the branch or PR/MR due to permission/tooling constraints, MUST stop and report `BLOCKED` with
   the concrete reason instead of bypassing the workflow.
-- When merge permission is not available, the hand-off point is a review-ready
-  PR/MR and completion SHOULD be reported via the completion status contract.
+- When merge permission is not available, the hand-off point is a review-ready PR/MR and completion SHOULD be reported
+  via the completion status contract.
 
 ## PR/MR and Issue Tracker Summaries
 - When creating a PR/MR, MUST include an implementation summary aimed at code reviewers.
@@ -59,8 +58,8 @@ Guidance for version control system usage (Git and others).
   professional.
 - Once the comment is addressed, MUST mark the relevant review thread as resolved, but first check downstream project
   rules for ownership (for example whether the author or reviewer is expected to mark threads resolved).
-- MUST NOT mark a review thread or conversation resolved by deleting discussion;
-  keep decisions auditable in the comment thread.
+- MUST NOT mark a review thread or conversation resolved by deleting discussion; keep decisions auditable in the comment
+  thread.
 
 ### PR/MR Summary Template (Code Reviewer Audience)
 ```md
@@ -89,12 +88,12 @@ Guidance for version control system usage (Git and others).
 ```
 
 ## Dependency Lock Files
-- MUST commit dependency lock files for the package managers used by the project (for example `package-lock.json`,
-  `pnpm-lock.yaml`, `yarn.lock`).
+- MUST commit dependency lock files for the package managers used by the project
+  (for example `package-lock.json`, `pnpm-lock.yaml`, `yarn.lock`).
 - MUST NOT add ignore rules that exclude required lock files from VCS.
 - In CI, MUST install dependencies from lock files in frozen/immutable mode when supported by the package manager.
-- Exceptions MAY be made only when explicitly documented (for example,
-  intentionally published libraries that choose not to commit lock files).
+- Exceptions MAY be made only when explicitly documented
+  (for example, intentionally published libraries that choose not to commit lock files).
 
 ## Ignore File
 - MUST maintain a VCS ignore file in the repository root (for Git: `.gitignore`).
@@ -134,8 +133,7 @@ Build output, dependencies, caches, logs
 ## IDE/Tooling Additions
 Apply only when the tool is used:
 - Xcode: `DerivedData/`, `*.xcworkspace`, `*.xcuserdatad`, `*.xcuserdata/`, `*.xcuserstate`, `*.xccheckout`
-- Visual Studio: `.vs/`, `*.suo`, `*.user`, `*.userosscache`, `*.sln.docstates`,
-  `*.VC.db`, `*.VC.opendb`
+- Visual Studio: `.vs/`, `*.suo`, `*.user`, `*.userosscache`, `*.sln.docstates`, `*.VC.db`, `*.VC.opendb`
 - Android Studio: `*.iml`, `local.properties`, `captures/`, `.externalNativeBuild/`
   (plus `.idea/`, `.gradle/`, `build/` if not already)
 

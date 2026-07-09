@@ -12,19 +12,16 @@ applies_to:
 Guidance for AI agents creating and updating Jira tickets and Jira summaries.
 
 ## General Jira Guidance
-- Keep ticket intent explicit: problem, scope, acceptance criteria, and
-  validation focus.
+- Keep ticket intent explicit: problem, scope, acceptance criteria, and validation focus.
 - SHOULD keep descriptions structured and scannable; avoid large prose blocks.
 - SHOULD keep acceptance criteria testable and observable.
 - SHOULD keep language factual and implementation-neutral where possible.
-- MUST link related code-delivery artifacts (branch, PR/MR, release notes)
-  when reporting status.
+- MUST link related code-delivery artifacts (branch, PR/MR, release notes) when reporting status.
 
 ## Ticket Description Edit Policy (Mandatory)
-- MUST NOT edit descriptions of existing Jira tickets unless explicitly
-  requested by the user, Product Owner, or another authorized requester.
-- Without explicit request, MUST NOT rewrite or "improve" existing ticket
-  descriptions.
+- MUST NOT edit descriptions of existing Jira tickets unless explicitly requested by the user, Product Owner, or another
+  authorized requester.
+- Without explicit request, MUST NOT rewrite or "improve" existing ticket descriptions.
 - Without explicit request, MUST add clarifications/status in comments only.
 - If a description appears wrong or incomplete, SHOULD propose changes in a comment and wait for explicit approval
   before editing the description.
@@ -32,8 +29,7 @@ Guidance for AI agents creating and updating Jira tickets and Jira summaries.
   a comment.
 
 ## Jira Ticket Description Templates
-Use these templates when creating new Jira tickets or when explicitly asked to
-rewrite a description.
+Use these templates when creating new Jira tickets or when explicitly asked to rewrite a description.
 
 ### 1. Story / Feature Template
 ```md

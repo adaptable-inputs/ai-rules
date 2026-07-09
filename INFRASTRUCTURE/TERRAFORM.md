@@ -10,8 +10,7 @@ applies_to:
 ---
 # TERRAFORM
 
-Guidance for AI agents implementing and reviewing Terraform infrastructure
-changes.
+Guidance for AI agents implementing and reviewing Terraform infrastructure changes.
 
 ## Defaults
 - MUST pin Terraform version and provider versions with explicit constraints.

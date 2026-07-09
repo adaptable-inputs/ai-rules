@@ -12,10 +12,9 @@ applies_to:
 3. Multiple exits that duplicate side effects in inconsistent ways.
 4. Adding guard clauses without tests for changed control-flow paths.
 5. Avoiding early return dogmatically and keeping unnecessary nesting.
-6. Keeping trivial guard-return/guard-assignment logic as multi-line branching
-   when a single ternary expression is clearer.
-7. Reversing ternary guard order (`happy` first) and hiding the exceptional
-   path.
+6. Keeping trivial guard-return/guard-assignment logic as multi-line branching when a single ternary expression is
+   clearer.
+7. Reversing ternary guard order (`happy` first) and hiding the exceptional path.
 
 ## Do / Don't Examples
 ### 1. Guard Clauses over Nested Blocks
@@ -82,8 +81,8 @@ target = value == null ? null : map(value);
 - Are guard predicates explicit and semantically named?
 - Are mandatory cleanup/transaction/audit effects still guaranteed?
 - Is the happy path easier to understand in one pass?
-- For simple guard mappings, is ternary used for return/assignment with
-  exceptional case first (`condition ? exceptional : happy`)?
+- For simple guard mappings, is ternary used for return/assignment with exceptional case first
+  (`condition ? exceptional : happy`)?
 - Were tests updated for changed control-flow branches?
 
 ## Testing Guidance
@@ -91,5 +90,4 @@ target = value == null ? null : map(value);
 - Keep at least one explicit happy-path test per refactored method.
 - For cleanup-sensitive code, add tests that prove required effects still run.
 - For transactional code, test rollback/commit semantics after refactoring.
-- When refactoring guard `if` blocks into ternary return/assignment, test both
-  exceptional and happy outcomes.
+- When refactoring guard `if` blocks into ternary return/assignment, test both exceptional and happy outcomes.

@@ -9,8 +9,7 @@ applies_to:
 ---
 # GITHUB_ACTIONS
 
-Guidance for AI agents implementing and reviewing GitHub Actions CI/CD
-workflows.
+Guidance for AI agents implementing and reviewing GitHub Actions CI/CD workflows.
 
 ## Workflow Defaults
 - SHOULD keep workflows deterministic and fail fast.

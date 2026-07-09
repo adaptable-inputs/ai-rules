@@ -8,8 +8,8 @@ applies_to:
 
 ## High-Risk Pitfalls
 1. Accepting user input without strict validation or context-aware encoding.
-2. Storing credentials in code/config/scripts, plaintext CI config, or
-   unencrypted/non-secret CI variables instead of the platform secret store.
+2. Storing credentials in code/config/scripts, plaintext CI config, or unencrypted/non-secret CI variables instead of
+   the platform secret store.
 3. Treating client-side checks as sufficient authorization.
 4. Overly broad IAM/role permissions in runtime or CI.
 5. Ignoring dependency vulnerabilities due to transitive complexity.
@@ -38,8 +38,7 @@ Do:    redact secrets and log only safe identifiers/reasons.
 
 ## Code Review Checklist
 - Are all external inputs validated at trust boundaries?
-- Is every output sink encoded for its own context (HTML body, HTML attribute,
-  URL, JavaScript, CSS, SQL)?
+- Is every output sink encoded for its own context (HTML body, HTML attribute, URL, JavaScript, CSS, SQL)?
 - Are secrets absent from source, logs, snapshots, and examples?
 - Is authorization enforced server-side with least-privilege semantics?
 - Are dependency additions justified, maintained, and compliant?

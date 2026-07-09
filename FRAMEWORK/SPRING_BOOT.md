@@ -12,8 +12,7 @@ applies_to:
 Guidance for AI agents implementing and reviewing Spring Boot applications.
 
 ## Defaults
-- SHOULD prefer constructor injection (for example with Lombok
-  `@RequiredArgsConstructor`), avoid field injection.
+- SHOULD prefer constructor injection (for example with Lombok `@RequiredArgsConstructor`), avoid field injection.
 - SHOULD keep controllers thin; move orchestration/business rules into services or use-case classes.
 - SHOULD keep persistence logic in repositories/adapters, not controllers.
 - SHOULD prefer explicit DTOs for API boundaries.

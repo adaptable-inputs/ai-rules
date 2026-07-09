@@ -503,7 +503,8 @@ def check_override_notes() -> None:
 EXHAUSTIVE_READ = re.compile(
     r"read(ing)? the complete ai-rules ruleset|complete ai-rules ruleset\" means|"
     r"MUST NOT skip reachable Markdown files|^## Ruleset Read Gate|"
-    r"re-reads the complete ai-rules", re.I | re.M)
+    r"re-reads the complete ai-rules|complete-ruleset-read|"
+    r"read every Markdown file", re.I | re.M)
 
 
 def check_no_exhaustive_read() -> None:

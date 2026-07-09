@@ -22,20 +22,19 @@ Guidance for AI agents implementing and reviewing Java code.
 
 ## Exact Numeric Domains (Money, Rates, Quantities)
 - MUST NOT use `float`/`double` when values MUST stay exact (for example money).
-- SHOULD prefer smallest-unit integers (for example cents in `long`) when unit and
-  range are stable for the domain.
+- SHOULD prefer smallest-unit integers (for example cents in `long`) when unit and range are stable for the domain.
 - MUST use JavaMoney (JSR 354, typically Moneta) for monetary values in Java.
 - SHOULD restrict raw `BigDecimal` money handling to boundary conversions where JavaMoney types cannot be used directly.
-- SHOULD avoid `new BigDecimal(double)`; if `BigDecimal` is unavoidable, construct
-  from `String` for exact decimal values, or use `BigDecimal.valueOf(long)` for
-  whole-number smallest-unit amounts, and centralize scale + rounding rules.
+- SHOULD avoid `new BigDecimal(double)`; if `BigDecimal` is unavoidable, construct from `String` for exact decimal
+  values, or use `BigDecimal.valueOf(long)` for whole-number smallest-unit amounts, and centralize scale + rounding
+  rules.
 - SHOULD keep unit/currency attached to the amount type to prevent accidental mixing.
 
 ## Nullability and Optional
-- SHOULD avoid returning `null` from public APIs where absence is expected;
-  prefer `Optional<T>` for return values when semantically meaningful.
-- MUST NOT use `Optional` for fields, method parameters, or serialization models
-  unless there is a strong documented reason.
+- SHOULD avoid returning `null` from public APIs where absence is expected; prefer `Optional<T>` for return values when
+  semantically meaningful.
+- MUST NOT use `Optional` for fields, method parameters, or serialization models unless there is a strong documented
+  reason.
 - SHOULD keep null-handling explicit at boundaries and legacy integration points.
 
 ## Collections and Mutability
@@ -57,8 +56,7 @@ Guidance for AI agents implementing and reviewing Java code.
 - SHOULD use builders for objects with many optional parameters.
 - SHOULD keep equals/hashCode/toString aligned with type semantics.
 - SHOULD avoid large utility classes with mixed responsibilities.
-- SHOULD avoid boolean parameter combinations that hide intent; introduce
-  explicit value objects or methods.
+- SHOULD avoid boolean parameter combinations that hide intent; introduce explicit value objects or methods.
 
 ## Concurrency Baseline
 - SHOULD avoid shared mutable state by default.
@@ -74,8 +72,8 @@ Guidance for AI agents implementing and reviewing Java code.
 - SHOULD prefer loops when they are clearer than chained stream operations.
 
 ## String Construction and Formatting
-- SHOULD prefer `String.format(...)` over `+` concatenation when constructing a
-  string from a literal template and variables.
+- SHOULD prefer `String.format(...)` over `+` concatenation when constructing a string from a literal template and
+  variables.
 - SHOULD use clear, stable format templates for user-facing or logged text.
 - In tight loops or append-heavy code paths, SHOULD prefer `StringBuilder`.
 
@@ -85,16 +83,12 @@ Guidance for AI agents implementing and reviewing Java code.
 - SHOULD avoid leaking persistence entities across API boundaries by default.
 
 ## VCS Ignore Additions
-Add these when using Java build tools (if not already covered by baseline
-ignore rules):
+Add these when using Java build tools (if not already covered by baseline ignore rules):
 - `target/`, `build/`
 - `*.class`, `*.war`, `*.ear`
-- `pom.xml.tag`, `pom.xml.releaseBackup`, `pom.xml.versionsBackup`,
-  `pom.xml.next`
-- `release.properties`, `dependency-reduced-pom.xml`,
-  `buildNumber.properties`
+- `pom.xml.tag`, `pom.xml.releaseBackup`, `pom.xml.versionsBackup`, `pom.xml.next`
+- `release.properties`, `dependency-reduced-pom.xml`, `buildNumber.properties`
 - `.gradle/`
 
 Do not ignore wrapper scripts or wrapper JARs required to build projects
-(for example `gradle/wrapper/gradle-wrapper.jar`,
-`.mvn/wrapper/maven-wrapper.jar`).
+(for example `gradle/wrapper/gradle-wrapper.jar`, `.mvn/wrapper/maven-wrapper.jar`).

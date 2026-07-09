@@ -11,13 +11,11 @@ Language-layer contract for syntax, semantics, naming, and readability rules.
 - [READABILITY.md](READABILITY.md) - Readability and clarity guidance.
 
 ## Languages
-- [JAVASCRIPT/JAVASCRIPT.md](JAVASCRIPT/JAVASCRIPT.md) - JavaScript runtime
-  baseline (parent for TypeScript and JS frameworks).
-- [TYPESCRIPT/TYPESCRIPT.md](TYPESCRIPT/TYPESCRIPT.md) - TypeScript
-  specialization over JavaScript baseline.
+- [JAVASCRIPT/JAVASCRIPT.md](JAVASCRIPT/JAVASCRIPT.md) - JavaScript runtime baseline
+  (parent for TypeScript and JS frameworks).
+- [TYPESCRIPT/TYPESCRIPT.md](TYPESCRIPT/TYPESCRIPT.md) - TypeScript specialization over JavaScript baseline.
 - [JAVA/JAVA.md](JAVA/JAVA.md) - Java language baseline and entry point.
-- [JAVA/EFFECTIVE_JAVA.md](JAVA/EFFECTIVE_JAVA.md) - Effective Java
-  specialization and design heuristics.
+- [JAVA/EFFECTIVE_JAVA.md](JAVA/EFFECTIVE_JAVA.md) - Effective Java specialization and design heuristics.
 - [PYTHON/PYTHON.md](PYTHON/PYTHON.md) - Python language baseline.
 - [GO/GO.md](GO/GO.md) - Go language baseline.
 - [C_SHARP/C_SHARP.md](C_SHARP/C_SHARP.md) - C#/.NET language baseline.

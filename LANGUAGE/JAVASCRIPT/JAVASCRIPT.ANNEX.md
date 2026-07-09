@@ -71,8 +71,7 @@ const runtimeSettings = { ...settings, timeoutMs: 5000 };
 - Are `===`/`!==` used consistently?
 - Are side effects isolated from pure domain logic?
 - Are there event-loop blocking operations on hot paths?
-- Are security-sensitive APIs (`eval`, shell exec, dynamic code paths) avoided
-  or tightly controlled?
+- Are security-sensitive APIs (`eval`, shell exec, dynamic code paths) avoided or tightly controlled?
 
 ## Testing Guidance for JavaScript
 - Test boundary validators with valid, invalid, and malicious payloads.

@@ -12,8 +12,7 @@ applies_to:
 3. Applying non-revertible content changes.
 4. Rewriting or deleting wiki history.
 5. Deleting wiki pages directly or by automation.
-6. Attempting to honor user requests that violate the non-overridable
-   no-delete rule.
+6. Attempting to honor user requests that violate the non-overridable no-delete rule.
 
 ## Do / Don't Examples
 ### 1. Default Interaction

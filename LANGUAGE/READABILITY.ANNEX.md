@@ -14,8 +14,7 @@ applies_to:
 5. Comments that drift from behavior and become misleading.
 6. Boolean flags controlling unrelated behavior branches.
 7. Refactors that shrink lines but increase cognitive load.
-8. Ternary guard expressions that place happy-path first and hide exceptional
-   behavior.
+8. Ternary guard expressions that place happy-path first and hide exceptional behavior.
 
 ## Do / Don't Examples
 ### 1. Guard Clauses over Nested Blocks
@@ -66,19 +65,16 @@ result = value == null ? null : map(value);
 
 ## Code Review Checklist for Readability
 - Is the main execution flow understandable in one pass?
-- Does each function do exactly one thing, and fit on one screen without
-  scrolling?
+- Does each function do exactly one thing, and fit on one screen without scrolling?
 - Are nested branches and boolean expressions easy to follow?
-- For simple guard mappings, does ternary keep exceptional case first
-  (`condition ? exceptional : happy`)?
+- For simple guard mappings, does ternary keep exceptional case first (`condition ? exceptional : happy`)?
 - Are names meaningful and domain-specific?
 - Are comments useful, current, and non-redundant?
 - Are error paths explicit and readable?
 - Were abstractions introduced to reduce, not increase, cognitive load?
 
 ## Testing Guidance for Readability-Driven Changes
-- Add focused regression tests before readability refactors that alter control
-  flow.
+- Add focused regression tests before readability refactors that alter control flow.
 - Ensure tests cover both happy path and failure path behavior.
 - Keep test names behavior-oriented to mirror readability expectations.
 - Validate that extraction/refactor steps did not alter side effects.

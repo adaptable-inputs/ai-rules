@@ -19,16 +19,14 @@ Guidance for AI agents implementing and reviewing Maven builds.
 
 ## Dependency and Plugin Management
 - SHOULD centralize versions with `dependencyManagement`/BOM when more than one module depends on the same artifact.
-- SHOULD avoid floating versions (`LATEST`, `RELEASE`, version ranges) in production
-  builds.
+- SHOULD avoid floating versions (`LATEST`, `RELEASE`, version ranges) in production builds.
 - SHOULD keep plugin versions pinned; avoid implicit plugin-version resolution.
 - SHOULD minimize duplicate transitive dependency paths and exclusions.
 
 ## Profile and Environment Rules
 - SHOULD keep profiles explicit and purpose-driven.
 - SHOULD avoid profiles that change core artifact semantics unexpectedly.
-- SHOULD prefer environment-independent default build; use profiles for explicit
-  deployment/runtime variations.
+- SHOULD prefer environment-independent default build; use profiles for explicit deployment/runtime variations.
 - SHOULD document required profile combinations for release builds.
 
 ## Reproducibility and CI
@@ -47,13 +45,9 @@ Guidance for AI agents implementing and reviewing Maven builds.
 Add these when using Maven (if not already covered by baseline ignores):
 - `target/`
 - `*.class`, `*.war`, `*.ear`
-- `pom.xml.tag`, `pom.xml.releaseBackup`, `pom.xml.versionsBackup`,
-  `pom.xml.next`
-- `release.properties`, `dependency-reduced-pom.xml`,
-  `buildNumber.properties`
+- `pom.xml.tag`, `pom.xml.releaseBackup`, `pom.xml.versionsBackup`, `pom.xml.next`
+- `release.properties`, `dependency-reduced-pom.xml`, `buildNumber.properties`
 - `.mvn/timing.properties`
 
-Do not ignore wrapper scripts or wrapper JARs required for build
-(for example `.mvn/wrapper/maven-wrapper.jar`).
-If a broader ignore pattern includes `*.jar`, add an explicit negation rule
-for the wrapper JAR.
+Do not ignore wrapper scripts or wrapper JARs required for build (for example `.mvn/wrapper/maven-wrapper.jar`). If a
+broader ignore pattern includes `*.jar`, add an explicit negation rule for the wrapper JAR.

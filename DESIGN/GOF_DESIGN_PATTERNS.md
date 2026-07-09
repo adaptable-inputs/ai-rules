@@ -17,32 +17,21 @@ Guidance for AI agents applying GoF patterns pragmatically.
 - SHOULD prefer simpler direct code when variation pressure is low.
 
 ## Creational Pattern Guidance
-- Factory Method / Abstract Factory:
-  use when object family/instantiation varies by environment/context.
-- Builder:
-  use for complex object construction with optional parameters/invariants.
-- Singleton:
-  avoid as global state; prefer DI-managed lifecycle.
+- Factory Method / Abstract Factory: use when object family/instantiation varies by environment/context.
+- Builder: use for complex object construction with optional parameters/invariants.
+- Singleton: avoid as global state; prefer DI-managed lifecycle.
 
 ## Structural Pattern Guidance
-- Adapter:
-  isolate incompatible interfaces.
-- Facade:
-  simplify interaction with a complex subsystem.
-- Decorator:
-  extend behavior without subclass explosion.
-- Proxy:
-  control access, lazy loading, remoting, or policy boundaries.
+- Adapter: isolate incompatible interfaces.
+- Facade: simplify interaction with a complex subsystem.
+- Decorator: extend behavior without subclass explosion.
+- Proxy: control access, lazy loading, remoting, or policy boundaries.
 
 ## Behavioral Pattern Guidance
-- Strategy:
-  replace branch-heavy algorithm selection.
-- Observer:
-  decouple event publishers and subscribers.
-- Command:
-  encapsulate actions for queueing, undo, orchestration.
-- State:
-  replace state-driven condition pyramids.
+- Strategy: replace branch-heavy algorithm selection.
+- Observer: decouple event publishers and subscribers.
+- Command: encapsulate actions for queueing, undo, orchestration.
+- State: replace state-driven condition pyramids.
 
 ## Anti-Pattern Guardrails
 - SHOULD avoid speculative pattern layering without real variability pressure.

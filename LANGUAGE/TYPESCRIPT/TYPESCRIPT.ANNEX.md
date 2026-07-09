@@ -89,8 +89,7 @@ export class InvoiceServiceGood {}
 - Are union types handled exhaustively?
 - Are null/undefined paths explicit and safe?
 - Are casts/assertions minimal and justified?
-- Are ad-hoc objects kept local and promoted to named types when they become
-  shared or domain-relevant?
+- Are ad-hoc objects kept local and promoted to named types when they become shared or domain-relevant?
 - Are naming conventions consistent with TypeScript standards?
 - Is JSDoc/decorator ordering for decorated classes consistent with this file?
 - Are public types cohesive, stable, and domain-focused?
@@ -101,5 +100,4 @@ export class InvoiceServiceGood {}
 - Test all union variants and exhaustiveness-sensitive branches.
 - Add regression tests for null/undefined edge cases.
 - Test serialization/deserialization for enum and literal union values.
-- Keep type-checking in CI (`tsc --noEmit` or equivalent) as required quality
-  gate.
+- Keep type-checking in CI (`tsc --noEmit` or equivalent) as required quality gate.

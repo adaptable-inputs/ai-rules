@@ -14,430 +14,332 @@ Sub-heading template:
 - Released versions: `## [vX.Y.Z] - YYYY-MM-DD`
 
 ## Unreleased
-- Repointed repository self-references from `fabian-barney/ai-rules` to
-  `adaptable-inputs/ai-rules` so the subtree and `ls-remote` commands in
-  `AGENTS_TEMPLATE.md`, `AI-RULES/UPDATE.md`, and `SECURITY.md` resolve to this
-  fork.
+- Repointed repository self-references from `fabian-barney/ai-rules` to `adaptable-inputs/ai-rules` so the subtree and
+  `ls-remote` commands in `AGENTS_TEMPLATE.md`, `AI-RULES/UPDATE.md`, and `SECURITY.md` resolve to this fork.
 - Added `CORE/NORMATIVE_LANGUAGE.md` defining the obligation vocabulary
-  (`MUST`, `MUST NOT`, `SHOULD`, `SHOULD NOT`, `MAY`) and converted 491
-  bullet-initial statements across 103 docs. A keyword-less imperative bullet
-  has `MUST` force by default while conversion is in progress.
-- Replaced 30 vague qualifiers (`where appropriate`, `as needed`,
-  `when helpful`) with the explicit condition under which each rule fires.
-- Made `CORE/RULE_DEPENDENCY_TREE.md` the single authoritative conflict
-  resolution procedure. `CORE/CORE.md` now defers to it instead of restating a
-  different order, and an agent resolving a conflict mid-task proceeds and
-  reports rather than blocking on a follow-up issue.
-- Added `CORE/CODE_REVIEW_PLATFORM.md` holding the platform-neutral
-  protected-branch, merge-authority, and review-thread contract. `CORE/GITHUB.md`
-  and `CORE/GITLAB.md` had duplicated 44 lines and diverged on who may resolve a
-  review thread; GitHub's looser behavior is now an explicit, scoped override.
-- Added `applies_to` frontmatter to every document, and a loading protocol in
-  `AI.md`. An agent loads `CORE` always, then only the leaf docs matching the
-  detected stack. A Java/Spring/Maven/GitHub project loads 68% fewer words.
-- Stated the `AI-RULES/` scope once in `AI-RULES/AI-RULES.md` instead of
-  repeating it in 17 files, and exempted the three downstream-facing documents
-  that ship with the subtree.
-- Added `scripts/check_structure.py` and `scripts/check_examples.py`, wired into
-  `.github/workflows/docs-check.yml`. They enforce category indexes, `AI.md`
-  completeness, orphan detection, frontmatter validity, the setup preflight
+  (`MUST`, `MUST NOT`, `SHOULD`, `SHOULD NOT`, `MAY`) and converted 491 bullet-initial statements across 103 docs. A
+  keyword-less imperative bullet has `MUST` force by default while conversion is in progress.
+- Replaced 30 vague qualifiers (`where appropriate`, `as needed`, `when helpful`) with the explicit condition under
+  which each rule fires.
+- Made `CORE/RULE_DEPENDENCY_TREE.md` the single authoritative conflict resolution procedure. `CORE/CORE.md` now defers
+  to it instead of restating a different order, and an agent resolving a conflict mid-task proceeds and reports rather
+  than blocking on a follow-up issue.
+- Added `CORE/CODE_REVIEW_PLATFORM.md` holding the platform-neutral protected-branch, merge-authority, and review-thread
+  contract. `CORE/GITHUB.md` and `CORE/GITLAB.md` had duplicated 44 lines and diverged on who may resolve a review
+  thread; GitHub's looser behavior is now an explicit, scoped override.
+- Added `applies_to` frontmatter to every document, and a loading protocol in `AI.md`. An agent loads `CORE` always,
+  then only the leaf docs matching the detected stack. A Java/Spring/Maven/GitHub project loads 68% fewer words.
+- Stated the `AI-RULES/` scope once in `AI-RULES/AI-RULES.md` instead of repeating it in 17 files, and exempted the
+  three downstream-facing documents that ship with the subtree.
+- Added `scripts/check_structure.py` and `scripts/check_examples.py`, wired into `.github/workflows/docs-check.yml`.
+  They enforce category indexes, `AI.md` completeness, orphan detection, frontmatter validity, the setup preflight
   contract, fence tags, and parseable code examples.
-- Fixed a `FRAMEWORK/IONIC.md` TypeScript example that never parsed, retagged two
-  `json` blocks containing comments as `jsonc`, and gave unique `*Bad`/`*Good`
-  names to seven paired snippets that redeclared the same symbol.
-- Replaced named-model guidance in `README.md` with the capabilities the ruleset
-  actually requires.
-- Converted every `load: always` document to explicit obligation keywords, and
-  added a CI ratchet (`KEYWORD_CONVERTED`) that fails the build if a converted
-  document regains a keyword-less normative statement. All twenty are now locked.
-- In `COMPLIANCE/**`, assigned `MUST` to gates, defaults, and prohibitions an
-  agent can evaluate against the change under review, and `SHOULD` to
-  organizational posture it cannot verify from a diff (registers, inventories,
-  periodic exercises). Under the previous strict default an agent was required to
-  block a one-line change until, for example, disaster-recovery exercises were
-  periodic - a condition no code change can establish.
-- Split the EU AI Act logging rule into two statements: `SHOULD` log events for
-  traceability, and `MUST NOT` expose sensitive data in AI-system logs.
-- Cut the context an implementation task loads by 29%. Examples, pitfalls, review
-  checklists, and testing guidance moved into task-gated `*.ANNEX.md` siblings;
-  they held 3 obligations across 1,563 bullets. Scope and Semantic Dependencies
+- Fixed a `FRAMEWORK/IONIC.md` TypeScript example that never parsed, retagged two `json` blocks containing comments as
+  `jsonc`, and gave unique `*Bad`/`*Good` names to seven paired snippets that redeclared the same symbol.
+- Replaced named-model guidance in `README.md` with the capabilities the ruleset actually requires.
+- Converted every `load: always` document to explicit obligation keywords, and added a CI ratchet (`KEYWORD_CONVERTED`)
+  that fails the build if a converted document regains a keyword-less normative statement. All twenty are now locked.
+- In `COMPLIANCE/**`, assigned `MUST` to gates, defaults, and prohibitions an agent can evaluate against the change
+  under review, and `SHOULD` to organizational posture it cannot verify from a diff
+  (registers, inventories, periodic exercises). Under the previous strict default an agent was required to block a
+  one-line change until, for example, disaster-recovery exercises were periodic - a condition no code change can
+  establish.
+- Split the EU AI Act logging rule into two statements: `SHOULD` log events for traceability, and `MUST NOT` expose
+  sensitive data in AI-system logs.
+- Cut the context an implementation task loads by 29%. Examples, pitfalls, review checklists, and testing guidance moved
+  into task-gated `*.ANNEX.md` siblings; they held 3 obligations across 1,563 bullets. Scope and Semantic Dependencies
   became the `purpose` and `inherits` frontmatter fields.
-- Added `scripts/test_rules.py`, a 59-test suite covering corpus invariants and
-  checker behavior, wired into CI. Each test in `TestRatchetFails` reproduces a
-  defect that shipped at least once.
-- Converted the remaining 1,023 normative statements across the 73 conditional
-  and task-overlay documents, completing the ruleset. `MUST` is reserved for
-  security controls, gates, and prohibitions an agent can evaluate against the
-  change under review; stack idiom and design preference are `SHOULD`. All 93
-  loadable documents now carry explicit keywords and are locked against
-  regression.
-- Resolved a contradiction in `## Override Notes`. 89 docs said some variant of
-  "specialized docs MAY be stricter, but these constraints remain mandatory",
-  and in 42 of them the constraints named that way carried `SHOULD`, not `MUST`.
-  `CORE/RULE_DEPENDENCY_TREE.md` now states once that a rule's own keyword is
-  authoritative and that prose cannot grant a force the keyword withholds; the
-  92 restating bullets are gone, and the 16 that declare a real override, a
-  conditional fallback, or a named specialization remain. The same boilerplate
-  under `## Specialization Contract` is gone from the 9 category indexes, which
-  keep only their doc-specific precedence rules.
-- Added `check_override_notes()` to `scripts/check_structure.py` so the
-  permission, concession, and purpose-restatement shapes cannot return.
-- Removed the `Ruleset Read Gate (Mandatory)` from `PROGRAMMING/PROGRAMMING.md`,
-  `PLAN/PLAN.md`, and `REVIEW/CODE_REVIEW.md`. It ordered an agent to read every
-  Markdown file reachable from `AI.md` - roughly 79,000 tokens - and discard the
-  irrelevant ones afterwards, while `AI.md` says an agent MUST NOT read the
-  ruleset exhaustively. Every task loads one of those three docs, so the gate
-  silently defeated conditional loading and the annex split.
-- Added `MANIFEST.md`, generated from `applies_to` frontmatter by
-  `scripts/gen_manifest.py`. An agent reads it once to select rule docs instead
-  of walking 11 category indexes. `scripts/check_indexes_accurate.py` verifies
-  the index link graph, and `.githooks/pre-commit` plus a `generated` CI job
-  fail the build when either drifts.
-- Stripped `Role in the Ruleset`, `Scope Boundary`, and `Authoring Notes` from
-  the category indexes and `CORE/CORE.md`, then brought the indexes and `AI.md`
-  under the keyword ratchet, which found four un-keyworded rules.
-- Moved every obligation out of the category indexes: an index is not listed in
-  the manifest, so a rule there loads for nobody. `CORE/DEPENDENCY_SELECTION.md`
-  now holds the framework/library/build-tool selection criteria (including
-  `MUST ensure licenses are compatible`), and precedence rules moved to
-  `CORE/RULE_DEPENDENCY_TREE.md`, `LANGUAGE/CONVENTIONS.md`, and
-  `REVIEW/CODE_REVIEW.md`. `check_no_rules_in_indexes()` enforces it.
-- Gated the five jurisdiction-specific compliance regimes (`gdpr`, `eprivacy`,
-  `eu-ai-act`, `dora`, `nis2`) on a project's declared `compliance_scope`,
-  saving 2,167 tokens per task where they do not apply.
-  `COMPLIANCE/LICENSES.md` stays `always`. Every gate also fires when no scope is
-  declared, so an agent that misjudges a project's jurisdiction loads the
-  regulation rather than skipping it; `check_compliance_failsafe()` enforces that.
-- Kept the three duplicated cloud bullets in `AWS.md`, `GCP.md`, and `AZURE.md`.
-  Hoisting them to `INFRA_AS_CODE.md` would drop them for a cloud project that
-  declares no infrastructure as code, to save at most 76 tokens.
+- Added `scripts/test_rules.py`, a 59-test suite covering corpus invariants and checker behavior, wired into CI. Each
+  test in `TestRatchetFails` reproduces a defect that shipped at least once.
+- Converted the remaining 1,023 normative statements across the 73 conditional and task-overlay documents, completing
+  the ruleset. `MUST` is reserved for security controls, gates, and prohibitions an agent can evaluate against the
+  change under review; stack idiom and design preference are `SHOULD`. All 93 loadable documents now carry explicit
+  keywords and are locked against regression.
+- Resolved a contradiction in `## Override Notes`. 89 docs said some variant of "specialized docs MAY be stricter, but
+  these constraints remain mandatory", and in 42 of them the constraints named that way carried `SHOULD`, not `MUST`.
+  `CORE/RULE_DEPENDENCY_TREE.md` now states once that a rule's own keyword is authoritative and that prose cannot grant
+  a force the keyword withholds; the 92 restating bullets are gone, and the 16 that declare a real override, a
+  conditional fallback, or a named specialization remain. The same boilerplate under `## Specialization Contract` is
+  gone from the 9 category indexes, which keep only their doc-specific precedence rules.
+- Added `check_override_notes()` to `scripts/check_structure.py` so the permission, concession, and purpose-restatement
+  shapes cannot return.
+- Removed the `Ruleset Read Gate (Mandatory)` from `PROGRAMMING/PROGRAMMING.md`, `PLAN/PLAN.md`, and
+  `REVIEW/CODE_REVIEW.md`. It ordered an agent to read every Markdown file reachable from `AI.md` - roughly 79,000
+  tokens - and discard the irrelevant ones afterwards, while `AI.md` says an agent MUST NOT read the ruleset
+  exhaustively. Every task loads one of those three docs, so the gate silently defeated conditional loading and the
+  annex split.
+- Added `MANIFEST.md`, generated from `applies_to` frontmatter by `scripts/gen_manifest.py`. An agent reads it once to
+  select rule docs instead of walking 11 category indexes. `scripts/check_indexes_accurate.py` verifies the index link
+  graph, and `.githooks/pre-commit` plus a `generated` CI job fail the build when either drifts.
+- Stripped `Role in the Ruleset`, `Scope Boundary`, and `Authoring Notes` from the category indexes and `CORE/CORE.md`,
+  then brought the indexes and `AI.md` under the keyword ratchet, which found four un-keyworded rules.
+- Moved every obligation out of the category indexes: an index is not listed in the manifest, so a rule there loads for
+  nobody. `CORE/DEPENDENCY_SELECTION.md` now holds the framework/library/build-tool selection criteria
+  (including `MUST ensure licenses are compatible`), and precedence rules moved to `CORE/RULE_DEPENDENCY_TREE.md`,
+  `LANGUAGE/CONVENTIONS.md`, and `REVIEW/CODE_REVIEW.md`. `check_no_rules_in_indexes()` enforces it.
+- Gated the five jurisdiction-specific compliance regimes (`gdpr`, `eprivacy`, `eu-ai-act`, `dora`, `nis2`) on a
+  project's declared `compliance_scope`, saving 2,167 tokens per task where they do not apply. `COMPLIANCE/LICENSES.md`
+  stays `always`. Every gate also fires when no scope is declared, so an agent that misjudges a project's jurisdiction
+  loads the regulation rather than skipping it; `check_compliance_failsafe()` enforces that.
+- Reflowed all handwritten prose onto the fewest lines (`scripts/fmt_prose.py`, run by the pre-commit hook and CI). A
+  hard line break inside a bullet renders as a space but costs tokens; removing 105 of them saves 353 tokens. A block is
+  rewritten only when its whitespace-collapsed text, its obligation fingerprint
+  (ordered RFC 2119 keywords, negations, conditionals, backticked identifiers, links, numbers), and every code span and
+  fenced block are all unchanged. `MD013` is now off.
+- Measured, and rejected, word-level prose compression: against this corpus every classic wordiness rewrite combined
+  saves 27 tokens, and several (`rather than` to `not`) change meaning.
+- Fixed two leftover references to the removed Ruleset Read Gate in the `PLAN.md` review checklist.
+- Kept the three duplicated cloud bullets in `AWS.md`, `GCP.md`, and `AZURE.md`. Hoisting them to `INFRA_AS_CODE.md`
+  would drop them for a cloud project that declares no infrastructure as code, to save at most 76 tokens.
 
 ## [v4.11.0] - 2026-03-27
-- Reordered downstream-project command examples to namespace-first wording:
-  `ai-rules setup`, `ai-rules update`, and `ai-rules mode`, while keeping
-  `release ai-rules` unchanged.
-- Expanded Java baseline guidance to prefer `String.format(...)` for
-  literal-template string construction and to model monetary values with
-  JavaMoney by default.
-- Added `LIBRARY/JAVA_MONEY.md` with JavaMoney/Moneta rules and linked it from
-  library and dependency index docs.
-- Expanded `LIBRARY/GUAVA.md` to prefer Guava `Cache`/`LoadingCache` over
-  `ConcurrentMap` and Guava immutable collections for public API returns.
-- Expanded `LIBRARY/LOMBOK.md` to require Lombok constructor/accessor/logger
-  annotations and explicit nullness contracts when Lombok is available.
-- Added readability guidance in `DESIGN/EARLY_RETURN.md` and
-  `LANGUAGE/READABILITY.md` to prefer exceptional-first ternary expressions for
-  simple two-branch guard mappings.
+- Reordered downstream-project command examples to namespace-first wording: `ai-rules setup`, `ai-rules update`, and
+  `ai-rules mode`, while keeping `release ai-rules` unchanged.
+- Expanded Java baseline guidance to prefer `String.format(...)` for literal-template string construction and to model
+  monetary values with JavaMoney by default.
+- Added `LIBRARY/JAVA_MONEY.md` with JavaMoney/Moneta rules and linked it from library and dependency index docs.
+- Expanded `LIBRARY/GUAVA.md` to prefer Guava `Cache`/`LoadingCache` over `ConcurrentMap` and Guava immutable
+  collections for public API returns.
+- Expanded `LIBRARY/LOMBOK.md` to require Lombok constructor/accessor/logger annotations and explicit nullness contracts
+  when Lombok is available.
+- Added readability guidance in `DESIGN/EARLY_RETURN.md` and `LANGUAGE/READABILITY.md` to prefer exceptional-first
+  ternary expressions for simple two-branch guard mappings.
 
 ## [v4.10.0] - 2026-02-22
-- Addressed missed review feedback from merged PRs by aligning GitHub
-  conversation-owner wording, fixing minor ordering/grammar consistency, adding
-  Pulumi policy-check guidance, and applying terminology/example consistency
-  fixes across compliance/language docs.
-- Added `CORE/GITHUB.md` with GitHub-specific protected-branch, PR merge
-  authority, unresolved review-conversation, and review workflow rules.
-- Added `CI-CD/GITHUB_ACTIONS.md` with GitHub Actions workflow guidance,
-  including action pinning, least-privilege permissions, and release-gate
-  expectations.
-- Updated `CORE/CORE.md`, `CI-CD/CI-CD.md`, and
-  `CORE/RULE_DEPENDENCY_TREE.md` to index and inherit the new GitHub-specific
-  specializations.
-- Added `INFRASTRUCTURE/INFRA_AS_CODE.md` with tool-neutral Infrastructure as
-  Code guardrails for plan/apply gates, state safety, drift governance, and
-  least-privilege identity.
-- Updated `INFRASTRUCTURE/INFRASTRUCTURE.md` and
-  `CORE/RULE_DEPENDENCY_TREE.md` to include the IaC baseline in infrastructure
-  indexing and dependency chains.
-- Added `INFRASTRUCTURE/TERRAFORM.md` with Terraform-specific guidance for
-  version pinning, module boundaries, remote state/locking, plan/apply
-  discipline, and migration safety.
-- Updated `INFRASTRUCTURE/INFRASTRUCTURE.md` and
-  `CORE/RULE_DEPENDENCY_TREE.md` to index Terraform in infrastructure and
+- Addressed missed review feedback from merged PRs by aligning GitHub conversation-owner wording, fixing minor
+  ordering/grammar consistency, adding Pulumi policy-check guidance, and applying terminology/example consistency fixes
+  across compliance/language docs.
+- Added `CORE/GITHUB.md` with GitHub-specific protected-branch, PR merge authority, unresolved review-conversation, and
+  review workflow rules.
+- Added `CI-CD/GITHUB_ACTIONS.md` with GitHub Actions workflow guidance, including action pinning, least-privilege
+  permissions, and release-gate expectations.
+- Updated `CORE/CORE.md`, `CI-CD/CI-CD.md`, and `CORE/RULE_DEPENDENCY_TREE.md` to index and inherit the new
+  GitHub-specific specializations.
+- Added `INFRASTRUCTURE/INFRA_AS_CODE.md` with tool-neutral Infrastructure as Code guardrails for plan/apply gates,
+  state safety, drift governance, and least-privilege identity.
+- Updated `INFRASTRUCTURE/INFRASTRUCTURE.md` and `CORE/RULE_DEPENDENCY_TREE.md` to include the IaC baseline in
+  infrastructure indexing and dependency chains.
+- Added `INFRASTRUCTURE/TERRAFORM.md` with Terraform-specific guidance for version pinning, module boundaries, remote
+  state/locking, plan/apply discipline, and migration safety.
+- Updated `INFRASTRUCTURE/INFRASTRUCTURE.md` and `CORE/RULE_DEPENDENCY_TREE.md` to index Terraform in infrastructure and
   delivery/runtime guidance.
-- Added `INFRASTRUCTURE/PULUMI.md` with Pulumi-specific guidance for
-  stack isolation, preview/update discipline, plugin/version pinning, and
-  secret-safe configuration.
-- Updated `INFRASTRUCTURE/INFRASTRUCTURE.md` and
-  `CORE/RULE_DEPENDENCY_TREE.md` to index Pulumi in infrastructure and
+- Added `INFRASTRUCTURE/PULUMI.md` with Pulumi-specific guidance for stack isolation, preview/update discipline,
+  plugin/version pinning, and secret-safe configuration.
+- Updated `INFRASTRUCTURE/INFRASTRUCTURE.md` and `CORE/RULE_DEPENDENCY_TREE.md` to index Pulumi in infrastructure and
   delivery/runtime guidance.
-- Added `INFRASTRUCTURE/CLOUDFORMATION.md` with CloudFormation-specific
-  guidance for change-set review discipline, stack protection, drift handling,
-  and migration safety.
-- Updated `INFRASTRUCTURE/INFRASTRUCTURE.md` and
-  `CORE/RULE_DEPENDENCY_TREE.md` to index CloudFormation in infrastructure and
+- Added `INFRASTRUCTURE/CLOUDFORMATION.md` with CloudFormation-specific guidance for change-set review discipline, stack
+  protection, drift handling, and migration safety.
+- Updated `INFRASTRUCTURE/INFRASTRUCTURE.md` and `CORE/RULE_DEPENDENCY_TREE.md` to index CloudFormation in
+  infrastructure and delivery/runtime guidance.
+- Added `INFRASTRUCTURE/ANSIBLE.md` with Ansible-specific guidance for idempotent automation, inventory/variable
+  governance, secret handling, and execution safety.
+- Updated `INFRASTRUCTURE/INFRASTRUCTURE.md` and `CORE/RULE_DEPENDENCY_TREE.md` to index Ansible in infrastructure and
   delivery/runtime guidance.
-- Added `INFRASTRUCTURE/ANSIBLE.md` with Ansible-specific guidance for
-  idempotent automation, inventory/variable governance, secret handling, and
-  execution safety.
-- Updated `INFRASTRUCTURE/INFRASTRUCTURE.md` and
-  `CORE/RULE_DEPENDENCY_TREE.md` to index Ansible in infrastructure and
+- Added `INFRASTRUCTURE/AWS.md` with AWS platform guardrails for account isolation, IAM least privilege, network/data
+  protection, auditability, and resilience operations.
+- Updated `INFRASTRUCTURE/INFRASTRUCTURE.md` and `CORE/RULE_DEPENDENCY_TREE.md` to index AWS in infrastructure and
   delivery/runtime guidance.
-- Added `INFRASTRUCTURE/AWS.md` with AWS platform guardrails for account
-  isolation, IAM least privilege, network/data protection, auditability, and
-  resilience operations.
-- Updated `INFRASTRUCTURE/INFRASTRUCTURE.md` and
-  `CORE/RULE_DEPENDENCY_TREE.md` to index AWS in infrastructure and
+- Added `INFRASTRUCTURE/AZURE.md` with Azure platform guardrails for subscription isolation, RBAC least privilege,
+  network/data protection, auditability, and resilience operations.
+- Updated `INFRASTRUCTURE/INFRASTRUCTURE.md` and `CORE/RULE_DEPENDENCY_TREE.md` to index Azure in infrastructure and
   delivery/runtime guidance.
-- Added `INFRASTRUCTURE/AZURE.md` with Azure platform guardrails for
-  subscription isolation, RBAC least privilege, network/data protection,
-  auditability, and resilience operations.
-- Updated `INFRASTRUCTURE/INFRASTRUCTURE.md` and
-  `CORE/RULE_DEPENDENCY_TREE.md` to index Azure in infrastructure and
+- Added `INFRASTRUCTURE/GCP.md` with GCP platform guardrails for org/project isolation, IAM least privilege,
+  network/data protection, auditability, and resilience operations.
+- Updated `INFRASTRUCTURE/INFRASTRUCTURE.md` and `CORE/RULE_DEPENDENCY_TREE.md` to index GCP in infrastructure and
   delivery/runtime guidance.
-- Added `INFRASTRUCTURE/GCP.md` with GCP platform guardrails for
-  org/project isolation, IAM least privilege, network/data protection,
-  auditability, and resilience operations.
-- Updated `INFRASTRUCTURE/INFRASTRUCTURE.md` and
-  `CORE/RULE_DEPENDENCY_TREE.md` to index GCP in infrastructure and
-  delivery/runtime guidance.
-- Added `COMPLIANCE/GDPR_BDSG.md` with GDPR/BDSG engineering compliance
-  guidance for data minimization, lawful-basis mapping, retention/deletion,
-  DSAR workflows, and high-risk privacy escalation.
-- Updated `COMPLIANCE/COMPLIANCE.md` and `CORE/RULE_DEPENDENCY_TREE.md` to
-  include GDPR/BDSG in compliance indexing and cross-cutting baseline guidance.
-- Added `COMPLIANCE/NIS2_KRITIS.md` with NIS2/KRITIS-oriented engineering
-  compliance guidance for incident readiness/reporting hooks, supply-chain
-  controls, risk governance, and continuity validation.
-- Updated `COMPLIANCE/COMPLIANCE.md` and `CORE/RULE_DEPENDENCY_TREE.md` to
-  include NIS2/KRITIS in compliance indexing and cross-cutting baseline
-  guidance.
-- Added `COMPLIANCE/DORA.md` with DORA-oriented engineering compliance guidance
-  for ICT risk ownership, incident evidence readiness, third-party dependency
-  controls, and resilience testing.
-- Updated `COMPLIANCE/COMPLIANCE.md` and `CORE/RULE_DEPENDENCY_TREE.md` to
-  include DORA in compliance indexing and cross-cutting baseline guidance.
-- Added `COMPLIANCE/EU_AI_ACT.md` with EU AI Act-oriented engineering
-  compliance guidance for risk classification, transparency, human oversight,
-  model lineage, and AI behavior monitoring.
-- Updated `COMPLIANCE/COMPLIANCE.md` and `CORE/RULE_DEPENDENCY_TREE.md` to
-  include EU AI Act guidance in compliance indexing and cross-cutting baseline
-  guidance.
-- Added `COMPLIANCE/EPRIVACY_TTDSG.md` with ePrivacy/TTDSG engineering
-  compliance guidance for consent gating, client-side identifier minimization,
-  telemetry boundaries, and revocation handling.
-- Updated `COMPLIANCE/COMPLIANCE.md` and `CORE/RULE_DEPENDENCY_TREE.md` to
-  include ePrivacy/TTDSG guidance in compliance indexing and cross-cutting
-  baseline guidance.
-- Added `LANGUAGE/PYTHON/PYTHON.md` with Python baseline guidance for explicit
-  typing, boundary validation, safe exception handling, concurrency/async
-  discipline, and dependency reproducibility.
-- Updated `LANGUAGE/LANGUAGE.md` and `CORE/RULE_DEPENDENCY_TREE.md` to include
-  Python in language indexing and semantic dependency chains.
-- Added `LANGUAGE/GO/GO.md` with Go baseline guidance for explicit error
-  handling, context/cancellation discipline, package cohesion, and concurrency
-  safety.
-- Updated `LANGUAGE/LANGUAGE.md` and `CORE/RULE_DEPENDENCY_TREE.md` to include
-  Go in language indexing and semantic dependency chains.
-- Added `LANGUAGE/C_SHARP/C_SHARP.md` with C#/.NET baseline guidance for
-  nullable contract integrity, async/cancellation discipline, explicit
-  exception handling, and boundary cohesion.
-- Updated `LANGUAGE/LANGUAGE.md` and `CORE/RULE_DEPENDENCY_TREE.md` to include
-  C#/.NET in language indexing and semantic dependency chains.
-- Added `LANGUAGE/RUST/RUST.md` with Rust baseline guidance for ownership and
-  error contracts, bounded unsafe usage, async runtime safety, and concurrency
-  discipline.
-- Updated `LANGUAGE/LANGUAGE.md` and `CORE/RULE_DEPENDENCY_TREE.md` to include
-  Rust in language indexing and semantic dependency chains.
-- Added `LANGUAGE/KOTLIN/KOTLIN.md` with Kotlin baseline guidance for
-  null-safety integrity, structured coroutine usage, explicit exception
-  handling, and boundary cohesion.
-- Updated `LANGUAGE/LANGUAGE.md` and `CORE/RULE_DEPENDENCY_TREE.md` to include
-  Kotlin in language indexing and semantic dependency chains.
-- Added `LANGUAGE/PHP/PHP.md` with PHP baseline guidance for strict typing,
-  explicit API contracts, boundary validation, exception mapping, and
-  side-effect control.
-- Updated `LANGUAGE/LANGUAGE.md` and `CORE/RULE_DEPENDENCY_TREE.md` to include
-  PHP in language indexing and semantic dependency chains.
-- Added `LANGUAGE/RUBY/RUBY.md` with Ruby baseline guidance for explicit object
-  contracts, bounded exception handling, side-effect isolation, and boundary
-  validation.
-- Updated `LANGUAGE/LANGUAGE.md` and `CORE/RULE_DEPENDENCY_TREE.md` to include
-  Ruby in language indexing and semantic dependency chains.
-- Added `LANGUAGE/SWIFT/SWIFT.md` with Swift baseline guidance for optional
-  safety, structured concurrency/isolation, explicit error handling, and
-  boundary separation.
-- Updated `LANGUAGE/LANGUAGE.md` and `CORE/RULE_DEPENDENCY_TREE.md` to include
-  Swift in language indexing and semantic dependency chains.
+- Added `COMPLIANCE/GDPR_BDSG.md` with GDPR/BDSG engineering compliance guidance for data minimization, lawful-basis
+  mapping, retention/deletion, DSAR workflows, and high-risk privacy escalation.
+- Updated `COMPLIANCE/COMPLIANCE.md` and `CORE/RULE_DEPENDENCY_TREE.md` to include GDPR/BDSG in compliance indexing and
+  cross-cutting baseline guidance.
+- Added `COMPLIANCE/NIS2_KRITIS.md` with NIS2/KRITIS-oriented engineering compliance guidance for incident
+  readiness/reporting hooks, supply-chain controls, risk governance, and continuity validation.
+- Updated `COMPLIANCE/COMPLIANCE.md` and `CORE/RULE_DEPENDENCY_TREE.md` to include NIS2/KRITIS in compliance indexing
+  and cross-cutting baseline guidance.
+- Added `COMPLIANCE/DORA.md` with DORA-oriented engineering compliance guidance for ICT risk ownership, incident
+  evidence readiness, third-party dependency controls, and resilience testing.
+- Updated `COMPLIANCE/COMPLIANCE.md` and `CORE/RULE_DEPENDENCY_TREE.md` to include DORA in compliance indexing and
+  cross-cutting baseline guidance.
+- Added `COMPLIANCE/EU_AI_ACT.md` with EU AI Act-oriented engineering compliance guidance for risk classification,
+  transparency, human oversight, model lineage, and AI behavior monitoring.
+- Updated `COMPLIANCE/COMPLIANCE.md` and `CORE/RULE_DEPENDENCY_TREE.md` to include EU AI Act guidance in compliance
+  indexing and cross-cutting baseline guidance.
+- Added `COMPLIANCE/EPRIVACY_TTDSG.md` with ePrivacy/TTDSG engineering compliance guidance for consent gating,
+  client-side identifier minimization, telemetry boundaries, and revocation handling.
+- Updated `COMPLIANCE/COMPLIANCE.md` and `CORE/RULE_DEPENDENCY_TREE.md` to include ePrivacy/TTDSG guidance in compliance
+  indexing and cross-cutting baseline guidance.
+- Added `LANGUAGE/PYTHON/PYTHON.md` with Python baseline guidance for explicit typing, boundary validation, safe
+  exception handling, concurrency/async discipline, and dependency reproducibility.
+- Updated `LANGUAGE/LANGUAGE.md` and `CORE/RULE_DEPENDENCY_TREE.md` to include Python in language indexing and semantic
+  dependency chains.
+- Added `LANGUAGE/GO/GO.md` with Go baseline guidance for explicit error handling, context/cancellation discipline,
+  package cohesion, and concurrency safety.
+- Updated `LANGUAGE/LANGUAGE.md` and `CORE/RULE_DEPENDENCY_TREE.md` to include Go in language indexing and semantic
+  dependency chains.
+- Added `LANGUAGE/C_SHARP/C_SHARP.md` with C#/.NET baseline guidance for nullable contract integrity, async/cancellation
+  discipline, explicit exception handling, and boundary cohesion.
+- Updated `LANGUAGE/LANGUAGE.md` and `CORE/RULE_DEPENDENCY_TREE.md` to include C#/.NET in language indexing and semantic
+  dependency chains.
+- Added `LANGUAGE/RUST/RUST.md` with Rust baseline guidance for ownership and error contracts, bounded unsafe usage,
+  async runtime safety, and concurrency discipline.
+- Updated `LANGUAGE/LANGUAGE.md` and `CORE/RULE_DEPENDENCY_TREE.md` to include Rust in language indexing and semantic
+  dependency chains.
+- Added `LANGUAGE/KOTLIN/KOTLIN.md` with Kotlin baseline guidance for null-safety integrity, structured coroutine usage,
+  explicit exception handling, and boundary cohesion.
+- Updated `LANGUAGE/LANGUAGE.md` and `CORE/RULE_DEPENDENCY_TREE.md` to include Kotlin in language indexing and semantic
+  dependency chains.
+- Added `LANGUAGE/PHP/PHP.md` with PHP baseline guidance for strict typing, explicit API contracts, boundary validation,
+  exception mapping, and side-effect control.
+- Updated `LANGUAGE/LANGUAGE.md` and `CORE/RULE_DEPENDENCY_TREE.md` to include PHP in language indexing and semantic
+  dependency chains.
+- Added `LANGUAGE/RUBY/RUBY.md` with Ruby baseline guidance for explicit object contracts, bounded exception handling,
+  side-effect isolation, and boundary validation.
+- Updated `LANGUAGE/LANGUAGE.md` and `CORE/RULE_DEPENDENCY_TREE.md` to include Ruby in language indexing and semantic
+  dependency chains.
+- Added `LANGUAGE/SWIFT/SWIFT.md` with Swift baseline guidance for optional safety, structured concurrency/isolation,
+  explicit error handling, and boundary separation.
+- Updated `LANGUAGE/LANGUAGE.md` and `CORE/RULE_DEPENDENCY_TREE.md` to include Swift in language indexing and semantic
+  dependency chains.
 
 ## [v4.9.0] - 2026-02-22
-- Added explicit Dependency Inversion Principle (DIP) rules for parent/child
-  rule-doc dependencies in `AI-RULES/STRUCTURE.md` and
-  `CORE/RULE_DEPENDENCY_TREE.md`, including the pure-index-linking exception.
-- Fixed existing parent-to-child reference violations by removing child-doc
-  references from parent docs in `CORE/GITLAB.md`,
-  `LANGUAGE/JAVASCRIPT/JAVASCRIPT.md`,
-  `LANGUAGE/JAVA/JAVA.md`, `BUILD_TOOLS/NPM.md`, `LIBRARY/JUNIT.md`, and
-  `ARCHITECTURE/CIRCUIT_BREAKER.md`; added child discoverability via
-  `LANGUAGE/LANGUAGE.md`.
-- Consolidated cross-doc workflow guidance by removing specialization
-  references from `CORE/VERSION_CONTROL_SYSTEM.md` and keeping it
-  platform-neutral.
-- Generalized the shared PR/MR summary template in
-  `CORE/VERSION_CONTROL_SYSTEM.md` by adding `Review Focus` fields for
+- Added explicit Dependency Inversion Principle (DIP) rules for parent/child rule-doc dependencies in
+  `AI-RULES/STRUCTURE.md` and `CORE/RULE_DEPENDENCY_TREE.md`, including the pure-index-linking exception.
+- Fixed existing parent-to-child reference violations by removing child-doc references from parent docs in
+  `CORE/GITLAB.md`, `LANGUAGE/JAVASCRIPT/JAVASCRIPT.md`, `LANGUAGE/JAVA/JAVA.md`, `BUILD_TOOLS/NPM.md`,
+  `LIBRARY/JUNIT.md`, and `ARCHITECTURE/CIRCUIT_BREAKER.md`; added child discoverability via `LANGUAGE/LANGUAGE.md`.
+- Consolidated cross-doc workflow guidance by removing specialization references from `CORE/VERSION_CONTROL_SYSTEM.md`
+  and keeping it platform-neutral.
+- Generalized the shared PR/MR summary template in `CORE/VERSION_CONTROL_SYSTEM.md` by adding `Review Focus` fields for
   generated/copied files and non-obvious rationale.
-- Removed redundant GitLab-specific summary template duplication from
-  `CORE/GITLAB.md` and reused the general PR/MR summary template.
-- Added `CORE/CONFLUENCE.md` with Confluence wiki read-only defaults,
-  explicit revertible-change-only write constraints, preserved history
-  requirements, and a non-overridable no-delete policy.
-- Updated `CORE/CORE.md`, `CORE/VERSION_CONTROL_SYSTEM.md`, and
-  `CORE/RULE_DEPENDENCY_TREE.md` to index and inherit Confluence-specific
-  workflow constraints.
-- Added `CORE/GITLAB.md` with GitLab-specific protected-branch, MR merge
-  authority, unresolved review discussions/threads (conversations), and
-  conversation-resolution workflow rules.
-- Updated `CORE/CORE.md`, `CORE/VERSION_CONTROL_SYSTEM.md`, and
-  `CORE/RULE_DEPENDENCY_TREE.md` to index and inherit the new GitLab
-  specialization.
+- Removed redundant GitLab-specific summary template duplication from `CORE/GITLAB.md` and reused the general PR/MR
+  summary template.
+- Added `CORE/CONFLUENCE.md` with Confluence wiki read-only defaults, explicit revertible-change-only write constraints,
+  preserved history requirements, and a non-overridable no-delete policy.
+- Updated `CORE/CORE.md`, `CORE/VERSION_CONTROL_SYSTEM.md`, and `CORE/RULE_DEPENDENCY_TREE.md` to index and inherit
+  Confluence-specific workflow constraints.
+- Added `CORE/GITLAB.md` with GitLab-specific protected-branch, MR merge authority, unresolved review
+  discussions/threads (conversations), and conversation-resolution workflow rules.
+- Updated `CORE/CORE.md`, `CORE/VERSION_CONTROL_SYSTEM.md`, and `CORE/RULE_DEPENDENCY_TREE.md` to index and inherit the
+  new GitLab specialization.
 
 ## [v4.8.0] - 2026-02-22
-- Added `FRAMEWORK/IONIC.md` with Ionic-specific guidance for navigation,
-  native plugin boundaries, permission discipline, and mobile fallback safety.
-- Updated `FRAMEWORK/FRAMEWORK.md` and `CORE/RULE_DEPENDENCY_TREE.md` to index
-  and reference the new Ionic framework document.
-- Added `CORE/JIRA.md` with Jira-specific ticket-authoring guidance, explicit
-  restrictions for editing existing descriptions, and reusable templates for
-  ticket descriptions and delivery summaries.
-- Updated `CORE/CORE.md`, `CORE/VERSION_CONTROL_SYSTEM.md`, and
-  `CORE/RULE_DEPENDENCY_TREE.md` to reference Jira-specific workflow guidance.
-- Added mandatory complete-ruleset-read gate ordering to `PLAN/PLAN.md`,
-  `PROGRAMMING/PROGRAMMING.md`, and `REVIEW/CODE_REVIEW.md`.
-- Updated `AI-RULES/UPDATE.md` mode-switch guidance to require explicit push
-  confirmation when switching to local mode.
-- Fixed PowerShell portability in `AI-RULES/UPDATE.md` by standardizing the
-  mode-switch `git rm` command to a single shell-safe line.
-- Hardened `.github/workflows/docs-check.yml` by pinning action SHAs and using
-  least-privilege workflow permissions.
-- Expanded `LANGUAGE/TYPESCRIPT/TYPESCRIPT.md` with detailed guidance for
-  restricting ad-hoc objects and promoting shared domain data to named types.
+- Added `FRAMEWORK/IONIC.md` with Ionic-specific guidance for navigation, native plugin boundaries, permission
+  discipline, and mobile fallback safety.
+- Updated `FRAMEWORK/FRAMEWORK.md` and `CORE/RULE_DEPENDENCY_TREE.md` to index and reference the new Ionic framework
+  document.
+- Added `CORE/JIRA.md` with Jira-specific ticket-authoring guidance, explicit restrictions for editing existing
+  descriptions, and reusable templates for ticket descriptions and delivery summaries.
+- Updated `CORE/CORE.md`, `CORE/VERSION_CONTROL_SYSTEM.md`, and `CORE/RULE_DEPENDENCY_TREE.md` to reference
+  Jira-specific workflow guidance.
+- Added mandatory complete-ruleset-read gate ordering to `PLAN/PLAN.md`, `PROGRAMMING/PROGRAMMING.md`, and
+  `REVIEW/CODE_REVIEW.md`.
+- Updated `AI-RULES/UPDATE.md` mode-switch guidance to require explicit push confirmation when switching to local mode.
+- Fixed PowerShell portability in `AI-RULES/UPDATE.md` by standardizing the mode-switch `git rm` command to a single
+  shell-safe line.
+- Hardened `.github/workflows/docs-check.yml` by pinning action SHAs and using least-privilege workflow permissions.
+- Expanded `LANGUAGE/TYPESCRIPT/TYPESCRIPT.md` with detailed guidance for restricting ad-hoc objects and promoting
+  shared domain data to named types.
 
 ## [v4.7.0] - 2026-02-15
-- Strengthened `AI-RULES/UPDATE.md` with explicit structure-adaptation guidance
-  for baseline and downstream override directory/file changes, requiring ad-hoc
-  migration planning from preflight findings instead of a fixed checklist.
-- Added required update completion gates for structure alignment, git-subtree
-  location validation (git mode), and stale-reference cleanup in entry/ignore
-  files.
+- Strengthened `AI-RULES/UPDATE.md` with explicit structure-adaptation guidance for baseline and downstream override
+  directory/file changes, requiring ad-hoc migration planning from preflight findings instead of a fixed checklist.
+- Added required update completion gates for structure alignment, git-subtree location validation (git mode), and
+  stale-reference cleanup in entry/ignore files.
 
 ## [v4.6.0] - 2026-02-15
-- Changed the default downstream base directory placeholder from `docs/ai` to
-  `ai` across setup/template/update guidance.
-- Hardened shared workflow policy to require plan-first execution, dedicated
-  issue branch + PR/MR flow, and explicit completion status reporting fields.
-- Added repository PR-loop preconditions to consume shared plan/VCS rules
-  without redefining downstream-project guidance scope.
-- Standardized release-note sub-heading formatting guidance in
-  `AI-RULES/RELEASE.md` to enforce a single canonical heading template.
-- Fixed duplicated/triplicated release-note top headings by deduplicating
-  existing GitHub release-note sub-headings.
+- Changed the default downstream base directory placeholder from `docs/ai` to `ai` across setup/template/update
+  guidance.
+- Hardened shared workflow policy to require plan-first execution, dedicated issue branch + PR/MR flow, and explicit
+  completion status reporting fields.
+- Added repository PR-loop preconditions to consume shared plan/VCS rules without redefining downstream-project guidance
+  scope.
+- Standardized release-note sub-heading formatting guidance in `AI-RULES/RELEASE.md` to enforce a single canonical
+  heading template.
+- Fixed duplicated/triplicated release-note top headings by deduplicating existing GitHub release-note sub-headings.
 
 ## [v4.5.0] - 2026-02-15
-- Added session entry preferences and execution controls in
-  `AI-RULES/PR-REVIEW-LOOP.md` for review-loop execution, plan-to-implementation
-  autonomy, and optional merge-after-clean-loop behavior.
-- Expanded `PLAN/PLAN.md` with stronger planning dependencies, architecture-first
-  focus, and explicit research requirements to reduce shallow planning.
-- Clarified inherited constraint resolution in `PROGRAMMING/PROGRAMMING.md` and
-  `REVIEW/CODE_REVIEW.md` by explicitly requiring index-doc and leaf-doc
-  traversal across language, design, architecture, framework, library, build,
+- Added session entry preferences and execution controls in `AI-RULES/PR-REVIEW-LOOP.md` for review-loop execution,
+  plan-to-implementation autonomy, and optional merge-after-clean-loop behavior.
+- Expanded `PLAN/PLAN.md` with stronger planning dependencies, architecture-first focus, and explicit research
+  requirements to reduce shallow planning.
+- Clarified inherited constraint resolution in `PROGRAMMING/PROGRAMMING.md` and `REVIEW/CODE_REVIEW.md` by explicitly
+  requiring index-doc and leaf-doc traversal across language, design, architecture, framework, library, build,
   infrastructure, and CI/CD guidance.
-- Updated repository security policy in `SECURITY.md` to support only the latest
-  tagged release and to use best-effort triage timing (no fixed SLA).
-- Removed outdated private-repository access guidance from
-  `AGENTS_TEMPLATE.md`.
+- Updated repository security policy in `SECURITY.md` to support only the latest tagged release and to use best-effort
+  triage timing (no fixed SLA).
+- Removed outdated private-repository access guidance from `AGENTS_TEMPLATE.md`.
 
 ## [v4.4.0] - 2026-02-14
-- Added repository-level security disclosure guidance in `SECURITY.md` for
-  supported versions and coordinated vulnerability reporting.
-- Added design guidance for cognitive complexity and early returns in
-  `DESIGN/COGNITIVE_COMPLEXITY.md` and `DESIGN/EARLY_RETURN.md`, and linked both
-  in design/dependency docs.
-- Hardened `AI-RULES/PR-REVIEW-LOOP.md` merge gates and replaced placeholder
-  review-trigger guidance with an executable `requestReviewsByLogin` GraphQL
-  mutation flow.
-- Updated downstream-project path guidance to keep project lessons learned and
-  ADRs under `<AI_PROJECT_PATH>/...` across setup/update/template docs.
-- Expanded language/design quality guidance, including semantic type preference
-  in `LANGUAGE/CONVENTIONS.md` and exact numeric handling in
-  `LANGUAGE/JAVA/JAVA.md`.
-- Added explicit deep-doc contract sections in `FRAMEWORK/ANGULAR.md` and
-  `FRAMEWORK/REACT.md`.
-- Added `Do / Don't Examples` sections to `SECURITY/SECURITY.md` and
-  `TEST/TEST.md` to align with deep technical doc requirements.
+- Added repository-level security disclosure guidance in `SECURITY.md` for supported versions and coordinated
+  vulnerability reporting.
+- Added design guidance for cognitive complexity and early returns in `DESIGN/COGNITIVE_COMPLEXITY.md` and
+  `DESIGN/EARLY_RETURN.md`, and linked both in design/dependency docs.
+- Hardened `AI-RULES/PR-REVIEW-LOOP.md` merge gates and replaced placeholder review-trigger guidance with an executable
+  `requestReviewsByLogin` GraphQL mutation flow.
+- Updated downstream-project path guidance to keep project lessons learned and ADRs under `<AI_PROJECT_PATH>/...` across
+  setup/update/template docs.
+- Expanded language/design quality guidance, including semantic type preference in `LANGUAGE/CONVENTIONS.md` and exact
+  numeric handling in `LANGUAGE/JAVA/JAVA.md`.
+- Added explicit deep-doc contract sections in `FRAMEWORK/ANGULAR.md` and `FRAMEWORK/REACT.md`.
+- Added `Do / Don't Examples` sections to `SECURITY/SECURITY.md` and `TEST/TEST.md` to align with deep technical doc
+  requirements.
 
 ## [v4.3.0] - 2026-02-13
-- Added architecture guidance for CQRS in `ARCHITECTURE/CQRS.md` and linked it
-  from the architecture index.
-- Added downstream override guidance in `AI-RULES/DOWNSTREAM-OVERRIDES.md`,
-  including deterministic markdown reachability validation for project-owned AI
-  extensions.
-- Added a dedicated PR review loop guide in `AI-RULES/PR-REVIEW-LOOP.md` and
-  repository Copilot instructions entrypoint guidance.
-- Expanded lessons learned with guidance for GitHub issue newline escaping,
-  avoiding `@copilot` mentions in PR comments, and retriggering Copilot
-  re-review after fix pushes.
+- Added architecture guidance for CQRS in `ARCHITECTURE/CQRS.md` and linked it from the architecture index.
+- Added downstream override guidance in `AI-RULES/DOWNSTREAM-OVERRIDES.md`, including deterministic markdown
+  reachability validation for project-owned AI extensions.
+- Added a dedicated PR review loop guide in `AI-RULES/PR-REVIEW-LOOP.md` and repository Copilot instructions entrypoint
+  guidance.
+- Expanded lessons learned with guidance for GitHub issue newline escaping, avoiding `@copilot` mentions in PR comments,
+  and retriggering Copilot re-review after fix pushes.
 - Clarified TypeScript class member ordering for JSDoc blocks and decorators.
 
 ## [v4.2.0] - 2026-02-08
 - Added a canonical semantic dependency tree and explicit layer contracts across
-  core/language/framework/library/build-tools/infrastructure/CI-CD/design/review
-  guidance.
-- Expanded baseline language and cross-cutting rules into deep, agent-focused
-  guidance (including JavaScript, TypeScript, Java, HTML, CSS, SQL, YAML, Shell,
-  security, testing, and logging).
-- Added and expanded deep guidance for architecture, framework, library, build,
-  and infrastructure topics, including framework-specific Angular/React/Svelte
-  guardrails and extensive Java ecosystem/library coverage.
-- Refined documentation quality and consistency through broad Copilot review
-  backfills, schema/interop clarifications, terminology cleanup, and encoding
-  fixes.
+  core/language/framework/library/build-tools/infrastructure/CI-CD/design/review guidance.
+- Expanded baseline language and cross-cutting rules into deep, agent-focused guidance
+  (including JavaScript, TypeScript, Java, HTML, CSS, SQL, YAML, Shell, security, testing, and logging).
+- Added and expanded deep guidance for architecture, framework, library, build, and infrastructure topics, including
+  framework-specific Angular/React/Svelte guardrails and extensive Java ecosystem/library coverage.
+- Refined documentation quality and consistency through broad Copilot review backfills, schema/interop clarifications,
+  terminology cleanup, and encoding fixes.
 
 ## [v4.1.0] - 2026-02-07
-- Added deterministic `REF` resolution/validation guidance for setup/update
-  flows, including explicit fallback behavior.
-- Added a target-version compatibility preflight that compares current vs target
-  version and adapts update behavior using target docs.
-- Hardened setup mode detection to combine tracked-subtree and local-hint
-  signals with explicit ambiguous-state handling.
-- Added clean-working-tree preconditions and explicit push confirmation after
-  git-mode updates.
-- Hardened local-mode update and mode-switch safety with missing-safe untracking,
-  `.git/info/exclude` backup/restore requirements, and recovery verification.
-- Added explicit PR/MR review-comment handling workflow guidance (validity
-  judgment, response, fix-or-follow-up, and resolution ownership checks).
+- Added deterministic `REF` resolution/validation guidance for setup/update flows, including explicit fallback behavior.
+- Added a target-version compatibility preflight that compares current vs target version and adapts update behavior
+  using target docs.
+- Hardened setup mode detection to combine tracked-subtree and local-hint signals with explicit ambiguous-state
+  handling.
+- Added clean-working-tree preconditions and explicit push confirmation after git-mode updates.
+- Hardened local-mode update and mode-switch safety with missing-safe untracking, `.git/info/exclude` backup/restore
+  requirements, and recovery verification.
+- Added explicit PR/MR review-comment handling workflow guidance
+  (validity judgment, response, fix-or-follow-up, and resolution ownership checks).
 
 ## [v4.0.0] - 2026-02-07
-- Breaking: renamed downstream guidance from
-  `AI-RULES/CONSUMING_PROJECT.md` to `AI-RULES/DOWNSTREAM-PROJECT.md` and
+- Breaking: renamed downstream guidance from `AI-RULES/CONSUMING_PROJECT.md` to `AI-RULES/DOWNSTREAM-PROJECT.md` and
   updated references.
-- Standardized terminology to `downstream-project` / `downstream-projects`
-  across guidance.
-- Added VCS workflow guidance for branch-per-concern, pushing working
-  intermediate states, non-working-code exception handling, and PR/MR
-  suggestion timing.
-- Added execution guidance links from `AI-RULES/DOWNSTREAM-PROJECT.md` to
-  `PLAN/PLAN.md`, `PROGRAMMING/PROGRAMMING.md`, and `REVIEW/REVIEW.md`.
-- Added PR/MR and issue-tracker summary rules with template snippets in
-  `CORE/VERSION_CONTROL_SYSTEM.md`, plus a delivery pointer in
-  `PROGRAMMING/PROGRAMMING.md`.
+- Standardized terminology to `downstream-project` / `downstream-projects` across guidance.
+- Added VCS workflow guidance for branch-per-concern, pushing working intermediate states, non-working-code exception
+  handling, and PR/MR suggestion timing.
+- Added execution guidance links from `AI-RULES/DOWNSTREAM-PROJECT.md` to `PLAN/PLAN.md`, `PROGRAMMING/PROGRAMMING.md`,
+  and `REVIEW/REVIEW.md`.
+- Added PR/MR and issue-tracker summary rules with template snippets in `CORE/VERSION_CONTROL_SYSTEM.md`, plus a
+  delivery pointer in `PROGRAMMING/PROGRAMMING.md`.
 - Added dependency lock-file policy in `CORE/VERSION_CONTROL_SYSTEM.md`.
-- Added multiline parameter/argument formatting guidance in
-  `LANGUAGE/CONVENTIONS.md`.
+- Added multiline parameter/argument formatting guidance in `LANGUAGE/CONVENTIONS.md`.
 - Added commit-message guidance requiring issue/ticket identifier plus title.
 - Standardized `<AI_RULES_PATH>` placeholder usage in setup/update docs.
 
 ## [v3.0.1] - 2026-02-06
-- Clarified update/setup path placeholder handling, including copy-paste-safe
-  `.git/info/exclude` examples.
+- Clarified update/setup path placeholder handling, including copy-paste-safe `.git/info/exclude` examples.
 - Added readability guidance forbidding nested/chained ternary expressions.
-- Added downstream-project ADR guidance under `<AI_PROJECT_PATH>/DECISIONS/` and
-  clarified downstream-project terminology.
-- Clarified scope boundaries between repository governance files and
-  downstream-project operational guidance.
+- Added downstream-project ADR guidance under `<AI_PROJECT_PATH>/DECISIONS/` and clarified downstream-project
+  terminology.
+- Clarified scope boundaries between repository governance files and downstream-project operational guidance.
 
 ## [v3.0.0] - 2026-02-05
-- Breaking: flattened repo layout with `AI.md` at the repo root and subtree prefix
-  guidance updated to `<AI_RULES_PATH>`.
+- Breaking: flattened repo layout with `AI.md` at the repo root and subtree prefix guidance updated to
+  `<AI_RULES_PATH>`.
 - Added PROGRAMMING, PLAN, and CODE_REVIEW guidance with stricter review expectations.
 - Added downstream-project guidance for lessons learned placement and maintenance rules.
 - Added test fixture separation guidance and markdownlint hygiene updates.

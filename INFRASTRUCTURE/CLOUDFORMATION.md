@@ -9,8 +9,7 @@ applies_to:
 ---
 # CLOUDFORMATION
 
-Guidance for AI agents implementing and reviewing AWS CloudFormation
-infrastructure changes.
+Guidance for AI agents implementing and reviewing AWS CloudFormation infrastructure changes.
 
 ## Defaults
 - SHOULD keep templates declarative, parameterized, and environment-aware.

@@ -26,8 +26,8 @@ Guidance for AI agents implementing, updating, and reviewing tests.
   - MUST keep suite small, stable, and non-flaky.
 
 ## Determinism and Flakiness Control
-- SHOULD avoid reliance on wall-clock time, random seeds, network timing, and shared
-  mutable state without explicit control.
+- SHOULD avoid reliance on wall-clock time, random seeds, network timing, and shared mutable state without explicit
+  control.
 - MUST use stable fixtures and explicit setup/teardown.
 - SHOULD control time/randomness with test doubles where feasible.
 - MUST quarantine and fix flaky tests; do not normalize flaky behavior as acceptable.
@@ -45,8 +45,7 @@ Guidance for AI agents implementing, updating, and reviewing tests.
 - SHOULD use scenario-based datasets for edge and failure-path coverage.
 
 ## Coverage and Confidence
-- High line coverage alone is insufficient; MUST prioritize meaningful assertions and
-  branch/error-path validation.
+- High line coverage alone is insufficient; MUST prioritize meaningful assertions and branch/error-path validation.
 - MUST cover happy paths, edge cases, failure modes, and regression paths.
 - If coverage targets are not met, MUST document exact gaps and risk rationale.
 

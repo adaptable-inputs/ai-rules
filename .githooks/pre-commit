@@ -8,6 +8,11 @@ set -e
 root="$(git rev-parse --show-toplevel)"
 cd "$root"
 
+# Reflow prose in place. Each block is rewritten only if its normalized text and
+# its obligation fingerprint are unchanged; otherwise the script aborts.
+python3 scripts/fmt_prose.py
+git add -u
+
 python3 scripts/gen_manifest.py --check || {
     echo
     echo "pre-commit: MANIFEST.md does not match the frontmatter it is generated from."

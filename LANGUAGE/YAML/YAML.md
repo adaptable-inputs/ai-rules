@@ -20,8 +20,8 @@ Guidance for AI agents implementing and reviewing YAML configuration files.
 - SHOULD keep list item structure consistent across entries.
 
 ## Type and Parsing Safety
-- Quote ambiguous scalars when type ambiguity is risky (`on`, `off`, `yes`,
-  `no`, version-like numbers, leading-zero values).
+- Quote ambiguous scalars when type ambiguity is risky
+  (`on`, `off`, `yes`, `no`, version-like numbers, leading-zero values).
 - SHOULD prefer explicit booleans and numbers when schema expects them.
 - SHOULD avoid relying on parser-specific coercion behavior.
 - SHOULD keep date/time values explicit and consistently formatted.

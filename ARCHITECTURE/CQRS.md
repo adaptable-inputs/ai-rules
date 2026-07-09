@@ -8,8 +8,7 @@ applies_to:
 ---
 # CQRS
 
-Guidance for AI agents implementing and reviewing Command Query
-Responsibility Segregation (CQRS) architectures.
+Guidance for AI agents implementing and reviewing Command Query Responsibility Segregation (CQRS) architectures.
 
 ## CQRS Decision Rules
 - SHOULD use CQRS only when command and query concerns have materially different scaling, consistency, or model

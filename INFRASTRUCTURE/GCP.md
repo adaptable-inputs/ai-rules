@@ -9,8 +9,7 @@ applies_to:
 ---
 # GCP
 
-Guidance for AI agents implementing and reviewing Google Cloud Platform (GCP)
-configuration and operations choices.
+Guidance for AI agents implementing and reviewing Google Cloud Platform (GCP) configuration and operations choices.
 
 ## Defaults
 - SHOULD use org/folder/project hierarchy for environment and ownership isolation.

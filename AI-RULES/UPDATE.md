@@ -25,8 +25,7 @@ Use these rules whenever a setup/update/mode-switch flow needs a `REF`.
   `git ls-remote --refs --tags --sort="version:refname" https://github.com/adaptable-inputs/ai-rules.git "v*"`
   - If at least one `v*` tag exists, set `REF` to the last tag in the sorted output.
   - If no tags exist, set `REF=main`.
-- Before any subtree command, echo the resolved ref to the user:
-  Using ai-rules REF: `<REF>`
+- Before any subtree command, echo the resolved ref to the user: Using ai-rules REF: `<REF>`
 
 ## Update Steps (run when requested)
 1. Locate the vendored ai-rules path and entry point from `AGENTS.md` or README.

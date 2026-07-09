@@ -10,16 +10,13 @@ applies_to:
 ---
 # EFFECTIVE_JAVA
 
-Guidance for AI agents applying Effective-Java-style decisions in modern Java
-codebases.
+Guidance for AI agents applying Effective-Java-style decisions in modern Java codebases.
 
 ## Core Design Preferences
-- SHOULD prefer static factories over constructors when they improve readability,
-  caching, or subtype flexibility.
+- SHOULD prefer static factories over constructors when they improve readability, caching, or subtype flexibility.
 - SHOULD use builders for objects with many optional parameters or invariants.
 - SHOULD prefer immutable value types and make defensive copies of mutable state.
-- SHOULD prefer composition over inheritance unless subtype truly models an `is-a`
-  relationship.
+- SHOULD prefer composition over inheritance unless subtype truly models an `is-a` relationship.
 - SHOULD minimize visibility of classes/members; keep APIs as small as possible.
 
 ## Equality and Identity
@@ -35,8 +32,7 @@ codebases.
 
 ## Optional and Nullability
 - SHOULD return `Optional<T>` when absence is part of API semantics.
-- SHOULD avoid `Optional` in fields/parameters unless there is a strong documented
-  reason.
+- SHOULD avoid `Optional` in fields/parameters unless there is a strong documented reason.
 - MUST NOT use `Optional.get()` without presence checks.
 
 ## Exceptions and Resource Management
@@ -47,8 +43,9 @@ codebases.
 
 ## Concurrency Guidance
 - SHOULD prefer immutable/shared-nothing designs over synchronization.
-- SHOULD use high-level concurrency abstractions (`ExecutorService`, `CompletableFuture`, Structured
-  Concurrency/virtual-thread APIs where available) over ad-hoc thread creation.
+- SHOULD use high-level concurrency abstractions
+  (`ExecutorService`, `CompletableFuture`, Structured Concurrency/virtual-thread APIs where available) over ad-hoc
+  thread creation.
 - SHOULD document thread-safety guarantees for shared components.
 - SHOULD avoid exposing mutable static state.
 
@@ -59,5 +56,5 @@ codebases.
 - SHOULD validate invariants after deserialization.
 
 ## Override Notes
-- When heuristics conflict with explicit project constraints (performance,
-  interoperability), document the tradeoff and preserve baseline safety rules.
+- When heuristics conflict with explicit project constraints (performance, interoperability), document the tradeoff and
+  preserve baseline safety rules.

@@ -4,8 +4,7 @@ applies_to:
 ---
 # LIBRARY
 
-Library-layer contract for technology-specific API usage and integration
-patterns.
+Library-layer contract for technology-specific API usage and integration patterns.
 
 ## Files
 - [GUAVA.md](GUAVA.md) - Google Guava library guidance.

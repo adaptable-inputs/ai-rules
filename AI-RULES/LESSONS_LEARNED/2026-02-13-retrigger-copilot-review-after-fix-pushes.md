@@ -6,8 +6,8 @@ applies_to:
 # 2026-02-13-retrigger-copilot-review-after-fix-pushes
 
 ## Issue
-After fixing Copilot findings and pushing follow-up commits, the PR was merged
-without a fresh Copilot review round on the latest commit.
+After fixing Copilot findings and pushing follow-up commits, the PR was merged without a fresh Copilot review round on
+the latest commit.
 
 ## Prevention
 - After every fix push, explicitly re-trigger Copilot review for that PR.

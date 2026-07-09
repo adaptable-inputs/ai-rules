@@ -418,6 +418,107 @@ def run_script(root: Path, name: str, *args):
     return r.returncode, r.stdout + r.stderr
 
 
+class TestProseFormatter(unittest.TestCase):
+    """fmt_prose.py rewrites files in a pre-commit hook. It must be incapable of
+    changing what a rule obliges, and it must prove that per block, not per run."""
+
+    @staticmethod
+    def _mod():
+        spec = importlib.util.spec_from_file_location(
+            "fmt_prose", ROOT / "scripts" / "fmt_prose.py")
+        m = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(m)
+        return m
+
+    def test_corpus_is_reflowed(self):
+        rc, out = run_script(ROOT, "fmt_prose.py", "--check")
+        self.assertEqual(rc, 0, out)
+
+    def test_reflow_preserves_normalized_text(self):
+        f = self._mod()
+        block = ["- MUST NOT swallow exceptions silently; log with `logger.error`",
+                 "  and rethrow a specific type."]
+        new = f.reflow(block)
+        self.assertEqual(" ".join("\n".join(block).split()),
+                         " ".join("\n".join(new).split()))
+
+    def test_guard_rejects_meaning_changes(self):
+        f = self._mod()
+        cases = [
+            ("- MUST NOT swallow exceptions.", "- Swallow exceptions."),       # keyword
+            ("- MUST not retry.", "- MUST retry."),                            # negation
+            ("- MUST use `Duration`.", "- MUST use Duration."),                # identifier
+            ("- SHOULD retry 3 times.", "- SHOULD retry 4 times."),            # number
+            ("- MUST a; SHOULD b.", "- SHOULD b; MUST a."),                    # order
+            ("- If x, MUST y.", "- MUST y."),                                  # condition
+            ("- See [a](b).", "- See [a](c)."),                                # link target
+        ]
+        for before, after in cases:
+            with self.subTest(before=before):
+                self.assertFalse(f.safe(before, after),
+                                 f"guard accepted a meaning change: {before!r} -> {after!r}")
+
+    def test_guard_accepts_a_pure_reflow(self):
+        f = self._mod()
+        self.assertTrue(f.safe("- MUST use `Duration`\n  for timeouts.",
+                               "- MUST use `Duration` for timeouts."))
+
+    def test_code_span_is_never_split(self):
+        f = self._mod()
+        atoms = f.atoms("Run `git subtree add --prefix x` now and see [a b](c).")
+        self.assertIn("`git subtree add --prefix x`", atoms)
+        self.assertIn("[a b](c).", " ".join(atoms))
+
+    def test_snippets_survive_byte_for_byte(self):
+        """Both of these shipped as real corruption before the guard existed."""
+        f = self._mod()
+        # A fenced block reflowed into one line (four shell commands merged).
+        self.assertFalse(f.code_intact("```\ngit add .\ngit status\n```",
+                                       "``` git add . git status ```"))
+        # Two significant spaces squeezed inside a code span (markdownlint MD038).
+        self.assertFalse(f.code_intact("a `x  y` b", "a `x y` b"))
+        # A space inserted between a code span and its punctuation.
+        self.assertFalse(f.safe("use `bun.lockb`).", "use `bun.lockb` )."))
+        # A space inserted inside link text (markdownlint MD039).
+        self.assertFalse(f.safe("see [`X`](y.md)", "see [ `X` ](y.md)"))
+
+    def test_a_span_wrapped_across_lines_may_rejoin(self):
+        # A newline inside a code span renders as one space, so rejoining is faithful.
+        f = self._mod()
+        self.assertTrue(f.code_intact("`plan -> merge (if\n  permitted)`",
+                                      "`plan -> merge (if permitted)`"))
+
+    def test_inline_never_adds_or_squeezes(self):
+        f = self._mod()
+        for text in ("see [`X`](y.md) now", "a `x  y` b", "ends `z`."):
+            self.assertEqual(f.inline(text), text, f"inline() altered {text!r}")
+
+    def test_corpus_code_matches_last_commit(self):
+        """No committed snippet was altered by any reflow in this repo's history."""
+        f = self._mod()
+        r = subprocess.run(["git", "show", "HEAD:CORE/VERSION_CONTROL_SYSTEM.md"],
+                           capture_output=True, text=True, cwd=ROOT)
+        if r.returncode:
+            self.skipTest("not a git checkout")
+        cur = (ROOT / "CORE" / "VERSION_CONTROL_SYSTEM.md").read_text(encoding="utf-8")
+        self.assertTrue(f.code_intact(r.stdout, cur))
+
+    def test_fenced_code_is_untouched(self):
+        f = self._mod()
+        with Sandbox() as repo:
+            p = repo / "DESIGN" / "ZZ.md"
+            p.write_text('---\napplies_to:\n  load: "never"\n  reason: "t"\n---\n'
+                         "# Z\n\n```bash\ngit status\ngit log\n```\n", encoding="utf-8")
+            import os
+            cwd = os.getcwd()
+            os.chdir(repo)
+            try:
+                out, _ = f.process("DESIGN/ZZ.md")
+            finally:
+                os.chdir(cwd)
+            self.assertIn("git status\ngit log", out)
+
+
 class TestGeneratedArtifacts(unittest.TestCase):
     """A stale manifest is worse than no manifest: an agent trusts it and stops
     looking, so a rule doc disappears without any gate noticing."""

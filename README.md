@@ -5,33 +5,27 @@ applies_to:
 ---
 # AI Rules
 
-This repository contains shared, versioned AI guidance intended to be vendored
-into other projects (e.g., via git subtree). It is the single source of truth
-for baseline agent rules across repositories.
+This repository contains shared, versioned AI guidance intended to be vendored into other projects
+(e.g., via git subtree). It is the single source of truth for baseline agent rules across repositories.
 
 ## Getting Started
 ### Agent requirements
 
-Use a frontier model at high or higher reasoning effort. Reasoning effort
-matters more than the choice of model family.
+Use a frontier model at high or higher reasoning effort. Reasoning effort matters more than the choice of model family.
 
 The ruleset assumes the agent can:
 
-- Hold multi-level rule precedence in context and resolve conflicts using
-  `CORE/RULE_DEPENDENCY_TREE.md`.
-- Apply the obligation vocabulary in `CORE/NORMATIVE_LANGUAGE.md`, distinguishing
-  `MUST` from `SHOULD` from `MAY`.
-- Follow the conditional loading protocol in `AI.md`, selecting documents by
-  their `applies_to` frontmatter rather than reading the whole ruleset.
+- Hold multi-level rule precedence in context and resolve conflicts using `CORE/RULE_DEPENDENCY_TREE.md`.
+- Apply the obligation vocabulary in `CORE/NORMATIVE_LANGUAGE.md`, distinguishing `MUST` from `SHOULD` from `MAY`.
+- Follow the conditional loading protocol in `AI.md`, selecting documents by their `applies_to` frontmatter rather than
+  reading the whole ruleset.
 
-An agent that cannot do these will still produce plausible output, but it will
-silently apply the wrong rules. Lower the reasoning effort only after checking
-that behavior holds on your own work.
+An agent that cannot do these will still produce plausible output, but it will silently apply the wrong rules. Lower the
+reasoning effort only after checking that behavior holds on your own work.
 
 ### Initial setup
 1. Copy `AGENTS_TEMPLATE.md` into your project root as `AGENTS.md`.
-2. Ask your AI agent to set up ai-rules in the desired mode.
-   Example prompts:
+2. Ask your AI agent to set up ai-rules in the desired mode. Example prompts:
    ```
    ai-rules setup
    ai-rules setup local
@@ -46,14 +40,13 @@ that behavior holds on your own work.
    - `git` commits the subtree so the team can share it.
 
 ### Update
-Ask your AI agent to run `ai-rules update` when you want a newer version.
-Example prompts:
+Ask your AI agent to run `ai-rules update` when you want a newer version. Example prompts:
 ```
 ai-rules update
 ai-rules update v4.11.0
 ```
-If you omit the version, the latest tagged release will be used.
-The update auto-detects the current mode (local or git) and preserves it.
+If you omit the version, the latest tagged release will be used. The update auto-detects the current mode (local or git)
+and preserves it.
 
 ### Switch modes
 To switch modes after setup, ask your AI agent:
@@ -61,8 +54,8 @@ To switch modes after setup, ask your AI agent:
 ai-rules mode local
 ai-rules mode git
 ```
-Switching to `git` will create commits to track the subtree. Switching to `local`
-will remove the subtree from version control and keep it only on your machine.
+Switching to `git` will create commits to track the subtree. Switching to `local` will remove the subtree from version
+control and keep it only on your machine.
 
 ## Structure
 - `AI.md` - Single entry point for the entire ai-rules ruleset.
@@ -82,8 +75,7 @@ will remove the subtree from version control and keep it only on your machine.
 - `COMPLIANCE/` - Compliance and licensing rules.
 - `CI-CD/` - CI/CD and automation guidance.
 - `INFRASTRUCTURE/` - Infrastructure and platform guidance.
-- `scripts/` - Repository tooling used by CI. Not a rule category, and not
-  vendored into downstream-projects.
+- `scripts/` - Repository tooling used by CI. Not a rule category, and not vendored into downstream-projects.
 
 ## Contributing
 - `CONTRIBUTING.md` - Contribution guidelines for this repository.
@@ -92,10 +84,9 @@ will remove the subtree from version control and keep it only on your machine.
 - `CHANGELOG.md` - Release history and notable changes.
 
 ## Usage (git subtree)
-ai-rules can be vendored into another repository (for example with git subtree).
-This keeps the rules in sync while still allowing you to pin a specific version.
-You do not need to manage the mechanics manually if you use the AI prompts below.
+ai-rules can be vendored into another repository (for example with git subtree). This keeps the rules in sync while
+still allowing you to pin a specific version. You do not need to manage the mechanics manually if you use the AI prompts
+below.
 
 ## Versioning
-Tag releases (e.g., `v1.0.0`) and pin subtree updates to a tag when stability
-is required.
+Tag releases (e.g., `v1.0.0`) and pin subtree updates to a tag when stability is required.

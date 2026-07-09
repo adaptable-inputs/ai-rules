@@ -52,16 +52,14 @@ WHERE order_id IN (
 );
 ```
 
-Note: the expanded placeholders above are illustrative.
-Generate collection bindings/placeholders through the DB driver/query builder;
-never string-interpolate `IN (...)` values.
+Note: the expanded placeholders above are illustrative. Generate collection bindings/placeholders through the DB
+driver/query builder; never string-interpolate `IN (...)` values.
 
 ## Code Review Checklist for SQL
 - Are all dynamic values parameterized?
 - Are selected columns minimal and intentional?
 - Is ordering explicit where result order matters?
-- Does every query with unbounded result size paginate, and does each filter
-  and sort column have a supporting index?
+- Does every query with unbounded result size paginate, and does each filter and sort column have a supporting index?
 - Are transaction boundaries and isolation choices explicit?
 - Are migration scripts backward-compatible and operationally safe?
 - Are query plans acceptable for hot paths?

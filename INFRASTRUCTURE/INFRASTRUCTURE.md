@@ -4,8 +4,7 @@ applies_to:
 ---
 # INFRASTRUCTURE
 
-Infrastructure-layer contract for runtime environment, deployment topology, and
-platform operations behavior.
+Infrastructure-layer contract for runtime environment, deployment topology, and platform operations behavior.
 
 ## Files
 - [INFRA_AS_CODE.md](INFRA_AS_CODE.md) - Infrastructure as Code baseline guidance.

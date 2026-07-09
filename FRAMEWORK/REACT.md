@@ -37,8 +37,7 @@ Guidance for AI agents implementing and reviewing React projects.
 ## `useEffect` Policy
 Effects keep non-React systems in sync; keep React-only derivations in render.
 
-Use `useEffect` when your component MUST connect, subscribe, schedule, observe,
-or cancel external work.
+Use `useEffect` when your component MUST connect, subscribe, schedule, observe, or cancel external work.
 
 ### Allowed Uses
 - Subscriptions: WebSocket, event emitters, browser event listeners.
@@ -53,14 +52,10 @@ or cancel external work.
 - Business logic that can run directly in reducers or handlers.
 
 ## Quick Decision Guide
-- Need a value only for rendering:
-  derive in render with plain expressions or `useMemo` if expensive.
-- Need to react to user intent (click, submit, change):
-  run side effects in the event handler.
-- Need to subscribe to an external store:
-  prefer `useSyncExternalStore`.
-- Need setup/cleanup for an external system:
-  use `useEffect`.
+- Need a value only for rendering: derive in render with plain expressions or `useMemo` if expensive.
+- Need to react to user intent (click, submit, change): run side effects in the event handler.
+- Need to subscribe to an external store: prefer `useSyncExternalStore`.
+- Need setup/cleanup for an external system: use `useEffect`.
 
 ## SSR and Hydration Notes
 - `useEffect` does not run during server rendering.
@@ -68,26 +63,18 @@ or cancel external work.
 - SHOULD guard browser-only logic in effects or safe initializers.
 
 ## High-Risk `useEffect` Pitfalls
-1. Derived state effects:
-   `setState(f(props))` in an effect adds extra renders and can loop.
-2. Dependency ping-pong:
-   unstable object/function dependencies retrigger effects continuously.
-3. Stale closures:
-   async callbacks and listeners read outdated values from old renders.
-4. Missing cleanup:
-   subscriptions, timers, and observers continue after unmount/dep changes.
-5. Async race conditions:
-   older requests resolve later and overwrite newer state.
-6. Strict Mode surprises in development:
-   non-idempotent setup causes duplicate side effects.
-7. Effect chains:
-   effect A sets state to trigger effect B, creating fragile temporal coupling.
+1. Derived state effects: `setState(f(props))` in an effect adds extra renders and can loop.
+2. Dependency ping-pong: unstable object/function dependencies retrigger effects continuously.
+3. Stale closures: async callbacks and listeners read outdated values from old renders.
+4. Missing cleanup: subscriptions, timers, and observers continue after unmount/dep changes.
+5. Async race conditions: older requests resolve later and overwrite newer state.
+6. Strict Mode surprises in development: non-idempotent setup causes duplicate side effects.
+7. Effect chains: effect A sets state to trigger effect B, creating fragile temporal coupling.
 
 ## Safer Patterns and Alternatives
 - SHOULD keep effects small and single-purpose.
 - SHOULD co-locate setup and cleanup in the same effect.
-- Keep effect callbacks synchronous:
-  never mark the effect callback `async`; use an inner async function.
+- Keep effect callbacks synchronous: never mark the effect callback `async`; use an inner async function.
 - Effect callbacks MAY return only cleanup or nothing.
 - SHOULD keep dependency arrays honest; do not suppress `react-hooks/exhaustive-deps` without a documented reason.
 - If adding a dependency causes a loop, SHOULD redesign the flow instead of deleting the dependency.
@@ -95,15 +82,13 @@ or cancel external work.
 - SHOULD use refs for mutable, non-render state that SHOULD NOT retrigger rendering.
 - SHOULD extract repeated side-effect behavior into focused custom hooks.
 - For subscription-style state (for example window size), SHOULD prefer custom hooks based on `useSyncExternalStore`.
-- SHOULD avoid effect chains:
-  use one cohesive effect, or model flow with explicit actions/reducer/state machine.
+- SHOULD avoid effect chains: use one cohesive effect, or model flow with explicit actions/reducer/state machine.
 - SHOULD handle non-abort async errors explicitly (state/reporting); do not `throw` from fire-and-forget async effect
   tasks. Throwing inside async effect tasks often becomes an unhandled rejection outside React error boundaries.
 - If your React version supports `useEffectEvent`, SHOULD use it for non-reactive callback reads instead of stale
   closure workarounds.
 - SHOULD use `useLayoutEffect` only for DOM read/write that MUST run before paint.
-- `useLayoutEffect` MAY warn in SSR; prefer `useEffect` unless pre-paint DOM
-  reads/writes are required.
+- `useLayoutEffect` MAY warn in SSR; prefer `useEffect` unless pre-paint DOM reads/writes are required.
 
 ## Dependency Rules
 - MUST NOT mark an effect callback `async`; create an inner async function.

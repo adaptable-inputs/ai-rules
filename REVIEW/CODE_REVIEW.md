@@ -11,9 +11,8 @@ applies_to:
 Guidance for AI agents performing code and rules-document reviews.
 
 ## Precedence
-- If review guidance conflicts with implementation guidance, MUST apply the
-  stricter quality/safety interpretation and MUST open a follow-up rule issue
-  for alignment.
+- If review guidance conflicts with implementation guidance, MUST apply the stricter quality/safety interpretation and
+  MUST open a follow-up rule issue for alignment.
 
 ## Review Priority Order
 1. Correctness and regression risk.
@@ -27,8 +26,7 @@ Guidance for AI agents performing code and rules-document reviews.
 ## Finding Severity Model
 - `Critical`: exploitable security/data-loss/system outage risk.
 - `High`: likely production failure or major correctness bug.
-- `Medium`: maintainability/performance/reliability risk with non-trivial
-  impact.
+- `Medium`: maintainability/performance/reliability risk with non-trivial impact.
 - `Low`: minor quality issue or consistency gap.
 
 ## Finding Format Requirements

@@ -8,11 +8,10 @@ applies_to:
 ---
 # EPRIVACY_TTDSG
 
-Engineering policy guidance for AI agents on ePrivacy-oriented and TTDSG
-controls for client-side storage and tracking technologies.
+Engineering policy guidance for AI agents on ePrivacy-oriented and TTDSG controls for client-side storage and tracking
+technologies.
 
-This is engineering policy guidance, not legal advice.
-Consult qualified legal counsel for final legal decisions.
+This is engineering policy guidance, not legal advice. Consult qualified legal counsel for final legal decisions.
 
 ## Defaults
 - MUST disable non-essential tracking/storage by default until valid consent exists.

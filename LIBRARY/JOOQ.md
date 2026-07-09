@@ -33,10 +33,9 @@ Guidance for AI agents implementing and reviewing jOOQ-based data access.
 
 ## Transaction and Consistency
 - SHOULD use transactional context explicitly for write workflows.
-- SHOULD avoid mixing conflicting ORM contexts in same transaction without clear
-  strategy.
+- SHOULD avoid mixing conflicting ORM contexts in same transaction without clear strategy.
 - SHOULD keep retries/locking behavior intentional for conflict-prone operations.
 
 ## Override Notes
-- JPA MAY be used for simpler CRUD domains, but jOOQ usage SHOULD preserve SQL
-  clarity, codegen alignment, and transaction safety constraints here.
+- JPA MAY be used for simpler CRUD domains, but jOOQ usage SHOULD preserve SQL clarity, codegen alignment, and
+  transaction safety constraints here.

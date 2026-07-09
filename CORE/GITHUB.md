@@ -9,8 +9,7 @@ applies_to:
 ---
 # GITHUB
 
-Guidance for AI agents using GitHub for branch protection, pull requests, and
-review lifecycle rules.
+Guidance for AI agents using GitHub for branch protection, pull requests, and review lifecycle rules.
 
 ## Terminology Mapping
 - "change request" is a pull request (PR).
@@ -22,18 +21,14 @@ review lifecycle rules.
 - SHOULD use GitHub code suggestions for small, localized fixes.
 
 ## Explicit Override: Review Thread Ownership
-`CORE/CODE_REVIEW_PLATFORM.md` permits only a comment's author to resolve its
-review thread. On GitHub this file overrides that default as follows:
-- SHOULD prefer the review-comment author to resolve their own conversation when
-  possible.
-- A maintainer MAY resolve another reviewer's conversation only when downstream
-  policy explicitly allows maintainer resolution, or the reviewer has explicitly
-  confirmed resolution in the current review context.
+`CORE/CODE_REVIEW_PLATFORM.md` permits only a comment's author to resolve its review thread. On GitHub this file
+overrides that default as follows:
+- SHOULD prefer the review-comment author to resolve their own conversation when possible.
+- A maintainer MAY resolve another reviewer's conversation only when downstream policy explicitly allows maintainer
+  resolution, or the reviewer has explicitly confirmed resolution in the current review context.
 
-This override loosens the baseline. It applies to GitHub only and does not
-extend to any other platform doc.
+This override loosens the baseline. It applies to GitHub only and does not extend to any other platform doc.
 
 ## Override Notes
-- Project-specific GitHub governance MAY be stricter. The baseline mandates in
-  `CORE/CODE_REVIEW_PLATFORM.md` remain in force except for the review-thread
-  ownership override declared above.
+- Project-specific GitHub governance MAY be stricter. The baseline mandates in `CORE/CODE_REVIEW_PLATFORM.md` remain in
+  force except for the review-thread ownership override declared above.

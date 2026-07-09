@@ -5,8 +5,7 @@ applies_to:
 ---
 # DOWNSTREAM-OVERRIDES
 
-Meta guidance for maintainers defining how downstream-project extensions should
-be authored by AI agents.
+Meta guidance for maintainers defining how downstream-project extensions should be authored by AI agents.
 
 ## Path Model
 - Use placeholders in guidance and templates:
@@ -23,34 +22,28 @@ be authored by AI agents.
 - Baseline rules under `<AI_RULES_PATH>` remain authoritative defaults.
 - Downstream files under `<AI_PROJECT_PATH>` extend baseline rules.
 - Default conflict behavior: downstream extension takes precedence.
-- Exception: baseline wins only when a baseline rule explicitly marks itself as
-  non-extensible (non-overridable).
+- Exception: baseline wins only when a baseline rule explicitly marks itself as non-extensible (non-overridable).
 - Missing downstream extension content always falls back to baseline behavior.
 
 ## File Placement Rules
-- Extend a baseline topic at the same relative path under
-  `<AI_PROJECT_PATH>` that the baseline file occupies.
+- Extend a baseline topic at the same relative path under `<AI_PROJECT_PATH>` that the baseline file occupies.
 - Materialize only files and directories that are actually extended or added.
 - SHOULD avoid copying untouched baseline files into `<AI_PROJECT_PATH>`.
-- Downstream-projects may add additional directories/files not present in
-  baseline for project-specific guidance not covered by baseline.
+- Downstream-projects may add additional directories/files not present in baseline for project-specific guidance not
+  covered by baseline.
 
 ## Link and Index Rules
 - Downstream extension entry point is `<AI_PROJECT_PATH>/AI.md`.
-- Every Markdown file under `<AI_PROJECT_PATH>` must be transitively reachable
-  from `<AI_PROJECT_PATH>/AI.md`.
-- While building link chains, mirror the baseline directory structure for any
-  topic that also exists in the baseline.
-- Additional downstream-only files must also be included in the same reachable
-  index chain.
+- Every Markdown file under `<AI_PROJECT_PATH>` must be transitively reachable from `<AI_PROJECT_PATH>/AI.md`.
+- While building link chains, mirror the baseline directory structure for any topic that also exists in the baseline.
+- Additional downstream-only files must also be included in the same reachable index chain.
 - Maintain index hygiene consistently:
   - Keep clear index files for directories with multiple children.
   - Keep links updated whenever files move or new files are added.
 
 ## Reachability Verification (Docs-Only, Deterministic)
-Use this procedure whenever downstream extension files are added or moved,
-operating on the downstream-project's vendored copy of `AI-RULES` and its
-resolved `<AI_PROJECT_PATH>`:
+Use this procedure whenever downstream extension files are added or moved, operating on the downstream-project's
+vendored copy of `AI-RULES` and its resolved `<AI_PROJECT_PATH>`:
 1. Build `IN_SCOPE`:
    - Include all `*.md` files under `<AI_PROJECT_PATH>`.
    - Normalize each path to a repo-relative path and sort alphabetically.
@@ -84,8 +77,6 @@ resolved `<AI_PROJECT_PATH>`:
    - an extension of an existing baseline topic, or
    - a new downstream-specific topic or rule not present in baseline.
 3. Create/update files under `<AI_PROJECT_PATH>` using placement rules above.
-4. Update index and parent-link chains so every touched file is reachable from
-   `<AI_PROJECT_PATH>/AI.md`.
-5. Verify precedence notes are not contradicting non-overridable baseline
-   constraints.
+4. Update index and parent-link chains so every touched file is reachable from `<AI_PROJECT_PATH>/AI.md`.
+5. Verify precedence notes are not contradicting non-overridable baseline constraints.
 6. Validate links and structure before finalizing changes.

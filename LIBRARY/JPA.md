@@ -39,5 +39,4 @@ Guidance for AI agents implementing and reviewing JPA-based persistence.
 
 ## Override Notes
 - jOOQ or custom SQL MAY be preferred for complex query/reporting scenarios.
-- JPA-specific convenience SHOULD NOT override query predictability and
-  transaction safety constraints.
+- JPA-specific convenience SHOULD NOT override query predictability and transaction safety constraints.

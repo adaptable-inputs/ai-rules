@@ -13,8 +13,7 @@ Guidance for AI agents implementing and reviewing Svelte projects.
 
 ## Defaults
 - SHOULD keep components focused and small.
-- SHOULD prefer explicit props/events/store boundaries over hidden cross-component
-  coupling.
+- SHOULD prefer explicit props/events/store boundaries over hidden cross-component coupling.
 - SHOULD keep business logic outside template markup when complexity grows.
 - SHOULD prefer derived/reactive values for view state over duplicated mutable state.
 
@@ -27,8 +26,8 @@ Guidance for AI agents implementing and reviewing Svelte projects.
 
 ## Side Effects and Lifecycle
 - SHOULD keep setup/teardown side effects explicit in lifecycle hooks.
-- For dependency-driven side effects, SHOULD use controlled reactive blocks (`$:` in Svelte 3/4, or `$effect` when using
-  Svelte 5+ runes) and avoid uncontrolled reactive side-effect chains.
+- For dependency-driven side effects, SHOULD use controlled reactive blocks
+  (`$:` in Svelte 3/4, or `$effect` when using Svelte 5+ runes) and avoid uncontrolled reactive side-effect chains.
 - SHOULD clean up subscriptions/listeners/timers in teardown paths.
 - SHOULD avoid running heavy side effects during rendering paths.
 - SHOULD guard browser-only APIs when SSR/hydration is relevant.
@@ -37,8 +36,7 @@ Guidance for AI agents implementing and reviewing Svelte projects.
 - SHOULD prefer semantic HTML and accessible controls.
 - SHOULD ensure keyboard/focus behavior for interactive elements.
 - SHOULD keep template expressions simple; extract complex logic into script section.
-- SHOULD avoid duplicated conditional fragments when component extraction improves
-  readability.
+- SHOULD avoid duplicated conditional fragments when component extraction improves readability.
 
 ## Performance Baseline
 - SHOULD avoid unnecessary store subscriptions and broad reactive dependencies.

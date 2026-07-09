@@ -44,5 +44,4 @@ Do:    attach Sonar/plugin metric or a documented estimate rationale.
 - Add or update regression tests before major method decomposition.
 - Validate behavior equivalence after complexity-reduction refactors.
 - Add focused tests for extracted branches/decision paths.
-- For deferred complexity reductions, capture risk and test focus in the
-  follow-up issue/PR notes.
+- For deferred complexity reductions, capture risk and test focus in the follow-up issue/PR notes.

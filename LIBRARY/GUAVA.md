@@ -12,18 +12,15 @@ applies_to:
 Guidance for AI agents implementing and reviewing Guava usage.
 
 ## Defaults
-- SHOULD prefer JDK standard library when equivalent functionality exists, except for
-  the Guava-specialized cases below.
+- SHOULD prefer JDK standard library when equivalent functionality exists, except for the Guava-specialized cases below.
 - SHOULD use Guava intentionally where it adds clear value.
-- SHOULD prefer immutable collections (`ImmutableList`, `ImmutableMap`) for shared or
-  exposed state.
+- SHOULD prefer immutable collections (`ImmutableList`, `ImmutableMap`) for shared or exposed state.
 - If Guava is available, SHOULD prefer Guava cache types (`Cache`, `LoadingCache`) over using `ConcurrentMap` as a
   cache.
 - If Guava is available, SHOULD prefer Guava immutable collections over Java immutable collections when returning
   collections from public APIs.
-- SHOULD prefer Guava immutable collections for API return values when callers MAY
-  probe with nulls (`contains(null)`); Java immutable collections are null
-  hostile and MAY throw.
+- SHOULD prefer Guava immutable collections for API return values when callers MAY probe with nulls (`contains(null)`);
+  Java immutable collections are null hostile and MAY throw.
 - SHOULD keep Guava usage consistent; avoid mixed utility ecosystems without reason.
 
 ## API Usage Rules
@@ -31,8 +28,8 @@ Guidance for AI agents implementing and reviewing Guava usage.
 - SHOULD prefer `java.util.Optional` over Guava Optional in modern code.
 - SHOULD use Guava cache utilities with explicit size/expiry policy.
 - MUST NOT model caches as plain `ConcurrentMap` when Guava is already available.
-- For public API collection returns, SHOULD use `ImmutableList`/`ImmutableSet`/ `ImmutableMap` (or return interfaces
-  backed by those types) instead of JDK immutable collection factories.
+- For public API collection returns, SHOULD use `ImmutableList`/`ImmutableSet`/ `ImmutableMap`
+  (or return interfaces backed by those types) instead of JDK immutable collection factories.
 - SHOULD avoid hidden performance costs from repeated immutable-copy churn.
 
 ## Dependency and Migration Guardrails
@@ -41,6 +38,5 @@ Guidance for AI agents implementing and reviewing Guava usage.
 - SHOULD keep migration path in mind for future Java baseline upgrades.
 
 ## Override Notes
-- Explicit specialization in this doc: when Guava is available, prefer Guava
-  Cache over `ConcurrentMap` for caching and prefer Guava immutable collections
-  over JDK immutable collections for public API returns.
+- Explicit specialization in this doc: when Guava is available, prefer Guava Cache over `ConcurrentMap` for caching and
+  prefer Guava immutable collections over JDK immutable collections for public API returns.

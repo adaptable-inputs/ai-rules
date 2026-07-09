@@ -19,8 +19,8 @@ Rules:
 - MUST NOT override established language standards with team preference.
 - If multiple style tools exist, MUST choose one canonical formatter/linter path.
 - MUST resolve ambiguity by favoring consistency with existing code in the module.
-- MUST apply this file and `LANGUAGE/READABILITY.md` to every language, then the
-  specific language document (for example Java or TypeScript).
+- MUST apply this file and `LANGUAGE/READABILITY.md` to every language, then the specific language document
+  (for example Java or TypeScript).
 
 ## Formatting Baseline
 - MUST use auto-formatters where available; MUST NOT hand-format against tooling.
@@ -33,8 +33,7 @@ Rules:
 
 ## Naming Baseline
 - SHOULD use English names by default.
-- Domain-native non-English terms MAY be used when they are canonical,
-  precise, and consistently used.
+- Domain-native non-English terms MAY be used when they are canonical, precise, and consistently used.
 - SHOULD prefer descriptive names over compressed/cryptic names.
 - Names SHOULD express intent and role, not implementation mechanics.
 - MUST keep naming consistent within module boundaries.
@@ -44,10 +43,8 @@ Apply language-standard casing as default:
 - Types/class-like constructs: `PascalCase`.
 - Variables/functions/methods: follow language/ecosystem standard
   (`camelCase` in Java/JS/TS, `snake_case` in Python/Ruby, etc.).
-- True constants: language-standard constant style
-  (commonly `UPPER_SNAKE_CASE`, but follow language conventions).
-- File/directory casing SHOULD follow ecosystem conventions and existing module
-  pattern.
+- True constants: language-standard constant style (commonly `UPPER_SNAKE_CASE`, but follow language conventions).
+- File/directory casing SHOULD follow ecosystem conventions and existing module pattern.
 
 ## Abbreviation Policy
 - SHOULD avoid abbreviations unless broadly recognized.
@@ -58,14 +55,13 @@ Apply language-standard casing as default:
 - SHOULD prefer expanding obscure domain shorthand in public APIs.
 
 ## Identifier Quality Rules
-- SHOULD prefer semantic/domain types over raw basic types (`String`, numeric types)
-  when language/runtime/library support makes that practical.
+- SHOULD prefer semantic/domain types over raw basic types (`String`, numeric types) when language/runtime/library
+  support makes that practical.
 - Boolean names SHOULD read as predicates (`isActive`, `hasAccess`).
 - Collections SHOULD use plural names.
-- Temporal values SHOULD prefer temporal types (for example Java `Duration`)
-  over primitive numerics when feasible.
-- If basic numeric/string fields are still required, MUST keep unit/domain semantics explicit in naming (`timeoutMs`,
-  `expiresAt`, `orderId`).
+- Temporal values SHOULD prefer temporal types (for example Java `Duration`) over primitive numerics when feasible.
+- If basic numeric/string fields are still required, MUST keep unit/domain semantics explicit in naming
+  (`timeoutMs`, `expiresAt`, `orderId`).
 - SHOULD avoid misleading names that imply stronger guarantees than implementation.
 - SHOULD avoid generic names (`data`, `result`, `temp`) unless scope is tiny and clear.
 

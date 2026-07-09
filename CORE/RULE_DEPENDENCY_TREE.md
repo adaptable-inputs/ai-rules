@@ -5,8 +5,7 @@ applies_to:
 ---
 # RULE_DEPENDENCY_TREE
 
-Canonical semantic dependency and precedence guidance for this repository's
-AI-agent rule documents.
+Canonical semantic dependency and precedence guidance for this repository's AI-agent rule documents.
 
 ## Purpose
 - Define how rules inherit, specialize, and override each other.
@@ -14,25 +13,21 @@ AI-agent rule documents.
 - Provide a stable ordering for issue/branch/PR execution across documents.
 
 ## Core Principles
-- Semantic dependencies are declared in each doc's `inherits` frontmatter field.
-  They are authoritative; an agent MUST NOT infer a dependency from a markdown
-  link alone.
-- More specific scope MAY override broader scope only when the override is
-  explicit and justified.
-- Safety and correctness constraints from broader scope MUST remain in force
-  unless the broader scope itself marks them as optional.
-- Intermediate technical docs (for example language base docs) MUST be complete
-  rule sets for their own scope, not thin index stubs.
-- MUST apply the Dependency Inversion Principle (DIP): more general rule docs
-  MUST NOT reference child/specialization docs in normative rule content.
+- Semantic dependencies are declared in each doc's `inherits` frontmatter field. They are authoritative; an agent MUST
+  NOT infer a dependency from a markdown link alone.
+- More specific scope MAY override broader scope only when the override is explicit and justified.
+- Safety and correctness constraints from broader scope MUST remain in force unless the broader scope itself marks them
+  as optional.
+- Intermediate technical docs (for example language base docs) MUST be complete rule sets for their own scope, not thin
+  index stubs.
+- MUST apply the Dependency Inversion Principle (DIP): more general rule docs MUST NOT reference child/specialization
+  docs in normative rule content.
 - Child/specialization docs MAY reference parent/general docs.
 - Exception: pure index docs MAY link to child docs for navigation.
-- A rule's own keyword is authoritative. Prose MUST NOT assert a force the
-  keyword does not carry: "these constraints remain mandatory" changes nothing
-  about a `SHOULD`. To make a rule mandatory, change its keyword to `MUST`.
-- A specialized doc MAY be stricter than its parent and MUST NOT be weaker. That
-  holds for every doc; a doc MUST NOT restate it. An `## Override Notes` section
-  is only for an override this doc actually declares.
+- A rule's own keyword is authoritative. Prose MUST NOT assert a force the keyword does not carry: "these constraints
+  remain mandatory" changes nothing about a `SHOULD`. To make a rule mandatory, change its keyword to `MUST`.
+- A specialized doc MAY be stricter than its parent and MUST NOT be weaker. That holds for every doc; a doc MUST NOT
+  restate it. An `## Override Notes` section is only for an override this doc actually declares.
 
 ## Precedence Model
 Apply rules from top to bottom. Lower layers specialize higher layers.
@@ -125,26 +120,21 @@ These primarily route to child docs and define boundary/selection guidance:
 - `REVIEW/REVIEW.md`
 - `COMPLIANCE/COMPLIANCE.md`
 
-Pure index docs SHOULD remain concise and MUST NOT duplicate deep, leaf-level
-implementation details.
+Pure index docs SHOULD remain concise and MUST NOT duplicate deep, leaf-level implementation details.
 
 ### Deep Technical Docs
-All technical docs that define coding/architecture behavior, including
-intermediate parents, MUST be deep and operational.
+All technical docs that define coding/architecture behavior, including intermediate parents, MUST be deep and
+operational.
 
 Examples (non-exhaustive):
-- Language parents: `LANGUAGE/JAVASCRIPT/JAVASCRIPT.md`,
-  `LANGUAGE/JAVA/JAVA.md`, `LANGUAGE/TYPESCRIPT/TYPESCRIPT.md`,
-  `LANGUAGE/PYTHON/PYTHON.md`, `LANGUAGE/GO/GO.md`,
-  `LANGUAGE/C_SHARP/C_SHARP.md`, `LANGUAGE/RUST/RUST.md`,
-  `LANGUAGE/KOTLIN/KOTLIN.md`, `LANGUAGE/PHP/PHP.md`,
-  `LANGUAGE/RUBY/RUBY.md`, `LANGUAGE/SWIFT/SWIFT.md`
-- Core specializations: `CORE/CODE_REVIEW_PLATFORM.md` (specialized by
-  `CORE/GITHUB.md`, `CORE/GITLAB.md`), `CORE/CONFLUENCE.md`, `CORE/JIRA.md`
+- Language parents: `LANGUAGE/JAVASCRIPT/JAVASCRIPT.md`, `LANGUAGE/JAVA/JAVA.md`, `LANGUAGE/TYPESCRIPT/TYPESCRIPT.md`,
+  `LANGUAGE/PYTHON/PYTHON.md`, `LANGUAGE/GO/GO.md`, `LANGUAGE/C_SHARP/C_SHARP.md`, `LANGUAGE/RUST/RUST.md`,
+  `LANGUAGE/KOTLIN/KOTLIN.md`, `LANGUAGE/PHP/PHP.md`, `LANGUAGE/RUBY/RUBY.md`, `LANGUAGE/SWIFT/SWIFT.md`
+- Core specializations: `CORE/CODE_REVIEW_PLATFORM.md` (specialized by `CORE/GITHUB.md`, `CORE/GITLAB.md`),
+  `CORE/CONFLUENCE.md`, `CORE/JIRA.md`
 - Framework docs: `FRAMEWORK/ANGULAR.md`, `FRAMEWORK/REACT.md`, etc.
 - Architecture docs: `ARCHITECTURE/REST.md`, `ARCHITECTURE/GRAPHQL.md`, etc.
-- Libraries and tools: `LIBRARY/*`, `BUILD_TOOLS/*`, `INFRASTRUCTURE/*`,
-  `CI-CD/GITHUB_ACTIONS.md`, `CI-CD/GITLAB.md`
+- Libraries and tools: `LIBRARY/*`, `BUILD_TOOLS/*`, `INFRASTRUCTURE/*`, `CI-CD/GITHUB_ACTIONS.md`, `CI-CD/GITLAB.md`
 
 Required sections for deep technical docs:
 - Scope and applicability
@@ -213,8 +203,7 @@ Required sections for deep technical docs:
 
 ### Delivery/Runtime Chain
 - `LANGUAGE/YAML/YAML.md` and `LANGUAGE/SHELL/SHELL.md`
-- `BUILD_TOOLS/NPM.md`, `BUILD_TOOLS/BUN.md`, `BUILD_TOOLS/MAVEN.md`,
-  `BUILD_TOOLS/GRADLE.md`
+- `BUILD_TOOLS/NPM.md`, `BUILD_TOOLS/BUN.md`, `BUILD_TOOLS/MAVEN.md`, `BUILD_TOOLS/GRADLE.md`
 - `INFRASTRUCTURE/INFRA_AS_CODE.md`
 - `INFRASTRUCTURE/TERRAFORM.md`
 - `INFRASTRUCTURE/PULUMI.md`
@@ -229,24 +218,22 @@ Required sections for deep technical docs:
 - `CI-CD/GITHUB_ACTIONS.md`, `CI-CD/GITLAB.md`
 
 ## Conflict Resolution Rules
-This procedure is authoritative for the whole ruleset. No other doc MAY define a
-different order. When two rules seem to conflict, resolve in this order:
+This procedure is authoritative for the whole ruleset. No other doc MAY define a different order. When two rules seem to
+conflict, resolve in this order:
 1. Check if one rule is from a more specific semantic layer.
 2. Check whether the specific doc declares an explicit override.
 3. If no explicit override exists, keep the broader rule.
 4. For security/compliance constraints, apply the stricter behavior.
 5. If ambiguity remains, apply the broader rule and record the decision.
 
-An agent resolving a conflict mid-task MUST apply the outcome of this procedure,
-complete the task, and report the conflict in its final summary. It MUST NOT
-stop work, and MUST NOT treat "file an issue" as a prerequisite for proceeding.
-Aligning the specific doc and filing any issue are separate follow-up actions
-for a human maintainer.
+An agent resolving a conflict mid-task MUST apply the outcome of this procedure, complete the task, and report the
+conflict in its final summary. It MUST NOT stop work, and MUST NOT treat "file an issue" as a prerequisite for
+proceeding. Aligning the specific doc and filing any issue are separate follow-up actions for a human maintainer.
 
-- If a technical recommendation conflicts with a compliance rule, compliance is
-  authoritative and the technical guidance MUST be revised.
-- Build-tool and infrastructure docs are authoritative for their own layers.
-  CI/CD docs SHOULD orchestrate them rather than redefine them.
+- If a technical recommendation conflicts with a compliance rule, compliance is authoritative and the technical guidance
+  MUST be revised.
+- Build-tool and infrastructure docs are authoritative for their own layers. CI/CD docs SHOULD orchestrate them rather
+  than redefine them.
 
 ## Redundancy and Override Policy
 Allowed:
@@ -268,8 +255,7 @@ When overriding, add a short "override rationale" sentence with:
 - Is this doc type correct (pure index vs deep technical)?
 - If deep technical: are all required sections present?
 - Are examples clearly marked good/bad?
-- Are parent rules referenced instead of duplicated when no specialization is
-  needed?
+- Are parent rules referenced instead of duplicated when no specialization is needed?
 - Are any overrides explicit, justified, and bounded?
 
 ## Rollout Ordering Rule

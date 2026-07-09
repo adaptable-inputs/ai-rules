@@ -8,8 +8,7 @@ applies_to:
 
 ## High-Risk Pitfalls
 1. Direct pushes to protected branches.
-2. Self-merging a change request without the explicit owner-authorized
-   exception.
+2. Self-merging a change request without the explicit owner-authorized exception.
 3. Resolving another reviewer's review thread without a declared override.
 4. Merging while review threads are unresolved.
 5. Bypassing required checks, reviews, or gates through a privileged path.
@@ -35,21 +34,16 @@ Do:    reply with the fix, then let the comment author resolve it.
 ```
 
 ## Code Review Checklist
-- Is work done on a dedicated feature branch targeting a protected branch
-  through a change request?
+- Is work done on a dedicated feature branch targeting a protected branch through a change request?
 - Were protected-branch and merge-gate rules enforced without bypass?
 - Is merge authority valid for the acting user and instruction context?
 - Are unresolved review threads blocking merge?
-- Are review threads resolved only by their comment authors, or under a declared
-  override?
-- Does the change-request description include summary, skip candidates, and
-  non-obvious rationale?
+- Are review threads resolved only by their comment authors, or under a declared override?
+- Does the change-request description include summary, skip candidates, and non-obvious rationale?
 
 ## Testing Guidance
 - Verify branch protection and merge-gate configuration before merge actions.
-- Verify required checks and required-review policies are active on the target
-  branch.
+- Verify required checks and required-review policies are active on the target branch.
 - Verify review threads are fully resolved by authorized authors before merge.
-- Verify change-request descriptions include reviewer-focused summary and risk
-  notes.
+- Verify change-request descriptions include reviewer-focused summary and risk notes.
 - Verify no privileged bypass or force-merge path was used.

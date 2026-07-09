@@ -9,12 +9,10 @@ applies_to:
 ---
 # JAVA_MONEY
 
-Guidance for AI agents implementing and reviewing JavaMoney usage for monetary
-values in Java.
+Guidance for AI agents implementing and reviewing JavaMoney usage for monetary values in Java.
 
 ## Defaults
-- MUST use JavaMoney (`javax.money`, typically implemented with Moneta) for
-  monetary values in Java.
+- MUST use JavaMoney (`javax.money`, typically implemented with Moneta) for monetary values in Java.
 - SHOULD model business monetary amounts as `MonetaryAmount` (or domain wrappers around it), not `BigDecimal` alone.
 - SHOULD keep currency explicit for every monetary value.
 - SHOULD centralize rounding rules with JavaMoney rounding operators.
@@ -22,8 +20,7 @@ values in Java.
 
 ## Modeling and API Design
 - SHOULD use `MonetaryAmount` in domain/service method parameters and return types.
-- MUST NOT pass `(BigDecimal amount, String currency)` pairs through internal
-  APIs.
+- MUST NOT pass `(BigDecimal amount, String currency)` pairs through internal APIs.
 - SHOULD keep conversion to/from persistence and transport models in boundary adapters.
 - SHOULD use dedicated domain value objects when additional invariants are required (for example non-negative totals).
 
@@ -35,5 +32,5 @@ values in Java.
   code.
 
 ## Override Notes
-- If a boundary cannot use JavaMoney, keep conversion localized at that
-  boundary and return to JavaMoney types immediately in core logic.
+- If a boundary cannot use JavaMoney, keep conversion localized at that boundary and return to JavaMoney types
+  immediately in core logic.

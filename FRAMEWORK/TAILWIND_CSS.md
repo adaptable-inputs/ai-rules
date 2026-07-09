@@ -12,8 +12,7 @@ applies_to:
 Guidance for AI agents implementing and reviewing Tailwind CSS code.
 
 ## Defaults
-- SHOULD prefer utility-first styling with clear class grouping by concern
-  (layout, spacing, typography, color, state).
+- SHOULD prefer utility-first styling with clear class grouping by concern (layout, spacing, typography, color, state).
 - SHOULD keep class lists readable and intentional.
 - SHOULD use design tokens via Tailwind theme configuration instead of ad-hoc values.
 - SHOULD prefer component extraction when class lists become repetitive or complex.

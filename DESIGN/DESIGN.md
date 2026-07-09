@@ -4,8 +4,7 @@ applies_to:
 ---
 # DESIGN
 
-Design-principles layer contract for maintainability, cohesion, coupling, and
-long-term code quality.
+Design-principles layer contract for maintainability, cohesion, coupling, and long-term code quality.
 
 ## Files
 - [AOP.md](AOP.md) - Aspect-oriented programming guidance.

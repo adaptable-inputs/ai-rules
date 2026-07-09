@@ -27,8 +27,9 @@ Guidance for AI agents implementing and reviewing Kubernetes manifests.
 
 ## Security Baseline
 - SHOULD run containers as non-root where possible.
-- MUST use explicit `securityContext` fields (`runAsNonRoot`, `readOnlyRootFilesystem`, `allowPrivilegeEscalation`,
-  `capabilities`, `seccompProfile`) as applicable.
+- MUST use explicit `securityContext` fields
+  (`runAsNonRoot`, `readOnlyRootFilesystem`, `allowPrivilegeEscalation`, `capabilities`, `seccompProfile`) as
+  applicable.
 - MUST set safe values intentionally (for example `allowPrivilegeEscalation: false`, drop unnecessary capabilities).
 - MUST apply least privilege RBAC for service accounts.
 - MUST keep secrets in dedicated secret resources, not plain config maps.

@@ -8,11 +8,10 @@ applies_to:
 ---
 # EU_AI_ACT
 
-Engineering policy guidance for AI agents on EU AI Act relevant controls for
-software projects that build, integrate, or operate AI systems.
+Engineering policy guidance for AI agents on EU AI Act relevant controls for software projects that build, integrate, or
+operate AI systems.
 
-This is engineering policy guidance, not legal advice.
-Consult qualified legal counsel for final legal decisions.
+This is engineering policy guidance, not legal advice. Consult qualified legal counsel for final legal decisions.
 
 ## Defaults
 - SHOULD keep AI feature inventory explicit by model, purpose, and owner.

@@ -8,11 +8,9 @@ applies_to:
 ---
 # NIS2_KRITIS
 
-Engineering policy guidance for AI agents on NIS2-oriented controls and German
-KRITIS-context operational obligations.
+Engineering policy guidance for AI agents on NIS2-oriented controls and German KRITIS-context operational obligations.
 
-This is engineering policy guidance, not legal advice.
-Consult qualified legal counsel for final legal decisions.
+This is engineering policy guidance, not legal advice. Consult qualified legal counsel for final legal decisions.
 
 ## Defaults
 - SHOULD keep security governance ownership explicit for critical services.

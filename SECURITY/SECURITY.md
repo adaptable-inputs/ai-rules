@@ -16,8 +16,7 @@ Guidance for AI agents implementing and reviewing security-relevant changes.
 - SHOULD prefer defense in depth (multiple controls) over single-point controls.
 
 ## Secrets and Credentials
-- MUST NOT commit secrets to source control, docs, examples, logs, or test
-  snapshots.
+- MUST NOT commit secrets to source control, docs, examples, logs, or test snapshots.
 - MUST use secret managers or secure runtime injection.
 - MUST rotate secrets on exposure, incident, or owner change.
 - MUST keep secret scope minimal (short-lived, environment-specific, least-privilege).
@@ -46,8 +45,7 @@ Guidance for AI agents implementing and reviewing security-relevant changes.
 - SHOULD validate provenance/signatures where tooling supports it.
 
 ## Error Handling and Observability
-- MUST NOT expose stack traces, internal identifiers, or secret material to
-  untrusted callers.
+- MUST NOT expose stack traces, internal identifiers, or secret material to untrusted callers.
 - MUST return safe, actionable error responses without leaking internals.
 - MUST log security-relevant events (auth failures, policy denials, suspicious activity) with safe redaction.
 - MUST ensure security logging itself cannot crash request paths.

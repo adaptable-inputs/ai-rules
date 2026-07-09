@@ -8,11 +8,9 @@ applies_to:
 ---
 # GDPR_BDSG
 
-Engineering policy guidance for AI agents on GDPR (DSGVO) and BDSG relevant
-software decisions in EU/German contexts.
+Engineering policy guidance for AI agents on GDPR (DSGVO) and BDSG relevant software decisions in EU/German contexts.
 
-This is engineering policy guidance, not legal advice.
-Consult qualified legal counsel for final legal decisions.
+This is engineering policy guidance, not legal advice. Consult qualified legal counsel for final legal decisions.
 
 ## Defaults
 - SHOULD keep personal-data inventory explicit per system boundary.
@@ -24,8 +22,7 @@ Consult qualified legal counsel for final legal decisions.
 ## Data Classification and Collection Rules
 - MUST classify data by sensitivity and purpose before implementation changes.
 - MUST collect only fields required for current documented purpose.
-- SHOULD avoid collecting special-category personal data unless explicitly justified and
-  approved.
+- SHOULD avoid collecting special-category personal data unless explicitly justified and approved.
 - MUST keep telemetry/analytics payloads free of unnecessary personal data.
 
 ## Lawful Basis and Transparency Hooks

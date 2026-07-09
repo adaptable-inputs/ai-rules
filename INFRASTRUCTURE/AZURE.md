@@ -9,8 +9,7 @@ applies_to:
 ---
 # AZURE
 
-Guidance for AI agents implementing and reviewing Azure platform configuration
-and operations choices.
+Guidance for AI agents implementing and reviewing Azure platform configuration and operations choices.
 
 ## Defaults
 - SHOULD use subscription/resource-group isolation for environments and ownership.

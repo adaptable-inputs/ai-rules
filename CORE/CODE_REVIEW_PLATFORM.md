@@ -7,14 +7,12 @@ applies_to:
 ---
 # CODE_REVIEW_PLATFORM
 
-Platform-neutral delivery and review workflow contract shared by every code
-hosting platform.
+Platform-neutral delivery and review workflow contract shared by every code hosting platform.
 
 ## Terminology
 - "change request" means a pull request (GitHub) or merge request (GitLab).
 - "review thread" means a conversation (GitHub) or discussion (GitLab).
-- Platform docs map these terms to their native vocabulary and do not restate
-  the rules below.
+- Platform docs map these terms to their native vocabulary and do not restate the rules below.
 
 ## Protected Branch Policy (Mandatory)
 - MUST treat protected branches as read-only for AI agents.
@@ -24,17 +22,15 @@ hosting platform.
 
 ## Merge Authority and Merge Gates (Mandatory)
 - Change-request creators MUST NOT merge their own change requests.
-- The self-merge restriction MAY be bypassed only when all of the following are
-  true:
+- The self-merge restriction MAY be bypassed only when all of the following are true:
   - The user gives explicit merge instruction for the specific change request.
   - The user explicitly confirms in the current session that they own the target
     repository and that they authorize bypassing the self-merge restriction.
   - MUST you, as an AI agent, treat the user as not a repository owner unless this explicit owner confirmation and
     authorization is present.
-- If the above conditions are not met, MUST NOT attempt to merge a change request
-  that you created or substantially authored.
-- Respect all merge gates; MUST NOT bypass required checks, required reviews,
-  approvals, or merge policies.
+- If the above conditions are not met, MUST NOT attempt to merge a change request that you created or substantially
+  authored.
+- Respect all merge gates; MUST NOT bypass required checks, required reviews, approvals, or merge policies.
 - MUST NOT use any privileged bypass path to skip required gates.
 - MUST NOT merge without explicit user instruction.
 - MUST NOT merge a change request while review threads are unresolved.
@@ -43,9 +39,8 @@ hosting platform.
 
 ## Review Thread Ownership
 - Only the author of a review comment MAY resolve that review thread.
-- MUST NOT resolve review threads created by other reviewers. A platform doc MAY
-  declare an explicit override that permits maintainer resolution under a stated
-  downstream policy.
+- MUST NOT resolve review threads created by other reviewers. A platform doc MAY declare an explicit override that
+  permits maintainer resolution under a stated downstream policy.
 - If you authored the comment and the issue is fixed, SHOULD resolve that review thread.
 - Keep review history intact; MUST NOT delete comments to hide unresolved work.
 

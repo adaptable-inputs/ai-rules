@@ -8,8 +8,7 @@ applies_to:
 
 ## Code Review Checklist (Dependency Integrity)
 - Does the PR preserve precedence order and semantic inheritance?
-- Does the change preserve DIP direction (no parent-to-child references outside
-  pure index linking)?
+- Does the change preserve DIP direction (no parent-to-child references outside pure index linking)?
 - Are new rules placed at the correct abstraction layer?
 - Do specialized docs avoid weakening cross-cutting baseline constraints?
 - Are required companion index updates included when adding new docs?

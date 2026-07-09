@@ -9,8 +9,7 @@ applies_to:
 ---
 # AWS
 
-Guidance for AI agents implementing and reviewing AWS platform configuration
-and operations choices.
+Guidance for AI agents implementing and reviewing AWS platform configuration and operations choices.
 
 ## Defaults
 - SHOULD use multi-account strategies for environment and blast-radius isolation.
@@ -20,8 +19,7 @@ and operations choices.
 - SHOULD keep tagging standards mandatory for ownership, environment, and cost center.
 
 ## Identity and Access Guardrails
-- SHOULD prefer role assumption and short-lived credentials over long-lived static
-  access keys.
+- SHOULD prefer role assumption and short-lived credentials over long-lived static access keys.
 - MUST keep human admin access behind strong MFA and audit controls.
 - MUST restrict cross-account trust with explicit conditions and least privilege.
 - MUST review wildcard permissions (`*`) and high-risk actions as exceptions only.

@@ -7,8 +7,7 @@ applies_to:
 ---
 # CLEAN_CODE
 
-Guidance for AI agents applying clean-code principles in implementation and
-review.
+Guidance for AI agents applying clean-code principles in implementation and review.
 
 ## Core Principles
 - SHOULD prioritize clarity over cleverness.

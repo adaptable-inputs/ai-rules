@@ -8,45 +8,40 @@ applies_to:
 Guidance for maintaining this ai-rules repository.
 
 ## Scope
-This scope statement governs every file under `AI-RULES/`, including
-`LESSONS_LEARNED/`, except the downstream-facing documents listed below.
-Individual files do not restate it.
+This scope statement governs every file under `AI-RULES/`, including `LESSONS_LEARNED/`, except the downstream-facing
+documents listed below. Individual files do not restate it.
 - These rules apply only to this repository.
 - MUST NOT copy these rules into downstream-projects.
 
 ### Downstream-facing exceptions
-These three describe procedures a downstream-project runs, and are vendored with
-the subtree. The prohibition above does not apply to them:
+These three describe procedures a downstream-project runs, and are vendored with the subtree. The prohibition above does
+not apply to them:
 - [UPDATE.md](UPDATE.md) - the setup and update procedure itself.
 - [DOWNSTREAM-PROJECT.md](DOWNSTREAM-PROJECT.md) - downstream-project layout.
-- [DOWNSTREAM-OVERRIDES.md](DOWNSTREAM-OVERRIDES.md) - how a downstream-project
-  authors its own overrides. The authoring rules bind this repository; the
-  layout they describe is what a downstream-project produces.
+- [DOWNSTREAM-OVERRIDES.md](DOWNSTREAM-OVERRIDES.md) - how a downstream-project authors its own overrides. The authoring
+  rules bind this repository; the layout they describe is what a downstream-project produces.
 
 ## Terminology
 - "ai-rules" refers to this repository's baseline ruleset and its published tags.
-- "downstream-project" means a project/repository that vendors and uses
-  ai-rules.
+- "downstream-project" means a project/repository that vendors and uses ai-rules.
 - "consuming project" is a legacy synonym for "downstream-project".
 
 ## Files
 - [STRUCTURE.md](STRUCTURE.md) - Structure rules for this repository only.
 - [FORMATTING.md](FORMATTING.md) - Formatting rules for this repository only.
 - [RELEASE.md](RELEASE.md) - Release checklist for this repository.
-- [PR-REVIEW-LOOP.md](PR-REVIEW-LOOP.md) - Standard Copilot review loop for
-  repository PRs.
-- [DOWNSTREAM-OVERRIDES.md](DOWNSTREAM-OVERRIDES.md) - Authoring model for
-  downstream-project extension rules and conflict precedence.
+- [PR-REVIEW-LOOP.md](PR-REVIEW-LOOP.md) - Standard Copilot review loop for repository PRs.
+- [DOWNSTREAM-OVERRIDES.md](DOWNSTREAM-OVERRIDES.md) - Authoring model for downstream-project extension rules and
+  conflict precedence.
 - [UPDATE.md](UPDATE.md) - Update workflow and prompt examples for downstream-projects.
 - [DOWNSTREAM-PROJECT.md](DOWNSTREAM-PROJECT.md) - downstream-project layout and lessons learned guidance.
-- [LESSONS_LEARNED/LESSONS_LEARNED.md](LESSONS_LEARNED/LESSONS_LEARNED.md) - Index of lessons
-  to prevent repeat mistakes.
+- [LESSONS_LEARNED/LESSONS_LEARNED.md](LESSONS_LEARNED/LESSONS_LEARNED.md) - Index of lessons to prevent repeat
+  mistakes.
 
 ## Maintenance
 Additional maintenance rules:
-- SHOULD avoid redundancy across AI-RULES docs. If a new focused file supersedes content here, remove the overlap
-  and link to the single source of truth instead.
-- If a task requires a second attempt, add a short lesson under
-  `AI-RULES/LESSONS_LEARNED/` and link it.
-- Before final response, run a quick AI-RULES self-check (structure, formatting, and relevant lessons learned).
-  Do not respond until the self-check passes.
+- SHOULD avoid redundancy across AI-RULES docs. If a new focused file supersedes content here, remove the overlap and
+  link to the single source of truth instead.
+- If a task requires a second attempt, add a short lesson under `AI-RULES/LESSONS_LEARNED/` and link it.
+- Before final response, run a quick AI-RULES self-check (structure, formatting, and relevant lessons learned). Do not
+  respond until the self-check passes.

@@ -8,11 +8,10 @@ applies_to:
 ---
 # DORA
 
-Engineering policy guidance for AI agents on EU Digital Operational Resilience
-Act (DORA) relevant software and operations controls.
+Engineering policy guidance for AI agents on EU Digital Operational Resilience Act (DORA) relevant software and
+operations controls.
 
-This is engineering policy guidance, not legal advice.
-Consult qualified legal counsel for final legal decisions.
+This is engineering policy guidance, not legal advice. Consult qualified legal counsel for final legal decisions.
 
 ## Defaults
 - SHOULD keep ICT risk ownership explicit for critical business services.

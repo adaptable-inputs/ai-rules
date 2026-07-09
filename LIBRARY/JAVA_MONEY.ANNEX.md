@@ -41,20 +41,16 @@ Do:    centralize and reuse JavaMoney rounding operators per business rule.
 ```
 
 ## Code Review Checklist for JavaMoney
-- Are monetary values represented with `MonetaryAmount` (or wrappers)
-  end-to-end?
+- Are monetary values represented with `MonetaryAmount` (or wrappers) end-to-end?
 - Is currency always explicit and validated before arithmetic/comparison?
 - Are rounding rules centralized and domain-correct?
 - Are FX conversions using JavaMoney services instead of manual math?
 - Are persistence/transport conversions isolated to boundary layers?
-- Are primitive and `BigDecimal` money values confined to explicit interop
-  points?
+- Are primitive and `BigDecimal` money values confined to explicit interop points?
 
 ## Testing Guidance
 - Test arithmetic and aggregation with same- and mixed-currency scenarios.
 - Test rounding rules for edge values (tax, discount, fractional-cent cases).
 - Test currency-conversion behavior including missing-rate/error handling.
-- Test boundary mapping between `MonetaryAmount` and persistence/transport
-  schemas.
-- Add regression tests for known monetary defect classes (rounding drift,
-  currency mix-ups).
+- Test boundary mapping between `MonetaryAmount` and persistence/transport schemas.
+- Add regression tests for known monetary defect classes (rounding drift, currency mix-ups).

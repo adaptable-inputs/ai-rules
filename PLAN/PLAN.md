@@ -12,25 +12,21 @@ Guidance for AI agents creating implementation plans.
 
 ## Planning Requirement (Mandatory)
 - SHOULD create a plan before starting implementation for every implementation task.
-- The plan MAY be lightweight for low-risk, trivial changes, but it MUST still
-  be decision-complete for its scope and risk while stating required elements
-  tersely.
+- The plan MAY be lightweight for low-risk, trivial changes, but it MUST still be decision-complete for its scope and
+  risk while stating required elements tersely.
 - MUST NOT start implementation when no plan exists.
 
 ## Plan Step Ordering Gates (Mandatory)
 - Every plan MUST include a rule-loading step as the very first task.
-- The first task MUST load the rules that apply to the change, following the
-  `AI.md` Loading Protocol.
+- The first task MUST load the rules that apply to the change, following the `AI.md` Loading Protocol.
 - No other planning or implementation task MAY appear before that first step.
-- Every plan MUST include a final task that verifies the planned or implemented
-  changes still conform to those rules.
-- If non-conformance is found during that final task, corrective updates are
-  mandatory before the plan can be marked complete.
+- Every plan MUST include a final task that verifies the planned or implemented changes still conform to those rules.
+- If non-conformance is found during that final task, corrective updates are mandatory before the plan can be marked
+  complete.
 - This end-of-plan conformance check is a hard quality gate.
 
 ## Decision-Complete Plan Requirements
-A plan MUST specify every item below. Expand each item in proportion to its
-risk; never omit one:
+A plan MUST specify every item below. Expand each item in proportion to its risk; never omit one:
 - Goal and success criteria.
 - In-scope and out-of-scope items.
 - Semantic dependency order and target files.
@@ -46,14 +42,13 @@ risk; never omit one:
 - SHOULD mark where follow-up issues are needed.
 - SHOULD keep plan aligned with one-issue/one-branch/one-PR workflow when required.
 - SHOULD prioritize system-level architecture and design decisions in planning.
-- MUST NOT over-index on fine-grained implementation details that are better
-  handled during execution unless they materially change risk/scope.
+- MUST NOT over-index on fine-grained implementation details that are better handled during execution unless they
+  materially change risk/scope.
 
 ## Risk and Dependency Handling
 - SHOULD identify external dependencies and blockers early.
 - SHOULD call out coupling across layers and documents.
-- SHOULD prefer dependency-first ordering (parent constraints before child
-  specialization).
+- SHOULD prefer dependency-first ordering (parent constraints before child specialization).
 - SHOULD include rollback options for high-impact changes.
 
 ## Research Requirements
@@ -73,8 +68,8 @@ risk; never omit one:
 
 ## Plan Review Checklist
 - Is the plan decision-complete and implementation-ready?
-- Does the plan start with the mandatory complete-ruleset-read task?
-- Does the plan end with the mandatory complete-ruleset-read conformance gate?
+- Does the plan start with the mandatory rule-loading task?
+- Does the plan end with the mandatory conformance gate?
 - Are scope and success criteria explicit?
 - Are semantic dependencies and ordering correct?
 - Are risks, mitigations, and rollback steps captured?

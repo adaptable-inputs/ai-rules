@@ -12,12 +12,10 @@ applies_to:
 3. `@ToString` leaking sensitive or massive object graphs.
 4. `@SneakyThrows` masking API exception contracts.
 5. Annotation processing misconfiguration causing compile/runtime drift.
-6. Handwritten no-arg/all-arg/required-arg constructors despite Lombok
-   availability.
+6. Handwritten no-arg/all-arg/required-arg constructors despite Lombok availability.
 7. Handwritten ordinary getters/setters despite Lombok availability.
 8. Manual logger field declarations instead of Lombok logging annotations.
-9. Implicit nullability contracts or use of Lombok/Jakarta nullness annotations
-   when JSpecify is available.
+9. Implicit nullability contracts or use of Lombok/Jakarta nullness annotations when JSpecify is available.
 
 ## Do / Don't Examples
 ### 1. Entity Identity
@@ -59,16 +57,13 @@ Do:    use JSpecify when available; otherwise use @lombok.NonNull and
 
 ## Code Review Checklist for Lombok
 - Is Lombok reducing boilerplate without hiding critical behavior?
-- Are simple constructors (`@NoArgsConstructor`, `@AllArgsConstructor`,
-  `@RequiredArgsConstructor`) Lombok-generated when Lombok is available?
+- Are simple constructors (`@NoArgsConstructor`, `@AllArgsConstructor`, `@RequiredArgsConstructor`) Lombok-generated
+  when Lombok is available?
 - For DI classes, is `@RequiredArgsConstructor` used by default?
 - Are ordinary getters/setters Lombok-generated when Lombok is available?
-- Are logger instances provided via Lombok log annotations (for example
-  `@Slf4j`)?
-- Is nullness annotation precedence correct (JSpecify first; Lombok/Jakarta
-  fallback only when JSpecify is unavailable)?
-- Under the chosen strategy, are fields/parameters/return types explicitly
-  annotated for null contracts?
+- Are logger instances provided via Lombok log annotations (for example `@Slf4j`)?
+- Is nullness annotation precedence correct (JSpecify first; Lombok/Jakarta fallback only when JSpecify is unavailable)?
+- Under the chosen strategy, are fields/parameters/return types explicitly annotated for null contracts?
 - Are risky annotations (`@Data`, `@SneakyThrows`) justified?
 - Are equality/toString semantics safe and intentional?
 - Is sensitive data excluded from generated toString output?
@@ -79,6 +74,6 @@ Do:    use JSpecify when available; otherwise use @lombok.NonNull and
 - Test equality/hashCode behavior for classes using generated methods.
 - Test serialization/mapping behavior for Lombok-built DTOs.
 - Validate build + IDE annotation processing consistency in CI.
-- Add null-contract tests matching the active strategy (JSpecify if available;
-  otherwise Lombok/Jakarta fallback annotations).
+- Add null-contract tests matching the active strategy
+  (JSpecify if available; otherwise Lombok/Jakarta fallback annotations).
 - Add regression tests when Lombok annotation strategy changes.

@@ -26,10 +26,8 @@ Do:    fix the check, or ask the user how to proceed.
 
 ## Code Review Checklist for GitHub Workflow
 - Were branch-protection and ruleset gates enforced without admin bypass?
-- Are conversation resolutions handled by the review-comment author, or under
-  the override above?
+- Are conversation resolutions handled by the review-comment author, or under the override above?
 
 ## Testing Guidance
-- Verify required checks and required-review policies are active on the target
-  branch.
+- Verify required checks and required-review policies are active on the target branch.
 - Verify no admin-bypass merge path was used.

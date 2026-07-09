@@ -11,8 +11,8 @@ applies_to:
 Guidance for AI agents implementing and reviewing microservice architecture.
 
 ## Adoption Criteria
-- SHOULD prefer modular monolith first unless there is a clear need for independent
-  scaling, deployment cadence, ownership, or isolation.
+- SHOULD prefer modular monolith first unless there is a clear need for independent scaling, deployment cadence,
+  ownership, or isolation.
 - SHOULD define measurable reasons for each service split.
 - SHOULD avoid splitting by technical layers; split by business capability.
 

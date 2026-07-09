@@ -8,15 +8,13 @@ applies_to:
 ---
 # INFRA_AS_CODE
 
-Guidance for AI agents implementing and reviewing Infrastructure as Code (IaC)
-changes.
+Guidance for AI agents implementing and reviewing Infrastructure as Code (IaC) changes.
 
 ## IaC Defaults
 - SHOULD keep infrastructure declarative, versioned, and reproducible.
 - SHOULD treat IaC as the source of truth; avoid manual console drift.
 - SHOULD keep changes small, reviewable, and environment-scoped.
-- SHOULD prefer immutable replacements over ad-hoc in-place mutation for high-risk
-  components where feasible.
+- SHOULD prefer immutable replacements over ad-hoc in-place mutation for high-risk components where feasible.
 
 ## Change Management and Approval Gates
 - MUST require plan/preview output before apply for every non-trivial change.
@@ -32,8 +30,7 @@ changes.
 
 ## Secrets, Identity, and Access
 - MUST NOT commit secrets or static privileged keys in IaC code or variables.
-- SHOULD prefer short-lived credentials (for example OIDC/workload identity) over
-  long-lived static credentials.
+- SHOULD prefer short-lived credentials (for example OIDC/workload identity) over long-lived static credentials.
 - MUST enforce least privilege for provisioning identities and runtime roles.
 - MUST keep sensitive outputs minimized and redacted in logs/artifacts.
 

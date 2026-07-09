@@ -45,6 +45,8 @@ jobs:
       # hides a rule doc, so this gate must fail the build, not warn.
       - run: python3 scripts/gen_manifest.py --check
       - run: python3 scripts/check_indexes_accurate.py
+      # A hard line break inside a bullet costs tokens and means nothing.
+      - run: python3 scripts/fmt_prose.py --check
 
   examples:
     runs-on: ubuntu-latest

@@ -14,19 +14,16 @@ Guidance for AI agents to use early return and guard clauses effectively.
 - MUST validate inputs and preconditions early; on invalid or error states, return (or exit) immediately.
 - SHOULD reduce nested branching depth before extracting deeper abstractions.
 - SHOULD keep guard clauses small and intent-revealing.
-- SHOULD keep return points semantically obvious, and SHOULD NOT scatter
-  unrelated exits.
+- SHOULD keep return points semantically obvious, and SHOULD NOT scatter unrelated exits.
 - For simple two-branch value selection with no side effects, SHOULD prefer a single ternary expression for
   return/assignment instead of verbose `if` blocks.
-- In ternary guard expressions, SHOULD keep the exceptional case first: `condition ? exceptional : happy` (for example
-  `value == null ? null : map(value)`).
+- In ternary guard expressions, SHOULD keep the exceptional case first: `condition ? exceptional : happy`
+  (for example `value == null ? null : map(value)`).
 
-Use early return carefully when control-flow exits could bypass critical
-cleanup/consistency behavior:
+Use early return carefully when control-flow exits could bypass critical cleanup/consistency behavior:
 - resource lifecycle obligations,
 - transactional boundary guarantees,
 - required audit/logging side effects.
 
-Modern language/runtime features (for example structured cleanup constructs,
-GC-managed memory, and scoped APIs) reduce these risks in many cases. Treat
-early return as the default, and treat caveats as exceptions to check.
+Modern language/runtime features (for example structured cleanup constructs, GC-managed memory, and scoped APIs) reduce
+these risks in many cases. Treat early return as the default, and treat caveats as exceptions to check.

@@ -8,25 +8,21 @@ applies_to:
 Repository-standard PR review loop for ai-rules maintenance.
 
 ## Preconditions
-- This loop assumes shared workflow prerequisites are already satisfied for each
-  work item:
+- This loop assumes shared workflow prerequisites are already satisfied for each work item:
   - A plan exists.
   - Work is on a dedicated issue branch (not a default branch) for non-blocked
     items.
   - An open PR/MR exists for that branch for all non-blocked items.
-- If a work item is explicitly marked `BLOCKED: <reason>` because a branch or
-  PR/MR cannot be created, do not run this loop for that item until it is
-  unblocked.
+- If a work item is explicitly marked `BLOCKED: <reason>` because a branch or PR/MR cannot be created, do not run this
+  loop for that item until it is unblocked.
 - Source of truth for those shared prerequisites:
   - `PLAN/PLAN.md`
   - `CORE/VERSION_CONTROL_SYSTEM.md`
 
 ## Session Entry Preferences (Ask Once, Only If Unclear)
-- Ask these questions at the very beginning of the workflow (before planning,
-  implementation, or review-loop execution) when the user prompt did not
-  already answer them.
-- Ask each question at most once per session, then store the answer as session
-  preference:
+- Ask these questions at the very beginning of the workflow (before planning, implementation, or review-loop execution)
+  when the user prompt did not already answer them.
+- Ask each question at most once per session, then store the answer as session preference:
   - Code review loop preference:
     "Do you want me to run the code review loop for the relevant PRs?"
     Store as `RUN_REVIEW_LOOP=true|false`.
@@ -37,8 +33,7 @@ Repository-standard PR review loop for ai-rules maintenance.
     "After the loop reaches zero valid Copilot findings, should I also merge
     the PR?"
     Store as `MERGE_AFTER_CLEAN_LOOP=true|false`.
-- MUST NOT ask these questions again in the same session, even when handling
-  multiple issues or PRs.
+- MUST NOT ask these questions again in the same session, even when handling multiple issues or PRs.
 - After these one-time decisions are captured, run unattended unless blocked.
 
 ## Session Preference Application
@@ -51,8 +46,8 @@ Repository-standard PR review loop for ai-rules maintenance.
     implementation/review-loop execution without additional user prompts.
   - If `IMPLEMENT_AFTER_PLAN=false`, stop after planning and wait for explicit
     user instruction before implementation and review-loop execution.
-- Session preferences in this file control execution behavior only; they do not
-  override shared mandatory planning/VCS requirements.
+- Session preferences in this file control execution behavior only; they do not override shared mandatory planning/VCS
+  requirements.
 
 ## Work Item Model
 - Treat each issue/PR pair as one independent work item.
@@ -132,8 +127,7 @@ Repository-standard PR review loop for ai-rules maintenance.
    - `has_required_checks_green = true`
 
 ## Hard Merge Gate (No Exceptions)
-Before merging any PR in this loop, evaluate this gate explicitly. If any item
-is false or unknown, do not merge.
+Before merging any PR in this loop, evaluate this gate explicitly. If any item is false or unknown, do not merge.
 - `last_review_submitted_at > last_push_at`
 - `has_review_in_progress_after_last_push = false`
 - `has_open_review_threads = false`
@@ -141,31 +135,27 @@ is false or unknown, do not merge.
 - `has_required_checks_green = true`
 
 Definition:
-- `merge_gate_passed = true` only when all hard-merge-gate checklist items
-  above are true in the same evaluation round.
+- `merge_gate_passed = true` only when all hard-merge-gate checklist items above are true in the same evaluation round.
 
 Operational rules:
 - Treat missing/ambiguous timestamps or review state as gate failure.
 - Treat missing/ambiguous required-check state as gate failure.
 - Passing CI alone is never sufficient for merge.
 - A prior Copilot review that predates the latest push never satisfies the gate.
-- MUST NOT merge in a state where Copilot review is still pending/running for the
-  latest push.
+- MUST NOT merge in a state where Copilot review is still pending/running for the latest push.
 
 ## Completion
 - If `MERGE_AFTER_CLEAN_LOOP=true`, merge each PR only when:
   - `merge_gate_passed = true` from the hard merge gate above
-- If `MERGE_AFTER_CLEAN_LOOP=false`, stop at clean loop and report each PR's
-  gate-evaluated status to the user, including `merge_gate_passed` and any
-  failing hard-gate conditions. Do not label a PR as merge-ready unless the
-  hard merge gate passes.
+- If `MERGE_AFTER_CLEAN_LOOP=false`, stop at clean loop and report each PR's gate-evaluated status to the user,
+  including `merge_gate_passed` and any failing hard-gate conditions. Do not label a PR as merge-ready unless the hard
+  merge gate passes.
 
 ## Guardrails
 - Keep PRs focused; do not bundle unrelated repository changes.
 - MUST NOT delete review comments to make threads disappear.
 - For invalid findings, leave a clear rationale before resolving.
-- MUST NOT trigger Copilot review via PR comments (for example `@copilot review`
-  or `/copilot review`).
+- MUST NOT trigger Copilot review via PR comments (for example `@copilot review` or `/copilot review`).
 - MUST NOT mention `@copilot` in PR comments.
-- MUST NOT use fixed wait timers (for example, "wait 5 minutes after push") as a
-  merge/review gate; use PR timeline and review state instead.
+- MUST NOT use fixed wait timers (for example, "wait 5 minutes after push") as a merge/review gate; use PR timeline and
+  review state instead.

@@ -30,5 +30,5 @@ Guidance for AI agents implementing and reviewing JAXB XML binding.
 - SHOULD avoid permissive parsing that masks malformed input.
 
 ## Override Notes
-- If alternative XML libraries are used for specific needs, maintain the same
-  contract compatibility and parser security constraints.
+- If alternative XML libraries are used for specific needs, maintain the same contract compatibility and parser security
+  constraints.

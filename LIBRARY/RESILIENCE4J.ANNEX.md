@@ -34,9 +34,8 @@ Do:    tune per dependency latency/error profile.
 ```
 
 ## Code Review Checklist for Resilience4j
-- Does each failure mode map to a named primitive: retry for transient faults,
-  circuit breaker for sustained faults, bulkhead for saturation, timeout for
-  latency?
+- Does each failure mode map to a named primitive: retry for transient faults, circuit breaker for sustained faults,
+  bulkhead for saturation, timeout for latency?
 - Are retry policies bounded and idempotency-safe?
 - Are fallback paths correctness-preserving?
 - Are timeout/circuit/bulkhead/rate policies coordinated?

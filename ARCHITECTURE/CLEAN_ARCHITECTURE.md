@@ -12,20 +12,15 @@ Guidance for AI agents implementing and reviewing Clean Architecture patterns.
 
 ## Core Rules
 - Dependencies point inward toward domain policy.
-- Domain and use-case layers MUST NOT depend on frameworks, DB clients, or web
-  adapters.
+- Domain and use-case layers MUST NOT depend on frameworks, DB clients, or web adapters.
 - Outer layers implement interfaces defined by inner layers.
 - SHOULD keep business policy independent from delivery and persistence details.
 
 ## Layer Responsibilities
-- Domain:
-  entities, value objects, invariants, and core policy.
-- Application/use-case:
-  orchestration, transaction boundaries, policy composition.
-- Interface adapters:
-  controllers, presenters, gateways, mappers.
-- Infrastructure:
-  DB, message bus, network clients, framework integration.
+- Domain: entities, value objects, invariants, and core policy.
+- Application/use-case: orchestration, transaction boundaries, policy composition.
+- Interface adapters: controllers, presenters, gateways, mappers.
+- Infrastructure: DB, message bus, network clients, framework integration.
 
 ## Boundary Contracts
 - SHOULD define ports/interfaces at policy boundaries.

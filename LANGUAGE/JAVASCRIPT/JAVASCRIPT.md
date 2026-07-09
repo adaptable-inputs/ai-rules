@@ -13,8 +13,8 @@ applies_to:
 Guidance for AI agents implementing and reviewing JavaScript code.
 
 ## Defaults
-- SHOULD prefer ESM modules (`import`/`export`) over CommonJS for new code unless the
-  runtime/toolchain explicitly requires CommonJS.
+- SHOULD prefer ESM modules (`import`/`export`) over CommonJS for new code unless the runtime/toolchain explicitly
+  requires CommonJS.
 - SHOULD keep modules focused; avoid files that mix unrelated responsibilities.
 - SHOULD use `const` by default, `let` only when reassignment is required, avoid `var`.
 - SHOULD prefer explicit `===`/`!==` over loose equality.
@@ -60,8 +60,8 @@ Guidance for AI agents implementing and reviewing JavaScript code.
 - SHOULD be careful with synchronous CPU-heavy work on event-loop-critical paths.
 
 ## Security Baseline
-- MUST NOT build code paths that evaluate untrusted strings (`eval`, dynamic
-  function constructors) unless there is no alternative and controls are strict.
+- MUST NOT build code paths that evaluate untrusted strings (`eval`, dynamic function constructors) unless there is no
+  alternative and controls are strict.
 - SHOULD avoid unsafe shell command construction from untrusted input.
 - MUST sanitize/encode output for the target context (HTML, URL, shell).
 - For SQL, MUST use parameterized queries/prepared statements rather than string escaping.

@@ -7,11 +7,9 @@ applies_to:
 ---
 # LICENSES
 
-Guidance for AI agents on software-license decisions in commercial
-closed-source contexts.
+Guidance for AI agents on software-license decisions in commercial closed-source contexts.
 
-This is engineering policy guidance, not legal advice.
-Consult legal counsel for final legal decisions.
+This is engineering policy guidance, not legal advice. Consult legal counsel for final legal decisions.
 
 ## Decision Framework
 For each dependency (direct and significant transitive):
@@ -50,8 +48,8 @@ Avoid unless legal explicitly approves alternative model:
 
 ## Attribution and Notice Workflow
 - MUST preserve required copyright/license notices.
-- For distributed artifacts, MUST maintain `THIRD_PARTY_NOTICES.md` in the project root (or an explicitly documented
-  equivalent path).
+- For distributed artifacts, MUST maintain `THIRD_PARTY_NOTICES.md` in the project root
+  (or an explicitly documented equivalent path).
 - MUST include NOTICE file obligations (for example Apache-2.0) in release outputs.
 - MUST keep attribution metadata updated on dependency upgrades/removals.
 

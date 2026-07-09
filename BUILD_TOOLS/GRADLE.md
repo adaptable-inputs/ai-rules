@@ -25,8 +25,7 @@ Guidance for AI agents implementing and reviewing Gradle builds.
 
 ## Task and Build Logic Design
 - SHOULD keep custom tasks small and deterministic.
-- SHOULD avoid heavy imperative logic in build scripts when plugins/conventions are
-  more maintainable.
+- SHOULD avoid heavy imperative logic in build scripts when plugins/conventions are more maintainable.
 - SHOULD isolate build logic into a convention plugin when the same logic is needed by more than one module.
 - SHOULD keep task inputs/outputs declared for caching correctness.
 

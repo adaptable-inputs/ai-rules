@@ -13,15 +13,14 @@ Guidance for AI agents using Bun as package manager/runtime tooling.
 
 ## Defaults
 - SHOULD use one package manager per repository; do not mix lockfiles.
-- MUST commit the Bun lockfile for reproducible installs (format/name depends on Bun version, for example `bun.lock` or
-  `bun.lockb`).
+- MUST commit the Bun lockfile for reproducible installs
+  (format/name depends on Bun version, for example `bun.lock` or `bun.lockb`).
 - SHOULD keep Bun version pinned in project/tooling config.
 - SHOULD validate Bun compatibility with required ecosystem tooling before adoption.
 
 ## Install and Lockfile Behavior
 - SHOULD use deterministic install behavior in CI.
-- SHOULD prefer `bun install --frozen-lockfile` (or equivalent reproducible mode) for
-  release pipelines.
+- SHOULD prefer `bun install --frozen-lockfile` (or equivalent reproducible mode) for release pipelines.
 - SHOULD use `bun install --lockfile-only` only when intentionally updating lock metadata.
 - SHOULD keep node_modules excluded from VCS.
 
@@ -36,8 +35,7 @@ Guidance for AI agents using Bun as package manager/runtime tooling.
 - SHOULD verify package manager features needed by monorepo/workspace setup.
 - SHOULD validate CI images/runners include expected Bun version.
 - SHOULD keep fallback path documented if Bun compatibility blocks delivery.
-- SHOULD avoid mixing Bun runtime assumptions into scripts intended for Node-only
-  environments without explicit checks.
+- SHOULD avoid mixing Bun runtime assumptions into scripts intended for Node-only environments without explicit checks.
 
 ## Security and Credential Handling
 - MUST NOT commit registry credentials/tokens.
@@ -50,5 +48,5 @@ Add these when using Bun (if not already covered by baseline ignore rules):
 - `node_modules/`
 
 ## Override Notes
-- If project MUST interoperate with npm-specific workflows, document explicit
-  compatibility boundaries and keep deterministic lockfile/security controls.
+- If project MUST interoperate with npm-specific workflows, document explicit compatibility boundaries and keep
+  deterministic lockfile/security controls.

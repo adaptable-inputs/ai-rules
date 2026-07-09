@@ -4,8 +4,7 @@ applies_to:
 ---
 # ARCHITECTURE
 
-Architecture-layer contract for system design, boundaries, and interaction
-patterns.
+Architecture-layer contract for system design, boundaries, and interaction patterns.
 
 ## Files
 - [CLEAN_ARCHITECTURE.md](CLEAN_ARCHITECTURE.md) - Layering and dependency direction guidance.

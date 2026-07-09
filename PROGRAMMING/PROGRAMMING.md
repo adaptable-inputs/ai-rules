@@ -21,11 +21,8 @@ Guidance for AI agents executing implementation tasks.
      permissions/tooling/VCS policy, stop and report `BLOCKED` as defined in
      `CORE/VERSION_CONTROL_SYSTEM.md`.
 2. Confirm behavior goals, acceptance criteria, and scope boundaries.
-3. Locate semantic parent docs using `CORE/RULE_DEPENDENCY_TREE.md` and the
-   relevant index docs (`LANGUAGE/LANGUAGE.md`, `DESIGN/DESIGN.md`,
-   `ARCHITECTURE/ARCHITECTURE.md`, `FRAMEWORK/FRAMEWORK.md`,
-   `LIBRARY/LIBRARY.md`, `BUILD_TOOLS/BUILD_TOOLS.md`,
-   `INFRASTRUCTURE/INFRASTRUCTURE.md`, `CI-CD/CI-CD.md`).
+3. Locate semantic parent docs using `CORE/RULE_DEPENDENCY_TREE.md` and the relevant index docs
+   (`LANGUAGE/LANGUAGE.md`, `DESIGN/DESIGN.md`, `ARCHITECTURE/ARCHITECTURE.md`, `FRAMEWORK/FRAMEWORK.md`, `LIBRARY/LIBRARY.md`, `BUILD_TOOLS/BUILD_TOOLS.md`, `INFRASTRUCTURE/INFRASTRUCTURE.md`, `CI-CD/CI-CD.md`).
 4. Design minimal-change implementation path.
 5. Implement with explicit error handling and observability where relevant.
 6. Add/update tests and run verification.

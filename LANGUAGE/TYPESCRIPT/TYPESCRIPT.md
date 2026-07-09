@@ -21,46 +21,37 @@ Guidance for AI agents implementing and reviewing TypeScript code.
 
 ## Typing Strategy
 - SHOULD prefer precise domain types over broad primitives and ad-hoc objects.
-- SHOULD prefer `type` aliases for unions/utility composition and `interface` for
-  extendable object contracts; use whichever is clearer for the case.
-- SHOULD avoid `any`.
-  If unavoidable at a boundary, isolate it and narrow immediately.
+- SHOULD prefer `type` aliases for unions/utility composition and `interface` for extendable object contracts; use
+  whichever is clearer for the case.
+- SHOULD avoid `any`. If unavoidable at a boundary, isolate it and narrow immediately.
 - SHOULD prefer `unknown` for untrusted inputs and narrow with type guards.
 - SHOULD model state variants with discriminated unions instead of boolean flags.
 - SHOULD use `readonly` for immutable APIs and value objects.
 
 ## Domain Types vs Ad-Hoc Objects
-- Use this default split:
-  domain type for semantic data with meaning and invariants;
-  ad-hoc object for local, short-lived, mechanical data.
+- Use this default split: domain type for semantic data with meaning and invariants; ad-hoc object for local,
+  short-lived, mechanical data.
 - SHOULD treat ad-hoc objects as local implementation details. Promote them to named types once they start shaping
   domain contracts.
 
 ### Require Named Domain Types When
-- Data crosses a boundary:
-  exported function signatures, cross-module contracts, package boundaries,
-  persistence models, network DTOs, or event payloads.
-- The shape is reused or shared:
-  used in multiple call sites, stored and passed around, or repeated in tests.
-- The data has invariants or behavior:
-  needs validation, normalization, derived fields, or domain operations.
-- Complexity is no longer trivial:
-  nested structures, multiple lifecycle states, or domain unions/workflows.
+- Data crosses a boundary: exported function signatures, cross-module contracts, package boundaries, persistence models,
+  network DTOs, or event payloads.
+- The shape is reused or shared: used in multiple call sites, stored and passed around, or repeated in tests.
+- The data has invariants or behavior: needs validation, normalization, derived fields, or domain operations.
+- Complexity is no longer trivial: nested structures, multiple lifecycle states, or domain unions/workflows.
 
 ### Allow Ad-Hoc Objects When Local
-- Options/config bags for infrastructure helpers
-  (for example retry/cache/http/logging helpers).
+- Options/config bags for infrastructure helpers (for example retry/cache/http/logging helpers).
 - SHOULD query/filter/URL parameter objects that remain local to one call flow.
 - `Record`/dictionary lookup maps for simple key-to-value translations.
 - UI-local view models or style/config objects kept inside one component/module.
 - SHOULD test fixtures/mocks that stay local to one test; promote to builders/factories when shared.
 
 ### Promotion Guardrails
-- If an ad-hoc object gets reused, exported, or shared across module boundaries,
-  replace it with a named type.
+- If an ad-hoc object gets reused, exported, or shared across module boundaries, replace it with a named type.
 - If fields encode domain semantics, MUST promote immediately (for example pricing, tax, policy, risk, authorization).
-- MUST NOT accept `object`, `Record<string, unknown>`, or `any` for
-  domain-shaped data contracts.
+- MUST NOT accept `object`, `Record<string, unknown>`, or `any` for domain-shaped data contracts.
 - In public APIs, SHOULD prefer named parameter/return types; callers MAY still pass inline literals when structural
   typing permits.
 
@@ -78,8 +69,8 @@ Guidance for AI agents implementing and reviewing TypeScript code.
 
 ## API and Module Design
 - SHOULD keep public API signatures stable and explicit.
-- SHOULD prefer return types that communicate failure explicitly
-  (`Result`-like unions, typed errors) for expected error paths.
+- SHOULD prefer return types that communicate failure explicitly (`Result`-like unions, typed errors) for expected error
+  paths.
 - SHOULD avoid large "utility" modules mixing unrelated concerns.
 - SHOULD keep module side effects explicit and minimal.
 
@@ -87,14 +78,12 @@ Guidance for AI agents implementing and reviewing TypeScript code.
 - Variables, parameters, properties, and functions: `camelCase`.
 - Types, interfaces, classes, enums, namespaces: `PascalCase`.
 - Enum members: `PascalCase` (TypeScript ecosystem convention).
-- `const` values:
-  use `camelCase` for local/runtime values;
-  use `UPPER_SNAKE_CASE` only for shared true constants.
+- `const` values: use `camelCase` for local/runtime values; use `UPPER_SNAKE_CASE` only for shared true constants.
 - SHOULD treat abbreviations as one word for casing (`userId`, `httpServer`).
 
 ## Enums and Alternatives
-- SHOULD prefer union literals (`type Status = "Draft" | "Published"`) when values
-  are simple and no runtime enum object is required.
+- SHOULD prefer union literals (`type Status = "Draft" | "Published"`) when values are simple and no runtime enum object
+  is required.
 - SHOULD use enums when runtime reflection/iteration or interop requires them.
 - SHOULD avoid heterogeneous enums.
 - SHOULD prefer explicit string values for externally persisted or serialized enums.
@@ -118,7 +107,6 @@ Guidance for AI agents implementing and reviewing TypeScript code.
 - SHOULD use `import type` whenever an import is referenced only in type positions.
 
 ## VCS Ignore Additions
-Add these when using TypeScript (if not already covered by baseline ignore
-list):
+Add these when using TypeScript (if not already covered by baseline ignore list):
 - `*.tsbuildinfo`
 - `dist/`, `out/` when build outputs are generated locally

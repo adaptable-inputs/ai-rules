@@ -13,8 +13,7 @@ applies_to:
 Guidance for AI agents implementing and reviewing shell scripts.
 
 ## Defaults
-- SHOULD prefer Bash for non-trivial scripts and declare interpreter explicitly
-  (`#!/usr/bin/env bash`).
+- SHOULD prefer Bash for non-trivial scripts and declare interpreter explicitly (`#!/usr/bin/env bash`).
 - SHOULD enable strict mode for Bash scripts: `set -euo pipefail` and safe `IFS` handling when needed.
 - Quote variable expansions by default (`"$var"`).
 - SHOULD use functions to structure scripts; keep `main` flow explicit.
@@ -43,6 +42,5 @@ Guidance for AI agents implementing and reviewing shell scripts.
 ## Data and Loop Handling
 - SHOULD prefer arrays over word-splitting where Bash arrays are available.
 - SHOULD use `read -r` to preserve backslashes.
-- SHOULD avoid parsing command output with brittle text assumptions when machine-
-  readable alternatives exist.
+- SHOULD avoid parsing command output with brittle text assumptions when machine- readable alternatives exist.
 - SHOULD be careful with globbing and empty-match behavior.
