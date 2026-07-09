@@ -5,7 +5,7 @@ applies_to:
 # NORMATIVE_LANGUAGE
 
 Defines the obligation vocabulary used by every rule in this repository. An
-agent reading any rule must be able to tell, without inference, whether
+agent reading any rule MUST be able to tell, without inference, whether
 deviating from it is forbidden, discouraged, or permitted.
 
 ## Scope

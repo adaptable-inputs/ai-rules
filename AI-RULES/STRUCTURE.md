@@ -35,6 +35,21 @@ applies_to:
 - `scripts/` is tooling, not a rule category. It has no index file and is not
   listed in `AI.md`. `scripts/check_structure.py` records the exemption in
   `NON_CATEGORY_DIRS`; add any future non-category directory there too.
+
+## Test Suite
+`scripts/test_rules.py` runs in CI and MUST pass before merge. Run it locally
+with `python3 scripts/test_rules.py`.
+
+It asserts two different things:
+- Properties of the corpus: valid frontmatter, an obligation keyword on every
+  normative statement, no self-contradicting statement.
+- That the checkers actually fail when they should. Each test in
+  `TestRatchetFails` reproduces a defect that shipped at least once, and
+  `TestRatchetDoesNotCryWolf` guards against false positives, which are what
+  make a checker get ignored.
+
+When you fix a checker bug, add the reproducing test in the same change. A guard
+that cannot fail is worse than no guard, because it is trusted.
 - Category index files should only link one level down.
 - In index files, every "## Files" entry includes a one-line description.
 - MUST NOT add headings that only link to another file; use the "## Files" list instead.

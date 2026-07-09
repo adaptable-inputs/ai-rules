@@ -58,6 +58,9 @@ Sub-heading template:
   periodic - a condition no code change can establish.
 - Split the EU AI Act logging rule into two statements: `SHOULD` log events for
   traceability, and `MUST NOT` expose sensitive data in AI-system logs.
+- Added `scripts/test_rules.py`, a 40-test suite covering corpus invariants and
+  checker behavior, wired into CI. Each test in `TestRatchetFails` reproduces a
+  defect that shipped at least once.
 - Converted the remaining 1,023 normative statements across the 73 conditional
   and task-overlay documents, completing the ruleset. `MUST` is reserved for
   security controls, gates, and prohibitions an agent can evaluate against the

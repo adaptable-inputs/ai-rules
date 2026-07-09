@@ -64,7 +64,7 @@ hosting platform.
 
 ## Change-Request Description Requirements
 - When opening a change request, MUST include a short developer-focused implementation summary.
-- MUST include files reviewers may skim because they are generated, copied, or standard imports.
+- MUST include the files reviewers can skim because they are generated, copied, or standard imports.
 - MUST highlight non-obvious logic and explain why it is implemented that way.
 - MUST keep scope, validation, and residual risk explicit.
 - MUST reuse the general PR/MR summary template from `CORE/VERSION_CONTROL_SYSTEM.md`.
