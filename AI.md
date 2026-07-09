@@ -3,11 +3,36 @@
 This index is the single entry point for the baseline rules. Each level links
 only one level deeper to keep navigation predictable.
 
+## Loading Protocol
+An agent MUST NOT read this ruleset exhaustively. Load in this order:
+
+1. **Always load.** `CORE/NORMATIVE_LANGUAGE.md`, `CORE/CORE.md`, and
+   `CORE/RULE_DEPENDENCY_TREE.md`. Without these an agent cannot interpret the
+   obligation level or precedence of any other rule.
+2. **Detect the stack.** Inspect the project for languages, frameworks,
+   libraries, build tools, and infrastructure actually in use.
+3. **Load only what matches.** Read a category index, then only those leaf docs
+   whose `applies_to` frontmatter matches the detected stack. A Java project
+   MUST NOT load `LANGUAGE/PYTHON/`.
+4. **Load task overlays by task type**, not by stack: `PROGRAMMING/`, `PLAN/`,
+   `REVIEW/`.
+
+### Never Load
+These MUST NOT be read as project rules. They are repository history and
+maintainer meta-guidance, and consume context without governing any downstream
+project:
+
+- `CHANGELOG.md` - release history.
+- `AI-RULES/**` - guidance for maintaining *this* repository. Load only when the
+  task is to modify ai-rules itself.
+- `CONTRIBUTING.md`, `README.md` - human-facing repository docs.
+
 ## CORE
 - [CORE/CORE.md](CORE/CORE.md) - Core, non-negotiable rules.
 
 ## AI-RULES
 - [AI-RULES/AI-RULES.md](AI-RULES/AI-RULES.md) - Meta-guidance for maintaining this repository.
+  Not a project rule; see "Never Load" above.
 
 ## PROGRAMMING
 - [PROGRAMMING/PROGRAMMING.md](PROGRAMMING/PROGRAMMING.md) - Programming task guidance.
