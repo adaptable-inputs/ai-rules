@@ -33,6 +33,26 @@ FRONTMATTER_EXEMPT = {".github/copilot-instructions.md"}
 VALID_LOAD = {"always", "entry", "index", "conditional", "task", "setup", "never"}
 CONDITIONAL_KEYS = {"languages", "frameworks", "libraries", "tools", "when"}
 
+# Docs whose normative bullets have been converted to explicit obligation
+# keywords. This list only grows. Adding a file here locks it: a new
+# keyword-less imperative in a normative section fails the build.
+# See CORE/NORMATIVE_LANGUAGE.md.
+KEYWORD_CONVERTED = {
+    "CORE/CORE.md",
+    "CORE/CODE_REVIEW_PLATFORM.md",
+    "SECURITY/SECURITY.md",
+}
+
+KEYWORD = re.compile(r"\b(MUST NOT|MUST|SHOULD NOT|SHOULD|MAY)\b")
+TOP_BULLET = re.compile(r"^[-*] (.*)$")
+# Headings whose bullets state facts, dependencies, or review questions.
+DESCRIPTIVE_PREFIXES = (
+    "Scope", "Semantic Dependencies", "Purpose", "Files", "Role in the Ruleset",
+    "Terminology", "Authoring Notes", "Override Notes", "Layer Details",
+    "Code Review Checklist", "Testing Guidance", "High-Risk", "Do / Don",
+    "Keywords", "Default Force", "Conflicts", "Applying Keywords",
+)
+
 errors: list[str] = []
 
 
@@ -181,12 +201,53 @@ def check_preflight_readable() -> None:
             fail(f"preflight requires reading {rel_path}, but it is marked load: never")
 
 
+def check_keyword_ratchet() -> None:
+    """Converted docs may not regain a keyword-less normative imperative.
+
+    Only top-level bullets are examined. Nested bullets are usually conditions
+    under a lead-in ("...only when all of the following are true:"), and a
+    condition is not an obligation.
+    """
+    for rel_path in sorted(KEYWORD_CONVERTED):
+        p = ROOT / rel_path
+        if not p.exists():
+            fail(f"KEYWORD_CONVERTED names {rel_path}, which does not exist")
+            continue
+        body = p.read_text(encoding="utf-8")
+        section = ""
+        fence = False
+        for n, line in enumerate(body.split("\n"), 1):
+            if line.startswith("```"):
+                fence = not fence
+                continue
+            if fence:
+                continue
+            h = re.match(r"^#+\s+(.*)$", line)
+            if h:
+                section = h.group(1).strip()
+                continue
+            m = TOP_BULLET.match(line)
+            if not m:
+                continue
+            text = m.group(1)
+            if KEYWORD.search(text):
+                continue
+            if section.startswith(DESCRIPTIVE_PREFIXES):
+                continue
+            # An imperative opens with a capitalised bare verb.
+            if not re.match(r"[A-Z][a-z]+\b", text):
+                continue
+            fail(f"{rel_path}:{n}: normative bullet has no obligation keyword "
+                 f"(file is in KEYWORD_CONVERTED): {text[:60]!r}")
+
+
 def main() -> int:
     check_indexes()
     check_ai_md_lists_dirs()
     check_no_orphans()
     check_frontmatter()
     check_preflight_readable()
+    check_keyword_ratchet()
     if errors:
         print(f"structure check FAILED with {len(errors)} error(s):\n")
         for e in errors:

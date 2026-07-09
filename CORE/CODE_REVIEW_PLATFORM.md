@@ -30,10 +30,10 @@ hosting platform.
   not replace baseline VCS workflow requirements.
 
 ## Protected Branch Policy (Mandatory)
-- Treat protected branches as read-only for AI agents.
+- MUST treat protected branches as read-only for AI agents.
 - MUST NOT push directly to protected branches.
-- Use dedicated feature branches for implementation work.
-- Create a change request for any change targeting a protected branch.
+- MUST use dedicated feature branches for implementation work.
+- MUST create a change request for any change targeting a protected branch.
 
 ## Merge Authority and Merge Gates (Mandatory)
 - Change-request creators MUST NOT merge their own change requests.
@@ -42,46 +42,40 @@ hosting platform.
   - The user gives explicit merge instruction for the specific change request.
   - The user explicitly confirms in the current session that they own the target
     repository and that they authorize bypassing the self-merge restriction.
-  - You, as an AI agent, treat the user as not a repository owner unless this
-    explicit owner confirmation and authorization is present.
+  - MUST you, as an AI agent, treat the user as not a repository owner unless this explicit owner confirmation and
+    authorization is present.
 - If the above conditions are not met, MUST NOT attempt to merge a change request
   that you created or substantially authored.
 - Respect all merge gates; MUST NOT bypass required checks, required reviews,
   approvals, or merge policies.
 - MUST NOT use any privileged bypass path to skip required gates.
-- Merging is forbidden by default without explicit user instruction.
+- MUST NOT merge without explicit user instruction.
 - MUST NOT merge a change request while review threads are unresolved.
-- If asked to merge with unresolved review threads, stop and ask the user how to
-  proceed because merge is not allowed in that state.
+- MUST if asked to merge with unresolved review threads, stop and ask the user how to proceed because merge is not
+  allowed in that state.
 
 ## Review Thread Ownership
 - Only the author of a review comment MAY resolve that review thread.
 - MUST NOT resolve review threads created by other reviewers. A platform doc MAY
   declare an explicit override that permits maintainer resolution under a stated
   downstream policy.
-- If you authored the comment and the issue is fixed, resolve that review
-  thread.
+- SHOULD if you authored the comment and the issue is fixed, resolve that review thread.
 - Keep review history intact; MUST NOT delete comments to hide unresolved work.
 
 ## Change-Request Description Requirements
-- When opening a change request, include a short developer-focused
-  implementation summary.
-- Include files reviewers may skim because they are generated, copied, or
-  standard imports.
-- Highlight non-obvious logic and explain why it is implemented that way.
-- Keep scope, validation, and residual risk explicit.
-- Reuse the general PR/MR summary template from
-  `CORE/VERSION_CONTROL_SYSTEM.md`.
+- MUST when opening a change request, include a short developer-focused implementation summary.
+- MUST include files reviewers may skim because they are generated, copied, or standard imports.
+- MUST highlight non-obvious logic and explain why it is implemented that way.
+- MUST keep scope, validation, and residual risk explicit.
+- MUST reuse the general PR/MR summary template from `CORE/VERSION_CONTROL_SYSTEM.md`.
 
 ## Code Review Workflow
-- Apply `REVIEW/CODE_REVIEW.md` severity-first process for every review.
-- Place comments on precise affected lines, not only on the change-request
-  overview.
-- Use the platform's inline code-suggestion feature for small, localized fixes.
-- If a requested fix is broader than a local suggestion, offer to implement it
-  in an AI-agent session on the existing branch.
-- After offering broader implementation help, wait for user confirmation before
-  making branch changes.
+- MUST apply `REVIEW/CODE_REVIEW.md` severity-first process for every review.
+- MUST place comments on precise affected lines, not only on the change-request overview.
+- SHOULD use the platform's inline code-suggestion feature for small, localized fixes.
+- SHOULD if a requested fix is broader than a local suggestion, offer to implement it in an AI-agent session on the
+  existing branch.
+- MUST after offering broader implementation help, wait for user confirmation before making branch changes.
 
 ## High-Risk Pitfalls
 1. Direct pushes to protected branches.
@@ -132,6 +126,6 @@ Do:    reply with the fix, then let the comment author resolve it.
 - Verify no privileged bypass or force-merge path was used.
 
 ## Override Notes
-- Project-specific governance may be stricter. Protected-branch discipline,
+- Project-specific governance MAY be stricter. Protected-branch discipline,
   unresolved review threads blocking merge, and merge-by-explicit-request
-  behavior remain mandatory and may not be weakened.
+  behavior remain mandatory and MUST NOT be weakened.

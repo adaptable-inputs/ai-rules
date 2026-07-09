@@ -30,6 +30,13 @@ is complete, an agent MUST read them as follows:
   branches" is a requirement, not a suggestion.
 - Non-imperative prose (headings, explanations, examples) is descriptive and
   carries no obligation.
+- A nested bullet under a lead-in such as "only when all of the following are
+  true:" states a condition, not an obligation, and takes no keyword.
+
+Documents that have completed conversion are listed in `KEYWORD_CONVERTED` in
+`scripts/check_structure.py`. CI fails if one of them regains a keyword-less
+normative statement. That list only grows; the default above governs everything
+not yet on it.
 
 This default is deliberately strict: it preserves the force these rules already
 had before keywords were introduced. It is a migration aid, not a licence to

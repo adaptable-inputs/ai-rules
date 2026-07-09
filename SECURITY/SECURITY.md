@@ -16,52 +16,48 @@ Security is a non-negotiable baseline across all stacks and domains.
 - Testing expectations are supplemented by `TEST/TEST.md`.
 
 ## Security Defaults
-- Use secure defaults and explicit allow-lists over broad allow-any behavior.
-- Minimize attack surface: disable unused endpoints, ports, capabilities, and
-  optional integrations by default.
-- Apply least privilege to identities, tokens, credentials, and runtime roles.
-- Fail closed on authentication/authorization checks.
+- MUST use secure defaults and explicit allow-lists over broad allow-any behavior.
+- MUST minimize attack surface: disable unused endpoints, ports, capabilities, and optional integrations by default.
+- MUST apply least privilege to identities, tokens, credentials, and runtime roles.
+- MUST fail closed on authentication/authorization checks.
 - SHOULD prefer defense in depth (multiple controls) over single-point controls.
 
 ## Secrets and Credentials
 - MUST NOT commit secrets to source control, docs, examples, logs, or test
   snapshots.
-- Use secret managers or secure runtime injection.
-- Rotate secrets on exposure, incident, or owner change.
-- Keep secret scope minimal (short-lived, environment-specific, least-privilege).
-- Redact secrets in logs, telemetry, and error messages.
+- MUST use secret managers or secure runtime injection.
+- MUST rotate secrets on exposure, incident, or owner change.
+- MUST keep secret scope minimal (short-lived, environment-specific, least-privilege).
+- MUST redact secrets in logs, telemetry, and error messages.
 
 ## Authentication and Authorization
-- Treat authentication (identity) and authorization (permissions) as separate
-  controls.
-- Enforce authorization at trusted boundaries, not only in client/UI paths.
-- Validate token audience/issuer/expiry and reject malformed claims.
+- MUST treat authentication (identity) and authorization (permissions) as separate controls.
+- MUST enforce authorization at trusted boundaries, not only in client/UI paths.
+- MUST validate token audience/issuer/expiry and reject malformed claims.
 - MUST NOT rely on obscurity (hidden routes, client checks) as access control.
-- Deny by default when user/role/context is ambiguous.
+- MUST deny by default when user/role/context is ambiguous.
 
 ## Input, Output, and Data Protection
-- Validate all external input at boundaries (API, file, queue, UI).
-- Normalize and canonicalize inputs before policy checks when relevant.
-- Use parameterized queries and safe encoders to prevent injection classes.
-- Encode/escape output according to sink context (HTML, shell, URL, etc.).
-- For SQL sinks, use parameterized queries/bind variables as the primary
-  defense rather than string escaping.
-- Classify sensitive data and apply minimization, masking, and retention limits.
+- MUST validate all external input at boundaries (API, file, queue, UI).
+- SHOULD normalize and canonicalize inputs before policy checks when relevant.
+- MUST use parameterized queries and safe encoders to prevent injection classes.
+- MUST encode/escape output according to sink context (HTML, shell, URL, etc.).
+- MUST for SQL sinks, use parameterized queries/bind variables as the primary defense rather than string escaping.
+- MUST classify sensitive data and apply minimization, masking, and retention limits.
 
 ## Dependency and Supply-Chain Hygiene
 - SHOULD prefer mature dependencies with active maintenance and clear ownership.
-- Pin versions and commit lock files where the ecosystem supports it.
-- Track vulnerability advisories and patch high/critical findings quickly.
-- Require explicit justification for new runtime dependencies.
-- Validate provenance/signatures where tooling supports it.
+- MUST pin versions and commit lock files where the ecosystem supports it.
+- MUST track vulnerability advisories and patch high/critical findings quickly.
+- MUST require explicit justification for new runtime dependencies.
+- SHOULD validate provenance/signatures where tooling supports it.
 
 ## Error Handling and Observability
 - MUST NOT expose stack traces, internal identifiers, or secret material to
   untrusted callers.
-- Return safe, actionable error responses without leaking internals.
-- Log security-relevant events (auth failures, policy denials, suspicious
-  activity) with safe redaction.
-- Ensure security logging itself cannot crash request paths.
+- MUST return safe, actionable error responses without leaking internals.
+- MUST log security-relevant events (auth failures, policy denials, suspicious activity) with safe redaction.
+- MUST ensure security logging itself cannot crash request paths.
 
 ## High-Risk Pitfalls
 1. Accepting user input without strict validation or context-aware encoding.
@@ -113,5 +109,5 @@ Do:    redact secrets and log only safe identifiers/reasons.
 - If threat model is high risk, include abuse-case tests for key flows.
 
 ## Override Notes
-- Downstream docs may specialize controls for framework/runtime specifics, but
-  must not weaken this baseline without explicit, reviewed rationale.
+- Downstream docs MAY specialize controls for framework/runtime specifics, but
+  MUST NOT weaken this baseline without explicit, reviewed rationale.

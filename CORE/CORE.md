@@ -29,14 +29,12 @@ Those belong in their respective domains (`LANGUAGE/**`, `FRAMEWORK/**`,
 `LIBRARY/**`, `BUILD_TOOLS/**`, `INFRASTRUCTURE/**`, `CI-CD/**`).
 
 ## Application Contract for AI Agents
-- Interpret every rule using the obligation vocabulary in
-  [NORMATIVE_LANGUAGE.md](NORMATIVE_LANGUAGE.md).
-- Apply CORE guidance by default before any domain-specific specialization.
+- MUST interpret every rule using the obligation vocabulary in [NORMATIVE_LANGUAGE.md](NORMATIVE_LANGUAGE.md).
+- MUST apply CORE guidance by default before any domain-specific specialization.
 - MUST NOT weaken CORE constraints in downstream docs unless an explicit override
   is documented and justified in the specialized doc.
-- Resolve rule conflicts using the Conflict Resolution Rules in
-  [RULE_DEPENDENCY_TREE.md](RULE_DEPENDENCY_TREE.md). That procedure is
-  authoritative; do not apply a different order here.
+- MUST resolve rule conflicts using the Conflict Resolution Rules in [RULE_DEPENDENCY_TREE.md](RULE_DEPENDENCY_TREE.md).
+  That procedure is authoritative; do not apply a different order here.
 - MUST NOT block a task on an unresolved conflict. Apply the resolution the
   procedure yields, complete the task, and report the conflict in your final
   summary so a human can file the follow-up.
@@ -58,5 +56,5 @@ Those belong in their respective domains (`LANGUAGE/**`, `FRAMEWORK/**`,
 ## Authoring Notes
 - Keep this file index-level and boundary-focused.
 - Add new core documents only when guidance is truly cross-cutting.
-- Any dependency-precedence change must be reflected in
+- Any dependency-precedence change MUST be reflected in
   `RULE_DEPENDENCY_TREE.md`.
