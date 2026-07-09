@@ -25,7 +25,7 @@ Guidance for AI agents implementing and reviewing Mockito-based tests.
 - SHOULD prefer state/observable outcome assertions over interaction-heavy assertions.
 
 ## Stubbing Rules
-- Stub only methods exercised by test scenario.
+- SHOULD stub only methods exercised by test scenario.
 - SHOULD avoid broad deep-stub patterns unless no alternative.
 - SHOULD keep `when`/`then` setup readable and scenario-focused.
 - SHOULD use argument matchers consistently (avoid mixed raw + matcher misuse).

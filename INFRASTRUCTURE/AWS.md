@@ -26,7 +26,7 @@ and operations choices.
 - SHOULD use multi-account strategies for environment and blast-radius isolation.
 - MUST apply least privilege IAM by default for users, roles, and services.
 - SHOULD keep network access private by default; expose public endpoints intentionally.
-- Enable encryption in transit and at rest for sensitive data paths.
+- MUST enable encryption in transit and at rest for sensitive data paths.
 - SHOULD keep tagging standards mandatory for ownership, environment, and cost center.
 
 ## Identity and Access Guardrails
@@ -45,7 +45,7 @@ and operations choices.
 ## Logging, Audit, and Detection
 - SHOULD keep account/org audit logs enabled and protected from tampering.
 - SHOULD keep service/application logs centralized and queryable.
-- Enable detection/monitoring controls for threat and misconfiguration events.
+- SHOULD enable detection/monitoring controls for threat and misconfiguration events.
 - SHOULD keep alert routing and escalation ownership explicit.
 
 ## Reliability and Operational Safety

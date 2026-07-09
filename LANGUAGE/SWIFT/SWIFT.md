@@ -30,7 +30,7 @@ Guidance for AI agents implementing and reviewing Swift code.
 - SHOULD keep domain logic separate from UI/framework lifecycle code.
 
 ## Optionals and Type Contracts
-- Model absence with optionals intentionally.
+- SHOULD model absence with optionals intentionally.
 - SHOULD avoid `!` unless a bounded invariant is proven and documented.
 - SHOULD keep boundary parsing/validation explicit for external input.
 - SHOULD use enums/value objects for constrained domain states where suitable.

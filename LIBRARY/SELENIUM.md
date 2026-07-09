@@ -39,7 +39,7 @@ Guidance for AI agents implementing and reviewing Selenium-based tests.
 - SHOULD keep browser/version matrix intentional and documented.
 - SHOULD keep Selenium Grid resources sized for workload.
 - SHOULD isolate flaky environment issues from test logic defects.
-- Capture logs/screenshots on failure.
+- SHOULD capture logs/screenshots on failure.
 
 ## High-Risk Pitfalls
 1. Sleep-based waits leading to flaky/slow tests.

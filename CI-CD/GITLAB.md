@@ -31,8 +31,7 @@ Guidance for AI agents implementing and reviewing GitLab CI/CD pipelines.
 - MUST fail pipeline on critical dependency/security findings per policy.
 
 ## Release Pipeline Rules
-- Release pipelines are triggered by semantic version tags
-  (for example `vMAJOR.MINOR.PATCH`).
+- SHOULD release pipelines are triggered by semantic version tags (for example `vMAJOR.MINOR.PATCH`).
 - Release pipelines MUST run full build/test/security checks.
 - Release artifacts and reports MUST be reproducible from tag alone.
 - SHOULD keep release jobs immutable and auditable.

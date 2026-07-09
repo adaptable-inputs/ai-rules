@@ -27,7 +27,7 @@ configuration and operations choices.
 - SHOULD use org/folder/project hierarchy for environment and ownership isolation.
 - MUST apply least privilege IAM by default for users, service accounts, and groups.
 - SHOULD keep network access private by default; expose public endpoints intentionally.
-- Enable encryption and key-management controls for sensitive data paths.
+- MUST enable encryption and key-management controls for sensitive data paths.
 - SHOULD keep labeling standards mandatory for ownership, environment, and cost center.
 
 ## Identity and Access Guardrails
@@ -45,14 +45,14 @@ configuration and operations choices.
 ## Logging, Audit, and Detection
 - SHOULD keep audit logging enabled at required levels for critical services.
 - SHOULD centralize logs/metrics for operational and security analysis.
-- Enable detection/monitoring controls for threat and misconfiguration signals.
+- SHOULD enable detection/monitoring controls for threat and misconfiguration signals.
 - SHOULD keep alert ownership and escalation routing explicit.
 
 ## Reliability and Operational Safety
 - SHOULD keep multi-zone/region resilience assumptions explicit for critical workloads.
 - SHOULD use staged rollout for risky platform changes.
 - SHOULD keep backup/restore and disaster-recovery procedures tested.
-- Monitor quotas, API limits, and scaling boundaries proactively.
+- SHOULD monitor quotas, API limits, and scaling boundaries proactively.
 
 ## High-Risk Pitfalls
 1. Weak project/folder isolation increasing blast radius.

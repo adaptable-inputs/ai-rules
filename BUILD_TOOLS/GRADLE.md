@@ -51,7 +51,7 @@ Guidance for AI agents implementing and reviewing Gradle builds.
 ## Security and Supply Chain
 - MUST use trusted repositories and explicit repository declarations.
 - MUST keep credentials out of committed files.
-- Scan dependencies/plugins for vulnerabilities and license compliance.
+- MUST scan dependencies/plugins for vulnerabilities and license compliance.
 - MUST treat custom plugin code as production code for review/security.
 
 ## VCS Ignore Additions

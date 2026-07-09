@@ -36,7 +36,7 @@ Guidance for AI agents implementing and reviewing Ruby code.
 - SHOULD keep mutation boundaries intentional and documented.
 
 ## Error Handling and Reliability
-- Raise/map specific exceptions with contextual information.
+- SHOULD raise/map specific exceptions with contextual information.
 - MUST NOT rescue broad exceptions without bounded rationale.
 - SHOULD keep retries/timeouts explicit for external dependencies.
 - SHOULD preserve root cause context when mapping errors at boundaries.

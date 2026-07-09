@@ -48,7 +48,7 @@ Guidance for AI agents implementing and reviewing Kubernetes manifests.
 ## Observability and Operations
 - SHOULD expose metrics/logging in a platform-compatible way.
 - SHOULD track pod restarts, crash loops, and probe failures.
-- Monitor resource saturation and eviction risk.
+- SHOULD monitor resource saturation and eviction risk.
 - SHOULD keep alerting tied to service SLO indicators.
 
 ## High-Risk Pitfalls

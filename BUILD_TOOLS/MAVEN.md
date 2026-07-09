@@ -42,12 +42,12 @@ Guidance for AI agents implementing and reviewing Maven builds.
 - SHOULD use wrapper in CI, not system Maven.
 - SHOULD keep CI build flags deterministic (`-B`, optionally `-ntp` etc.).
 - SHOULD ensure clean build paths for release (`clean verify`/project standard).
-- Cache dependencies safely keyed by pom/wrapper/runtime version.
+- SHOULD cache dependencies safely keyed by pom/wrapper/runtime version.
 
 ## Security and Supply Chain
 - MUST use trusted artifact repositories and explicit mirror config.
 - MUST keep repository credentials out of source-controlled settings.
-- Enable dependency and plugin vulnerability/license checks in CI.
+- MUST enable dependency and plugin vulnerability/license checks in CI.
 - MUST treat custom plugin executions as code with security review.
 
 ## VCS Ignore Additions

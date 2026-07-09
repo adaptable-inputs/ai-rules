@@ -71,9 +71,9 @@ Each finding SHOULD include:
 
 ## Dependency Review Rules
 - New dependencies require explicit justification.
-- Reject niche/unmaintained dependencies unless strong rationale exists.
+- MUST reject niche/unmaintained dependencies unless strong rationale exists.
 - SHOULD verify license compatibility with `COMPLIANCE/LICENSES.md`.
-- Check overlap/redundancy with existing dependencies.
+- SHOULD check overlap/redundancy with existing dependencies.
 
 ## Output Quality Rules
 - SHOULD prioritize concrete findings over summaries.

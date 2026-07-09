@@ -24,7 +24,7 @@ Guidance for AI agents implementing and reviewing TypeScript code.
   type-safety and runtime-safety constraints.
 
 ## Compiler and Project Defaults
-- Enable and keep strict mode enabled (`"strict": true`).
+- SHOULD enable and keep strict mode enabled (`"strict": true`).
 - SHOULD treat type errors as blocking for merges in CI.
 - SHOULD keep `noImplicitOverride`, `noUncheckedIndexedAccess`, and `exactOptionalPropertyTypes` enabled unless a
   documented project constraint prevents it.
@@ -37,7 +37,7 @@ Guidance for AI agents implementing and reviewing TypeScript code.
 - SHOULD avoid `any`.
   If unavoidable at a boundary, isolate it and narrow immediately.
 - SHOULD prefer `unknown` for untrusted inputs and narrow with type guards.
-- Model state variants with discriminated unions instead of boolean flags.
+- SHOULD model state variants with discriminated unions instead of boolean flags.
 - SHOULD use `readonly` for immutable APIs and value objects.
 
 ## Domain Types vs Ad-Hoc Objects
@@ -61,17 +61,15 @@ Guidance for AI agents implementing and reviewing TypeScript code.
 ### Allow Ad-Hoc Objects When Local
 - Options/config bags for infrastructure helpers
   (for example retry/cache/http/logging helpers).
-- Query/filter/URL parameter objects that remain local to one call flow.
+- SHOULD query/filter/URL parameter objects that remain local to one call flow.
 - `Record`/dictionary lookup maps for simple key-to-value translations.
 - UI-local view models or style/config objects kept inside one component/module.
-- Test fixtures/mocks that stay local to one test;
-  promote to builders/factories when shared.
+- SHOULD test fixtures/mocks that stay local to one test; promote to builders/factories when shared.
 
 ### Promotion Guardrails
 - If an ad-hoc object gets reused, exported, or shared across module boundaries,
   replace it with a named type.
-- If fields encode domain semantics, promote immediately
-  (for example pricing, tax, policy, risk, authorization).
+- If fields encode domain semantics, MUST promote immediately (for example pricing, tax, policy, risk, authorization).
 - MUST NOT accept `object`, `Record<string, unknown>`, or `any` for
   domain-shaped data contracts.
 - In public APIs, SHOULD prefer named parameter/return types; callers MAY still pass inline literals when structural
@@ -80,7 +78,7 @@ Guidance for AI agents implementing and reviewing TypeScript code.
 ## Runtime Boundary Rules
 - TypeScript types do not validate runtime data.
 - SHOULD validate untrusted external data at boundaries (HTTP, queue, env, file).
-- Convert validated payloads into internal domain types before deeper logic.
+- SHOULD convert validated payloads into internal domain types before deeper logic.
 - MUST NOT expose transport-layer DTOs as internal domain models by default.
 
 ## Nullability and Optionality

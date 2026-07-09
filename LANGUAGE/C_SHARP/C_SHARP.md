@@ -23,7 +23,7 @@ Guidance for AI agents implementing and reviewing C#/.NET code.
   weaken this baseline.
 
 ## Defaults
-- Enable and respect nullable reference type warnings.
+- SHOULD enable and respect nullable reference type warnings.
 - SHOULD prefer explicit dependency injection over static/global dependencies.
 - SHOULD keep async flows truly asynchronous end-to-end for IO paths.
 - SHOULD keep exceptions specific, contextual, and centrally mapped at boundaries.

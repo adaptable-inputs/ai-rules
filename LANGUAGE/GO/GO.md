@@ -39,15 +39,14 @@ Guidance for AI agents implementing and reviewing Go code.
 - SHOULD return rich, contextual errors and preserve root cause context.
 - MUST NOT ignore returned errors.
 - SHOULD keep panic usage exceptional (programmer errors/unrecoverable states).
-- Close resources deterministically (`defer` with explicit error handling where
-  needed).
+- MUST close resources deterministically (`defer` with explicit error handling where needed).
 
 ## Concurrency and Context Rules
 - SHOULD prefer message passing/channel patterns over shared mutable state when
   practical.
-- Guard shared state explicitly when unavoidable.
+- SHOULD guard shared state explicitly when unavoidable.
 - SHOULD avoid goroutine leaks; ensure cancellation and completion paths exist.
-- Pass `context.Context` as first parameter for request-scoped operations.
+- SHOULD pass `context.Context` as first parameter for request-scoped operations.
 - SHOULD keep timeouts/deadlines explicit for external IO.
 
 ## High-Risk Pitfalls

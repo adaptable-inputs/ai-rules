@@ -26,7 +26,7 @@ Guidance for AI agents implementing and reviewing Docker containerization.
 - SHOULD keep image build deterministic and cache-friendly.
 
 ## Dockerfile Hygiene
-- Order layers for cache efficiency (dependencies before changing sources).
+- SHOULD order layers for cache efficiency (dependencies before changing sources).
 - SHOULD minimize `COPY . .`; copy only required files per stage.
 - SHOULD keep build-time and runtime dependencies separated.
 - SHOULD use explicit `WORKDIR`, `USER`, and `ENTRYPOINT`/`CMD` semantics.
@@ -37,7 +37,7 @@ Guidance for AI agents implementing and reviewing Docker containerization.
 - MUST use runtime secret injection and environment-specific provisioning.
 - SHOULD remove package-manager caches and temporary build artifacts.
 - MUST keep CVE scanning in CI for base and app layers.
-- Drop unnecessary Linux capabilities at runtime where platform allows.
+- MUST drop unnecessary Linux capabilities at runtime where platform allows.
 
 ## Runtime and Operability
 - SHOULD add health checks when service behavior allows meaningful probes.

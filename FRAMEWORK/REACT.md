@@ -37,7 +37,7 @@ Guidance for AI agents implementing and reviewing React projects.
 - SHOULD keep state minimal and local where possible.
 - SHOULD avoid prop drilling by introducing context sparingly.
 - SHOULD avoid unnecessary re-renders; memoize only when it matters.
-- Derive values during render when possible.
+- SHOULD derive values during render when possible.
 - SHOULD prefer framework/server data-loading primitives over client `useEffect` fetching.
 
 ## Testing
@@ -75,7 +75,7 @@ or cancel external work.
 ## SSR and Hydration Notes
 - `useEffect` does not run during server rendering.
 - If SSR/hydration is possible, SHOULD avoid `window` / `document` reads during render.
-- Guard browser-only logic in effects or safe initializers.
+- SHOULD guard browser-only logic in effects or safe initializers.
 
 ## High-Risk `useEffect` Pitfalls
 1. Derived state effects:
@@ -95,13 +95,12 @@ or cancel external work.
 
 ## Safer Patterns and Alternatives
 - SHOULD keep effects small and single-purpose.
-- Co-locate setup and cleanup in the same effect.
+- SHOULD co-locate setup and cleanup in the same effect.
 - Keep effect callbacks synchronous:
   never mark the effect callback `async`; use an inner async function.
 - Effect callbacks MAY return only cleanup or nothing.
 - SHOULD keep dependency arrays honest; do not suppress `react-hooks/exhaustive-deps` without a documented reason.
-- If adding a dependency causes a loop, redesign the flow instead of deleting
-  the dependency.
+- If adding a dependency causes a loop, SHOULD redesign the flow instead of deleting the dependency.
 - SHOULD use functional state updates to avoid stale closure bugs in intervals/callbacks.
 - SHOULD use refs for mutable, non-render state that SHOULD NOT retrigger rendering.
 - SHOULD extract repeated side-effect behavior into focused custom hooks.
@@ -287,12 +286,11 @@ function WindowWidthGood() {
 - MUST NOT mark an effect callback `async`; create an inner async function.
 - Effect callbacks return either cleanup or nothing.
 - If an effect reads a reactive value, SHOULD include it in dependencies.
-- If adding a dependency breaks behavior, fix the design; do not hide the dep.
+- If adding a dependency breaks behavior, SHOULD fix the design; do not hide the dep.
 - SHOULD avoid inline object/function dependencies unless they are intentionally unstable.
-- Stabilize dependencies only at true boundaries (`useMemo` / `useCallback`).
+- SHOULD stabilize dependencies only at true boundaries (`useMemo` / `useCallback`).
 - MUST NOT disable `react-hooks/exhaustive-deps` globally.
-- Enable `eslint-plugin-react-hooks` with `rules-of-hooks` and
-  `exhaustive-deps`.
+- SHOULD enable `eslint-plugin-react-hooks` with `rules-of-hooks` and `exhaustive-deps`.
 
 ## Code Review Checklist for Effects
 - Does this effect synchronize with an external system?

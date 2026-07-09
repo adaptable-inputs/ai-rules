@@ -40,14 +40,14 @@ Guidance for AI agents implementing and reviewing microservice architecture.
 ## Communication Strategy
 - SHOULD prefer asynchronous messaging for decoupled workflows.
 - SHOULD use synchronous calls only when immediate response is required.
-- Timebox and protect remote calls with timeout/retry/circuit-breaker patterns.
+- SHOULD timebox and protect remote calls with timeout/retry/circuit-breaker patterns.
 - SHOULD keep contracts versioned and backward-compatible.
 
 ## Reliability and Operability
 - SHOULD design for partial failures and graceful degradation.
 - SHOULD include correlation IDs across service boundaries.
 - SHOULD keep health/readiness checks meaningful.
-- Instrument latency, error rate, saturation, and queue lag.
+- SHOULD instrument latency, error rate, saturation, and queue lag.
 - SHOULD keep service startup/shutdown behavior predictable.
 
 ## Security Baseline

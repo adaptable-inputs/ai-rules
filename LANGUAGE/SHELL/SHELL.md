@@ -23,8 +23,7 @@ Guidance for AI agents implementing and reviewing shell scripts.
 ## Defaults
 - SHOULD prefer Bash for non-trivial scripts and declare interpreter explicitly
   (`#!/usr/bin/env bash`).
-- Enable strict mode for Bash scripts:
-  `set -euo pipefail` and safe `IFS` handling when needed.
+- SHOULD enable strict mode for Bash scripts: `set -euo pipefail` and safe `IFS` handling when needed.
 - Quote variable expansions by default (`"$var"`).
 - SHOULD use functions to structure scripts; keep `main` flow explicit.
 - SHOULD keep scripts idempotent where practical.
@@ -32,7 +31,7 @@ Guidance for AI agents implementing and reviewing shell scripts.
 ## Error Handling and Exit Behavior
 - MUST fail fast on command failures unless explicitly handling error cases.
 - SHOULD use explicit error messages for failure paths (`echo ... >&2`).
-- Check required commands and inputs early.
+- SHOULD check required commands and inputs early.
 - For cleanup logic, SHOULD use `trap` handlers.
 - SHOULD keep exit codes meaningful and consistent.
 

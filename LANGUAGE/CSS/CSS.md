@@ -38,7 +38,7 @@ Guidance for AI agents implementing and reviewing CSS.
 
 ## Architecture and Reuse
 - SHOULD use consistent naming strategy (BEM/utility/component-based) per project.
-- Co-locate component styles with component ownership boundaries.
+- SHOULD co-locate component styles with component ownership boundaries.
 - SHOULD avoid global leakage; scope styles where tooling supports it.
 - SHOULD remove dead styles during refactors.
 

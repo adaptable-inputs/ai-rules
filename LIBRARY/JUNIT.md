@@ -27,7 +27,7 @@ Guidance for AI agents implementing and reviewing JUnit tests.
 - SHOULD prefer Arrange-Act-Assert structure.
 
 ## Test Design Rules
-- Test observable behavior, not implementation details.
+- SHOULD test observable behavior, not implementation details.
 - SHOULD prefer small focused tests over large scenario monoliths.
 - SHOULD keep setup explicit and local; avoid hidden magic fixtures.
 - SHOULD avoid shared mutable state across tests.

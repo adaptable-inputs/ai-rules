@@ -38,7 +38,7 @@ Guidance for AI agents implementing and reviewing Rust code.
 ## Error Handling and Panics
 - SHOULD use domain-specific error enums/structs with contextual information.
 - SHOULD propagate recoverable failures via `Result`.
-- Reserve `panic!` for unrecoverable programmer invariants.
+- SHOULD reserve `panic!` for unrecoverable programmer invariants.
 - SHOULD preserve source context when mapping lower-level errors.
 
 ## Async and Concurrency Rules

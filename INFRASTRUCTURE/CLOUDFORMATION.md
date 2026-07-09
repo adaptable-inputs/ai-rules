@@ -49,7 +49,7 @@ infrastructure changes.
 
 ## Secrets and Access
 - MUST NOT hardcode secrets in templates or parameter defaults.
-- Retrieve secrets through secure references/services.
+- MUST retrieve secrets through secure references/services.
 - MUST keep IAM permissions least-privilege for deploy roles.
 - SHOULD keep stack outputs free of sensitive data where possible.
 

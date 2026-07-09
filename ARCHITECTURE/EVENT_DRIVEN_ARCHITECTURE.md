@@ -20,15 +20,14 @@ Guidance for AI agents implementing and reviewing event-driven systems.
   `SECURITY/SECURITY.md`, `TEST/TEST.md`, `CORE/LOGGING.md`.
 
 ## Event Contract Design
-- Model events as facts about completed domain actions.
+- SHOULD model events as facts about completed domain actions.
 - SHOULD use stable, domain-driven event names.
 - SHOULD keep payloads explicit and minimal; avoid leaking internal persistence shape.
 - SHOULD include metadata for tracing and diagnostics (`eventId`, `occurredAt`, `producer`, `correlationId`, `traceId`).
 - SHOULD keep contracts versioned and backward-compatible by default.
 
 ## Delivery and Processing Semantics
-- Assume at-least-once delivery unless infrastructure guarantees a stronger
-  delivery model.
+- SHOULD assume at-least-once delivery unless infrastructure guarantees a stronger delivery model.
 - MUST make handlers idempotent.
 - SHOULD define deduplication strategy for repeated deliveries.
 - SHOULD treat ordering guarantees as explicit contracts, not assumptions.
@@ -36,7 +35,7 @@ Guidance for AI agents implementing and reviewing event-driven systems.
 
 ## Reliability Patterns
 - SHOULD use retries for transient failures with backoff/jitter.
-- Route poison messages to dead-letter queues/topics.
+- SHOULD route poison messages to dead-letter queues/topics.
 - SHOULD keep retry limits bounded and observable.
 - SHOULD separate business rejection from technical retryable failure.
 
@@ -53,8 +52,8 @@ Guidance for AI agents implementing and reviewing event-driven systems.
 - SHOULD keep schema registry or equivalent governance controls where available.
 
 ## Observability
-- Correlate event flow with `traceId`/`correlationId`.
-- Monitor throughput, lag, retry count, DLQ volume, and processing latency.
+- SHOULD correlate event flow with `traceId`/`correlationId`.
+- SHOULD monitor throughput, lag, retry count, DLQ volume, and processing latency.
 - SHOULD log consumer failures with event identity and attempt metadata.
 - SHOULD alert on sustained DLQ growth and lag thresholds.
 

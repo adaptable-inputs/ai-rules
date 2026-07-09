@@ -23,7 +23,7 @@ Guidance for AI agents implementing and reviewing PHP code.
   weaken this baseline.
 
 ## Defaults
-- Enable strict typing mode (`declare(strict_types=1)`) for application code.
+- SHOULD enable strict typing mode (`declare(strict_types=1)`) for application code.
 - SHOULD keep function and public API type declarations explicit.
 - SHOULD keep business logic separated from transport/framework glue code.
 - MUST keep configuration and secrets outside source code.

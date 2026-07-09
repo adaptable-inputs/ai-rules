@@ -19,7 +19,7 @@ Guidance for AI agents implementing and reviewing Playwright tests.
 - Complements unit/component testing docs (Jest/JUnit etc.).
 
 ## Defaults
-- Focus E2E tests on critical user journeys.
+- SHOULD focus E2E tests on critical user journeys.
 - SHOULD keep tests deterministic with isolated test data/state.
 - SHOULD use robust locators (`getByRole`, test IDs via `data-testid` + `getByTestId`) over brittle CSS/XPath chains.
 - SHOULD use Playwright auto-waiting and explicit assertions.
@@ -38,7 +38,7 @@ Guidance for AI agents implementing and reviewing Playwright tests.
 - SHOULD keep parallelization aware of shared-resource contention.
 
 ## Debuggability and Artifacts
-- Capture traces/screenshots/videos on failure according to policy.
+- SHOULD capture traces/screenshots/videos on failure according to policy.
 - SHOULD keep logs/artifacts easy to correlate with failed scenario.
 - SHOULD use step-level diagnostics for complex flows.
 

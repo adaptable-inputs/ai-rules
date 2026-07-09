@@ -37,8 +37,7 @@ codebases.
 
 ## Generics and Collections
 - SHOULD prefer generic types over raw types.
-- Favor lists over arrays for API boundaries unless primitive array performance
-  is required.
+- SHOULD favor lists over arrays for API boundaries unless primitive array performance is required.
 - SHOULD use bounded wildcards intentionally (`? extends`, `? super`) to improve API flexibility.
 - SHOULD prefer empty collections over `null` returns.
 

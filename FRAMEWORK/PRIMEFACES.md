@@ -47,12 +47,12 @@ Guidance for AI agents implementing and reviewing PrimeFaces/JSF projects.
 ## Performance Baseline
 - SHOULD minimize component tree complexity in heavy pages.
 - SHOULD avoid unnecessary nested forms/components.
-- Lazy-load large datasets where possible.
-- Profile expensive render phases and optimize high-cost components.
+- SHOULD lazy-load large datasets where possible.
+- SHOULD profile expensive render phases and optimize high-cost components.
 
 ## Security Baseline
 - MUST enforce authorization on backend operations, not only UI rendering.
-- Protect against CSRF/XSS with framework and platform controls.
+- MUST protect against CSRF/XSS with framework and platform controls.
 - SHOULD avoid exposing sensitive data in hidden fields/view state.
 - MUST keep file upload and input handling strictly validated.
 

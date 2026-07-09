@@ -39,7 +39,7 @@ Guidance for AI agents implementing and reviewing HTML markup.
 
 ## Forms and Inputs
 - SHOULD use correct input types (`email`, `number`, `date`) to improve validation and assistive behavior.
-- Associate labels explicitly with controls.
+- SHOULD associate labels explicitly with controls.
 - SHOULD provide inline error feedback linked via accessibility attributes.
 - SHOULD keep required/optional semantics explicit.
 

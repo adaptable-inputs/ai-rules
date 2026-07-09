@@ -31,7 +31,7 @@ Guidance for AI agents implementing and reviewing Angular projects.
 - SHOULD prefer `inject()` over constructor parameter injection in new code.
 - SHOULD apply these rules by default in generated code and code reviews; deviate only with explicit, project-specific
   rationale.
-- Before using version-sensitive or experimental APIs, verify the project's
+- Before using version-sensitive or experimental APIs, MUST verify the project's
   Angular major version and choose a supported fallback when needed.
 - SHOULD keep components and directives focused on presentation concerns.
 - SHOULD prefer signal-based local state and `computed` derivations.
@@ -40,10 +40,10 @@ Guidance for AI agents implementing and reviewing Angular projects.
   services/utilities.
 
 ## Structure
-- Organize by feature area, not by technical type folders.
+- SHOULD organize by feature area, not by technical type folders.
 - SHOULD keep components small and focused; prefer one main concept per file.
 - SHOULD keep related files together (`.ts`, template, styles, and `.spec.ts`).
-- Match file names to the primary identifier and use hyphenated file names.
+- SHOULD match file names to the primary identifier and use hyphenated file names.
 
 ## Components and Templates
 - SHOULD prefer `input()`, `output()`, and `model()` APIs for new components.
@@ -132,7 +132,7 @@ Effects synchronize Angular state with non-reactive or imperative systems.
 ## Dependency Injection and Services
 - SHOULD keep services focused and composable; avoid "god services".
 - SHOULD keep pure transformation logic framework-agnostic where possible.
-- Scope providers intentionally (component/route/root) based on lifetime.
+- SHOULD scope providers intentionally (component/route/root) based on lifetime.
 - SHOULD keep cross-cutting HTTP concerns in interceptors, not duplicated in components.
 - SHOULD prefer functional interceptors for predictable behavior in complex setups.
 
@@ -144,11 +144,11 @@ Effects synchronize Angular state with non-reactive or imperative systems.
 
 ## HTTP and Error Handling
 - SHOULD keep HTTP access in data services, not scattered across templates/components.
-- For signal-first data loading, consider `httpResource` (experimental /
+- For signal-first data loading, MAY use `httpResource` (experimental /
   version-dependent) only after verifying support in the current Angular major,
   and when you explicitly want a resource-style
   loading/error/value state model without ad-hoc subscriptions/interop.
-- Model loading, success, and error states explicitly in UI-facing view models.
+- SHOULD model loading, success, and error states explicitly in UI-facing view models.
 - SHOULD handle errors at the boundary where context exists (service/component), and map to actionable user-facing
   state.
 - MUST NOT swallow errors silently; either recover with an explicit fallback or
@@ -201,16 +201,15 @@ Effects synchronize Angular state with non-reactive or imperative systems.
 - SHOULD run browser-only integrations after render/hydration where possible.
 - Some lifecycle hooks (for example initialization) run during SSR; do not
   assume "after render" implies "browser".
-- Guard browser-only APIs with platform checks (for example
-  `isPlatformBrowser` / `PLATFORM_ID`) and/or defer DOM work with SSR-safe
-  primitives (for example `afterNextRender`).
+- SHOULD guard browser-only APIs with platform checks (for example `isPlatformBrowser` / `PLATFORM_ID`) and/or defer DOM
+  work with SSR-safe primitives (for example `afterNextRender`).
 - SHOULD evaluate third-party DOM-manipulating libraries for hydration compatibility.
 
 ## Security
 - MUST NOT build Angular templates from user-controlled strings.
 - SHOULD prefer template binding over direct DOM APIs.
-- If direct DOM interaction is unavoidable, sanitize untrusted values with
-  `DomSanitizer.sanitize` and the correct `SecurityContext`.
+- If direct DOM interaction is unavoidable, MUST sanitize untrusted values with `DomSanitizer.sanitize` and the correct
+  `SecurityContext`.
 - MUST treat `bypassSecurityTrust*` as exceptional and document trust boundaries.
 - MUST keep Angular updated and use production AOT builds.
 

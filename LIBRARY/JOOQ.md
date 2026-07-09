@@ -31,7 +31,7 @@ Guidance for AI agents implementing and reviewing jOOQ-based data access.
 - SHOULD extract reusable query fragments only when readability improves.
 - SHOULD avoid giant chained query builders with hidden conditions.
 - SHOULD keep joins/conditions explicit and index-aware.
-- Parameterize all external values.
+- MUST parameterize all external values.
 - SHOULD validate generated SQL and query plans for hot paths.
 
 ## Code Generation and Schema Alignment

@@ -27,7 +27,7 @@ and operations choices.
 - SHOULD use subscription/resource-group isolation for environments and ownership.
 - MUST apply least privilege RBAC by default for identities and automation.
 - SHOULD keep network access private by default; expose public endpoints intentionally.
-- Enable encryption at rest/in transit for sensitive data paths.
+- MUST enable encryption at rest/in transit for sensitive data paths.
 - SHOULD keep tagging standards mandatory for ownership, environment, and cost center.
 
 ## Identity and Access Guardrails
@@ -45,14 +45,14 @@ and operations choices.
 ## Logging, Audit, and Detection
 - SHOULD keep platform activity/audit logs enabled and retained per policy.
 - SHOULD centralize diagnostic logs and metrics for actionable analysis.
-- Enable detection controls for threat and misconfiguration signals.
+- SHOULD enable detection controls for threat and misconfiguration signals.
 - SHOULD keep alert ownership and escalation routing explicit.
 
 ## Reliability and Operational Safety
 - SHOULD keep region/zone resilience assumptions explicit for critical workloads.
 - SHOULD use staged rollout for risky platform changes.
 - SHOULD keep backup/restore and disaster-recovery procedures tested.
-- Monitor quota/limit headroom and scaling boundaries proactively.
+- SHOULD monitor quota/limit headroom and scaling boundaries proactively.
 
 ## High-Risk Pitfalls
 1. Weak subscription/environment isolation increasing blast radius.

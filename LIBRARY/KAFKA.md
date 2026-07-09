@@ -33,8 +33,8 @@ Guidance for AI agents implementing and reviewing Apache Kafka usage.
 
 ## Producer Rules
 - SHOULD keep key strategy intentional for partition affinity/order semantics.
-- Enable idempotent producer settings (`enable.idempotence` with compatible
-  `acks`/retry configuration) where retry-duplicate suppression is required.
+- MUST enable idempotent producer settings (`enable.idempotence` with compatible `acks`/retry configuration) where
+  retry-duplicate suppression is required.
 - SHOULD treat producer idempotence as a producer-session guarantee only; handle end-to-end deduplication/idempotency at
   consumer/workflow boundaries.
 - SHOULD handle send failures with clear retry/error policy.
@@ -43,11 +43,11 @@ Guidance for AI agents implementing and reviewing Apache Kafka usage.
 ## Consumer Rules
 - MUST keep handlers idempotent and retry-safe.
 - SHOULD distinguish transient vs permanent processing failures.
-- Route poison messages to DLQ with context.
+- SHOULD route poison messages to DLQ with context.
 - SHOULD keep offset commit strategy aligned with processing semantics.
 
 ## Observability and Operations
-- Monitor lag, throughput, retry rates, and DLQ volume.
+- SHOULD monitor lag, throughput, retry rates, and DLQ volume.
 - SHOULD track rebalance frequency and consumer health.
 - SHOULD log processing failures with topic/partition/offset context.
 - SHOULD alert on sustained lag and retry storms.

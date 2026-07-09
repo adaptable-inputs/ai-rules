@@ -28,13 +28,13 @@ Guidance for AI agents implementing and reviewing GraphQL APIs.
 
 ## Evolution and Compatibility
 - SHOULD prefer additive changes.
-- Deprecate fields before removal and document migration timelines.
+- SHOULD deprecate fields before removal and document migration timelines.
 - SHOULD avoid semantic redefinition of existing fields.
-- Version at graph/domain boundary only when compatibility cannot be preserved.
+- SHOULD version at graph/domain boundary only when compatibility cannot be preserved.
 
 ## Resolver Architecture
 - SHOULD keep resolvers thin orchestration layers.
-- Move business logic to services/use cases, not resolver glue code.
+- SHOULD move business logic to services/use cases, not resolver glue code.
 - SHOULD keep per-field resolvers side-effect-free for query operations.
 - MUST validate and authorize at resolver boundaries consistently.
 
@@ -42,7 +42,7 @@ Guidance for AI agents implementing and reviewing GraphQL APIs.
 - SHOULD prevent N+1 with batching/data loaders.
 - MUST enforce query depth and complexity limits.
 - MUST apply rate limiting and cost controls for abusive queries.
-- Paginate list fields by default where cardinality can grow.
+- SHOULD paginate list fields by default where cardinality can grow.
 - SHOULD keep expensive fields explicit and documented.
 
 ## Caching and Consistency
@@ -60,7 +60,7 @@ Guidance for AI agents implementing and reviewing GraphQL APIs.
 - MUST enforce auth/authz consistently across query and mutation paths.
 - MUST validate input payloads before domain execution.
 - MUST prevent introspection abuse in production when policy requires restriction.
-- Monitor query patterns for scraping/amplification behavior.
+- MUST monitor query patterns for scraping/amplification behavior.
 
 ## High-Risk Pitfalls
 1. N+1 resolver query explosions.

@@ -31,7 +31,7 @@ changes.
 
 ## Planning and Apply Rules
 - SHOULD run `terraform fmt` and `terraform validate` before plan/apply.
-- Generate and review plan output for every non-trivial change.
+- SHOULD generate and review plan output for every non-trivial change.
 - SHOULD use non-interactive, reviewed apply workflows in CI for shared environments.
 - MUST block apply when plan includes unexpected destructive operations.
 

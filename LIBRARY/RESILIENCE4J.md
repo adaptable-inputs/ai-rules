@@ -25,12 +25,12 @@ Guidance for AI agents implementing and reviewing Resilience4j policies.
 - SHOULD keep fallback behavior correctness-preserving.
 
 ## Policy Composition Rules
-- Retry only transient failures.
+- SHOULD retry only transient failures.
 - Circuit breaker for failing/slow remote dependencies.
 - Time limiter for bounded response latency.
 - Bulkhead for resource isolation.
-- Rate limiter for downstream protection and fair usage.
-- Coordinate policies to avoid amplification loops.
+- SHOULD rate limiter for downstream protection and fair usage.
+- SHOULD coordinate policies to avoid amplification loops.
 
 ## Configuration Guardrails
 - SHOULD keep retry attempts bounded with backoff + jitter.
@@ -40,7 +40,7 @@ Guidance for AI agents implementing and reviewing Resilience4j policies.
 - SHOULD keep rate-limit and timeout values documented per dependency SLA.
 
 ## Observability and Operations
-- Export metrics for policy activations and outcomes.
+- SHOULD export metrics for policy activations and outcomes.
 - SHOULD log state transitions and fallback activations with dependency context.
 - SHOULD alert on sustained breaker open states, retry storms, and bulkhead rejection spikes.
 

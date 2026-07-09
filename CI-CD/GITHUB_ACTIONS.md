@@ -34,8 +34,8 @@ workflows.
 - MUST fail workflows on critical dependency/security findings per policy.
 
 ## Release Workflow Rules
-- Release workflows are triggered by semantic version tags
-  (for example `vMAJOR.MINOR.PATCH`) or explicit release dispatch.
+- SHOULD release workflows are triggered by semantic version tags (for example `vMAJOR.MINOR.PATCH`) or explicit release
+  dispatch.
 - Release workflows MUST run full build/test/security checks.
 - Release artifacts and reports MUST be reproducible from tag alone.
 - SHOULD keep release workflows immutable and auditable.

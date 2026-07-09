@@ -23,10 +23,9 @@ values in Java.
 - Cross-cutting baselines are inherited transitively via the parents above.
 
 ## Defaults
-- MUST prefer JavaMoney (`javax.money`, typically implemented with Moneta)
-  for monetary values in Java.
-- Model business monetary amounts as `MonetaryAmount` (or domain wrappers
-  around it), not `BigDecimal` alone.
+- MUST use JavaMoney (`javax.money`, typically implemented with Moneta) for
+  monetary values in Java.
+- SHOULD model business monetary amounts as `MonetaryAmount` (or domain wrappers around it), not `BigDecimal` alone.
 - SHOULD keep currency explicit for every monetary value.
 - SHOULD centralize rounding rules with JavaMoney rounding operators.
 - SHOULD restrict `BigDecimal` usage to integration boundaries where JavaMoney cannot be used directly.
@@ -39,7 +38,7 @@ values in Java.
 - SHOULD use dedicated domain value objects when additional invariants are required (for example non-negative totals).
 
 ## Arithmetic, Rounding, and Currency Conversion
-- Perform business arithmetic via `MonetaryAmount` operations.
+- SHOULD perform business arithmetic via `MonetaryAmount` operations.
 - SHOULD define legal rounding behavior once per use case (for example tax, invoice total, payout) and reuse it.
 - SHOULD validate currency compatibility before arithmetic and comparison.
 - SHOULD use JavaMoney conversion providers for FX conversion; do not hand-roll exchange-rate math in core business

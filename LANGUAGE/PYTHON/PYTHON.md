@@ -36,7 +36,7 @@ Guidance for AI agents implementing and reviewing Python code.
 - SHOULD keep `Optional`/`None` handling explicit at call boundaries.
 
 ## Error Handling and Resource Safety
-- Raise specific exceptions with actionable context.
+- SHOULD raise specific exceptions with actionable context.
 - MUST NOT swallow exceptions silently.
 - MUST use context managers for files/sockets/transactions/locks.
 - SHOULD preserve root cause context when mapping exceptions at boundaries.

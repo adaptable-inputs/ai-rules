@@ -44,7 +44,7 @@ Guidance for AI agents implementing and reviewing Clean Architecture patterns.
 
 ## Dependency Injection and Composition
 - SHOULD compose concrete dependencies at outermost composition root.
-- Inject abstractions into use cases.
+- SHOULD inject abstractions into use cases.
 - SHOULD avoid service locators and hidden global singletons in core policy.
 
 ## Transaction and Side-Effect Placement

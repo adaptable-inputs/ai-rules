@@ -143,18 +143,29 @@ LABEL_BULLET = re.compile(r"^[A-Z][\w /.+-]{0,32}:")
 # section names ("Scope and applicability", "Override notes ...") far more often
 # than as rule verbs, and produced false positives.
 # Extend this list when a new rule verb appears.
+# Hyphenated verbs. Everything else with a hyphen ("Follow-up issue refs") is a
+# noun phrase.
+HYPHEN_VERBS = frozenset({"Co-locate", "Rate-limit", "Time-box", "Fail-fast"})
+
 IMPERATIVE_VERBS = frozenset("""
-Add Align Alert Apply Assess Avoid Be Block Bound Centralize Choose Classify
-Collect Commit Compose Configure Control Cover Create Declare Define Delete Deny
-Depend Design Diff Disable Distinguish Document Emit Encode Enforce Ensure
-Escalate Evaluate Expose Extract Fail Flag Follow Gate Handle Highlight Ignore
-Implement Include Inherit Interpret Introduce Isolate Keep Limit Link Log
-Maintain Make Map Mark Merge Minimize Mix Mock Name Normalize Optimize Pin Place
-Prefer Preserve Prevent Prioritize Propagate Provide Publish Push Put Quarantine
-Reassess Redact Reduce Rely Remove Rename Replace Reply Report Require Reset
-Resolve Respect Restrict Return Reuse Review Rotate Run Separate Set Ship Split
-Start Store Strengthen Support Swallow Throw Track Treat Update Use Validate
-Verify Weaken Wrap
+Add Alert Align Allow Apply Assess Associate Assume Avoid Backfill Batch Be
+Block Bound Cache Call Capture Centralize Check Choose Classify Clean Clone
+Close Collect Combine Commit Compose Configure Control Convert Coordinate
+Correlate Cover Create Declare Define Delete Deny Depend Deprecate Derive
+Design Diff Disable Distinguish Document Drop Emit Enable Encode Enforce
+Ensure Escalate Evaluate Export Expose Extract Fail Favor Fetch Fix Flag Focus
+Follow Gate Generate Group Guard Handle Highlight Identify Ignore Implement
+Include Inherit Inject Instrument Integrate Interpret Introduce Isolate Keep
+Limit Link Log Maintain Make Map Mark Match Merge Minimize Mix Mock Model
+Monitor Move Name Normalize Optimize Order Organize Paginate Parameterize Pass
+Perform Pick Pin Place Prefer Preserve Prevent Prioritize Profile Promote
+Propagate Propose Protect Provide Publish Push Put Quarantine Query Raise Rate
+Reassess Reconstruct Record Redact Redesign Reduce Reject Release Rely Remove
+Rename Replace Reply Report Require Reserve Reset Resolve Respect Restrict
+Retrieve Retry Return Reuse Review Rotate Route Run Sanitize Scan Select
+Separate Set Ship Specify Split Stabilize Start Store Strengthen Stub Support
+Swallow Test Throw Timebox Track Treat Update Use Validate Verify Version
+Watch Weaken Wrap
 """.split())
 
 KEYWORD = re.compile(r"\b(MUST NOT|MUST|SHOULD NOT|SHOULD|MAY)\b")
@@ -165,7 +176,10 @@ DESCRIPTIVE_PREFIXES = (
     "Terminology", "Authoring Notes", "Override Notes", "Layer Details",
     "Code Review Checklist", "Testing Guidance", "High-Risk", "Do / Don",
     "Keywords", "Default Force", "Conflicts", "Applying Keywords",
-    "Validation Notes", "Authoring Checklist",
+    "Validation Notes", "Authoring Checklist", "Plan Review Checklist",
+    "Review Checklist", "Discouraged Uses", "Allowed Uses",
+    "Appropriate AOP Use Cases", "Deep Technical Docs", "Pure Index Docs",
+    "Redundancy and Override Policy", "Decision-Complete Plan Requirements",
 )
 
 errors: list[str] = []
@@ -371,8 +385,14 @@ def check_keyword_ratchet() -> None:
                 probe = probe[0].upper() + probe[1:] if probe else probe
             # An imperative opens with a bare verb. "Follow-up issue refs" is a
             # noun phrase, so reject a hyphenated continuation.
-            w = re.match(r"([A-Z][a-z]+)(-?)", probe)
-            if not w or w.group(2) == "-" or w.group(1) not in IMPERATIVE_VERBS:
+            w = re.match(r"([A-Z][a-z]+(?:-[a-z]+)?)", probe)
+            if not w:
+                continue
+            tok = w.group(1)
+            if "-" in tok:
+                if tok not in HYPHEN_VERBS:
+                    continue
+            elif tok not in IMPERATIVE_VERBS:
                 continue
             fail(f"{rel_path}:{n}: normative bullet has no obligation keyword "
                  f"(file is in KEYWORD_CONVERTED): {text[:60]!r}")

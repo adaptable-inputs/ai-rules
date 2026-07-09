@@ -49,7 +49,7 @@ Guidance for AI agents using Bun as package manager/runtime tooling.
 ## Security and Credential Handling
 - MUST NOT commit registry credentials/tokens.
 - MUST use CI secret injection for registry auth.
-- Scan dependencies and lockfile for vulnerabilities.
+- MUST scan dependencies and lockfile for vulnerabilities.
 - SHOULD keep trusted dependency policy minimal and auditable.
 
 ## VCS Ignore Additions

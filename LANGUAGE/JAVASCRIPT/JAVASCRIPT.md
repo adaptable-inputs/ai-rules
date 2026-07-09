@@ -54,7 +54,7 @@ Guidance for AI agents implementing and reviewing JavaScript code.
 ## State and Mutation
 - SHOULD avoid shared mutable state across modules.
 - SHOULD prefer immutable updates (`{ ...obj }`, `map`, `filter`) for predictable flow.
-- Clone cautiously at boundaries; avoid unnecessary deep cloning in hot paths.
+- SHOULD clone cautiously at boundaries; avoid unnecessary deep cloning in hot paths.
 - SHOULD keep side effects at edges (IO adapters, framework handlers), not in pure domain helpers.
 
 ## Control Flow and Readability
@@ -73,7 +73,7 @@ Guidance for AI agents implementing and reviewing JavaScript code.
 - MUST NOT build code paths that evaluate untrusted strings (`eval`, dynamic
   function constructors) unless there is no alternative and controls are strict.
 - SHOULD avoid unsafe shell command construction from untrusted input.
-- Sanitize/encode output for the target context (HTML, URL, shell).
+- MUST sanitize/encode output for the target context (HTML, URL, shell).
 - For SQL, MUST use parameterized queries/prepared statements rather than string escaping.
 
 ## High-Risk Pitfalls

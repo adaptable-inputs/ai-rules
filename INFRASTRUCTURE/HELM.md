@@ -25,7 +25,7 @@ Guidance for AI agents implementing and reviewing Helm charts.
 
 ## Chart Structure and Values Governance
 - SHOULD keep default `values.yaml` safe and production-aware.
-- Group values by domain concern (image, resources, probes, ingress, etc.).
+- SHOULD group values by domain concern (image, resources, probes, ingress, etc.).
 - SHOULD avoid hidden behavior behind implicit defaults.
 - SHOULD prefer explicit booleans/enums over magic strings.
 - SHOULD keep backward compatibility for chart consumers when evolving values.
@@ -45,8 +45,7 @@ Guidance for AI agents implementing and reviewing Helm charts.
 
 ## Security and Secret Handling
 - MUST NOT commit plaintext secrets in chart values.
-- Integrate secret management mechanisms (sealed/external secrets) as policy
-  requires.
+- MUST integrate secret management mechanisms (sealed/external secrets) as policy requires.
 - MUST keep service account and security context defaults least-privilege.
 
 ## High-Risk Pitfalls

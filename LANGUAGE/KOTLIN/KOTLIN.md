@@ -30,7 +30,7 @@ Guidance for AI agents implementing and reviewing Kotlin code.
 - SHOULD keep domain logic separated from framework/runtime plumbing.
 
 ## Null-Safety and Type Contracts
-- Model optionality with nullable types intentionally.
+- SHOULD model optionality with nullable types intentionally.
 - SHOULD avoid `!!` unless a bounded invariant is proven and documented.
 - SHOULD keep DTO/domain nullability contracts explicit and consistent.
 - SHOULD prefer sealed/value types for constrained domain state where suitable.

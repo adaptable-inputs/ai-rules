@@ -37,8 +37,7 @@ Guidance for AI agents implementing and reviewing Java code.
 - MUST NOT use `float`/`double` when values MUST stay exact (for example money).
 - SHOULD prefer smallest-unit integers (for example cents in `long`) when unit and
   range are stable for the domain.
-- MUST prefer JavaMoney (JSR 354, typically Moneta) for monetary values in
-  Java.
+- MUST use JavaMoney (JSR 354, typically Moneta) for monetary values in Java.
 - SHOULD restrict raw `BigDecimal` money handling to boundary conversions where JavaMoney types cannot be used directly.
 - SHOULD avoid `new BigDecimal(double)`; if `BigDecimal` is unavoidable, construct
   from `String` for exact decimal values, or use `BigDecimal.valueOf(long)` for

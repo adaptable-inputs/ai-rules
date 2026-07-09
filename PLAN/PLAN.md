@@ -78,25 +78,25 @@ risk; never omit one:
   handled during execution unless they materially change risk/scope.
 
 ## Risk and Dependency Handling
-- Identify external dependencies and blockers early.
-- Call out coupling across layers and documents.
+- SHOULD identify external dependencies and blockers early.
+- SHOULD call out coupling across layers and documents.
 - SHOULD prefer dependency-first ordering (parent constraints before child
   specialization).
 - SHOULD include rollback options for high-impact changes.
 
 ## Research Requirements
-- Perform intensive research before finalizing a plan.
+- SHOULD perform intensive research before finalizing a plan.
 - Research MUST cover:
   - semantic parent and sibling docs that influence scope and decisions,
   - architecture and design constraints,
   - relevant codebase context and issue/PR history,
   - external authoritative sources when domain or risk requires it.
-- Record the key options considered and why the chosen plan is preferred.
+- SHOULD record the key options considered and why the chosen plan is preferred.
 
 ## Testing and Validation Planning
 - SHOULD define required tests before implementation starts.
 - SHOULD include regression strategy for changed behavior.
-- Specify mandatory CI checks and quality gates.
+- MUST specify mandatory CI checks and quality gates.
 - SHOULD define observable acceptance signals for rollout.
 
 ## High-Risk Pitfalls

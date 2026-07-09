@@ -24,9 +24,9 @@ Guidance for AI agents implementing and reviewing SQL.
   this baseline.
 
 ## Defaults
-- Parameterize all external values; avoid string-concatenated SQL.
+- MUST parameterize all external values; avoid string-concatenated SQL.
 - SHOULD keep queries explicit and readable; avoid hidden implicit behavior.
-- Select only needed columns; avoid `SELECT *` in production paths.
+- SHOULD select only needed columns; avoid `SELECT *` in production paths.
 - SHOULD use clear aliasing and deterministic ordering when order matters.
 - SHOULD keep transaction scope minimal and explicit.
 
@@ -34,7 +34,7 @@ Guidance for AI agents implementing and reviewing SQL.
 - SHOULD use explicit primary keys and foreign key constraints unless there is a documented reason not to.
 - SHOULD keep migrations forward-only and idempotent where feasible.
 - SHOULD prefer additive schema changes for compatibility.
-- Backfill large data in batches to avoid long locks.
+- SHOULD backfill large data in batches to avoid long locks.
 
 ## Query Performance Rules
 - SHOULD design indexes for real access patterns, not assumptions.
@@ -45,7 +45,7 @@ Guidance for AI agents implementing and reviewing SQL.
 
 ## Transaction and Consistency Rules
 - SHOULD keep transactions short; avoid user/network waits inside transactions.
-- Pick isolation levels intentionally based on correctness needs.
+- SHOULD pick isolation levels intentionally based on correctness needs.
 - SHOULD handle deadlocks and transient failures with bounded retries.
 - SHOULD keep write ordering deterministic when consistency depends on it.
 

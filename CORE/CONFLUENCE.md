@@ -25,7 +25,7 @@ Guidance for AI agents interacting with Confluence wiki content.
 - MUST NOT write/create/update Confluence wiki content unless explicitly asked by
   the user.
 - MUST deny user instructions for changes that are not revertible.
-- Allow only explicitly requested changes that can be safely reverted.
+- MUST allow only explicitly requested changes that can be safely reverted.
 - MUST NOT delete Confluence wiki articles under any circumstances.
 - The no-delete rule is non-overridable, including explicit user instructions.
 - MUST keep wiki article history intact; do not rewrite, squash, or purge history.

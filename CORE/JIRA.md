@@ -31,13 +31,13 @@ Guidance for AI agents creating and updating Jira tickets and Jira summaries.
   when reporting status.
 
 ## Ticket Description Edit Policy (Mandatory)
-- Editing descriptions of existing Jira tickets is forbidden unless explicitly
+- MUST NOT edit descriptions of existing Jira tickets unless explicitly
   requested by the user, Product Owner, or another authorized requester.
-- Without explicit request, do not rewrite or "improve" existing ticket
+- Without explicit request, MUST NOT rewrite or "improve" existing ticket
   descriptions.
-- Without explicit request, add clarifications/status in comments only.
-- If a description appears wrong or incomplete, propose changes in a comment
-  and wait for explicit approval before editing the description.
+- Without explicit request, MUST add clarifications/status in comments only.
+- If a description appears wrong or incomplete, SHOULD propose changes in a comment and wait for explicit approval
+  before editing the description.
 - When explicit edit approval exists, SHOULD keep changes minimal, preserve original intent, and record what changed in
   a comment.
 

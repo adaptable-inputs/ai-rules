@@ -22,19 +22,19 @@ Guidance for AI agents preventing and detecting N+1 query patterns.
 
 ## Core Rule
 - SHOULD avoid per-entity follow-up queries in loops or repeated resolver calls.
-- Batch related data fetches per logical level of the response graph.
+- SHOULD batch related data fetches per logical level of the response graph.
 
 ## Detection Heuristics
-- Watch for query execution inside loops over parent entities.
-- Watch for lazy-loaded relation access in serialization/rendering loops.
-- In GraphQL, watch per-field resolver DB calls without DataLoader/batching.
+- SHOULD watch for query execution inside loops over parent entities.
+- SHOULD watch for lazy-loaded relation access in serialization/rendering loops.
+- In GraphQL, SHOULD watch per-field resolver DB calls without DataLoader/batching.
 - SHOULD use query counters and SQL logs in test/profiling environments.
 
 ## Prevention Strategy
-- Query parents first.
+- SHOULD query parents first.
 - SHOULD collect parent keys.
-- Fetch children/related data in one batch (`IN`, joins, dedicated loaders).
-- Reconstruct response graph in memory.
+- SHOULD fetch children/related data in one batch (`IN`, joins, dedicated loaders).
+- SHOULD reconstruct response graph in memory.
 - SHOULD keep batch size and pagination controls explicit.
 
 ## ORM-Specific Guardrails
@@ -46,14 +46,14 @@ Guidance for AI agents preventing and detecting N+1 query patterns.
 ## GraphQL/Resolver Guardrails
 - SHOULD use per-request DataLoader or equivalent batching abstraction.
 - SHOULD ensure loaders are request-scoped to prevent cache leakage across users.
-- Batch by field/resource shape with deterministic key mapping.
+- SHOULD batch by field/resource shape with deterministic key mapping.
 - SHOULD avoid nested resolver-side queries without loader mediation.
 
 ## Performance and Correctness Tradeoffs
 - SHOULD prefer predictable query count over highly dynamic implicit loading.
 - SHOULD avoid giant fetch joins that explode row multiplicity without pagination.
 - SHOULD keep response payload size aligned with use-case requirements.
-- Combine pagination with batching to bound memory and query costs.
+- SHOULD combine pagination with batching to bound memory and query costs.
 
 ## High-Risk Pitfalls
 1. Query in loop over parent records.

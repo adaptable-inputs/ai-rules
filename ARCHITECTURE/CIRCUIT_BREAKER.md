@@ -33,7 +33,7 @@ Guidance for AI agents implementing and reviewing circuit breaker patterns.
 - SHOULD use fallback only when correctness is preserved.
 - SHOULD prefer explicit degraded mode responses over silent stale/incorrect data.
 - SHOULD avoid fallback chains that hide systemic failures.
-- Record fallback activation as observable event.
+- SHOULD record fallback activation as observable event.
 
 ## State Semantics
 - Closed: normal operation.

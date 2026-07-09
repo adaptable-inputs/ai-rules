@@ -41,7 +41,7 @@ Guidance for AI agents managing Node.js dependencies (npm, Yarn, pnpm).
 ## Supply-Chain and Security Guardrails
 - MUST NOT commit auth tokens in `.npmrc`.
 - MUST use secret-injection in CI for registry credentials.
-- Enable dependency vulnerability scanning in CI.
+- MUST enable dependency vulnerability scanning in CI.
 - SHOULD verify integrity/signature mechanisms where supported.
 - SHOULD avoid automatic postinstall script trust for unknown packages.
 
