@@ -9,15 +9,15 @@ Instructions for AI agents to run ai-rules updates in a downstream-project.
 ## REF Determination Rules
 Use these rules whenever a setup/update/mode-switch flow needs a `REF`.
 - If the user specifies a tag (for example `v4.11.0`), validate it first:
-  `git ls-remote --exit-code --refs --tags https://github.com/fabian-barney/ai-rules.git "refs/tags/<TAG>"`
+  `git ls-remote --exit-code --refs --tags https://github.com/adaptable-inputs/ai-rules.git "refs/tags/<TAG>"`
   - If the command fails, stop and ask for a valid tag.
   - If it succeeds, set `REF=<TAG>`.
 - If the user explicitly asks for a branch, validate it first:
-  `git ls-remote --exit-code --heads https://github.com/fabian-barney/ai-rules.git "refs/heads/<BRANCH>"`
+  `git ls-remote --exit-code --heads https://github.com/adaptable-inputs/ai-rules.git "refs/heads/<BRANCH>"`
   - If the command fails, stop and ask for a valid branch.
   - If it succeeds, set `REF=<BRANCH>`.
 - Otherwise resolve the latest tagged release:
-  `git ls-remote --refs --tags --sort="version:refname" https://github.com/fabian-barney/ai-rules.git "v*"`
+  `git ls-remote --refs --tags --sort="version:refname" https://github.com/adaptable-inputs/ai-rules.git "v*"`
   - If at least one `v*` tag exists, set `REF` to the last tag in the sorted output.
   - If no tags exist, set `REF=main`.
 - Before any subtree command, echo the resolved ref to the user:
@@ -102,7 +102,7 @@ Use these rules whenever a setup/update/mode-switch flow needs a `REF`.
      to proceed instead of guessing.
 8. Update based on mode:
    - If it is git (tracked subtree):
-     `git subtree pull --prefix "<AI_RULES_PATH>" https://github.com/fabian-barney/ai-rules.git <REF> --squash`
+     `git subtree pull --prefix "<AI_RULES_PATH>" https://github.com/adaptable-inputs/ai-rules.git <REF> --squash`
      Commit the update.
      Ask the user whether to push this commit, and only push if they explicitly confirm.
    - If it is local (no commits, no push):
@@ -113,7 +113,7 @@ Use these rules whenever a setup/update/mode-switch flow needs a `REF`.
        `git config --local user.name "Your Name"`
        `git config --local user.email "you@example.com"`
      - Run:
-        `git subtree add --prefix "<AI_RULES_PATH>" https://github.com/fabian-barney/ai-rules.git <REF> --squash`
+        `git subtree add --prefix "<AI_RULES_PATH>" https://github.com/adaptable-inputs/ai-rules.git <REF> --squash`
         (This creates a commit.)
      - Undo the commit but keep files:
         `git reset --mixed HEAD~1`
@@ -221,7 +221,7 @@ Steps:
      - If no reusable version is documented, resolve `REF` with the default path
        in REF Determination Rules (latest tagged release, fallback `main`).
    - Run:
-     `git subtree add --prefix "<AI_RULES_PATH>" https://github.com/fabian-barney/ai-rules.git <REF> --squash`
+     `git subtree add --prefix "<AI_RULES_PATH>" https://github.com/adaptable-inputs/ai-rules.git <REF> --squash`
    - Create any missing entry points (for example `AGENTS.md` final references,
      `<AI_PROJECT_PATH>/AI.md`, `CLAUDE.md`, and
      `.github/copilot-instructions.md`), ensure they are tracked, then commit.
