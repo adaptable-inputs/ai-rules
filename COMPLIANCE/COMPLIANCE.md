@@ -5,7 +5,7 @@ applies_to:
 # COMPLIANCE
 
 Compliance-layer contract for legal, licensing, and governance constraints that
-must be preserved across all technology choices.
+MUST be preserved across all technology choices.
 
 ## Role in the Ruleset
 - COMPLIANCE defines non-negotiable legal/governance constraints for dependency
@@ -32,12 +32,12 @@ Those belong in `LANGUAGE/**`, `FRAMEWORK/**`, `LIBRARY/**`,
 `BUILD_TOOLS/**`, `INFRASTRUCTURE/**`, and `CI-CD/**`.
 
 ## Specialization Contract
-- Child compliance docs may narrow compliance constraints for specific legal
+- Child compliance docs MAY narrow compliance constraints for specific legal
   domains (for example, license policy).
-- Downstream docs must not weaken compliance constraints without explicit,
+- Downstream docs MUST NOT weaken compliance constraints without explicit,
   reviewed governance approval.
 - If a technical recommendation conflicts with compliance rules, compliance is
-  authoritative and the technical guidance must be revised.
+  authoritative and the technical guidance MUST be revised.
 
 ## Files
 - [LICENSES.md](LICENSES.md) - License compliance and allowed licenses.

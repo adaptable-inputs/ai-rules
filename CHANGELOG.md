@@ -47,6 +47,17 @@ Sub-heading template:
   names to seven paired snippets that redeclared the same symbol.
 - Replaced named-model guidance in `README.md` with the capabilities the ruleset
   actually requires.
+- Converted every `load: always` document to explicit obligation keywords, and
+  added a CI ratchet (`KEYWORD_CONVERTED`) that fails the build if a converted
+  document regains a keyword-less normative statement. All twenty are now locked.
+- In `COMPLIANCE/**`, assigned `MUST` to gates, defaults, and prohibitions an
+  agent can evaluate against the change under review, and `SHOULD` to
+  organizational posture it cannot verify from a diff (registers, inventories,
+  periodic exercises). Under the previous strict default an agent was required to
+  block a one-line change until, for example, disaster-recovery exercises were
+  periodic - a condition no code change can establish.
+- Split the EU AI Act logging rule into two statements: `SHOULD` log events for
+  traceability, and `MUST NOT` expose sensitive data in AI-system logs.
 
 ## [v4.11.0] - 2026-03-27
 - Reordered downstream-project command examples to namespace-first wording:

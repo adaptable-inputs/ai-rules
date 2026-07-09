@@ -24,35 +24,35 @@ Consult qualified legal counsel for final legal decisions.
 - Inherit logging/observability controls from `CORE/LOGGING.md`.
 
 ## Defaults
-- Keep ICT risk ownership explicit for critical business services.
-- Keep resilience-by-design controls integrated in delivery pipelines.
-- Keep incident handling, communication, and evidence trails auditable.
-- Keep third-party ICT dependency risk continuously managed.
-- Keep recovery and continuity controls validated through regular exercises.
+- SHOULD keep ICT risk ownership explicit for critical business services.
+- SHOULD keep resilience-by-design controls integrated in delivery pipelines.
+- SHOULD keep incident handling, communication, and evidence trails auditable.
+- SHOULD keep third-party ICT dependency risk continuously managed.
+- SHOULD keep recovery and continuity controls validated through regular exercises.
 
 ## ICT Risk Management Controls
-- Keep critical-service inventory and dependency mapping current.
-- Track risk scenarios, mitigation owners, and remediation deadlines.
-- Enforce change-management controls for high-impact ICT changes.
-- Require bounded approval for temporary control exceptions.
+- SHOULD keep critical-service inventory and dependency mapping current.
+- SHOULD track risk scenarios, mitigation owners, and remediation deadlines.
+- MUST enforce change-management controls for high-impact ICT changes.
+- MUST require bounded approval for temporary control exceptions.
 
 ## Incident Handling and Reporting Readiness
-- Define incident severity classification tied to escalation obligations.
-- Keep detection, triage, containment, and recovery workflows documented.
-- Keep event timelines and decision logs suitable for reporting obligations.
-- Ensure post-incident corrective actions are tracked to closure.
+- SHOULD define incident severity classification tied to escalation obligations.
+- SHOULD keep detection, triage, containment, and recovery workflows documented.
+- SHOULD keep event timelines and decision logs suitable for reporting obligations.
+- SHOULD ensure post-incident corrective actions are tracked to closure.
 
 ## Resilience Testing and Continuity
-- Keep backup, restore, and failover objectives explicit.
-- Run periodic resilience testing for critical services.
-- Validate recovery time and recovery point assumptions against targets.
-- Keep scenario tests for dependency outage and degradation events.
+- SHOULD keep backup, restore, and failover objectives explicit.
+- SHOULD run periodic resilience testing for critical services.
+- SHOULD validate recovery time and recovery point assumptions against targets.
+- SHOULD keep scenario tests for dependency outage and degradation events.
 
 ## Third-Party ICT Risk Controls
-- Keep critical vendor/service dependency register current.
-- Define fallback/exit strategies for high-criticality third-party services.
-- Keep integration privileges scoped and auditable.
-- Reassess third-party risk after major incidents or material changes.
+- SHOULD keep critical vendor/service dependency register current.
+- SHOULD define fallback/exit strategies for high-criticality third-party services.
+- MUST keep integration privileges scoped and auditable.
+- SHOULD reassess third-party risk after major incidents or material changes.
 
 ## High-Risk Pitfalls
 1. Critical ICT services without explicit risk/control ownership.
@@ -98,5 +98,5 @@ Do:    test restore/failover scenarios and record outcomes.
 - Test closure tracking for incident and resilience remediation actions.
 
 ## Override Notes
-- Project or sector-specific regulation may be stricter; stricter policy always
+- Project or sector-specific regulation MAY be stricter; stricter policy always
   wins.

@@ -24,36 +24,36 @@ Consult qualified legal counsel for final legal decisions.
 - Inherit logging/observability constraints from `CORE/LOGGING.md`.
 
 ## Defaults
-- Keep security governance ownership explicit for critical services.
-- Keep risk assessment and mitigation evidence current and auditable.
-- Keep incident detection, classification, and escalation paths documented.
-- Keep supply-chain and third-party dependency risk controls active.
-- Keep business-continuity and recovery assumptions tested.
+- SHOULD keep security governance ownership explicit for critical services.
+- SHOULD keep risk assessment and mitigation evidence current and auditable.
+- SHOULD keep incident detection, classification, and escalation paths documented.
+- SHOULD keep supply-chain and third-party dependency risk controls active.
+- SHOULD keep business-continuity and recovery assumptions tested.
 
 ## Governance and Risk Controls
-- Maintain current asset/service inventory for in-scope systems.
-- Maintain risk register entries for major service and dependency risks.
-- Track remediation actions with owner and due date.
-- Require explicit approval for temporary risk exceptions and expiry dates.
+- SHOULD maintain current asset/service inventory for in-scope systems.
+- SHOULD maintain risk register entries for major service and dependency risks.
+- SHOULD track remediation actions with owner and due date.
+- MUST require explicit approval for temporary risk exceptions and expiry dates.
 
 ## Incident Readiness and Reporting Hooks
-- Define incident severity model and escalation ownership.
-- Keep incident triage procedures and responder runbooks available.
-- Keep timestamped evidence collection ready for forensic/regulatory needs.
-- Ensure incident classification supports required reporting timelines.
-- Block unresolved critical incident states from silent production progression.
+- SHOULD define incident severity model and escalation ownership.
+- SHOULD keep incident triage procedures and responder runbooks available.
+- SHOULD keep timestamped evidence collection ready for forensic/regulatory needs.
+- MUST ensure incident classification supports required reporting timelines.
+- MUST block unresolved critical incident states from silent production progression.
 
 ## Supply Chain and Dependency Governance
-- Keep dependency provenance and vulnerability scanning in CI.
-- Evaluate third-party provider criticality and failure impact regularly.
-- Keep third-party access and integration scopes least-privilege.
-- Keep fallback and substitution plans for critical third-party services.
+- MUST keep dependency provenance and vulnerability scanning in CI.
+- SHOULD evaluate third-party provider criticality and failure impact regularly.
+- MUST keep third-party access and integration scopes least-privilege.
+- SHOULD keep fallback and substitution plans for critical third-party services.
 
 ## Resilience, Continuity, and Recovery
-- Keep backup, restore, and recovery objectives explicit for critical systems.
-- Keep disaster-recovery exercises and failover validation periodic.
+- SHOULD keep backup, restore, and recovery objectives explicit for critical systems.
+- SHOULD keep disaster-recovery exercises and failover validation periodic.
 - SHOULD avoid single points of failure in infrastructure/control planes where feasible.
-- Keep change management gates strong for critical production paths.
+- MUST keep change management gates strong for critical production paths.
 
 ## High-Risk Pitfalls
 1. No explicit ownership for operational cybersecurity controls.
@@ -99,5 +99,5 @@ Do:    run and document periodic restore/failover tests.
 - Test CI security/vulnerability gates for dependency and pipeline changes.
 
 ## Override Notes
-- Project or sector-specific regulation may be stricter; stricter policy always
+- Project or sector-specific regulation MAY be stricter; stricter policy always
   wins.

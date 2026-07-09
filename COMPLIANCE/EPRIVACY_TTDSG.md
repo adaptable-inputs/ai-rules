@@ -23,38 +23,35 @@ Consult qualified legal counsel for final legal decisions.
 - Inherit logging constraints from `CORE/LOGGING.md`.
 
 ## Defaults
-- Disable non-essential tracking/storage by default until valid consent exists.
-- Keep consent categories explicit and purpose-bound.
-- Keep telemetry payloads minimal and privacy-preserving.
-- Keep consent state auditable with versioned policy metadata.
-- Keep withdrawal/revocation behavior equivalent to grant behavior.
+- MUST disable non-essential tracking/storage by default until valid consent exists.
+- MUST keep consent categories explicit and purpose-bound.
+- MUST keep telemetry payloads minimal and privacy-preserving.
+- SHOULD keep consent state auditable with versioned policy metadata.
+- MUST keep withdrawal/revocation behavior equivalent to grant behavior.
 
 ## Consent and Purpose Controls
-- Gate non-essential cookies/storage and similar tracking technologies behind
-  explicit consent where required.
-- Keep strict separation between essential and non-essential categories.
-- Keep consent prompts clear, non-deceptive, and purpose-specific.
-- Prevent implicit bundling of unrelated consent purposes.
+- MUST gate non-essential cookies/storage and similar tracking technologies behind explicit consent where required.
+- MUST keep strict separation between essential and non-essential categories.
+- MUST keep consent prompts clear, non-deceptive, and purpose-specific.
+- MUST prevent implicit bundling of unrelated consent purposes.
 
 ## Client-Side Identifier and Storage Rules
-- Minimize persistent identifiers and storage duration.
+- SHOULD minimize persistent identifiers and storage duration.
 - SHOULD avoid hidden fingerprinting-like techniques without explicit legal approval.
-- Rotate or scope identifiers where feasible to reduce tracking surface.
-- Keep client-side storage contents free of unnecessary personal data.
+- SHOULD rotate or scope identifiers where feasible to reduce tracking surface.
+- MUST keep client-side storage contents free of unnecessary personal data.
 
 ## Telemetry and Analytics Boundaries
-- Use aggregated/anonymized data where possible for analytics.
+- SHOULD use aggregated/anonymized data where possible for analytics.
 - SHOULD avoid transmitting raw user-content or sensitive fields in telemetry.
-- Keep third-party analytics integrations bounded and configurable by consent
-  state.
-- Ensure consent state is enforced across all telemetry emitters.
+- MUST keep third-party analytics integrations bounded and configurable by consent state.
+- MUST ensure consent state is enforced across all telemetry emitters.
 
 ## Revocation, Retention, and Auditability
-- Implement immediate effect for consent withdrawal on non-essential tracking.
-- Delete or disable non-essential identifiers/tokens upon revocation where
-  feasible.
-- Keep retention windows explicit for tracking-related data.
-- Keep consent records and policy-version linkage auditable.
+- MUST implement immediate effect for consent withdrawal on non-essential tracking.
+- MUST delete or disable non-essential identifiers/tokens upon revocation where feasible.
+- SHOULD keep retention windows explicit for tracking-related data.
+- SHOULD keep consent records and policy-version linkage auditable.
 
 ## High-Risk Pitfalls
 1. Loading non-essential trackers before consent.
@@ -101,5 +98,5 @@ Do:    disable non-essential tracking immediately on revocation.
 - Test consent-record auditability including policy/version references.
 
 ## Override Notes
-- Project or sector-specific regulation may be stricter; stricter policy always
+- Project or sector-specific regulation MAY be stricter; stricter policy always
   wins.

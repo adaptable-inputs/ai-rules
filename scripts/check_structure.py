@@ -43,8 +43,15 @@ KEYWORD_CONVERTED = {
     "DESIGN/COGNITIVE_COMPLEXITY.md",
     "DESIGN/EARLY_RETURN.md",
     "DESIGN/SOLID.md",
+    "COMPLIANCE/DORA.md",
+    "COMPLIANCE/EPRIVACY_TTDSG.md",
+    "COMPLIANCE/EU_AI_ACT.md",
+    "COMPLIANCE/GDPR_BDSG.md",
+    "COMPLIANCE/LICENSES.md",
+    "COMPLIANCE/NIS2_KRITIS.md",
     "CORE/CODE_REVIEW_PLATFORM.md",
     "CORE/LOGGING.md",
+    "CORE/NORMATIVE_LANGUAGE.md",
     "CORE/RULE_DEPENDENCY_TREE.md",
     "CORE/VERSION_CONTROL_SYSTEM.md",
     "LANGUAGE/CONVENTIONS.md",
@@ -64,15 +71,16 @@ LABEL_BULLET = re.compile(r"^[A-Z][\w /.+-]{0,32}:")
 # than as rule verbs, and produced false positives.
 # Extend this list when a new rule verb appears.
 IMPERATIVE_VERBS = frozenset("""
-Add Align Alert Apply Avoid Be Block Bound Centralize Choose Classify Commit
-Compose Configure Control Cover Create Declare Define Deny Depend Design
-Distinguish Document Emit Encode Enforce Ensure Evaluate Expose Extract Fail
-Follow Handle Highlight Ignore Include Inherit Interpret Introduce Isolate Keep
-Limit Link Log Maintain Make Mark Merge Minimize Mix Mock Name Normalize
-Optimize Pin Place Prefer Preserve Prioritize Propagate Provide Publish
-Push Put Quarantine Redact Reduce Rely Remove Rename Replace Reply Report
-Require Reset Resolve Respect Return Reuse Review Rotate Run Separate Set Ship
-Split Start Store Strengthen Swallow Throw Track Treat Update Use Validate
+Add Align Alert Apply Assess Avoid Be Block Bound Centralize Choose Classify
+Collect Commit Compose Configure Control Cover Create Declare Define Delete Deny
+Depend Design Diff Disable Distinguish Document Emit Encode Enforce Ensure
+Escalate Evaluate Expose Extract Fail Flag Follow Gate Handle Highlight Ignore
+Implement Include Inherit Interpret Introduce Isolate Keep Limit Link Log
+Maintain Make Map Mark Merge Minimize Mix Mock Name Normalize Optimize Pin Place
+Prefer Preserve Prevent Prioritize Propagate Provide Publish Push Put Quarantine
+Reassess Redact Reduce Rely Remove Rename Replace Reply Report Require Reset
+Resolve Respect Restrict Return Reuse Review Rotate Run Separate Set Ship Split
+Start Store Strengthen Support Swallow Throw Track Treat Update Use Validate
 Verify Weaken Wrap
 """.split())
 

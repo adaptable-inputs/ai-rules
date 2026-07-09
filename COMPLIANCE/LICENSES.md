@@ -18,7 +18,7 @@ Consult legal counsel for final legal decisions.
 ## Semantic Dependencies
 - Inherit compliance baseline from `COMPLIANCE/COMPLIANCE.md`.
 - This file is part of the cross-cutting baseline; downstream framework/library/
-  build-tool docs must comply with this policy.
+  build-tool docs MUST comply with this policy.
 
 ## Decision Framework
 For each dependency (direct and significant transitive):
@@ -56,16 +56,16 @@ Avoid unless legal explicitly approves alternative model:
 - Commons Clause / non-commercial-restricted licenses
 
 ## Attribution and Notice Workflow
-- Preserve required copyright/license notices.
-- For distributed artifacts, maintain `THIRD_PARTY_NOTICES.md` in the project
-  root (or an explicitly documented equivalent path).
-- Include NOTICE file obligations (for example Apache-2.0) in release outputs.
-- Keep attribution metadata updated on dependency upgrades/removals.
+- MUST preserve required copyright/license notices.
+- For distributed artifacts, MUST maintain `THIRD_PARTY_NOTICES.md` in the project root (or an explicitly documented
+  equivalent path).
+- MUST include NOTICE file obligations (for example Apache-2.0) in release outputs.
+- MUST keep attribution metadata updated on dependency upgrades/removals.
 
 ## Transitive Dependency Governance
-- Evaluate transitive licenses, not only direct dependencies.
-- Flag unknown/custom licenses for manual review.
-- Block merges/releases with unresolved license status.
+- MUST evaluate transitive licenses, not only direct dependencies.
+- MUST flag unknown/custom licenses for manual review.
+- MUST block merges/releases with unresolved license status.
 
 ## High-Risk Pitfalls
 1. Approving dependency based only on package registry metadata.
@@ -101,11 +101,11 @@ Do:    include required notices/licenses with release artifacts.
 - Are license checks integrated into CI/release gating?
 
 ## Testing and Validation Guidance
-- Run automated license scan in CI for every dependency change.
-- Run full license + notice validation before release creation.
-- Diff dependency tree on upgrades to detect new license obligations.
-- Keep manual review log for exceptions and legal decisions.
+- MUST run automated license scan in CI for every dependency change.
+- MUST run full license + notice validation before release creation.
+- SHOULD diff dependency tree on upgrades to detect new license obligations.
+- SHOULD keep manual review log for exceptions and legal decisions.
 
 ## Override Notes
-- Legal/compliance policy may be stricter than this file; stricter policy always
+- Legal/compliance policy MAY be stricter than this file; stricter policy always
   wins.
