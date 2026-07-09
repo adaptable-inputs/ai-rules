@@ -1,6 +1,7 @@
 ---
 applies_to:
-  load: "always"
+  load: "conditional"
+  when: "the declared compliance scope includes `eprivacy`, or no compliance scope is declared"
   annex: "EPRIVACY_TTDSG.ANNEX.md"
   purpose: "baseline engineering controls for cookie/device storage and communications-tracking behavior in EU/German contexts"
   inherits: ["COMPLIANCE/COMPLIANCE.md", "COMPLIANCE/GDPR_BDSG.md", "SECURITY/SECURITY.md", "CORE/LOGGING.md"]

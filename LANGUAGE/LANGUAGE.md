@@ -6,10 +6,6 @@ applies_to:
 
 Language-layer contract for syntax, semantics, naming, and readability rules.
 
-## Application Order
-- MUST apply `CONVENTIONS.md` and `READABILITY.md` to all languages by default.
-- MUST apply the specific language document next (for example Java or TypeScript).
-
 ## Files
 - [CONVENTIONS.md](CONVENTIONS.md) - General coding conventions.
 - [READABILITY.md](READABILITY.md) - Readability and clarity guidance.

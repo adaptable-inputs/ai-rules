@@ -1,6 +1,7 @@
 ---
 applies_to:
-  load: "always"
+  load: "conditional"
+  when: "the declared compliance scope includes `nis2`, or no compliance scope is declared"
   annex: "NIS2_KRITIS.ANNEX.md"
   purpose: "baseline engineering controls that support NIS2-style cybersecurity and resilience obligations in EU/German critical-operations contexts"
   inherits: ["COMPLIANCE/COMPLIANCE.md", "SECURITY/SECURITY.md", "INFRASTRUCTURE/**", "CI-CD/**", "CORE/LOGGING.md"]

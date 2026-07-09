@@ -7,10 +7,6 @@ applies_to:
 Compliance-layer contract for legal, licensing, and governance constraints that
 MUST be preserved across all technology choices.
 
-## Precedence
-- If a technical recommendation conflicts with compliance rules, compliance is
-  authoritative and the technical guidance MUST be revised.
-
 ## Files
 - [LICENSES.md](LICENSES.md) - License compliance and allowed licenses.
 - [GDPR_BDSG.md](GDPR_BDSG.md) - GDPR/BDSG engineering compliance guidance.

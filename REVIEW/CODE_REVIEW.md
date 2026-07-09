@@ -10,6 +10,11 @@ applies_to:
 
 Guidance for AI agents performing code and rules-document reviews.
 
+## Precedence
+- If review guidance conflicts with implementation guidance, MUST apply the
+  stricter quality/safety interpretation and MUST open a follow-up rule issue
+  for alignment.
+
 ## Review Priority Order
 1. Correctness and regression risk.
 2. Security, privacy, and compliance.

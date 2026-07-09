@@ -18,14 +18,9 @@ open a category index.
 - A doc with an annex has a sibling `*.ANNEX.md`; load it only for the tasks its
   `tasks:` field names.
 
-## always (20)
+## always (15)
 
-- `COMPLIANCE/DORA.md` *(annex)*
-- `COMPLIANCE/EPRIVACY_TTDSG.md` *(annex)*
-- `COMPLIANCE/EU_AI_ACT.md` *(annex)*
-- `COMPLIANCE/GDPR_BDSG.md` *(annex)*
 - `COMPLIANCE/LICENSES.md` *(annex)*
-- `COMPLIANCE/NIS2_KRITIS.md` *(annex)*
 - `CORE/CODE_REVIEW_PLATFORM.md` *(annex)*
 - `CORE/CORE.md`
 - `CORE/LOGGING.md` *(annex)*
@@ -41,7 +36,7 @@ open a category index.
 - `SECURITY/SECURITY.md` *(annex)*
 - `TEST/TEST.md` *(annex)*
 
-## conditional (70)
+## conditional (76)
 
 - `ARCHITECTURE/CIRCUIT_BREAKER.md` *(annex)* - when and how to apply circuit breakers to remote
   dependencies. Load when the project calls remote dependencies.
@@ -72,8 +67,25 @@ open a category index.
   Load when tools: `github-actions`.
 - `CI-CD/GITLAB.md` *(annex)* - GitLab pipeline design and quality-gate constraints. Load when
   tools: `gitlab-ci`.
+- `COMPLIANCE/DORA.md` *(annex)* - baseline engineering controls that support DORA-style ICT risk
+  and resilience obligations. Load when the declared compliance scope includes `dora`, or no
+  compliance scope is declared.
+- `COMPLIANCE/EPRIVACY_TTDSG.md` *(annex)* - baseline engineering controls for cookie/device storage
+  and communications-tracking behavior in EU/German contexts. Load when the declared compliance
+  scope includes `eprivacy`, or no compliance scope is declared.
+- `COMPLIANCE/EU_AI_ACT.md` *(annex)* - baseline engineering controls for AI-system lifecycle
+  governance in EU-regulated contexts. Load when the declared compliance scope includes `eu-ai-act`,
+  or no compliance scope is declared.
+- `COMPLIANCE/GDPR_BDSG.md` *(annex)* - baseline engineering controls for personal-data handling
+  aligned with GDPR/BDSG expectations. Load when the declared compliance scope includes `gdpr`, or
+  no compliance scope is declared.
+- `COMPLIANCE/NIS2_KRITIS.md` *(annex)* - baseline engineering controls that support NIS2-style
+  cybersecurity and resilience obligations in EU/German critical-operations contexts. Load when the
+  declared compliance scope includes `nis2`, or no compliance scope is declared.
 - `CORE/CONFLUENCE.md` *(annex)* - Confluence-specific write/delete safety constraints. Load when
   tools: `confluence`.
+- `CORE/DEPENDENCY_SELECTION.md` - criteria for choosing a framework, library, or build-tool
+  dependency. Load when the task adds, replaces, or upgrades a framework, library, or build tool.
 - `CORE/GITHUB.md` *(annex)* - GitHub-specific delivery and review workflow constraints. Load when
   tools: `github`.
 - `CORE/GITLAB.md` *(annex)* - GitLab-specific delivery and review workflow constraints. Load when

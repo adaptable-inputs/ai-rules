@@ -22,6 +22,8 @@ repository.
 - [NORMATIVE_LANGUAGE.md](NORMATIVE_LANGUAGE.md) - Obligation vocabulary
   (MUST/SHOULD/MAY) used by every rule in this repository.
 - [VERSION_CONTROL_SYSTEM.md](VERSION_CONTROL_SYSTEM.md) - Commit/branch/PR workflow, issue linkage, and VCS hygiene.
+- [DEPENDENCY_SELECTION.md](DEPENDENCY_SELECTION.md) - Criteria for choosing a
+  framework, library, or build-tool dependency.
 - [CONFLUENCE.md](CONFLUENCE.md) - Confluence wiki read-only and non-overridable no-delete safety rules.
 - [CODE_REVIEW_PLATFORM.md](CODE_REVIEW_PLATFORM.md) - Platform-neutral
   protected-branch, merge-authority, and review-thread contract.

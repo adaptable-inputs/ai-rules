@@ -1,6 +1,7 @@
 ---
 applies_to:
-  load: "always"
+  load: "conditional"
+  when: "the declared compliance scope includes `eu-ai-act`, or no compliance scope is declared"
   annex: "EU_AI_ACT.ANNEX.md"
   purpose: "baseline engineering controls for AI-system lifecycle governance in EU-regulated contexts"
   inherits: ["COMPLIANCE/COMPLIANCE.md", "SECURITY/SECURITY.md", "CORE/LOGGING.md", "COMPLIANCE/GDPR_BDSG.md", "TEST/TEST.md", "REVIEW/CODE_REVIEW.md"]

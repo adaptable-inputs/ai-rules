@@ -487,6 +487,67 @@ class TestGeneratedArtifacts(unittest.TestCase):
 
 
 # --------------------------------------------------------------------------
+# Corpus + checker: gating a regulation must fail safe
+# --------------------------------------------------------------------------
+class TestComplianceFailsafe(unittest.TestCase):
+    """Gating the five jurisdiction-specific regimes saves 2,167 tokens per task.
+    Gating them on a positive declaration would mean an agent that misjudges the
+    jurisdiction silently skips GDPR. Silence must load, not skip."""
+
+    REGIMES = ["GDPR_BDSG.md", "EPRIVACY_TTDSG.md", "EU_AI_ACT.md",
+               "DORA.md", "NIS2_KRITIS.md"]
+
+    def test_corpus_passes(self):
+        rc, out = run_structure(ROOT)
+        self.assertEqual(rc, 0, out)
+
+    def test_each_regime_loads_when_nothing_is_declared(self):
+        for name in self.REGIMES:
+            with self.subTest(doc=name):
+                meta = yaml.safe_load(
+                    (ROOT / "COMPLIANCE" / name).read_text(encoding="utf-8")
+                    .split("---")[1])["applies_to"]
+                self.assertEqual(meta["load"], "conditional")
+                self.assertIn("or no compliance scope is declared", meta["when"])
+
+    def test_licenses_stays_always(self):
+        meta = yaml.safe_load(
+            (ROOT / "COMPLIANCE" / "LICENSES.md").read_text(encoding="utf-8")
+            .split("---")[1])["applies_to"]
+        self.assertEqual(meta["load"], "always",
+                         "license compatibility binds every project")
+
+    def test_positive_only_gate_is_caught(self):
+        with Sandbox() as repo:
+            p = repo / "COMPLIANCE" / "GDPR_BDSG.md"
+            s = p.read_text(encoding="utf-8")
+            p.write_text(s.replace(
+                "the declared compliance scope includes `gdpr`, "
+                "or no compliance scope is declared",
+                "the declared compliance scope includes `gdpr`"), encoding="utf-8")
+            rc, out = run_structure(repo)
+            self.assertEqual(rc, 1, f"a positive-only gate would skip GDPR\n{out}")
+            self.assertIn("silently skips this regime", out)
+
+    def test_demoting_licenses_is_caught(self):
+        with Sandbox() as repo:
+            p = repo / "COMPLIANCE" / "LICENSES.md"
+            s = p.read_text(encoding="utf-8")
+            p.write_text(s.replace('load: "always"',
+                                   'load: "conditional"\n  when: "x"', 1),
+                         encoding="utf-8")
+            rc, out = run_structure(repo)
+            self.assertEqual(rc, 1, out)
+            self.assertIn("load: always", out)
+
+    def test_ai_md_documents_the_declaration(self):
+        text = (ROOT / "AI.md").read_text(encoding="utf-8")
+        self.assertIn("compliance_scope", text)
+        for regime in ("gdpr", "eprivacy", "eu-ai-act", "dora", "nis2"):
+            self.assertIn(f"`{regime}`", text, f"AI.md does not name {regime}")
+
+
+# --------------------------------------------------------------------------
 # Corpus + checker: no doc orders an exhaustive read
 # --------------------------------------------------------------------------
 class TestNoExhaustiveRead(unittest.TestCase):
@@ -578,6 +639,35 @@ class TestOverrideNotes(unittest.TestCase):
     def test_purpose_restatement_is_caught(self):
         self._expect_fail("- This file is the JPA baseline.",
                           "restates the global purpose rule")
+
+    def test_no_index_doc_carries_an_obligation(self):
+        # Introduced by the manifest change: MANIFEST.md lists only always/
+        # conditional/task, so 18 obligations in indexes became unreachable,
+        # including `MUST ensure licenses are compatible`.
+        rc, out = run_structure(ROOT)
+        self.assertEqual(rc, 0, out)
+
+    def test_obligation_added_to_an_index_is_caught(self):
+        with Sandbox() as repo:
+            p = repo / "LIBRARY" / "LIBRARY.md"
+            p.write_text(p.read_text(encoding="utf-8") +
+                         "\n## Selection\n- MUST prefer maintained libraries.\n",
+                         encoding="utf-8")
+            rc, out = run_structure(repo)
+            self.assertEqual(rc, 1, f"an unreachable rule slipped into an index\n{out}")
+            self.assertIn("index doc carries an obligation", out)
+
+    def test_link_lines_in_an_index_are_not_flagged(self):
+        # "- [X.md](X.md) - rules an agent MAY apply" is prose about a doc.
+        with Sandbox() as repo:
+            p = repo / "LIBRARY" / "LIBRARY.md"
+            s = p.read_text(encoding="utf-8")
+            p.write_text(s.replace(
+                "- [JPA.md](JPA.md)",
+                "- [JPA.md](JPA.md) - rules a project MAY apply;", 1),
+                encoding="utf-8")
+            rc, out = run_structure(repo)
+            self.assertEqual(rc, 0, f"false positive on an index link line\n{out}")
 
     def test_index_restatement_sections_are_caught(self):
         # 11 indexes carried these; every task that opened one paid for them.

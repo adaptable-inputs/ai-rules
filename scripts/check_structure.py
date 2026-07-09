@@ -63,6 +63,7 @@ KEYWORD_CONVERTED = {
     "LANGUAGE/LANGUAGE.md",
     "LIBRARY/LIBRARY.md",
     "REVIEW/REVIEW.md",
+    "CORE/DEPENDENCY_SELECTION.md",
     "ARCHITECTURE/CIRCUIT_BREAKER.md",
     "ARCHITECTURE/CLEAN_ARCHITECTURE.md",
     "ARCHITECTURE/CQRS.md",
@@ -529,6 +530,71 @@ def check_no_exhaustive_read() -> None:
                  f"AI.md Loading Protocol instead")
 
 
+def check_no_rules_in_indexes() -> None:
+    """An index navigates; it does not legislate.
+
+    MANIFEST.md lists only `always`, `conditional` and `task` docs, and AI.md
+    tells an agent not to open a category index. A keyworded bullet in an index
+    is therefore a rule nothing loads. That regression stranded 18 obligations,
+    including `MUST ensure licenses are compatible`, the moment the manifest
+    replaced index-walking. A link line ("- [X.md](X.md) - ... MAY ...") is prose
+    about a doc, not a rule, so link bullets are exempt.
+    """
+    for p in md_files():
+        meta = _applies_to(p)
+        if not meta or meta.get("load") != "index" or rel(p) == "MANIFEST.md":
+            continue
+        body = p.read_text(encoding="utf-8")
+        body = body[body.find("\n---\n") + 5:] if body.startswith("---\n") else body
+        for raw in re.findall(r"^- .*(?:\n  \S.*)*", body, re.M):
+            bullet = " ".join(raw.split())
+            if "](" in bullet:
+                continue
+            if KEYWORD.search(bullet):
+                fail(f"{rel(p)}: index doc carries an obligation, which nothing "
+                     f"loads: {bullet[:60]}... Move it to an always/conditional/"
+                     f"task doc")
+
+
+FAILSAFE = "or no compliance scope is declared"
+
+
+def check_compliance_failsafe() -> None:
+    """A regulation doc may be gated, but silence must never drop it.
+
+    The five jurisdiction-specific regimes cost 2,167 tokens on every task in
+    every project, including projects with no EU nexus. Gating them is right;
+    gating them on a positive declaration is not, because an agent that fails to
+    detect the project's jurisdiction would silently skip GDPR. Each `when`
+    therefore also fires when nothing has been declared, so the pre-gating
+    behaviour is what happens by default.
+
+    `LICENSES.md` stays `always`: license compatibility binds every project.
+    """
+    comp = ROOT / "COMPLIANCE"
+    if not comp.is_dir():
+        fail("COMPLIANCE/ is missing")
+        return
+    for p in sorted(comp.glob("*.md")):
+        if p.name.endswith(".ANNEX.md") or p.name == "COMPLIANCE.md":
+            continue
+        meta = _applies_to(p)
+        if not meta:
+            fail(f"{rel(p)}: unreadable frontmatter")
+            continue
+        if p.name == "LICENSES.md":
+            if meta.get("load") != "always":
+                fail(f"{rel(p)}: license policy binds every project; it must be load: always")
+            continue
+        if meta.get("load") != "conditional":
+            continue  # a regime may legitimately be always-on
+        when = str(meta.get("when", ""))
+        if FAILSAFE not in when:
+            fail(f"{rel(p)}: conditional compliance doc must also load when nothing "
+                 f"is declared. Add {FAILSAFE!r} to its `when`, or an undetected "
+                 f"jurisdiction silently skips this regime")
+
+
 def check_keyword_ratchet() -> None:
     """Converted docs may not regain a keyword-less normative imperative.
 
@@ -606,6 +672,8 @@ def main() -> int:
     check_annex_contract()
     check_override_notes()
     check_no_exhaustive_read()
+    check_compliance_failsafe()
+    check_no_rules_in_indexes()
     check_keyword_ratchet()
     if errors:
         print(f"structure check FAILED with {len(errors)} error(s):\n")

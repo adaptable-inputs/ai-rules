@@ -186,7 +186,15 @@ Note: Replace placeholders with actual paths:
 Use the shared AI rules located at:
 - Baseline: <AI_RULES_PATH>/AI.md
 - Downstream extension: <AI_PROJECT_PATH>/AI.md
+
+compliance_scope: ["gdpr", "eprivacy", "eu-ai-act", "dora", "nis2"]
 ```
+
+Trim `compliance_scope` to the regimes that actually bind this project; each one
+removed stops loading its rule doc. Omitting the line entirely loads all five,
+because an agent MUST fail toward loading a regulation rather than skipping one.
+`COMPLIANCE/LICENSES.md` always loads and is not listed. See `AI.md` "Compliance
+Scope".
 
 ### .github/copilot-instructions.md
 ```

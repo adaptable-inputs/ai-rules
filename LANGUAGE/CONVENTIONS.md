@@ -19,6 +19,8 @@ Rules:
 - MUST NOT override established language standards with team preference.
 - If multiple style tools exist, MUST choose one canonical formatter/linter path.
 - MUST resolve ambiguity by favoring consistency with existing code in the module.
+- MUST apply this file and `LANGUAGE/READABILITY.md` to every language, then the
+  specific language document (for example Java or TypeScript).
 
 ## Formatting Baseline
 - MUST use auto-formatters where available; MUST NOT hand-format against tooling.

@@ -1,6 +1,7 @@
 ---
 applies_to:
-  load: "always"
+  load: "conditional"
+  when: "the declared compliance scope includes `gdpr`, or no compliance scope is declared"
   annex: "GDPR_BDSG.ANNEX.md"
   purpose: "baseline engineering controls for personal-data handling aligned with GDPR/BDSG expectations"
   inherits: ["COMPLIANCE/COMPLIANCE.md", "COMPLIANCE/LICENSES.md", "SECURITY/SECURITY.md", "CORE/LOGGING.md", "TEST/TEST.md", "REVIEW/CODE_REVIEW.md"]

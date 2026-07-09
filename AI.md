@@ -14,7 +14,9 @@ An agent MUST NOT read this ruleset exhaustively. Load in this order:
    `CORE/RULE_DEPENDENCY_TREE.md`. Without these an agent cannot interpret the
    obligation level or precedence of any other rule.
 2. **Detect the stack.** Inspect the project for languages, frameworks,
-   libraries, build tools, and infrastructure actually in use.
+   libraries, build tools, and infrastructure actually in use. Also read the
+   project's declared `compliance_scope`, if it has one; see "Compliance Scope"
+   below.
 3. **Load only what matches.** Read [MANIFEST.md](MANIFEST.md) - one generated
    table of every loadable doc, its load class, and the condition under which it
    applies - then load only the rows matching the detected stack. A Java project
@@ -31,6 +33,20 @@ An agent MUST NOT read this ruleset exhaustively. Load in this order:
    NOT load an annex while implementing a change; it MUST load one whose
    `tasks` include the task at hand (`review`, `test`). This removes about 32%
    of the context an implementation task would otherwise carry.
+
+### Compliance Scope
+`COMPLIANCE/LICENSES.md` binds every project and always loads. The five
+jurisdiction-specific regimes - `gdpr`, `eprivacy`, `eu-ai-act`, `dora`, `nis2` -
+load only when the project's entry point (`AGENTS.md`, `CLAUDE.md`) declares them:
+
+```md
+compliance_scope: ["gdpr", "eprivacy"]
+```
+
+An undeclared project loads **all five**, because an agent that misjudges a
+project's jurisdiction MUST fail toward loading a regulation rather than
+skipping one. Declaring the scope is what makes skipping safe. To assert that
+none apply, declare it empty: `compliance_scope: []`.
 
 ### Never Load
 These MUST NOT be read as project rules. They are repository history and

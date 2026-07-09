@@ -1,6 +1,7 @@
 ---
 applies_to:
-  load: "always"
+  load: "conditional"
+  when: "the declared compliance scope includes `dora`, or no compliance scope is declared"
   annex: "DORA.ANNEX.md"
   purpose: "baseline engineering controls that support DORA-style ICT risk and resilience obligations"
   inherits: ["COMPLIANCE/COMPLIANCE.md", "SECURITY/SECURITY.md", "INFRASTRUCTURE/**", "CI-CD/**", "CORE/LOGGING.md"]

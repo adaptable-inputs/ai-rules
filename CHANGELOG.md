@@ -82,6 +82,35 @@ Sub-heading template:
   keep only their doc-specific precedence rules.
 - Added `check_override_notes()` to `scripts/check_structure.py` so the
   permission, concession, and purpose-restatement shapes cannot return.
+- Removed the `Ruleset Read Gate (Mandatory)` from `PROGRAMMING/PROGRAMMING.md`,
+  `PLAN/PLAN.md`, and `REVIEW/CODE_REVIEW.md`. It ordered an agent to read every
+  Markdown file reachable from `AI.md` - roughly 79,000 tokens - and discard the
+  irrelevant ones afterwards, while `AI.md` says an agent MUST NOT read the
+  ruleset exhaustively. Every task loads one of those three docs, so the gate
+  silently defeated conditional loading and the annex split.
+- Added `MANIFEST.md`, generated from `applies_to` frontmatter by
+  `scripts/gen_manifest.py`. An agent reads it once to select rule docs instead
+  of walking 11 category indexes. `scripts/check_indexes_accurate.py` verifies
+  the index link graph, and `.githooks/pre-commit` plus a `generated` CI job
+  fail the build when either drifts.
+- Stripped `Role in the Ruleset`, `Scope Boundary`, and `Authoring Notes` from
+  the category indexes and `CORE/CORE.md`, then brought the indexes and `AI.md`
+  under the keyword ratchet, which found four un-keyworded rules.
+- Moved every obligation out of the category indexes: an index is not listed in
+  the manifest, so a rule there loads for nobody. `CORE/DEPENDENCY_SELECTION.md`
+  now holds the framework/library/build-tool selection criteria (including
+  `MUST ensure licenses are compatible`), and precedence rules moved to
+  `CORE/RULE_DEPENDENCY_TREE.md`, `LANGUAGE/CONVENTIONS.md`, and
+  `REVIEW/CODE_REVIEW.md`. `check_no_rules_in_indexes()` enforces it.
+- Gated the five jurisdiction-specific compliance regimes (`gdpr`, `eprivacy`,
+  `eu-ai-act`, `dora`, `nis2`) on a project's declared `compliance_scope`,
+  saving 2,167 tokens per task where they do not apply.
+  `COMPLIANCE/LICENSES.md` stays `always`. Every gate also fires when no scope is
+  declared, so an agent that misjudges a project's jurisdiction loads the
+  regulation rather than skipping it; `check_compliance_failsafe()` enforces that.
+- Kept the three duplicated cloud bullets in `AWS.md`, `GCP.md`, and `AZURE.md`.
+  Hoisting them to `INFRA_AS_CODE.md` would drop them for a cloud project that
+  declares no infrastructure as code, to save at most 76 tokens.
 
 ## [v4.11.0] - 2026-03-27
 - Reordered downstream-project command examples to namespace-first wording:

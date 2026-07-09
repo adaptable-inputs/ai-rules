@@ -243,6 +243,11 @@ stop work, and MUST NOT treat "file an issue" as a prerequisite for proceeding.
 Aligning the specific doc and filing any issue are separate follow-up actions
 for a human maintainer.
 
+- If a technical recommendation conflicts with a compliance rule, compliance is
+  authoritative and the technical guidance MUST be revised.
+- Build-tool and infrastructure docs are authoritative for their own layers.
+  CI/CD docs SHOULD orchestrate them rather than redefine them.
+
 ## Redundancy and Override Policy
 Allowed:
 - Repeating a parent rule as a short reminder plus a clear parent reference.

@@ -7,10 +7,6 @@ applies_to:
 Build-tool layer contract for dependency management, build reproducibility, and
 artifact-generation workflow.
 
-## Tool Selection
-- SHOULD prefer the standard build tool for the language/ecosystem unless a
-  strong, explicit reason exists to deviate.
-
 ## Files
 - [BUN.md](BUN.md) - Bun package manager guidance.
 - [GRADLE.md](GRADLE.md) - Gradle build and wrapper guidance.
