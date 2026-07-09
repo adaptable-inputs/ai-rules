@@ -43,7 +43,3 @@ Guidance for AI agents implementing and reviewing SQL.
 - MUST minimize granted DB privileges by role.
 - SHOULD avoid returning sensitive columns unless required.
 - MUST treat migration scripts as security-sensitive artifacts.
-
-## Override Notes
-- ORM/framework docs MAY adjust implementation style but MUST preserve
-  parameterization, transaction safety, and query-plan awareness defined here.

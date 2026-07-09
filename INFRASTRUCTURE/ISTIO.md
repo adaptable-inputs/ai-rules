@@ -35,7 +35,3 @@ Guidance for AI agents implementing and reviewing Istio service mesh policies.
 - SHOULD track latency, error rate, retry count, and outlier ejection behavior.
 - SHOULD alert on policy-induced failures (5xx spikes, route blackholes).
 - SHOULD keep config changes auditable and rollback-ready.
-
-## Override Notes
-- Platform governance MAY enforce stricter mesh controls, but explicit traffic
-  safety, least privilege, and observability constraints here remain mandatory.

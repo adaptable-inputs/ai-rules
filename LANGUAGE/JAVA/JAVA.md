@@ -98,8 +98,3 @@ ignore rules):
 Do not ignore wrapper scripts or wrapper JARs required to build projects
 (for example `gradle/wrapper/gradle-wrapper.jar`,
 `.mvn/wrapper/maven-wrapper.jar`).
-
-## Override Notes
-- This file is the Java baseline.
-- Java specialization docs and Java framework/library docs MAY narrow patterns
-  for specific contexts, but MUST keep this file's safety and clarity defaults.

@@ -34,7 +34,3 @@ Guidance for AI agents implementing and reviewing Playwright tests.
 - SHOULD capture traces/screenshots/videos on failure according to policy.
 - SHOULD keep logs/artifacts easy to correlate with failed scenario.
 - SHOULD use step-level diagnostics for complex flows.
-
-## Override Notes
-- Project-specific E2E policy MAY define stricter locator/test-ID conventions,
-  but determinism and stable-locator constraints here remain mandatory.

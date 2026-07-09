@@ -78,9 +78,3 @@ Level selection rules:
 - SHOULD use async/non-blocking appenders carefully; define backpressure/drop policy.
 - SHOULD prefer bounded queues over unbounded memory growth in logging pipelines.
 - MUST validate log formatter behavior under malformed payloads.
-
-## Override Notes
-- Framework/library docs MAY require additional fields or stricter logging
-  behavior (for example HTTP-specific request IDs, Kafka offsets).
-- Such specializations MAY narrow this baseline but MUST NOT weaken
-  confidentiality or reliability constraints defined here.

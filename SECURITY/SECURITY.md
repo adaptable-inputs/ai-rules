@@ -51,7 +51,3 @@ Guidance for AI agents implementing and reviewing security-relevant changes.
 - MUST return safe, actionable error responses without leaking internals.
 - MUST log security-relevant events (auth failures, policy denials, suspicious activity) with safe redaction.
 - MUST ensure security logging itself cannot crash request paths.
-
-## Override Notes
-- Downstream docs MAY specialize controls for framework/runtime specifics, but
-  MUST NOT weaken this baseline without explicit, reviewed rationale.

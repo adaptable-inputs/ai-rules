@@ -45,9 +45,3 @@ review.
 - SHOULD avoid cyclic dependencies.
 - SHOULD keep public APIs minimal and stable.
 - SHOULD avoid hidden coupling through globals/static mutable state.
-
-## Override Notes
-- Specialized docs MAY add stricter/idiomatic constraints; explicit overrides
-  MUST be documented and justified.
-- Framework/language docs MAY prescribe idiomatic structures, but clean-code
-  clarity and cohesion constraints remain mandatory.

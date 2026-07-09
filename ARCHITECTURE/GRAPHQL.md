@@ -52,7 +52,3 @@ Guidance for AI agents implementing and reviewing GraphQL APIs.
 - MUST validate input payloads before domain execution.
 - MUST prevent introspection abuse in production when policy requires restriction.
 - MUST monitor query patterns for scraping/amplification behavior.
-
-## Override Notes
-- Framework-specific GraphQL libraries MAY change wiring patterns, but schema
-  compatibility, query-safety, and authorization rules here remain mandatory.

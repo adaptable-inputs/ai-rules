@@ -199,8 +199,3 @@ Effects synchronize Angular state with non-reactive or imperative systems.
   `SecurityContext`.
 - MUST treat `bypassSecurityTrust*` as exceptional and document trust boundaries.
 - MUST keep Angular updated and use production AOT builds.
-
-## Override Notes
-- Project-specific Angular conventions MAY add stricter structure or delivery
-  constraints, but reactivity clarity, cleanup safety, and SSR/hydration
-  guardrails remain mandatory.

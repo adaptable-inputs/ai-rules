@@ -53,8 +53,3 @@ Guidance for AI agents implementing and reviewing Pulumi infrastructure changes.
 - SHOULD keep import/refactor operations explicit and documented.
 - SHOULD validate replacement impact before updates that can recreate resources.
 - SHOULD keep rollback/recovery steps documented for high-impact changes.
-
-## Override Notes
-- Project-specific Pulumi patterns MAY narrow implementation details, but
-  version pinning, preview-review discipline, state safety, and secret hygiene
-  remain mandatory.

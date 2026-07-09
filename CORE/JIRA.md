@@ -184,8 +184,3 @@ rewrite a description.
 - Residual Risks:
   - Remaining known risk.
 ```
-
-## Override Notes
-- Project-specific Jira workflows MAY add mandatory custom fields, but the
-  explicit-ticket-edit authorization rule and summary completeness rules here
-  remain mandatory.

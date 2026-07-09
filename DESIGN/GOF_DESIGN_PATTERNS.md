@@ -49,7 +49,3 @@ Guidance for AI agents applying GoF patterns pragmatically.
 - SHOULD avoid pattern names as substitutes for clear domain names.
 - SHOULD avoid hidden complexity behind facade/proxy without observability.
 - SHOULD avoid singleton-as-global-variable design.
-
-## Override Notes
-- Framework conventions MAY impose structural patterns implicitly, but pattern
-  adoption SHOULD remain intent-driven and complexity-aware.

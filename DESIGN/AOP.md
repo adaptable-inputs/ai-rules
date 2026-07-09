@@ -32,7 +32,3 @@ Guidance for AI agents applying Aspect-Oriented Programming responsibly.
 - SHOULD avoid mutating method arguments/results unless explicitly intended.
 - SHOULD preserve exception semantics unless mapping is deliberate.
 - SHOULD keep aspect configuration centralized and discoverable.
-
-## Override Notes
-- Framework-specific AOP mechanics MAY differ, but cross-cutting-only scope and
-  transparency constraints here remain mandatory.

@@ -93,6 +93,4 @@ risk; never omit one:
 - Are assumptions and follow-ups explicit?
 
 ## Override Notes
-- Task-specific user constraints MAY change plan format or depth, but they do
-  not remove the mandatory plan-before-implementation requirement.
 - Plans MUST stay decision-complete and dependency-aware.

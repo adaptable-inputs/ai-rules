@@ -36,8 +36,3 @@ Guidance for AI agents implementing and reviewing PHP code.
 - SHOULD keep side effects explicit in service boundaries.
 - SHOULD keep static state and singleton usage minimal and intentional.
 - SHOULD keep IO interactions isolated for testability.
-
-## Override Notes
-- Project-specific PHP conventions MAY add stricter patterns, but strict type
-  discipline, explicit boundary validation, safe error handling, and clear
-  side-effect boundaries remain mandatory.

@@ -48,7 +48,3 @@ Guidance for AI agents on writing code with low cognitive load.
 - SHOULD keep happy path and failure path clearly separated.
 - SHOULD use explicit error types/messages that communicate cause and recovery context.
 - SHOULD avoid broad error-handling blocks that hide control flow outcomes.
-
-## Override Notes
-- Language/framework docs MAY define local idioms (for example React hooks,
-  Java stream style) but SHOULD still satisfy these readability constraints.

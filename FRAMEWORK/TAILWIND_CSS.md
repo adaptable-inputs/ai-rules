@@ -42,8 +42,3 @@ Guidance for AI agents implementing and reviewing Tailwind CSS code.
 - SHOULD avoid dynamically constructed class names that evade static extraction.
 - SHOULD keep generated CSS size bounded and monitored through the project's build and delivery standards.
 - SHOULD prefer stable class composition over runtime string-generation complexity.
-
-## Override Notes
-- Project-specific design system docs MAY define stricter token/component
-  constraints, but accessibility and maintainability baseline here remains
-  mandatory.

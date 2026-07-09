@@ -30,7 +30,3 @@ cleanup/consistency behavior:
 Modern language/runtime features (for example structured cleanup constructs,
 GC-managed memory, and scoped APIs) reduce these risks in many cases. Treat
 early return as the default, and treat caveats as exceptions to check.
-
-## Override Notes
-- Language/framework docs MAY narrow early-return style for specific paradigms,
-  but SHOULD keep the default preference for reduced nesting and explicit flow.

@@ -42,8 +42,3 @@ and operations choices.
 - SHOULD use staged rollout for risky platform changes.
 - SHOULD keep backup/restore and disaster-recovery procedures tested.
 - SHOULD monitor quota/limit headroom and scaling boundaries proactively.
-
-## Override Notes
-- Project-specific Azure conventions MAY narrow implementation details, but
-  least-privilege identity, private-by-default networking, auditability, and
-  operational resilience controls remain mandatory.

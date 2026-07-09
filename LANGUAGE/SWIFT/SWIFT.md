@@ -43,8 +43,3 @@ Guidance for AI agents implementing and reviewing Swift code.
 - SHOULD keep protocol abstractions purposeful, not premature.
 - SHOULD keep side effects isolated at service/adaptor boundaries.
 - MUST keep configuration/secrets outside code.
-
-## Override Notes
-- Project-specific Swift conventions MAY add stricter patterns, but optional
-  safety, structured concurrency/isolation, explicit error handling, and clear
-  boundary separation remain mandatory.

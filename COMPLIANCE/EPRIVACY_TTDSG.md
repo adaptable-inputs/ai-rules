@@ -43,7 +43,3 @@ Consult qualified legal counsel for final legal decisions.
 - MUST delete or disable non-essential identifiers/tokens upon revocation where feasible.
 - SHOULD keep retention windows explicit for tracking-related data.
 - SHOULD keep consent records and policy-version linkage auditable.
-
-## Override Notes
-- Project or sector-specific regulation MAY be stricter; stricter policy always
-  wins.

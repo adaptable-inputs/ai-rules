@@ -63,8 +63,3 @@ hosting platform.
 - If a requested fix is broader than a local suggestion, SHOULD offer to implement it in an AI-agent session on the
   existing branch.
 - After offering broader implementation help, MUST wait for user confirmation before making branch changes.
-
-## Override Notes
-- Project-specific governance MAY be stricter. Protected-branch discipline,
-  unresolved review threads blocking merge, and merge-by-explicit-request
-  behavior remain mandatory and MUST NOT be weakened.

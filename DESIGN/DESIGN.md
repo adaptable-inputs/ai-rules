@@ -29,14 +29,6 @@ DESIGN does not include:
 Those belong in `FRAMEWORK/**`, `LIBRARY/**`, `BUILD_TOOLS/**`,
 `INFRASTRUCTURE/**`, and `CI-CD/**`.
 
-## Specialization Contract
-- Child design docs may narrow design principles for specific contexts
-  (for example SOLID, GoF patterns, AOP boundaries).
-- Design docs must not weaken inherited security/compliance/test constraints
-  without explicit, reviewed rationale.
-- Framework/library docs may apply design patterns concretely, but design
-  principles remain authoritative unless explicitly specialized.
-
 ## Files
 - [AOP.md](AOP.md) - Aspect-oriented programming guidance.
 - [CLEAN_CODE.md](CLEAN_CODE.md) - Clean code practices.

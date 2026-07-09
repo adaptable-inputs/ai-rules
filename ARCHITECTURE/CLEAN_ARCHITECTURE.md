@@ -43,7 +43,3 @@ Guidance for AI agents implementing and reviewing Clean Architecture patterns.
 - SHOULD keep use-case logic deterministic where possible.
 - SHOULD keep transaction scope aligned with use-case boundary.
 - SHOULD avoid domain-layer calls directly to infrastructure.
-
-## Override Notes
-- Framework docs MAY prescribe wiring patterns, but dependency direction and
-  boundary-isolation rules in this file remain mandatory.

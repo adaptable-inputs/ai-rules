@@ -46,7 +46,3 @@ Guidance for AI agents implementing and reviewing HTML markup.
 - SHOULD keep reusable UI structures componentized where framework allows.
 - SHOULD prefer lazy-loading for non-critical media where applicable.
 - SHOULD avoid duplicated IDs and non-unique `id` attributes.
-
-## Override Notes
-- Framework docs MAY define templating syntax, but semantic and accessibility
-  obligations in this file remain mandatory.

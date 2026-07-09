@@ -42,8 +42,3 @@ Guidance for AI agents implementing and reviewing C#/.NET code.
 - SHOULD keep service classes cohesive with one primary responsibility.
 - SHOULD avoid static utility sprawl for domain behavior.
 - MUST keep configuration and secrets out of code.
-
-## Override Notes
-- Project-specific C#/.NET conventions MAY add stricter patterns, but nullable
-  contract integrity, async/cancellation safety, explicit error handling, and
-  boundary separation remain mandatory.

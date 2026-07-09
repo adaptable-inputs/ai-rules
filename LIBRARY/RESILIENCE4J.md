@@ -36,7 +36,3 @@ Guidance for AI agents implementing and reviewing Resilience4j policies.
 - SHOULD export metrics for policy activations and outcomes.
 - SHOULD log state transitions and fallback activations with dependency context.
 - SHOULD alert on sustained breaker open states, retry storms, and bulkhead rejection spikes.
-
-## Override Notes
-- Framework integrations MAY vary (annotations, decorators, functional APIs),
-  but policy correctness and observability constraints here remain mandatory.

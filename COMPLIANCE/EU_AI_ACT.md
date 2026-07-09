@@ -50,7 +50,3 @@ Consult qualified legal counsel for final legal decisions.
 - SHOULD assess provider limitations, retention behavior, and security posture.
 - SHOULD keep fallback plans for provider outages or policy-breaking behavior changes.
 - MUST restrict sensitive data exposure to external AI providers unless explicitly approved.
-
-## Override Notes
-- Project or sector-specific regulation MAY be stricter; stricter policy always
-  wins.

@@ -43,7 +43,3 @@ Consult qualified legal counsel for final legal decisions.
 - SHOULD define fallback/exit strategies for high-criticality third-party services.
 - MUST keep integration privileges scoped and auditable.
 - SHOULD reassess third-party risk after major incidents or material changes.
-
-## Override Notes
-- Project or sector-specific regulation MAY be stricter; stricter policy always
-  wins.

@@ -39,7 +39,3 @@ Guidance for AI agents applying SOLID principles pragmatically.
 - SHOULD prefer simple direct code when extension pressure is low.
 - SHOULD introduce abstraction when it reduces expected change cost.
 - MUST document deliberate deviations when pragmatic constraints apply.
-
-## Override Notes
-- Framework constraints MAY require pragmatic compromises, but contract
-  compatibility and boundary isolation principles remain mandatory.

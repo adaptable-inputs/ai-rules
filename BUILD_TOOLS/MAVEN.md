@@ -57,8 +57,3 @@ Do not ignore wrapper scripts or wrapper JARs required for build
 (for example `.mvn/wrapper/maven-wrapper.jar`).
 If a broader ignore pattern includes `*.jar`, add an explicit negation rule
 for the wrapper JAR.
-
-## Override Notes
-- Project-specific release processes MAY add stricter Maven workflow rules, but
-  wrapper usage, deterministic versioning, and supply-chain controls remain
-  mandatory.

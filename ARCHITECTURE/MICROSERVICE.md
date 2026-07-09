@@ -46,8 +46,3 @@ Guidance for AI agents implementing and reviewing microservice architecture.
 - MUST apply least privilege for data and network access.
 - MUST validate all incoming payloads at service boundaries.
 - SHOULD avoid exposing internal topology details via public errors.
-
-## Override Notes
-- Framework and infrastructure docs MAY define implementation mechanics, but
-  boundary ownership, compatibility, and resilience constraints here remain
-  mandatory.

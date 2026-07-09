@@ -32,14 +32,6 @@ INFRASTRUCTURE does not include:
 Those belong in `FRAMEWORK/**`, `LIBRARY/**`, `LANGUAGE/**`,
 `BUILD_TOOLS/**`, and `CI-CD/**`.
 
-## Specialization Contract
-- Infrastructure child docs may narrow parent guidance where runtime semantics
-  require it.
-- Infrastructure docs must not weaken inherited security/compliance/test
-  constraints without explicit, reviewed rationale.
-- CI/CD docs may specialize delivery automation around infrastructure rules but
-  must keep this layer authoritative for runtime platform behavior.
-
 ## Files
 - [INFRA_AS_CODE.md](INFRA_AS_CODE.md) - Infrastructure as Code baseline guidance.
 - [TERRAFORM.md](TERRAFORM.md) - Terraform infrastructure guidance.

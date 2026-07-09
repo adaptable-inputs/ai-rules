@@ -30,14 +30,9 @@ BUILD_TOOLS does not include:
 Those belong in `FRAMEWORK/**`, `LIBRARY/**`, `INFRASTRUCTURE/**`, and
 `CI-CD/**`.
 
-## Specialization Contract
-- SHOULD prefer the standard build tool for the language/ecosystem unless a strong,
-  explicit reason exists to deviate.
-- Tool-specific docs may narrow parent guidance when tool semantics require it.
-- Any narrowing/override of inherited guidance must be explicit and justified in
-  the specialized tool doc.
-- Tool docs must not weaken inherited security/compliance/reproducibility
-  constraints unless an upstream rule explicitly allows that weakening.
+## Tool Selection
+- SHOULD prefer the standard build tool for the language/ecosystem unless a
+  strong, explicit reason exists to deviate.
 
 ## Files
 - [BUN.md](BUN.md) - Bun package manager guidance.

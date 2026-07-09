@@ -51,8 +51,3 @@ workflows.
 - SHOULD emit clear failure context (what failed, where, likely next action).
 - SHOULD track workflow duration/flakiness trends.
 - SHOULD keep flaky tests/jobs quarantined and actively remediated.
-
-## Override Notes
-- Project-specific delivery policies MAY add stricter approvals/compliance
-  gates, but deterministic quality-gated workflows, least-privilege
-  permissions, and secret hygiene remain mandatory.

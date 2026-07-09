@@ -35,7 +35,5 @@ values in Java.
   code.
 
 ## Override Notes
-- This file narrows Java baseline monetary modeling by making JavaMoney the
-  default approach.
 - If a boundary cannot use JavaMoney, keep conversion localized at that
   boundary and return to JavaMoney types immediately in core logic.

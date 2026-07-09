@@ -44,7 +44,3 @@ Consult qualified legal counsel for final legal decisions.
 - SHOULD keep disaster-recovery exercises and failover validation periodic.
 - SHOULD avoid single points of failure in infrastructure/control planes where feasible.
 - MUST keep change management gates strong for critical production paths.
-
-## Override Notes
-- Project or sector-specific regulation MAY be stricter; stricter policy always
-  wins.

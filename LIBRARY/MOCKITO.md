@@ -37,7 +37,3 @@ Guidance for AI agents implementing and reviewing Mockito-based tests.
 - SHOULD avoid static/global mocking unless absolutely necessary.
 - SHOULD avoid using spies to patch design smells; refactor boundaries instead.
 - SHOULD avoid returning mutable shared objects from stubs unless intentional.
-
-## Override Notes
-- Framework-specific test utilities MAY supplement Mockito usage, but mocking
-  boundary discipline and readability constraints here remain mandatory.

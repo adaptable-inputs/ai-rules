@@ -47,8 +47,3 @@ Guidance for AI agents implementing and reviewing event-driven systems.
 - SHOULD monitor throughput, lag, retry count, DLQ volume, and processing latency.
 - SHOULD log consumer failures with event identity and attempt metadata.
 - SHOULD alert on sustained DLQ growth and lag thresholds.
-
-## Override Notes
-- Broker-specific library docs MAY change implementation details, but idempotency,
-  compatibility, retry safety, and observability constraints here remain
-  mandatory.

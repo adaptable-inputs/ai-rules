@@ -25,7 +25,3 @@ review lifecycle rules.
 GitLab applies the baseline in `CORE/CODE_REVIEW_PLATFORM.md` without override:
 only the author of a review comment MAY resolve that discussion. There is no
 maintainer-resolution exception on GitLab.
-
-## Override Notes
-- Project-specific GitLab governance MAY be stricter. The baseline mandates in
-  `CORE/CODE_REVIEW_PLATFORM.md` remain in force; GitLab declares no override.

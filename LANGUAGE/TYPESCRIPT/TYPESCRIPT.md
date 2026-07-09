@@ -122,8 +122,3 @@ Add these when using TypeScript (if not already covered by baseline ignore
 list):
 - `*.tsbuildinfo`
 - `dist/`, `out/` when build outputs are generated locally
-
-## Override Notes
-- This file narrows JavaScript baseline by enforcing static typing discipline.
-- Framework docs MAY add TS framework idioms (for example React props typing),
-  but MUST keep strict boundary validation and safe narrowing rules.

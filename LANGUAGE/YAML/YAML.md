@@ -43,8 +43,3 @@ Guidance for AI agents implementing and reviewing YAML configuration files.
 - SHOULD avoid copy-paste divergence across environment files.
 - SHOULD track schema version fields explicitly when supported.
 - SHOULD keep default values safe; production overrides SHOULD be minimal and explicit.
-
-## Override Notes
-- Platform/tool docs MAY add schema-specific constraints.
-- Baseline parsing safety and secret-handling rules in this file remain
-  mandatory.

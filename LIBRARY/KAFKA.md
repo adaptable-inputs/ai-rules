@@ -43,7 +43,3 @@ Guidance for AI agents implementing and reviewing Apache Kafka usage.
 - SHOULD track rebalance frequency and consumer health.
 - SHOULD log processing failures with topic/partition/offset context.
 - SHOULD alert on sustained lag and retry storms.
-
-## Override Notes
-- Broker/platform-specific settings MAY vary, but contract compatibility,
-  idempotency, and observability constraints here remain mandatory.

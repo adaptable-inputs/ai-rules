@@ -40,8 +40,3 @@ Guidance for AI agents implementing and reviewing Jest tests.
 - SHOULD control random inputs with deterministic seeds.
 - SHOULD keep test order independence.
 - MUST quarantine/remediate flaky tests quickly.
-
-## Override Notes
-- Playwright/Selenium docs MAY cover complementary browser E2E testing.
-- Framework-specific testing utilities MAY extend Jest usage, but deterministic
-  async handling and isolation constraints here remain mandatory.

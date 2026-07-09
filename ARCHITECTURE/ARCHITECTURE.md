@@ -29,15 +29,6 @@ ARCHITECTURE does not include:
 Those belong in `FRAMEWORK/**`, `LIBRARY/**`, `BUILD_TOOLS/**`,
 `INFRASTRUCTURE/**`, and `CI-CD/**`.
 
-## Specialization Contract
-- Pattern documents may specialize architecture constraints for specific styles
-  (for example event-driven, REST, GraphQL).
-- Architecture docs may narrow/extend parent guidance, but must not weaken
-  inherited mandatory security/compliance/testing constraints unless an upstream
-  parent rule explicitly marks that behavior optional.
-- Framework/library docs may specialize architecture guidance only with explicit
-  justification in those specialized docs.
-
 ## Files
 - [CLEAN_ARCHITECTURE.md](CLEAN_ARCHITECTURE.md) - Layering and dependency direction guidance.
 - [CIRCUIT_BREAKER.md](CIRCUIT_BREAKER.md) - Circuit breaker usage and monitoring.

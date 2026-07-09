@@ -71,7 +71,3 @@ Each finding SHOULD include:
 - Are dependency/tooling additions evaluated rigorously?
 - Are test/verification gaps clearly documented?
 - Is final output concise, concrete, and decision-useful?
-
-## Override Notes
-- Project-specific review policy MAY define extra gates, but severity-first,
-  actionable, evidence-based review output here remains mandatory.

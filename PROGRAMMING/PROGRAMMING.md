@@ -65,8 +65,3 @@ Guidance for AI agents executing implementation tasks.
 - SHOULD keep commit/PR summaries explicit about what changed and why.
 - SHOULD document notable tradeoffs and deferred follow-ups.
 - SHOULD include the completion status contract defined in `CORE/VERSION_CONTROL_SYSTEM.md`.
-
-## Override Notes
-- Task-specific overlays (`PLAN/PLAN.md`, `REVIEW/CODE_REVIEW.md`) MAY adjust
-  output format, but implementation safety/verification requirements here
-  remain mandatory.

@@ -46,7 +46,3 @@ Guidance for AI agents implementing and reviewing PrimeFaces/JSF projects.
 - MUST protect against CSRF/XSS with framework and platform controls.
 - SHOULD avoid exposing sensitive data in hidden fields/view state.
 - MUST keep file upload and input handling strictly validated.
-
-## Override Notes
-- Project-specific JSF conventions MAY add view-structure constraints, but scope
-  minimization, layering, and security rules in this file remain mandatory.

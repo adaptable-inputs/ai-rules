@@ -31,11 +31,7 @@ COMPLIANCE does not include:
 Those belong in `LANGUAGE/**`, `FRAMEWORK/**`, `LIBRARY/**`,
 `BUILD_TOOLS/**`, `INFRASTRUCTURE/**`, and `CI-CD/**`.
 
-## Specialization Contract
-- Child compliance docs MAY narrow compliance constraints for specific legal
-  domains (for example, license policy).
-- Downstream docs MUST NOT weaken compliance constraints without explicit,
-  reviewed governance approval.
+## Precedence
 - If a technical recommendation conflicts with compliance rules, compliance is
   authoritative and the technical guidance MUST be revised.
 

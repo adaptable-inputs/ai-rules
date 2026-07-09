@@ -49,8 +49,3 @@ Add these when using Node tooling (if not already in baseline ignore list):
 - `npm-debug.log*`, `yarn-debug.log*`, `yarn-error.log*`, `pnpm-debug.log*`
 - `.npm/`, `.yarn/`, `.pnpm-store/`
 - `.pnp.*` (Yarn Plug'n'Play)
-
-## Override Notes
-- Specialized package-manager docs MAY narrow manager-specific behavior, but
-  lockfile discipline, deterministic installs, and secret/supply-chain safety
-  here remain mandatory.

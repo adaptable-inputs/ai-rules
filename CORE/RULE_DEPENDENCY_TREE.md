@@ -27,6 +27,12 @@ AI-agent rule documents.
   MUST NOT reference child/specialization docs in normative rule content.
 - Child/specialization docs MAY reference parent/general docs.
 - Exception: pure index docs MAY link to child docs for navigation.
+- A rule's own keyword is authoritative. Prose MUST NOT assert a force the
+  keyword does not carry: "these constraints remain mandatory" changes nothing
+  about a `SHOULD`. To make a rule mandatory, change its keyword to `MUST`.
+- A specialized doc MAY be stricter than its parent and MUST NOT be weaker. That
+  holds for every doc; a doc MUST NOT restate it. An `## Override Notes` section
+  is only for an override this doc actually declares.
 
 ## Precedence Model
 Apply rules from top to bottom. Lower layers specialize higher layers.

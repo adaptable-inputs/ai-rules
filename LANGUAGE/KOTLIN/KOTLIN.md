@@ -43,8 +43,3 @@ Guidance for AI agents implementing and reviewing Kotlin code.
 - SHOULD keep extension functions focused and avoid hidden side effects.
 - SHOULD keep companion objects/static-like usage minimal and intentional.
 - MUST keep configuration and secrets outside code.
-
-## Override Notes
-- Project-specific Kotlin conventions MAY add stricter patterns, but null-safety
-  integrity, structured concurrency, explicit error handling, and boundary
-  cohesion remain mandatory.

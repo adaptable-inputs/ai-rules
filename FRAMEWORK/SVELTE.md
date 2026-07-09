@@ -45,8 +45,3 @@ Guidance for AI agents implementing and reviewing Svelte projects.
 - SHOULD use keyed each-blocks for stable list updates.
 - SHOULD keep expensive computations memoized/derived outside repeated render logic.
 - SHOULD split large components by feature boundary.
-
-## Override Notes
-- Project-specific SvelteKit conventions MAY add routing/data-loading rules, but
-  reactivity clarity, cleanup safety, and accessibility constraints remain
-  mandatory.

@@ -41,8 +41,3 @@ the same thresholds conservatively.
 - SHOULD keep cross-cutting concerns out of core methods (use focused wrappers/aspects only for the cross-cutting
   concerns listed in `DESIGN/AOP.md`).
 - MUST use `DESIGN/EARLY_RETURN.md` for guard-clause defaults, guardrails, and caveats.
-
-## Override Notes
-- Language/framework docs MAY impose different local thresholds when justified,
-  but they MUST NOT weaken the enforced new-method limit without explicit
-  rationale and review.

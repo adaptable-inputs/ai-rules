@@ -44,7 +44,3 @@ Guidance for AI agents preventing and detecting N+1 query patterns.
 - SHOULD avoid giant fetch joins that explode row multiplicity without pagination.
 - SHOULD keep response payload size aligned with use-case requirements.
 - SHOULD combine pagination with batching to bound memory and query costs.
-
-## Override Notes
-- Framework/library docs MAY define API-specific mechanisms, but anti-N+1
-  guarantees and query-count predictability in this file remain mandatory.

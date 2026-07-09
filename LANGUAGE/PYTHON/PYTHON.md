@@ -42,8 +42,3 @@ Guidance for AI agents implementing and reviewing Python code.
 - SHOULD keep configuration separate from runtime/business logic.
 - SHOULD keep dependency surface minimal and justified.
 - SHOULD keep scripts/entrypoints thin and delegate behavior to testable modules.
-
-## Override Notes
-- Project-specific Python conventions MAY add stricter patterns, but explicit
-  typing, boundary validation, safe error handling, and deterministic dependency
-  behavior remain mandatory.

@@ -27,12 +27,10 @@ REVIEW does not include:
 Those belong in `PROGRAMMING/**`, `FRAMEWORK/**`, `LIBRARY/**`,
 `BUILD_TOOLS/**`, `INFRASTRUCTURE/**`, and `CI-CD/**`.
 
-## Specialization Contract
-- `CODE_REVIEW.md` specializes this index-level review contract with deep review
-  criteria.
-- Review docs must not weaken inherited security/compliance/test constraints.
-- If review guidance conflicts with implementation guidance, prefer stricter
-  quality/safety interpretation and open a follow-up rule issue for alignment.
+## Precedence
+- If review guidance conflicts with implementation guidance, MUST apply the
+  stricter quality/safety interpretation and MUST open a follow-up rule issue
+  for alignment.
 
 ## Files
 - [CODE_REVIEW.md](CODE_REVIEW.md) - Code review guidance and checklist.

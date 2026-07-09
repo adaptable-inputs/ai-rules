@@ -46,7 +46,3 @@ Guidance for AI agents implementing and reviewing GitLab CI/CD pipelines.
 - SHOULD emit clear failure context (what failed, where, likely next action).
 - SHOULD track pipeline duration/flakiness trends.
 - SHOULD keep flaky tests quarantined and actively remediated.
-
-## Override Notes
-- Project-specific delivery policies MAY add stricter approvals/compliance gates,
-  but deterministic quality-gated pipelines and secret hygiene remain mandatory.

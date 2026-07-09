@@ -411,6 +411,63 @@ def check_preflight_readable() -> None:
             fail(f"preflight requires reading {rel_path}, but it is marked load: never")
 
 
+# Shapes that CORE/RULE_DEPENDENCY_TREE.md Core Principles already state once.
+# A bullet matching OVERRIDE_KEEP declares a real override and is exempt.
+OVERRIDE_KEEP = re.compile(
+    r"\bexcept\b|\bnon-overridable\b|takes precedence|fallback only|"
+    r"Explicit specialization|MUST also satisfy|^-\s*(If|When)\b", re.I)
+OVERRIDE_PERMISSION = re.compile(
+    r"\bMAY\b(?:(?!\bMUST\b).){0,200}?\b(be stricter|vary|specialize|narrow|refine|add|"
+    r"prescribe|define|extend|impose|require|adjust|change|restrict|cover)\b", re.I | re.S)
+OVERRIDE_CONCESSION = re.compile(
+    r"\bremain(s)? (mandatory|in force|authoritative)\b|\bMUST keep\b|\bMUST still\b|"
+    r"\bMUST remain compatible\b|\bMUST NOT (weaken|reduce|be weakened)\b|"
+    r"stricter policy always wins", re.I)
+OVERRIDE_PURPOSE = re.compile(r"^-\s*(This file\b|Baseline rule:)", re.I)
+
+
+def check_override_notes() -> None:
+    """`## Override Notes` may only describe an override the doc declares.
+
+    Three bullet shapes are redundant with Core Principles, and the first two
+    are self-contradicting: prose cannot grant a force the rule's own keyword
+    withholds, and "specialized docs MAY be stricter" is stated once, globally.
+
+    - permission: "Framework docs MAY narrow this baseline"
+    - concession: "...but these constraints remain mandatory" / "MUST keep"
+    - purpose:    "This file is the Java baseline" (now frontmatter `purpose`)
+
+    `## Specialization Contract` was the index-doc spelling of the same thing.
+    """
+    for p in md_files():
+        if p.name.endswith(".ANNEX.md"):
+            continue
+        meta = _applies_to(p)
+        if not meta:
+            continue
+        text = p.read_text(encoding="utf-8")
+        if re.search(r"^## Specialization Contract\b", text, re.M):
+            fail(f"{rel(p)}: '## Specialization Contract' restates "
+                 f"CORE/RULE_DEPENDENCY_TREE.md Core Principles; state the "
+                 f"doc-specific rule under its own heading instead")
+        if meta.get("load") not in {"always", "conditional", "task"}:
+            continue
+        body = re.search(r"^## Override Notes\n(.*?)(?=^## |\Z)", text, re.M | re.S)
+        if not body:
+            continue
+        for raw in re.findall(r"^- .*(?:\n  \S.*)*", body.group(1), re.M):
+            bullet = "- " + " ".join(raw[2:].split())
+            if OVERRIDE_KEEP.search(bullet):
+                continue
+            for name, pat in (("purpose", OVERRIDE_PURPOSE),
+                              ("permission", OVERRIDE_PERMISSION),
+                              ("concession", OVERRIDE_CONCESSION)):
+                if pat.search(bullet):
+                    fail(f"{rel(p)}: Override Notes bullet restates the global "
+                         f"{name} rule: {bullet[:60]}...")
+                    break
+
+
 def check_keyword_ratchet() -> None:
     """Converted docs may not regain a keyword-less normative imperative.
 
@@ -486,6 +543,7 @@ def main() -> int:
     check_frontmatter()
     check_preflight_readable()
     check_annex_contract()
+    check_override_notes()
     check_keyword_ratchet()
     if errors:
         print(f"structure check FAILED with {len(errors)} error(s):\n")

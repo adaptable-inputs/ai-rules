@@ -58,7 +58,3 @@ Guidance for AI agents implementing and reviewing REST-style APIs.
 - MUST validate and sanitize all input parameters/body fields.
 - MUST NOT expose internal stack traces or sensitive fields in responses.
 - MUST rate-limit and monitor abusive access patterns.
-
-## Override Notes
-- Framework docs MAY define controller/handler idioms, but REST contract,
-  compatibility, and security requirements in this file remain authoritative.

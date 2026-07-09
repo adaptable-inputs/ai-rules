@@ -68,5 +68,3 @@ Avoid unless legal explicitly approves alternative model:
 
 ## Override Notes
 - Downstream framework/library/build-tool docs MUST comply with this policy.
-- Legal/compliance policy MAY be stricter than this file; stricter policy always
-  wins.

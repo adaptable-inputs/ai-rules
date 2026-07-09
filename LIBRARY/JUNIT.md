@@ -40,8 +40,3 @@ Guidance for AI agents implementing and reviewing JUnit tests.
 - SHOULD use fake clocks and controlled randomness where needed.
 - SHOULD avoid order-dependent tests.
 - SHOULD keep concurrency tests deterministic and bounded.
-
-## Override Notes
-- Library/framework test docs (for example Mockito and Spring test slices) MAY
-  add specialization, but JUnit determinism and clarity constraints remain
-  mandatory.

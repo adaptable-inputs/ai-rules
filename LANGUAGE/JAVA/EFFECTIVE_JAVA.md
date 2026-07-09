@@ -58,6 +58,5 @@ codebases.
 - SHOULD validate invariants after deserialization.
 
 ## Override Notes
-- This file narrows `LANGUAGE/JAVA/JAVA.md` with preference heuristics.
 - When heuristics conflict with explicit project constraints (performance,
   interoperability), document the tradeoff and preserve baseline safety rules.

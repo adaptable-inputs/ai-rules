@@ -408,6 +408,81 @@ class TestRatchetDoesNotCryWolf(unittest.TestCase):
 
 
 # --------------------------------------------------------------------------
+# Corpus + checker: Override Notes hold overrides, not restatements
+# --------------------------------------------------------------------------
+class TestOverrideNotes(unittest.TestCase):
+    """89 docs once carried "X MAY be stricter, but these constraints remain
+    mandatory". The second clause asserts a force the named rules' own keywords
+    withhold: 42 of them named `SHOULD` rules. The keyword is authoritative."""
+
+    HOST = "LIBRARY/JPA.md"
+
+    def _inject(self, repo, bullet):
+        p = repo / self.HOST
+        s = p.read_text(encoding="utf-8")
+        self.assertIn("## Override Notes\n", s)
+        p.write_text(s.replace("## Override Notes\n",
+                               f"## Override Notes\n{bullet}\n", 1), encoding="utf-8")
+
+    def _expect_fail(self, bullet, needle):
+        with Sandbox() as repo:
+            self._inject(repo, bullet)
+            rc, out = run_structure(repo)
+            self.assertEqual(rc, 1, f"checker passed but should have failed\n{out}")
+            self.assertIn(needle, out, out)
+
+    def _expect_pass(self, bullet):
+        with Sandbox() as repo:
+            self._inject(repo, bullet)
+            rc, out = run_structure(repo)
+            self.assertEqual(rc, 0, f"false positive on a real override\n{out}")
+
+    def test_corpus_is_clean(self):
+        rc, out = run_structure(ROOT)
+        self.assertEqual(rc, 0, out)
+
+    def test_permission_restatement_is_caught(self):
+        self._expect_fail("- Framework docs MAY narrow these rules for specific stacks.",
+                          "restates the global permission rule")
+
+    def test_concession_is_caught(self):
+        # The exact shape that shipped in 89 docs.
+        self._expect_fail("- Project policy MAY be stricter, but the transaction "
+                          "constraints here remain mandatory.",
+                          "restates the global permission rule")
+
+    def test_bare_concession_without_a_permission_clause_is_caught(self):
+        self._expect_fail("- The boundary constraints in this file remain mandatory.",
+                          "restates the global concession rule")
+
+    def test_purpose_restatement_is_caught(self):
+        self._expect_fail("- This file is the JPA baseline.",
+                          "restates the global purpose rule")
+
+    def test_specialization_contract_heading_is_caught(self):
+        with Sandbox() as repo:
+            p = repo / "LIBRARY" / "LIBRARY.md"
+            p.write_text(p.read_text(encoding="utf-8") +
+                         "\n## Specialization Contract\n- Library docs may narrow parents.\n",
+                         encoding="utf-8")
+            rc, out = run_structure(repo)
+            self.assertEqual(rc, 1, out)
+            self.assertIn("Specialization Contract", out)
+
+    def test_a_declared_override_is_not_flagged(self):
+        self._expect_pass("- The baseline mandates remain in force except for the "
+                          "flush-mode override declared above.")
+
+    def test_a_conditional_fallback_is_not_flagged(self):
+        self._expect_pass("- If a query cannot use the criteria API, MAY drop to "
+                          "native SQL and keep it behind the repository boundary.")
+
+    def test_a_named_specialization_is_not_flagged(self):
+        self._expect_pass("- Explicit specialization in this doc: MAY prescribe "
+                          "fetch joins where the parent doc only requires no N+1.")
+
+
+# --------------------------------------------------------------------------
 # Corpus: the annex contract
 # --------------------------------------------------------------------------
 class TestAnnex(unittest.TestCase):

@@ -40,8 +40,3 @@ Responsibility Segregation (CQRS) architectures.
 - SHOULD bound retries with a maximum attempt count, then route poison events/messages to a dead-letter destination.
 - SHOULD emit structured logs for command execution and projection failures.
 - SHOULD alert on sustained projection lag, retry storms, and replay failures.
-
-## Override Notes
-- Framework/library docs MAY define CQRS implementation mechanics, but command/
-  query separation, consistency contracts, and operability constraints in this
-  file remain mandatory.

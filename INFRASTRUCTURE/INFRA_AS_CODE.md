@@ -47,7 +47,3 @@ changes.
 - SHOULD validate dependency ordering for create/update/delete operations.
 - SHOULD prefer staged rollout for broad-impact infrastructure changes.
 - MUST keep disaster-recovery-sensitive resources protected from accidental destruction.
-
-## Override Notes
-- Tool-specific IaC docs MAY specialize implementation details, but plan/apply
-  gating, state safety, least privilege, and drift governance remain mandatory.

@@ -51,7 +51,3 @@ Consult qualified legal counsel for final legal decisions.
 - MUST treat large-scale profiling, sensitive-category processing, or new surveillance-like capabilities as DPIA
   triggers.
 - MUST block rollout of high-risk processing changes until required approvals exist.
-
-## Override Notes
-- Project-specific privacy policies MAY be stricter; stricter policy always
-  wins.

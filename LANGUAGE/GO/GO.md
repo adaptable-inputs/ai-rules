@@ -38,8 +38,3 @@ Guidance for AI agents implementing and reviewing Go code.
 - SHOULD avoid goroutine leaks; ensure cancellation and completion paths exist.
 - SHOULD pass `context.Context` as first parameter for request-scoped operations.
 - SHOULD keep timeouts/deadlines explicit for external IO.
-
-## Override Notes
-- Project-specific Go conventions MAY add stricter patterns, but explicit error
-  handling, context discipline, concurrency safety, and deterministic resource
-  management remain mandatory.

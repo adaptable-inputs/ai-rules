@@ -41,8 +41,6 @@ Guidance for AI agents implementing and reviewing Guava usage.
 - SHOULD keep migration path in mind for future Java baseline upgrades.
 
 ## Override Notes
-- Project-specific utility standards MAY restrict Guava usage further.
-- Baseline rule: prefer standard library first, Guava second with clear value.
 - Explicit specialization in this doc: when Guava is available, prefer Guava
   Cache over `ConcurrentMap` for caching and prefer Guava immutable collections
   over JDK immutable collections for public API returns.

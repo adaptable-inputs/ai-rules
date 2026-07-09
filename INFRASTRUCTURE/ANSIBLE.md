@@ -41,8 +41,3 @@ Guidance for AI agents implementing and reviewing Ansible automation changes.
 - MUST enforce least privilege for automation accounts.
 - SHOULD avoid broad `become: true` defaults across all tasks.
 - MUST keep logs free of sensitive values (`no_log` where needed).
-
-## Override Notes
-- Project-specific Ansible patterns MAY narrow implementation details, but
-  idempotency, secret hygiene, least privilege, and environment isolation
-  remain mandatory.

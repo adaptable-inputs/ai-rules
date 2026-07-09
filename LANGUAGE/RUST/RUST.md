@@ -43,8 +43,3 @@ Guidance for AI agents implementing and reviewing Rust code.
 - SHOULD keep FFI boundary contracts explicit about ownership/lifetime/thread safety.
 - SHOULD add targeted tests around unsafe-critical behavior.
 - SHOULD review unsafe code with extra scrutiny in PRs.
-
-## Override Notes
-- Project-specific Rust conventions MAY add stricter patterns, but explicit
-  ownership contracts, safe error handling, bounded unsafe usage, and async
-  runtime safety remain mandatory.

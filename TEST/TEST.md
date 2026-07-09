@@ -65,6 +65,3 @@ When delivering a change, include:
 
 ## Override Notes
 - Security-sensitive scenarios MUST also satisfy `SECURITY/SECURITY.md`.
-- Downstream docs MAY specialize this baseline (for example framework-specific
-  testing patterns), but MUST NOT reduce determinism, coverage of critical
-  paths, or reporting clarity without explicit justification.

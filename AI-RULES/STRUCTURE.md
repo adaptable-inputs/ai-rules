@@ -36,6 +36,20 @@ applies_to:
 - Every scalar and list item MUST be quoted. An unquoted `**/*.java` parses as a
   YAML alias, not a string.
 
+## Override Notes
+`## Override Notes` is optional, and holds only an override *this* doc declares:
+an exception to an inherited rule, a conditional fallback, or a named
+specialization. Three shapes are rejected by `check_override_notes()`:
+
+- "Framework docs MAY narrow this baseline" - `CORE/RULE_DEPENDENCY_TREE.md`
+  Core Principles says this once, for every doc.
+- "...but these constraints remain mandatory" - a rule's own keyword is
+  authoritative. Prose cannot make a `SHOULD` mandatory; change the keyword.
+- "This file is the Java baseline" - that is the `purpose` frontmatter field.
+
+Category indexes carry no `## Specialization Contract`; it was the same
+boilerplate. A doc-specific precedence rule goes under its own heading.
+
 ## Directory Layout
 - Keep top-level categories at the repository root and list them in `AI.md`.
 - Each category must have an index file named after the directory (e.g., `CORE/CORE.md`).

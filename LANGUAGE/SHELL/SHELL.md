@@ -46,7 +46,3 @@ Guidance for AI agents implementing and reviewing shell scripts.
 - SHOULD avoid parsing command output with brittle text assumptions when machine-
   readable alternatives exist.
 - SHOULD be careful with globbing and empty-match behavior.
-
-## Override Notes
-- CI/build-tool docs MAY prescribe runtime wrappers/entrypoints, but strict
-  quoting, safety, and injection guardrails here remain mandatory.

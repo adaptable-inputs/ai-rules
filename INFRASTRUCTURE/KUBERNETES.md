@@ -44,7 +44,3 @@ Guidance for AI agents implementing and reviewing Kubernetes manifests.
 - SHOULD track pod restarts, crash loops, and probe failures.
 - SHOULD monitor resource saturation and eviction risk.
 - SHOULD keep alerting tied to service SLO indicators.
-
-## Override Notes
-- Helm/Istio docs MAY define additional layer-specific constraints, but
-  Kubernetes runtime safety and security controls here remain mandatory.

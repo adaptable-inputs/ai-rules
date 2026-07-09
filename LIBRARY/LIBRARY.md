@@ -28,12 +28,6 @@ LIBRARY does not include:
 Those belong in `LANGUAGE/**`, `FRAMEWORK/**`, `BUILD_TOOLS/**`,
 `INFRASTRUCTURE/**`, and `CI-CD/**`.
 
-## Specialization Contract
-- Library docs may narrow parent rules where library semantics require it.
-- Any parent-rule override must be explicit and justified in the library doc.
-- Library docs must not weaken inherited security/compliance/test constraints
-  without an explicit, reviewed rationale.
-
 ## Selection Guidance
 - SHOULD prefer mature, enterprise-ready libraries with a proven track record.
 - Popularity is a strong indicator; widely adopted libraries are more likely to

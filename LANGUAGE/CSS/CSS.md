@@ -44,8 +44,3 @@ Guidance for AI agents implementing and reviewing CSS.
 - SHOULD avoid unnecessary layout thrash via frequent class/style mutations.
 - SHOULD keep animation properties to performant transforms/opacity when possible.
 - SHOULD limit large paint-heavy effects on scrolling/high-frequency interactions.
-
-## Override Notes
-- Framework-specific styling systems (Tailwind, CSS-in-JS, component-scoped
-  styles) MAY specialize implementation details but MUST keep these baseline
-  accessibility and maintainability constraints.

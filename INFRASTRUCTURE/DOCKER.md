@@ -43,7 +43,3 @@ Guidance for AI agents implementing and reviewing Docker containerization.
 - SHOULD keep final image size controlled; remove unused tooling/binaries.
 - SHOULD prefer distroless/slim bases when compatibility permits.
 - SHOULD avoid unnecessary layer churn that invalidates cache frequently.
-
-## Override Notes
-- Kubernetes/Helm/Istio docs MAY define runtime orchestration policies, but
-  image hardening and reproducibility constraints here remain mandatory.

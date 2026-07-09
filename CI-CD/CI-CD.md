@@ -29,13 +29,9 @@ CI/CD does not include:
 Those belong in `LANGUAGE/**`, `FRAMEWORK/**`, `LIBRARY/**`,
 `BUILD_TOOLS/**`, and `INFRASTRUCTURE/**`.
 
-## Specialization Contract
-- Provider-specific CI/CD docs may narrow parent CI/CD guidance where platform
-  semantics require it.
-- CI/CD docs must not weaken inherited security/compliance/test constraints
-  without explicit, reviewed rationale.
-- Build-tool and infrastructure docs remain authoritative for their own layers;
-  CI/CD docs should orchestrate them rather than redefine them.
+## Layering
+- Build-tool and infrastructure docs are authoritative for their own layers.
+  CI/CD docs SHOULD orchestrate them rather than redefine them.
 
 ## Files
 - [GITHUB_ACTIONS.md](GITHUB_ACTIONS.md) - GitHub Actions pipeline guidance.

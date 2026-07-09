@@ -114,7 +114,3 @@ or cancel external work.
 - SHOULD stabilize dependencies only at true boundaries (`useMemo` / `useCallback`).
 - MUST NOT disable `react-hooks/exhaustive-deps` globally.
 - SHOULD enable `eslint-plugin-react-hooks` with `rules-of-hooks` and `exhaustive-deps`.
-
-## Override Notes
-- Project-specific React conventions MAY add stricter patterns, but effect
-  safety, dependency clarity, and SSR/hydration guardrails remain mandatory.

@@ -41,7 +41,3 @@ Guidance for AI agents implementing and reviewing Helm charts.
 - MUST NOT commit plaintext secrets in chart values.
 - MUST integrate secret management mechanisms (sealed/external secrets) as policy requires.
 - MUST keep service account and security context defaults least-privilege.
-
-## Override Notes
-- Platform-specific deployment policies MAY add stricter requirements, but chart
-  readability, values governance, and secret safety here remain mandatory.

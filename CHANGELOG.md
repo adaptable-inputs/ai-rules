@@ -62,7 +62,7 @@ Sub-heading template:
   checklists, and testing guidance moved into task-gated `*.ANNEX.md` siblings;
   they held 3 obligations across 1,563 bullets. Scope and Semantic Dependencies
   became the `purpose` and `inherits` frontmatter fields.
-- Added `scripts/test_rules.py`, a 40-test suite covering corpus invariants and
+- Added `scripts/test_rules.py`, a 59-test suite covering corpus invariants and
   checker behavior, wired into CI. Each test in `TestRatchetFails` reproduces a
   defect that shipped at least once.
 - Converted the remaining 1,023 normative statements across the 73 conditional
@@ -71,6 +71,17 @@ Sub-heading template:
   change under review; stack idiom and design preference are `SHOULD`. All 93
   loadable documents now carry explicit keywords and are locked against
   regression.
+- Resolved a contradiction in `## Override Notes`. 89 docs said some variant of
+  "specialized docs MAY be stricter, but these constraints remain mandatory",
+  and in 42 of them the constraints named that way carried `SHOULD`, not `MUST`.
+  `CORE/RULE_DEPENDENCY_TREE.md` now states once that a rule's own keyword is
+  authoritative and that prose cannot grant a force the keyword withholds; the
+  92 restating bullets are gone, and the 16 that declare a real override, a
+  conditional fallback, or a named specialization remain. The same boilerplate
+  under `## Specialization Contract` is gone from the 9 category indexes, which
+  keep only their doc-specific precedence rules.
+- Added `check_override_notes()` to `scripts/check_structure.py` so the
+  permission, concession, and purpose-restatement shapes cannot return.
 
 ## [v4.11.0] - 2026-03-27
 - Reordered downstream-project command examples to namespace-first wording:

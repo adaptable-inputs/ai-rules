@@ -38,8 +38,3 @@ Guidance for AI agents implementing and reviewing circuit breaker patterns.
 - SHOULD log contextual events on open/close transitions with dependency identity.
 - SHOULD alert on sustained open state and high fallback rates.
 - SHOULD track user-facing degradation tied to breaker events.
-
-## Override Notes
-- Library/framework docs MAY prescribe implementation API (for example
-  Resilience4j annotations), but placement, correctness, and observability
-  constraints in this file remain mandatory.

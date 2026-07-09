@@ -42,8 +42,3 @@ infrastructure changes.
 - MUST retrieve secrets through secure references/services.
 - MUST keep IAM permissions least-privilege for deploy roles.
 - SHOULD keep stack outputs free of sensitive data where possible.
-
-## Override Notes
-- Project-specific CloudFormation patterns MAY narrow implementation details,
-  but change-set review discipline, stack protection, least privilege, and
-  secret hygiene remain mandatory.

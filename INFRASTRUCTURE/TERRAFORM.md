@@ -50,8 +50,3 @@ changes.
 - SHOULD use `import` and `moved` blocks deliberately during migration/refactors.
 - SHOULD keep migration steps documented for state/schema changes.
 - SHOULD validate replacement impact before forcing resource recreation.
-
-## Override Notes
-- Project-specific Terraform patterns MAY narrow implementation details, but
-  version pinning, plan-review discipline, state safety, and secret hygiene
-  remain mandatory.

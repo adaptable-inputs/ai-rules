@@ -33,7 +33,3 @@ Guidance for AI agents implementing and reviewing MapStruct mappings.
 - SHOULD reuse helper mappers for shared value transformations.
 - SHOULD avoid circular mapper dependencies.
 - SHOULD keep generated code reviewable via explicit annotations/config.
-
-## Override Notes
-- Project-specific mapping standards MAY require stricter mapper granularity,
-  but explicitness and business-logic separation here remain mandatory.

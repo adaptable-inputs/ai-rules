@@ -53,8 +53,3 @@ Guidance for AI agents implementing and reviewing Spring Boot applications.
 - MUST keep secrets out of code/config files; use secret management paths.
 - MUST validate and sanitize external input.
 - MUST apply least privilege for outbound clients and data access.
-
-## Override Notes
-- Library docs (JPA, jOOQ, Resilience4j, etc.) MAY add stricter rules for
-  specific integrations, but Spring Boot layering, configuration, and boundary
-  constraints here remain mandatory.

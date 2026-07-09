@@ -31,14 +31,6 @@ FRAMEWORK does not include:
 Those belong in `LANGUAGE/**`, `LIBRARY/**`, `BUILD_TOOLS/**`,
 `INFRASTRUCTURE/**`, and `CI-CD/**`.
 
-## Specialization Contract
-- Framework docs may narrow language-level guidance when framework semantics
-  require it.
-- Any framework-level override must be explicit and justified in the framework
-  document.
-- Framework docs must not silently weaken cross-cutting security/compliance/
-  testing constraints.
-
 ## Selection Guidance
 - SHOULD prefer mature, enterprise-ready frameworks with a proven track record.
 - Popularity is a strong indicator; widely adopted frameworks are more likely to

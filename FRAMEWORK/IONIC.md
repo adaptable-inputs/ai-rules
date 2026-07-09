@@ -43,8 +43,3 @@ Guidance for AI agents implementing and reviewing Ionic applications.
 - MUST NOT persist secrets in plaintext storage.
 - MUST keep token/session storage strategy aligned with project security policy.
 - MUST validate deep-link and external-intent inputs before navigation or execution.
-
-## Override Notes
-- Project-specific mobile requirements MAY add stricter delivery constraints,
-  but plugin-boundary isolation, permission discipline, and fallback safety
-  remain mandatory.

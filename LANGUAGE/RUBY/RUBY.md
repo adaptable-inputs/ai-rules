@@ -36,8 +36,3 @@ Guidance for AI agents implementing and reviewing Ruby code.
 - SHOULD keep transactional boundaries explicit for stateful operations.
 - SHOULD keep IO operations at service/adapter boundaries for testability.
 - MUST keep logging redacted and purpose-minimal for sensitive fields.
-
-## Override Notes
-- Project-specific Ruby conventions MAY add stricter patterns, but explicit
-  contracts, bounded error handling, clear side-effect boundaries, and boundary
-  validation remain mandatory.

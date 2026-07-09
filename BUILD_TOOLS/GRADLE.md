@@ -53,7 +53,3 @@ Add these when using Gradle (if not already covered by baseline ignores):
 - `build/`
 
 Do not ignore wrapper scripts or wrapper JAR required for builds.
-
-## Override Notes
-- Project convention plugins MAY add stricter rules, but wrapper usage,
-  deterministic versioning, and secure supply-chain controls remain mandatory.

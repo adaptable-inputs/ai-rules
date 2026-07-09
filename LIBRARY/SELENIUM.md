@@ -34,8 +34,3 @@ Guidance for AI agents implementing and reviewing Selenium-based tests.
 - SHOULD keep Selenium Grid resources sized for workload.
 - SHOULD isolate flaky environment issues from test logic defects.
 - SHOULD capture logs/screenshots on failure.
-
-## Override Notes
-- Project-specific UI automation standards MAY add stricter page-object or
-  locator conventions, but deterministic wait/locator/isolation rules remain
-  mandatory.
