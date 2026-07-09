@@ -15,11 +15,14 @@ An agent MUST NOT read this ruleset exhaustively. Load in this order:
    obligation level or precedence of any other rule.
 2. **Detect the stack.** Inspect the project for languages, frameworks,
    libraries, build tools, and infrastructure actually in use.
-3. **Load only what matches.** Read a category index, then only those leaf docs
-   whose `applies_to` frontmatter matches the detected stack. A Java project
-   MUST NOT load `LANGUAGE/PYTHON/`. A doc's `purpose` says what it governs and
-   its `inherits` names its semantic parents; both live in frontmatter, so
-   neither costs a section.
+3. **Load only what matches.** Read [MANIFEST.md](MANIFEST.md) - one generated
+   table of every loadable doc, its load class, and the condition under which it
+   applies - then load only the rows matching the detected stack. A Java project
+   MUST NOT load `LANGUAGE/PYTHON/`. An agent MUST NOT open a category index to
+   make this decision; the manifest is authoritative and CI verifies it against
+   each doc's frontmatter. A doc's `purpose` says what it governs and its
+   `inherits` names its semantic parents; both live in frontmatter, so neither
+   costs a section.
 4. **Load task overlays by task type**, not by stack: `PROGRAMMING/`, `PLAN/`,
    `REVIEW/`.
 5. **Load annexes only for the tasks they name.** A doc with an `annex:` field

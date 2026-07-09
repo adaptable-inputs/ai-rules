@@ -7,27 +7,6 @@ applies_to:
 Core, non-negotiable baseline rules for all technology stacks in this
 repository.
 
-## Role in the Ruleset
-- CORE is part of the first-applied cross-cutting baseline layer.
-- CORE rules are inherited by all downstream docs, including language,
-  framework, library, build-tool, infrastructure, CI/CD, and task-overlay docs.
-- Precedence and override behavior are defined in
-  [RULE_DEPENDENCY_TREE.md](RULE_DEPENDENCY_TREE.md).
-
-## Scope Boundary
-CORE includes only stack-agnostic guidance such as:
-- VCS workflow and delivery hygiene.
-- Logging safety and reliability practices.
-- Semantic dependency and override contract for the full ruleset.
-
-CORE does not include:
-- Language-specific coding rules.
-- Framework-specific implementation details.
-- Library/tool/runtime-specific usage patterns.
-
-Those belong in their respective domains (`LANGUAGE/**`, `FRAMEWORK/**`,
-`LIBRARY/**`, `BUILD_TOOLS/**`, `INFRASTRUCTURE/**`, `CI-CD/**`).
-
 ## Application Contract for AI Agents
 - MUST interpret every rule using the obligation vocabulary in [NORMATIVE_LANGUAGE.md](NORMATIVE_LANGUAGE.md).
 - MUST apply CORE guidance by default before any domain-specific specialization.
@@ -52,9 +31,3 @@ Those belong in their respective domains (`LANGUAGE/**`, `FRAMEWORK/**`,
 - [JIRA.md](JIRA.md) - Jira ticket authoring, edit policy, and summary templates.
 - [LOGGING.md](LOGGING.md) - Logging purpose, safety, and reliability guardrails.
 - [RULE_DEPENDENCY_TREE.md](RULE_DEPENDENCY_TREE.md) - Semantic inheritance, precedence, and override contract.
-
-## Authoring Notes
-- Keep this file index-level and boundary-focused.
-- Add new core documents only when guidance is truly cross-cutting.
-- Any dependency-precedence change MUST be reflected in
-  `RULE_DEPENDENCY_TREE.md`.

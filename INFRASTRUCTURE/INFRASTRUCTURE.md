@@ -7,31 +7,6 @@ applies_to:
 Infrastructure-layer contract for runtime environment, deployment topology, and
 platform operations behavior.
 
-## Role in the Ruleset
-- INFRASTRUCTURE docs specialize how applications are packaged, deployed, and
-  operated in target environments.
-- Infrastructure guidance inherits cross-cutting, language, architecture,
-  framework, library, and build-tool constraints before adding
-  platform-specific rules.
-- Global precedence and override behavior are defined in
-  `CORE/RULE_DEPENDENCY_TREE.md`.
-
-## Scope Boundary
-INFRASTRUCTURE includes:
-- Container/runtime platform configuration and deployment strategies.
-- Cluster/service-mesh operational constraints.
-- Infrastructure-level reliability, observability, and security posture.
-
-INFRASTRUCTURE does not include:
-- Framework lifecycle/state/rendering guidance.
-- Library API usage behavior.
-- Source-level language coding conventions.
-- Build-time dependency/artifact workflow behavior.
-- CI/CD delivery-automation behavior.
-
-Those belong in `FRAMEWORK/**`, `LIBRARY/**`, `LANGUAGE/**`,
-`BUILD_TOOLS/**`, and `CI-CD/**`.
-
 ## Files
 - [INFRA_AS_CODE.md](INFRA_AS_CODE.md) - Infrastructure as Code baseline guidance.
 - [TERRAFORM.md](TERRAFORM.md) - Terraform infrastructure guidance.
@@ -45,9 +20,3 @@ Those belong in `FRAMEWORK/**`, `LIBRARY/**`, `LANGUAGE/**`,
 - [KUBERNETES.md](KUBERNETES.md) - Kubernetes deployment guidance.
 - [HELM.md](HELM.md) - Helm chart practices.
 - [ISTIO.md](ISTIO.md) - Service mesh guidance.
-
-## Authoring Notes
-- Keep this file index-level and boundary-focused.
-- Put deep platform behavior in child infrastructure docs.
-- When adding a new infrastructure doc, update this index and align semantic
-  dependencies in `CORE/RULE_DEPENDENCY_TREE.md`.

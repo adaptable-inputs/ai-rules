@@ -33,6 +33,11 @@ FRONTMATTER_EXEMPT = {".github/copilot-instructions.md"}
 VALID_LOAD = {"always", "entry", "index", "conditional", "task", "setup", "never",
               "annex"}
 
+# Classes an agent reads during ordinary project work. `setup` and `never` are
+# read only when bootstrapping or maintaining ai-rules itself; `annex` is gated
+# on the task.
+LOADED_CLASSES = {"always", "entry", "index", "conditional", "task"}
+
 # An annex holds only illustrative material. Between them these four sections
 # contained 3 obligations across 1,563 bullets, and those were relocated before
 # the split. Nothing else may live here, or a rule would hide outside the load.
@@ -45,6 +50,19 @@ CONDITIONAL_KEYS = {"languages", "frameworks", "libraries", "tools", "when"}
 # keyword-less imperative in a normative section fails the build.
 # See CORE/NORMATIVE_LANGUAGE.md.
 KEYWORD_CONVERTED = {
+    # Category indexes and the entry point. They were converted last, after the
+    # restatement sections were removed and only real rules remained.
+    "AI.md",
+    "ARCHITECTURE/ARCHITECTURE.md",
+    "BUILD_TOOLS/BUILD_TOOLS.md",
+    "CI-CD/CI-CD.md",
+    "COMPLIANCE/COMPLIANCE.md",
+    "DESIGN/DESIGN.md",
+    "FRAMEWORK/FRAMEWORK.md",
+    "INFRASTRUCTURE/INFRASTRUCTURE.md",
+    "LANGUAGE/LANGUAGE.md",
+    "LIBRARY/LIBRARY.md",
+    "REVIEW/REVIEW.md",
     "ARCHITECTURE/CIRCUIT_BREAKER.md",
     "ARCHITECTURE/CLEAN_ARCHITECTURE.md",
     "ARCHITECTURE/CQRS.md",
@@ -368,6 +386,11 @@ def check_frontmatter() -> None:
                 fail(f"{r}: inherits {t!r}, which does not exist")
         if "purpose" in a and not str(a["purpose"]).strip():
             fail(f"{r}: purpose is empty")
+        # MANIFEST.md selects a conditional or task doc by its purpose, so a
+        # missing one leaves an agent no basis to decide. `always` docs load
+        # unconditionally and need none.
+        if a.get("load") in {"conditional", "task"} and not a.get("purpose"):
+            fail(f"{r}: load: {a['load']} requires a purpose; MANIFEST.md selects on it")
 
 
 def load_of(rel_path: str) -> str | None:
@@ -450,6 +473,13 @@ def check_override_notes() -> None:
             fail(f"{rel(p)}: '## Specialization Contract' restates "
                  f"CORE/RULE_DEPENDENCY_TREE.md Core Principles; state the "
                  f"doc-specific rule under its own heading instead")
+        # Loaded on every task that opened an index, and saying nothing the
+        # frontmatter and RULE_DEPENDENCY_TREE.md do not already say.
+        for banned, why in (("Role in the Ruleset", "restates RULE_DEPENDENCY_TREE.md layering"),
+                            ("Scope Boundary", "restates the `purpose` frontmatter field"),
+                            ("Authoring Notes", "is maintainer guidance; it belongs in AI-RULES/STRUCTURE.md")):
+            if re.search(rf"^## {re.escape(banned)}\b", text, re.M):
+                fail(f"{rel(p)}: '## {banned}' {why}")
         if meta.get("load") not in {"always", "conditional", "task"}:
             continue
         body = re.search(r"^## Override Notes\n(.*?)(?=^## |\Z)", text, re.M | re.S)
@@ -466,6 +496,37 @@ def check_override_notes() -> None:
                     fail(f"{rel(p)}: Override Notes bullet restates the global "
                          f"{name} rule: {bullet[:60]}...")
                     break
+
+
+# AI.md states the one legitimate use of this phrasing, as a prohibition.
+EXHAUSTIVE_READ = re.compile(
+    r"read(ing)? the complete ai-rules ruleset|complete ai-rules ruleset\" means|"
+    r"MUST NOT skip reachable Markdown files|^## Ruleset Read Gate|"
+    r"re-reads the complete ai-rules", re.I | re.M)
+
+
+def check_no_exhaustive_read() -> None:
+    """No loaded doc may order an agent to read the ruleset exhaustively.
+
+    Three task overlays once carried a `Ruleset Read Gate (Mandatory)` telling
+    the agent to read every Markdown file reachable from AI.md and discard the
+    irrelevant ones afterwards. AI.md says the opposite: "An agent MUST NOT read
+    this ruleset exhaustively." Every task loads one of those overlays, so the
+    gate silently defeated conditional loading and the annex split, at a cost of
+    roughly 79,000 tokens per task.
+    """
+    for p in md_files():
+        meta = _applies_to(p)
+        if not meta or meta.get("load") not in LOADED_CLASSES:
+            continue
+        text = p.read_text(encoding="utf-8")
+        if rel(p) == "AI.md":
+            text = text.replace("MUST NOT read this ruleset exhaustively", "")
+        m = EXHAUSTIVE_READ.search(text)
+        if m:
+            fail(f"{rel(p)}: mandates an exhaustive ruleset read "
+                 f"({m.group(0)[:40]!r}); AI.md forbids it. Point at the "
+                 f"AI.md Loading Protocol instead")
 
 
 def check_keyword_ratchet() -> None:
@@ -544,6 +605,7 @@ def main() -> int:
     check_preflight_readable()
     check_annex_contract()
     check_override_notes()
+    check_no_exhaustive_read()
     check_keyword_ratchet()
     if errors:
         print(f"structure check FAILED with {len(errors)} error(s):\n")

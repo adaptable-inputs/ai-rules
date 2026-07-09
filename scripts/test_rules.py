@@ -43,7 +43,9 @@ def _load_checker():
 cs = _load_checker()
 
 LOADABLE = {"always", "conditional", "task"}
-NON_LOADABLE = {"never", "setup", "entry", "index"}
+# `entry` and `index` are read during ordinary work, so they may be ratchet-locked.
+# `annex` is task-gated and holds no obligation; `never`/`setup` are not project rules.
+NON_LOADABLE = {"never", "setup", "annex"}
 
 
 def md_files():
@@ -408,6 +410,124 @@ class TestRatchetDoesNotCryWolf(unittest.TestCase):
 
 
 # --------------------------------------------------------------------------
+# Generated artifacts: MANIFEST.md and the category indexes
+# --------------------------------------------------------------------------
+def run_script(root: Path, name: str, *args):
+    r = subprocess.run([sys.executable, str(root / "scripts" / name), *args],
+                       capture_output=True, text=True, cwd=root)
+    return r.returncode, r.stdout + r.stderr
+
+
+class TestGeneratedArtifacts(unittest.TestCase):
+    """A stale manifest is worse than no manifest: an agent trusts it and stops
+    looking, so a rule doc disappears without any gate noticing."""
+
+    def test_manifest_is_current(self):
+        rc, out = run_script(ROOT, "gen_manifest.py", "--check")
+        self.assertEqual(rc, 0, out)
+
+    def test_indexes_are_accurate(self):
+        rc, out = run_script(ROOT, "check_indexes_accurate.py")
+        self.assertEqual(rc, 0, out)
+
+    def test_new_doc_makes_the_manifest_stale(self):
+        with Sandbox() as repo:
+            (repo / "LIBRARY" / "ZZZ.md").write_text(
+                '---\napplies_to:\n  load: "conditional"\n'
+                '  when: "zzz is present"\n  purpose: "z"\n---\n# ZZZ\n',
+                encoding="utf-8")
+            rc, out = run_script(repo, "gen_manifest.py", "--check")
+            self.assertEqual(rc, 1, f"manifest check missed a new doc\n{out}")
+            self.assertIn("stale", out)
+
+    def test_changed_condition_makes_the_manifest_stale(self):
+        with Sandbox() as repo:
+            p = repo / "LIBRARY" / "JPA.md"
+            s = p.read_text(encoding="utf-8")
+            p.write_text(s.replace('libraries: ["jpa"]',
+                                   'libraries: ["jpa", "hibernate"]', 1),
+                         encoding="utf-8")
+            rc, out = run_script(repo, "gen_manifest.py", "--check")
+            self.assertEqual(rc, 1, f"manifest check missed a changed condition\n{out}")
+
+    def test_unlisted_doc_is_caught_by_the_index_check(self):
+        with Sandbox() as repo:
+            (repo / "DESIGN" / "ZZZ.md").write_text(
+                '---\napplies_to:\n  load: "never"\n  reason: "t"\n---\n# Z\n',
+                encoding="utf-8")
+            rc, out = run_script(repo, "check_indexes_accurate.py")
+            self.assertEqual(rc, 1, out)
+            self.assertIn("does not list ZZZ.md", out)
+
+    def test_dangling_index_link_is_caught(self):
+        with Sandbox() as repo:
+            p = repo / "DESIGN" / "DESIGN.md"
+            s = p.read_text(encoding="utf-8")
+            p.write_text(s.replace("- [AOP.md](AOP.md)", "- [AOP.md](GONE.md)", 1),
+                         encoding="utf-8")
+            rc, out = run_script(repo, "check_indexes_accurate.py")
+            self.assertEqual(rc, 1, out)
+            self.assertIn("links to missing GONE.md", out)
+
+    def test_manifest_never_lists_an_annex_as_a_row(self):
+        # The header prose names `*.ANNEX.md` to explain the convention; what
+        # must not appear is an annex as a selectable row.
+        rows = [l for l in (ROOT / "MANIFEST.md").read_text(encoding="utf-8").splitlines()
+                if l.startswith("- `")]
+        self.assertTrue(rows)
+        for r in rows:
+            self.assertNotIn(".ANNEX.md`", r,
+                             "an annex is task-gated; listing it invites a stray load")
+
+    def test_every_selectable_row_states_a_condition(self):
+        for line in (ROOT / "MANIFEST.md").read_text(encoding="utf-8").splitlines():
+            if line.startswith("- `") and " - " in line:
+                self.assertNotIn("Load when -.", line,
+                                 f"row has no usable condition: {line}")
+
+
+# --------------------------------------------------------------------------
+# Corpus + checker: no doc orders an exhaustive read
+# --------------------------------------------------------------------------
+class TestNoExhaustiveRead(unittest.TestCase):
+    """PROGRAMMING, PLAN and CODE_REVIEW each shipped a `Ruleset Read Gate
+    (Mandatory)` ordering the agent to read every file reachable from AI.md.
+    AI.md forbids exactly that. Every task loads one of those three docs."""
+
+    def test_corpus_has_no_read_gate(self):
+        rc, out = run_structure(ROOT)
+        self.assertEqual(rc, 0, out)
+
+    def test_ai_md_prohibition_is_not_flagged(self):
+        # AI.md is the one doc allowed to say the words, as a prohibition.
+        text = (ROOT / "AI.md").read_text(encoding="utf-8")
+        self.assertIn("MUST NOT read this ruleset exhaustively", text)
+        rc, out = run_structure(ROOT)
+        self.assertEqual(rc, 0, out)
+
+    def test_reintroduced_read_gate_is_caught(self):
+        with Sandbox() as repo:
+            p = repo / "PROGRAMMING" / "PROGRAMMING.md"
+            p.write_text(p.read_text(encoding="utf-8") +
+                         "\n## Ruleset Read Gate (Mandatory)\n"
+                         "- SHOULD start every programming task by reading the "
+                         "complete ai-rules ruleset.\n", encoding="utf-8")
+            rc, out = run_structure(repo)
+            self.assertEqual(rc, 1, out)
+            self.assertIn("exhaustive ruleset read", out)
+
+    def test_transitive_read_mandate_in_a_leaf_doc_is_caught(self):
+        with Sandbox() as repo:
+            p = repo / "TEST" / "TEST.md"
+            p.write_text(p.read_text(encoding="utf-8") +
+                         "\n- MUST NOT skip reachable Markdown files.\n",
+                         encoding="utf-8")
+            rc, out = run_structure(repo)
+            self.assertEqual(rc, 1, out)
+            self.assertIn("exhaustive ruleset read", out)
+
+
+# --------------------------------------------------------------------------
 # Corpus + checker: Override Notes hold overrides, not restatements
 # --------------------------------------------------------------------------
 class TestOverrideNotes(unittest.TestCase):
@@ -458,6 +578,26 @@ class TestOverrideNotes(unittest.TestCase):
     def test_purpose_restatement_is_caught(self):
         self._expect_fail("- This file is the JPA baseline.",
                           "restates the global purpose rule")
+
+    def test_index_restatement_sections_are_caught(self):
+        # 11 indexes carried these; every task that opened one paid for them.
+        for heading in ("Role in the Ruleset", "Scope Boundary", "Authoring Notes"):
+            with self.subTest(heading=heading), Sandbox() as repo:
+                p = repo / "DESIGN" / "DESIGN.md"
+                p.write_text(p.read_text(encoding="utf-8") +
+                             f"\n## {heading}\n- Something.\n", encoding="utf-8")
+                rc, out = run_structure(repo)
+                self.assertEqual(rc, 1, out)
+                self.assertIn(heading, out)
+
+    def test_indexes_are_under_the_keyword_ratchet(self):
+        import importlib.util as _il
+        spec = _il.spec_from_file_location("cs", ROOT / "scripts" / "check_structure.py")
+        cs = _il.module_from_spec(spec)
+        spec.loader.exec_module(cs)
+        for idx in ("DESIGN/DESIGN.md", "FRAMEWORK/FRAMEWORK.md", "AI.md"):
+            self.assertIn(idx, cs.KEYWORD_CONVERTED,
+                          f"{idx} can regain a keyword-less rule unnoticed")
 
     def test_specialization_contract_heading_is_caught(self):
         with Sandbox() as repo:

@@ -36,6 +36,16 @@ jobs:
       - run: python3 -m pip install --quiet PyYAML==6.0.2
       - run: python3 scripts/check_structure.py
 
+  generated:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0
+      - run: python3 -m pip install --quiet PyYAML==6.0.2
+      # An agent trusts MANIFEST.md and stops looking. A stale one silently
+      # hides a rule doc, so this gate must fail the build, not warn.
+      - run: python3 scripts/gen_manifest.py --check
+      - run: python3 scripts/check_indexes_accurate.py
+
   examples:
     runs-on: ubuntu-latest
     steps:

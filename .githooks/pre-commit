@@ -1,0 +1,18 @@
+#!/bin/sh
+# Generated artifacts must match the corpus they are generated from. An agent
+# trusts MANIFEST.md and stops looking, so a stale one is worse than none.
+#
+# Enable once per clone:  git config core.hooksPath .githooks
+set -e
+
+root="$(git rev-parse --show-toplevel)"
+cd "$root"
+
+python3 scripts/gen_manifest.py --check || {
+    echo
+    echo "pre-commit: MANIFEST.md does not match the frontmatter it is generated from."
+    echo "pre-commit: run 'python3 scripts/gen_manifest.py' and stage the result."
+    exit 1
+}
+python3 scripts/check_indexes_accurate.py
+python3 scripts/check_structure.py

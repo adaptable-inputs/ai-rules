@@ -53,9 +53,40 @@ boilerplate. A doc-specific precedence rule goes under its own heading.
 ## Directory Layout
 - Keep top-level categories at the repository root and list them in `AI.md`.
 - Each category must have an index file named after the directory (e.g., `CORE/CORE.md`).
+- Keep an index file index-level and boundary-focused; deep behavior belongs in
+  the child docs it lists.
+- When adding a doc, list it in its category index and regenerate `MANIFEST.md`.
+  Both are enforced; see "Generated Artifacts".
+- An index MUST NOT carry a `Role in the Ruleset`, `Scope Boundary`, or
+  `Authoring Notes` section. The first two restate
+  `CORE/RULE_DEPENDENCY_TREE.md` and the doc's own `purpose`; the third is
+  maintainer guidance, and it belongs in this file. All three were loaded on
+  every task that opened an index.
 - `scripts/` is tooling, not a rule category. It has no index file and is not
   listed in `AI.md`. `scripts/check_structure.py` records the exemption in
   `NON_CATEGORY_DIRS`; add any future non-category directory there too.
+
+## Generated Artifacts
+`MANIFEST.md` is generated from every doc's `applies_to` frontmatter and MUST
+NOT be hand-edited. It is what an agent reads to decide which docs to load, so a
+stale manifest silently hides a rule; CI fails the build when it drifts.
+
+```bash
+python3 scripts/gen_manifest.py            # regenerate after any frontmatter change
+python3 scripts/gen_manifest.py --check    # what CI runs
+python3 scripts/check_indexes_accurate.py  # every doc listed once, every link resolves
+```
+
+Enable the pre-commit hook once per clone, so drift is caught before it is
+pushed rather than in CI:
+
+```bash
+git config core.hooksPath .githooks
+```
+
+A `conditional` or `task` doc MUST carry a `purpose`: the manifest selects on
+it. Index descriptions stay hand-written, because they say things `purpose` does
+not; `check_indexes_accurate.py` verifies the links, not the prose.
 
 ## Test Suite
 `scripts/test_rules.py` runs in CI and MUST pass before merge. Run it locally

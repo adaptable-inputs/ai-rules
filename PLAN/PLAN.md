@@ -10,17 +10,6 @@ applies_to:
 
 Guidance for AI agents creating implementation plans.
 
-## Ruleset Read Gate (Mandatory)
-- SHOULD start every planning task by reading the complete ai-rules ruleset.
-- "Complete ai-rules ruleset" means every Markdown file transitively reachable
-  from the baseline entry point `AI.md`.
-- In downstream-projects, also read every Markdown file transitively reachable
-  from the downstream extension entry point described in
-  `AI-RULES/DOWNSTREAM-PROJECT.md`.
-- MUST NOT skip reachable Markdown files and do not pick files ad-hoc.
-- After the full read is complete, irrelevant rules MAY be removed from active
-  context.
-
 ## Planning Requirement (Mandatory)
 - SHOULD create a plan before starting implementation for every implementation task.
 - The plan MAY be lightweight for low-risk, trivial changes, but it MUST still
@@ -29,12 +18,12 @@ Guidance for AI agents creating implementation plans.
 - MUST NOT start implementation when no plan exists.
 
 ## Plan Step Ordering Gates (Mandatory)
-- Every plan MUST include a ruleset-read step as the very first task.
-- The first task MUST require reading the complete ai-rules ruleset as defined
-  in `Ruleset Read Gate (Mandatory)`.
+- Every plan MUST include a rule-loading step as the very first task.
+- The first task MUST load the rules that apply to the change, following the
+  `AI.md` Loading Protocol.
 - No other planning or implementation task MAY appear before that first step.
-- Every plan MUST include a final task that re-reads the complete ai-rules
-  ruleset and verifies the current planned/implemented changes still conform.
+- Every plan MUST include a final task that verifies the planned or implemented
+  changes still conform to those rules.
 - If non-conformance is found during that final task, corrective updates are
   mandatory before the plan can be marked complete.
 - This end-of-plan conformance check is a hard quality gate.

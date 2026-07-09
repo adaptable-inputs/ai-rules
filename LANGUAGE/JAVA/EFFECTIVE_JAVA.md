@@ -5,6 +5,7 @@ applies_to:
   languages: ["java"]
   globs: ["**/*.java"]
   annex: "EFFECTIVE_JAVA.ANNEX.md"
+  purpose: "Effective Java preference heuristics that narrow the Java baseline"
   inherits: ["LANGUAGE/JAVA/JAVA.md", "SECURITY/SECURITY.md", "TEST/TEST.md"]
 ---
 # EFFECTIVE_JAVA
