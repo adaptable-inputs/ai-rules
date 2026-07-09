@@ -9,9 +9,19 @@ Guidance for maintaining this ai-rules repository.
 
 ## Scope
 This scope statement governs every file under `AI-RULES/`, including
-`LESSONS_LEARNED/`. Individual files do not restate it.
+`LESSONS_LEARNED/`, except the downstream-facing documents listed below.
+Individual files do not restate it.
 - These rules apply only to this repository.
 - MUST NOT copy these rules into downstream-projects.
+
+### Downstream-facing exceptions
+These three describe procedures a downstream-project runs, and are vendored with
+the subtree. The prohibition above does not apply to them:
+- [UPDATE.md](UPDATE.md) - the setup and update procedure itself.
+- [DOWNSTREAM-PROJECT.md](DOWNSTREAM-PROJECT.md) - downstream-project layout.
+- [DOWNSTREAM-OVERRIDES.md](DOWNSTREAM-OVERRIDES.md) - how a downstream-project
+  authors its own overrides. The authoring rules bind this repository; the
+  layout they describe is what a downstream-project produces.
 
 ## Terminology
 - "ai-rules" refers to this repository's baseline ruleset and its published tags.
