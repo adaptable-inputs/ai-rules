@@ -1,3 +1,7 @@
+---
+applies_to:
+  load: "always"
+---
 # CORE
 
 Core, non-negotiable baseline rules for all technology stacks in this

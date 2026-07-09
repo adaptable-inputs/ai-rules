@@ -1,3 +1,9 @@
+---
+applies_to:
+  load: "conditional"
+  when: "a JPA provider is a declared dependency"
+  libraries: ["jpa"]
+---
 # JPA
 
 Guidance for AI agents implementing and reviewing JPA-based persistence.

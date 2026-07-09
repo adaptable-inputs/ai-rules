@@ -1,3 +1,8 @@
+---
+applies_to:
+  load: "task"
+  tasks: ["review"]
+---
 # CODE_REVIEW
 
 Guidance for AI agents performing code and rules-document reviews.

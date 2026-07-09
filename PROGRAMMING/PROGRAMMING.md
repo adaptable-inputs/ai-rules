@@ -1,3 +1,8 @@
+---
+applies_to:
+  load: "task"
+  tasks: ["programming"]
+---
 # PROGRAMMING
 
 Guidance for AI agents executing implementation tasks.

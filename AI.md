@@ -1,3 +1,7 @@
+---
+applies_to:
+  load: "entry"
+---
 # AI Rules Index
 
 This index is the single entry point for the baseline rules. Each level links

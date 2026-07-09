@@ -1,3 +1,7 @@
+---
+applies_to:
+  load: "always"
+---
 # VERSION_CONTROL_SYSTEM
 
 Guidance for version control system usage (Git and others).

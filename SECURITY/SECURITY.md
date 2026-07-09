@@ -1,3 +1,7 @@
+---
+applies_to:
+  load: "always"
+---
 # SECURITY
 
 Guidance for AI agents implementing and reviewing security-relevant changes.

@@ -1,3 +1,9 @@
+---
+applies_to:
+  load: "conditional"
+  when: "a Kafka client is a declared dependency"
+  libraries: ["kafka"]
+---
 # KAFKA
 
 Guidance for AI agents implementing and reviewing Apache Kafka usage.

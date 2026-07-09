@@ -1,3 +1,9 @@
+---
+applies_to:
+  load: "conditional"
+  when: "pom.xml is present"
+  tools: ["maven"]
+---
 # MAVEN
 
 Guidance for AI agents implementing and reviewing Maven builds.

@@ -1,3 +1,10 @@
+---
+applies_to:
+  load: "conditional"
+  when: "the project authors YAML"
+  languages: ["yaml"]
+  globs: ["**/*.yml", "**/*.yaml"]
+---
 # YAML
 
 Guidance for AI agents implementing and reviewing YAML configuration files.

@@ -1,3 +1,7 @@
+---
+applies_to:
+  load: "always"
+---
 # GDPR_BDSG
 
 Engineering policy guidance for AI agents on GDPR (DSGVO) and BDSG relevant

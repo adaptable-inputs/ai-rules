@@ -1,3 +1,10 @@
+---
+applies_to:
+  load: "conditional"
+  when: "the project ships stylesheets"
+  languages: ["css"]
+  globs: ["**/*.css", "**/*.scss"]
+---
 # CSS
 
 Guidance for AI agents implementing and reviewing CSS.

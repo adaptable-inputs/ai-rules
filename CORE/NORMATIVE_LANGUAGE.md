@@ -1,3 +1,7 @@
+---
+applies_to:
+  load: "always"
+---
 # NORMATIVE_LANGUAGE
 
 Defines the obligation vocabulary used by every rule in this repository. An

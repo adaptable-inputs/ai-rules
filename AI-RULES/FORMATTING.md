@@ -1,3 +1,8 @@
+---
+applies_to:
+  load: "never"
+  reason: "maintainer meta-guidance for the ai-rules repository itself"
+---
 # FORMATTING
 
 Formatting rules for the ai-rules repository itself (not downstream-projects).

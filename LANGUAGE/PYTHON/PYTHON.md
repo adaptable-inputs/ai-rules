@@ -1,3 +1,10 @@
+---
+applies_to:
+  load: "conditional"
+  when: "pyproject.toml, setup.py, or requirements.txt is present"
+  languages: ["python"]
+  globs: ["**/*.py"]
+---
 # PYTHON
 
 Guidance for AI agents implementing and reviewing Python code.

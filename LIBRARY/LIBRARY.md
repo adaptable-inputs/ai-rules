@@ -1,3 +1,7 @@
+---
+applies_to:
+  load: "index"
+---
 # LIBRARY
 
 Library-layer contract for technology-specific API usage and integration

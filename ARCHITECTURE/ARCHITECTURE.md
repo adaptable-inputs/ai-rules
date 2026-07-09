@@ -1,3 +1,7 @@
+---
+applies_to:
+  load: "index"
+---
 # ARCHITECTURE
 
 Architecture-layer contract for system design, boundaries, and interaction

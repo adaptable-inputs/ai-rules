@@ -1,3 +1,10 @@
+---
+applies_to:
+  load: "conditional"
+  when: "composer.json is present"
+  languages: ["php"]
+  globs: ["**/*.php"]
+---
 # PHP
 
 Guidance for AI agents implementing and reviewing PHP code.

@@ -1,3 +1,9 @@
+---
+applies_to:
+  load: "conditional"
+  when: "code is hosted on GitLab"
+  tools: ["gitlab"]
+---
 # GITLAB
 
 Guidance for AI agents using GitLab for branch protection, merge requests, and

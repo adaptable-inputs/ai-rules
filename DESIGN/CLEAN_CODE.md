@@ -1,3 +1,7 @@
+---
+applies_to:
+  load: "always"
+---
 # CLEAN_CODE
 
 Guidance for AI agents applying clean-code principles in implementation and

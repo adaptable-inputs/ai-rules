@@ -1,3 +1,10 @@
+---
+applies_to:
+  load: "conditional"
+  when: "Package.swift or an Xcode project is present"
+  languages: ["swift"]
+  globs: ["**/*.swift"]
+---
 # SWIFT
 
 Guidance for AI agents implementing and reviewing Swift code.

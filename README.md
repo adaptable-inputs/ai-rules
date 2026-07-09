@@ -1,3 +1,8 @@
+---
+applies_to:
+  load: "never"
+  reason: "human-facing repository documentation"
+---
 # AI Rules
 
 This repository contains shared, versioned AI guidance intended to be vendored

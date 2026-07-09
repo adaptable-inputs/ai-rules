@@ -1,3 +1,8 @@
+---
+applies_to:
+  load: "never"
+  reason: "maintainer meta-guidance for the ai-rules repository itself"
+---
 # UPDATE
 
 Instructions for AI agents to run ai-rules updates in a downstream-project.

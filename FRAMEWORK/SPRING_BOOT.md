@@ -1,3 +1,9 @@
+---
+applies_to:
+  load: "conditional"
+  when: "spring-boot is a declared dependency"
+  frameworks: ["spring-boot"]
+---
 # SPRING_BOOT
 
 Guidance for AI agents implementing and reviewing Spring Boot applications.

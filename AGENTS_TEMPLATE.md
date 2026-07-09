@@ -1,3 +1,8 @@
+---
+applies_to:
+  load: "setup"
+  when: "bootstrapping ai-rules into a downstream project"
+---
 # AGENTS.md - AI Rules Setup Template
 
 ## Purpose

@@ -1,3 +1,9 @@
+---
+applies_to:
+  load: "conditional"
+  when: "jest is a declared dev dependency"
+  libraries: ["jest"]
+---
 # JEST
 
 Guidance for AI agents implementing and reviewing Jest tests.

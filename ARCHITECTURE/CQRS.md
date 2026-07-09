@@ -1,3 +1,8 @@
+---
+applies_to:
+  load: "conditional"
+  when: "the project separates command and query models"
+---
 # CQRS
 
 Guidance for AI agents implementing and reviewing Command Query

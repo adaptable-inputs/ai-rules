@@ -1,3 +1,8 @@
+---
+applies_to:
+  load: "conditional"
+  when: "the task involves selecting a design pattern"
+---
 # GOF_DESIGN_PATTERNS
 
 Guidance for AI agents applying GoF patterns pragmatically.

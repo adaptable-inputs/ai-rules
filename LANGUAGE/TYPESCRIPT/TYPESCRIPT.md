@@ -1,3 +1,10 @@
+---
+applies_to:
+  load: "conditional"
+  when: "tsconfig.json is present"
+  languages: ["typescript"]
+  globs: ["**/*.ts", "**/*.tsx"]
+---
 # TYPESCRIPT
 
 Guidance for AI agents implementing and reviewing TypeScript code.

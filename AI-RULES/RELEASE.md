@@ -1,3 +1,8 @@
+---
+applies_to:
+  load: "never"
+  reason: "maintainer meta-guidance for the ai-rules repository itself"
+---
 # RELEASE
 
 Release process for the ai-rules repository (not downstream-projects).

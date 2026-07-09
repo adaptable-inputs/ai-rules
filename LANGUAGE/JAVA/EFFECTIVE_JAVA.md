@@ -1,3 +1,10 @@
+---
+applies_to:
+  load: "conditional"
+  when: "pom.xml or build.gradle is present"
+  languages: ["java"]
+  globs: ["**/*.java"]
+---
 # EFFECTIVE_JAVA
 
 Guidance for AI agents applying Effective-Java-style decisions in modern Java

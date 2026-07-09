@@ -1,3 +1,9 @@
+---
+applies_to:
+  load: "conditional"
+  when: "guava is a declared dependency"
+  libraries: ["guava"]
+---
 # GUAVA
 
 Guidance for AI agents implementing and reviewing Guava usage.

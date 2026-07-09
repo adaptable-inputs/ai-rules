@@ -1,3 +1,7 @@
+---
+applies_to:
+  load: "always"
+---
 # EPRIVACY_TTDSG
 
 Engineering policy guidance for AI agents on ePrivacy-oriented and TTDSG

@@ -1,3 +1,9 @@
+---
+applies_to:
+  load: "conditional"
+  when: "jooq is a declared dependency"
+  libraries: ["jooq"]
+---
 # JOOQ
 
 Guidance for AI agents implementing and reviewing jOOQ-based data access.

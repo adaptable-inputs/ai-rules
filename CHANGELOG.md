@@ -1,3 +1,8 @@
+---
+applies_to:
+  load: "never"
+  reason: "release history for this repository"
+---
 # Changelog
 
 All notable changes to this project are documented in this file.

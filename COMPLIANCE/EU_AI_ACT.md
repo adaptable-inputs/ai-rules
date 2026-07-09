@@ -1,3 +1,7 @@
+---
+applies_to:
+  load: "always"
+---
 # EU_AI_ACT
 
 Engineering policy guidance for AI agents on EU AI Act relevant controls for

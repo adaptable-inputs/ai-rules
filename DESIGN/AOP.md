@@ -1,3 +1,8 @@
+---
+applies_to:
+  load: "conditional"
+  when: "the project applies aspect-oriented cross-cutting concerns"
+---
 # AOP
 
 Guidance for AI agents applying Aspect-Oriented Programming responsibly.

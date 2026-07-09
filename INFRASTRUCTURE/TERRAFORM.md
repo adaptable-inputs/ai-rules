@@ -1,3 +1,10 @@
+---
+applies_to:
+  load: "conditional"
+  when: "*.tf files are present"
+  tools: ["terraform"]
+  globs: ["**/*.tf"]
+---
 # TERRAFORM
 
 Guidance for AI agents implementing and reviewing Terraform infrastructure

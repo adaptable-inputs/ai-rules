@@ -1,3 +1,9 @@
+---
+applies_to:
+  load: "conditional"
+  when: "an Ansible playbook is present"
+  tools: ["ansible"]
+---
 # ANSIBLE
 
 Guidance for AI agents implementing and reviewing Ansible automation changes.

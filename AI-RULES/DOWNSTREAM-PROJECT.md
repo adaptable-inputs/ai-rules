@@ -1,3 +1,8 @@
+---
+applies_to:
+  load: "never"
+  reason: "maintainer meta-guidance for the ai-rules repository itself"
+---
 # DOWNSTREAM-PROJECT
 
 Guidance for downstream-projects that vendor ai-rules.

@@ -1,3 +1,9 @@
+---
+applies_to:
+  load: "conditional"
+  when: "ionic.config.json is present"
+  frameworks: ["ionic"]
+---
 # IONIC
 
 Guidance for AI agents implementing and reviewing Ionic applications.

@@ -1,3 +1,10 @@
+---
+applies_to:
+  load: "conditional"
+  when: "package.json is present"
+  languages: ["javascript"]
+  globs: ["**/*.js", "**/*.jsx", "**/*.mjs"]
+---
 # JAVASCRIPT
 
 Guidance for AI agents implementing and reviewing JavaScript code.

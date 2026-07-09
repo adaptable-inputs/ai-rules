@@ -1,3 +1,8 @@
+---
+applies_to:
+  load: "never"
+  reason: "maintainer meta-guidance for the ai-rules repository itself"
+---
 # PR-REVIEW-LOOP
 
 Repository-standard PR review loop for ai-rules maintenance.

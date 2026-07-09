@@ -1,3 +1,9 @@
+---
+applies_to:
+  load: "conditional"
+  when: "mockito is a declared test dependency"
+  libraries: ["mockito"]
+---
 # MOCKITO
 
 Guidance for AI agents implementing and reviewing Mockito-based tests.

@@ -1,3 +1,9 @@
+---
+applies_to:
+  load: "conditional"
+  when: "build.gradle or build.gradle.kts is present"
+  tools: ["gradle"]
+---
 # GRADLE
 
 Guidance for AI agents implementing and reviewing Gradle builds.

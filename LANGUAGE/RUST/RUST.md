@@ -1,3 +1,10 @@
+---
+applies_to:
+  load: "conditional"
+  when: "Cargo.toml is present"
+  languages: ["rust"]
+  globs: ["**/*.rs"]
+---
 # RUST
 
 Guidance for AI agents implementing and reviewing Rust code.

@@ -1,3 +1,10 @@
+---
+applies_to:
+  load: "conditional"
+  when: "a Dockerfile or compose file is present"
+  tools: ["docker"]
+  globs: ["**/Dockerfile", "**/compose.yaml"]
+---
 # DOCKER
 
 Guidance for AI agents implementing and reviewing Docker containerization.

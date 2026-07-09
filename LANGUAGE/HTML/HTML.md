@@ -1,3 +1,10 @@
+---
+applies_to:
+  load: "conditional"
+  when: "the project renders HTML"
+  languages: ["html"]
+  globs: ["**/*.html"]
+---
 # HTML
 
 Guidance for AI agents implementing and reviewing HTML markup.

@@ -1,3 +1,7 @@
+---
+applies_to:
+  load: "always"
+---
 # SOLID
 
 Guidance for AI agents applying SOLID principles pragmatically.

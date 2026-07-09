@@ -1,3 +1,8 @@
+---
+applies_to:
+  load: "conditional"
+  when: "the project exposes or consumes a REST API"
+---
 # REST
 
 Guidance for AI agents implementing and reviewing REST-style APIs.

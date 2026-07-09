@@ -1,3 +1,10 @@
+---
+applies_to:
+  load: "conditional"
+  when: "go.mod is present"
+  languages: ["go"]
+  globs: ["**/*.go"]
+---
 # GO
 
 Guidance for AI agents implementing and reviewing Go code.

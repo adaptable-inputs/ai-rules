@@ -1,3 +1,7 @@
+---
+applies_to:
+  load: "index"
+---
 # LANGUAGE
 
 Language-layer contract for syntax, semantics, naming, and readability rules.

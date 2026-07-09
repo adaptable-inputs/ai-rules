@@ -1,3 +1,7 @@
+---
+applies_to:
+  load: "always"
+---
 # RULE_DEPENDENCY_TREE
 
 Canonical semantic dependency and precedence guidance for this repository's

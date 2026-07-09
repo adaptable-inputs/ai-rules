@@ -1,3 +1,9 @@
+---
+applies_to:
+  load: "conditional"
+  when: "the project deploys to Azure"
+  tools: ["azure"]
+---
 # AZURE
 
 Guidance for AI agents implementing and reviewing Azure platform configuration

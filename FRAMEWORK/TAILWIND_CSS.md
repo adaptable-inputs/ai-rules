@@ -1,3 +1,9 @@
+---
+applies_to:
+  load: "conditional"
+  when: "a tailwind.config file is present"
+  frameworks: ["tailwind"]
+---
 # TAILWIND_CSS
 
 Guidance for AI agents implementing and reviewing Tailwind CSS code.

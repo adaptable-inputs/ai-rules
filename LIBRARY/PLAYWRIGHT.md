@@ -1,3 +1,9 @@
+---
+applies_to:
+  load: "conditional"
+  when: "playwright is a declared dev dependency"
+  libraries: ["playwright"]
+---
 # PLAYWRIGHT
 
 Guidance for AI agents implementing and reviewing Playwright tests.

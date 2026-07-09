@@ -1,3 +1,9 @@
+---
+applies_to:
+  load: "conditional"
+  when: "the project deploys to GCP"
+  tools: ["gcp"]
+---
 # GCP
 
 Guidance for AI agents implementing and reviewing Google Cloud Platform (GCP)

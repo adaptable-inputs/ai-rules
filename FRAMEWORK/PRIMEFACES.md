@@ -1,3 +1,9 @@
+---
+applies_to:
+  load: "conditional"
+  when: "primefaces is a declared dependency"
+  frameworks: ["primefaces"]
+---
 # PRIMEFACES
 
 Guidance for AI agents implementing and reviewing PrimeFaces/JSF projects.

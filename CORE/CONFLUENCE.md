@@ -1,3 +1,9 @@
+---
+applies_to:
+  load: "conditional"
+  when: "the project documents in Confluence"
+  tools: ["confluence"]
+---
 # CONFLUENCE
 
 Guidance for AI agents interacting with Confluence wiki content.

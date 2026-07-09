@@ -1,3 +1,7 @@
+---
+applies_to:
+  load: "always"
+---
 # LICENSES
 
 Guidance for AI agents on software-license decisions in commercial

@@ -1,3 +1,8 @@
+---
+applies_to:
+  load: "conditional"
+  when: "the project layers domain against infrastructure"
+---
 # CLEAN_ARCHITECTURE
 
 Guidance for AI agents implementing and reviewing Clean Architecture patterns.

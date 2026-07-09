@@ -1,3 +1,8 @@
+---
+applies_to:
+  load: "conditional"
+  when: "the project declares any infrastructure as code"
+---
 # INFRA_AS_CODE
 
 Guidance for AI agents implementing and reviewing Infrastructure as Code (IaC)

@@ -1,3 +1,8 @@
+---
+applies_to:
+  load: "never"
+  reason: "vulnerability reporting policy for this repository"
+---
 # Security Policy
 
 This file defines the repository security disclosure process for GitHub.

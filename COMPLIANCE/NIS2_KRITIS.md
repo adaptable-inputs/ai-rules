@@ -1,3 +1,7 @@
+---
+applies_to:
+  load: "always"
+---
 # NIS2_KRITIS
 
 Engineering policy guidance for AI agents on NIS2-oriented controls and German

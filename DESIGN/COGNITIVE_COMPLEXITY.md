@@ -1,3 +1,7 @@
+---
+applies_to:
+  load: "always"
+---
 # COGNITIVE_COMPLEXITY
 
 Guidance for AI agents to control method-level cognitive complexity.

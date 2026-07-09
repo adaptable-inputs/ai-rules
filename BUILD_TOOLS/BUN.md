@@ -1,3 +1,9 @@
+---
+applies_to:
+  load: "conditional"
+  when: "bun.lockb is present"
+  tools: ["bun"]
+---
 # BUN
 
 Guidance for AI agents using Bun as package manager/runtime tooling.

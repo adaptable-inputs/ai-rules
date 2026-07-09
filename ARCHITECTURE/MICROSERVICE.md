@@ -1,3 +1,8 @@
+---
+applies_to:
+  load: "conditional"
+  when: "the system is decomposed into services"
+---
 # MICROSERVICE
 
 Guidance for AI agents implementing and reviewing microservice architecture.

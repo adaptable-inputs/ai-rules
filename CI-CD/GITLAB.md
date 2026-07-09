@@ -1,3 +1,9 @@
+---
+applies_to:
+  load: "conditional"
+  when: ".gitlab-ci.yml is present"
+  tools: ["gitlab-ci"]
+---
 # GITLAB
 
 Guidance for AI agents implementing and reviewing GitLab CI/CD pipelines.

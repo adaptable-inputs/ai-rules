@@ -1,6 +1,33 @@
+---
+applies_to:
+  load: "never"
+  reason: "maintainer meta-guidance for the ai-rules repository itself"
+---
 # STRUCTURE
 
 Rules for organizing the ai-rules repository itself (not downstream-projects).
+
+## Frontmatter Contract
+Every Markdown file MUST begin with an `applies_to` YAML frontmatter block. It
+tells an agent whether to load the file at all. See `AI.md` Loading Protocol.
+
+```yaml
+---
+applies_to:
+  load: "conditional"
+  when: "pom.xml or build.gradle is present"
+  languages: ["java"]
+  globs: ["**/*.java"]
+---
+```
+
+- `load` MUST be one of: `always`, `entry`, `index`, `conditional`, `task`,
+  `setup`, `never`.
+- `load: conditional` MUST carry at least one of `languages`, `frameworks`,
+  `libraries`, `tools`, or a `when` clause.
+- `load: never` MUST carry a `reason`.
+- Every scalar and list item MUST be quoted. An unquoted `**/*.java` parses as a
+  YAML alias, not a string.
 
 ## Directory Layout
 - Keep top-level categories at the repository root and list them in `AI.md`.

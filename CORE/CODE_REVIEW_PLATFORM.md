@@ -1,3 +1,7 @@
+---
+applies_to:
+  load: "always"
+---
 # CODE_REVIEW_PLATFORM
 
 Platform-neutral delivery and review workflow contract shared by every code

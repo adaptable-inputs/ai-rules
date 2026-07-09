@@ -1,3 +1,9 @@
+---
+applies_to:
+  load: "conditional"
+  when: "javax.money is a declared dependency"
+  libraries: ["javamoney"]
+---
 # JAVA_MONEY
 
 Guidance for AI agents implementing and reviewing JavaMoney usage for monetary

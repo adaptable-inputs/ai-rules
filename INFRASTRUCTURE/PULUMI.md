@@ -1,3 +1,9 @@
+---
+applies_to:
+  load: "conditional"
+  when: "Pulumi.yaml is present"
+  tools: ["pulumi"]
+---
 # PULUMI
 
 Guidance for AI agents implementing and reviewing Pulumi infrastructure changes.

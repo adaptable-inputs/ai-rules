@@ -1,3 +1,9 @@
+---
+applies_to:
+  load: "conditional"
+  when: "junit is a declared test dependency"
+  libraries: ["junit"]
+---
 # JUNIT
 
 Guidance for AI agents implementing and reviewing JUnit tests.

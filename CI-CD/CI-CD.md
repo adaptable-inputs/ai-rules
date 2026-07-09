@@ -1,3 +1,7 @@
+---
+applies_to:
+  load: "index"
+---
 # CI-CD
 
 CI/CD-layer contract for automation of build, test, verification, and delivery

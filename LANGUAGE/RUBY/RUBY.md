@@ -1,3 +1,10 @@
+---
+applies_to:
+  load: "conditional"
+  when: "Gemfile is present"
+  languages: ["ruby"]
+  globs: ["**/*.rb"]
+---
 # RUBY
 
 Guidance for AI agents implementing and reviewing Ruby code.

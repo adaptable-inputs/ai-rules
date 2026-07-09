@@ -1,3 +1,9 @@
+---
+applies_to:
+  load: "conditional"
+  when: "mapstruct is a declared dependency"
+  libraries: ["mapstruct"]
+---
 # MAPSTRUCT
 
 Guidance for AI agents implementing and reviewing MapStruct mappings.

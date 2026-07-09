@@ -1,3 +1,7 @@
+---
+applies_to:
+  load: "index"
+---
 # REVIEW
 
 Review-layer contract for validation and quality-gate guidance.

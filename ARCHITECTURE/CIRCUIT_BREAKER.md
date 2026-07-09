@@ -1,3 +1,8 @@
+---
+applies_to:
+  load: "conditional"
+  when: "the project calls remote dependencies"
+---
 # CIRCUIT_BREAKER
 
 Guidance for AI agents implementing and reviewing circuit breaker patterns.

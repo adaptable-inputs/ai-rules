@@ -1,3 +1,9 @@
+---
+applies_to:
+  load: "conditional"
+  when: "Kubernetes manifests are present"
+  tools: ["kubernetes"]
+---
 # KUBERNETES
 
 Guidance for AI agents implementing and reviewing Kubernetes manifests.

@@ -1,3 +1,7 @@
+---
+applies_to:
+  load: "always"
+---
 # CONVENTIONS
 
 Guidance for AI agents on cross-language naming and formatting conventions.

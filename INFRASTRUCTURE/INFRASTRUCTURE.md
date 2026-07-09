@@ -1,3 +1,7 @@
+---
+applies_to:
+  load: "index"
+---
 # INFRASTRUCTURE
 
 Infrastructure-layer contract for runtime environment, deployment topology, and

@@ -1,3 +1,9 @@
+---
+applies_to:
+  load: "conditional"
+  when: "the project deploys to AWS"
+  tools: ["aws"]
+---
 # AWS
 
 Guidance for AI agents implementing and reviewing AWS platform configuration

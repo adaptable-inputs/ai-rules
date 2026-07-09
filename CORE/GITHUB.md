@@ -1,3 +1,9 @@
+---
+applies_to:
+  load: "conditional"
+  when: "code is hosted on GitHub"
+  tools: ["github"]
+---
 # GITHUB
 
 Guidance for AI agents using GitHub for branch protection, pull requests, and

@@ -1,3 +1,9 @@
+---
+applies_to:
+  load: "conditional"
+  when: "lombok is a declared dependency"
+  libraries: ["lombok"]
+---
 # LOMBOK
 
 Guidance for AI agents implementing and reviewing Lombok usage.

@@ -1,3 +1,9 @@
+---
+applies_to:
+  load: "conditional"
+  when: "a CloudFormation template is present"
+  tools: ["cloudformation"]
+---
 # CLOUDFORMATION
 
 Guidance for AI agents implementing and reviewing AWS CloudFormation

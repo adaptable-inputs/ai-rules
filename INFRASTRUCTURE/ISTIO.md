@@ -1,3 +1,9 @@
+---
+applies_to:
+  load: "conditional"
+  when: "Istio resources are present"
+  tools: ["istio"]
+---
 # ISTIO
 
 Guidance for AI agents implementing and reviewing Istio service mesh policies.

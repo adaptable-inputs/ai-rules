@@ -1,3 +1,9 @@
+---
+applies_to:
+  load: "conditional"
+  when: "react is a dependency in package.json"
+  frameworks: ["react"]
+---
 # REACT
 
 Guidance for AI agents implementing and reviewing React projects.

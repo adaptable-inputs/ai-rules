@@ -1,3 +1,9 @@
+---
+applies_to:
+  load: "conditional"
+  when: ".github/workflows contains a workflow"
+  tools: ["github-actions"]
+---
 # GITHUB_ACTIONS
 
 Guidance for AI agents implementing and reviewing GitHub Actions CI/CD

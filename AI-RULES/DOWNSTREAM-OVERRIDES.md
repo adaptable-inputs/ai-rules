@@ -1,3 +1,8 @@
+---
+applies_to:
+  load: "never"
+  reason: "maintainer meta-guidance for the ai-rules repository itself"
+---
 # DOWNSTREAM-OVERRIDES
 
 Meta guidance for maintainers defining how downstream-project extensions should

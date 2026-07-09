@@ -1,3 +1,7 @@
+---
+applies_to:
+  load: "index"
+---
 # DESIGN
 
 Design-principles layer contract for maintainability, cohesion, coupling, and

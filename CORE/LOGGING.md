@@ -1,3 +1,7 @@
+---
+applies_to:
+  load: "always"
+---
 # LOGGING
 
 Guidance for AI agents implementing and reviewing logging behavior.

@@ -1,3 +1,9 @@
+---
+applies_to:
+  load: "conditional"
+  when: "jaxb is a declared dependency"
+  libraries: ["jaxb"]
+---
 # JAXB
 
 Guidance for AI agents implementing and reviewing JAXB XML binding.

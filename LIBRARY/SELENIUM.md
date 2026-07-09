@@ -1,3 +1,9 @@
+---
+applies_to:
+  load: "conditional"
+  when: "selenium is a declared test dependency"
+  libraries: ["selenium"]
+---
 # SELENIUM
 
 Guidance for AI agents implementing and reviewing Selenium-based tests.

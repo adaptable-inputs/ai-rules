@@ -1,3 +1,7 @@
+---
+applies_to:
+  load: "always"
+---
 # EARLY_RETURN
 
 Guidance for AI agents to use early return and guard clauses effectively.

@@ -1,3 +1,8 @@
+---
+applies_to:
+  load: "task"
+  tasks: ["plan"]
+---
 # PLAN
 
 Guidance for AI agents creating implementation plans.

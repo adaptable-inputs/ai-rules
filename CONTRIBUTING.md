@@ -1,3 +1,8 @@
+---
+applies_to:
+  load: "never"
+  reason: "human-facing contribution guidance"
+---
 # Contributing
 
 Thank you for improving ai-rules. This repo is the single source of truth for

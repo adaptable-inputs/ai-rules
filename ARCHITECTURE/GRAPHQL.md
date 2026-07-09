@@ -1,3 +1,8 @@
+---
+applies_to:
+  load: "conditional"
+  when: "the project exposes or consumes a GraphQL API"
+---
 # GRAPHQL
 
 Guidance for AI agents implementing and reviewing GraphQL APIs.

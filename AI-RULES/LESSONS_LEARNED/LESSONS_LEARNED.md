@@ -1,3 +1,8 @@
+---
+applies_to:
+  load: "never"
+  reason: "maintainer meta-guidance for the ai-rules repository itself"
+---
 # LESSONS_LEARNED
 
 Compact, actionable notes to prevent repeat mistakes.

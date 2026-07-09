@@ -1,3 +1,7 @@
+---
+applies_to:
+  load: "index"
+---
 # FRAMEWORK
 
 Framework-layer contract for runtime and UI/application framework behavior.

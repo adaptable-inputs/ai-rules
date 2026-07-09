@@ -1,3 +1,9 @@
+---
+applies_to:
+  load: "conditional"
+  when: "svelte.config.js is present"
+  frameworks: ["svelte"]
+---
 # SVELTE
 
 Guidance for AI agents implementing and reviewing Svelte projects.

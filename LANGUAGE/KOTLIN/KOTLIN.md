@@ -1,3 +1,10 @@
+---
+applies_to:
+  load: "conditional"
+  when: "Kotlin sources are present"
+  languages: ["kotlin"]
+  globs: ["**/*.kt", "**/*.kts"]
+---
 # KOTLIN
 
 Guidance for AI agents implementing and reviewing Kotlin code.

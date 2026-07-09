@@ -1,3 +1,10 @@
+---
+applies_to:
+  load: "conditional"
+  when: "the project authors SQL"
+  languages: ["sql"]
+  globs: ["**/*.sql"]
+---
 # SQL
 
 Guidance for AI agents implementing and reviewing SQL.

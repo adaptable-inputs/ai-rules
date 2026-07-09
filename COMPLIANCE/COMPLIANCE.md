@@ -1,3 +1,7 @@
+---
+applies_to:
+  load: "index"
+---
 # COMPLIANCE
 
 Compliance-layer contract for legal, licensing, and governance constraints that

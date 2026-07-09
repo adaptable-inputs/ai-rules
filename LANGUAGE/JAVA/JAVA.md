@@ -1,3 +1,10 @@
+---
+applies_to:
+  load: "conditional"
+  when: "pom.xml or build.gradle is present"
+  languages: ["java"]
+  globs: ["**/*.java"]
+---
 # JAVA
 
 Guidance for AI agents implementing and reviewing Java code.

@@ -1,3 +1,9 @@
+---
+applies_to:
+  load: "conditional"
+  when: "package-lock.json is present"
+  tools: ["npm"]
+---
 # NPM
 
 Guidance for AI agents managing Node.js dependencies (npm, Yarn, pnpm).

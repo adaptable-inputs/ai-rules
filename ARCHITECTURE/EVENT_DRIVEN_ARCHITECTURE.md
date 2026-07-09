@@ -1,3 +1,8 @@
+---
+applies_to:
+  load: "conditional"
+  when: "the project publishes or consumes events"
+---
 # EVENT_DRIVEN_ARCHITECTURE
 
 Guidance for AI agents implementing and reviewing event-driven systems.

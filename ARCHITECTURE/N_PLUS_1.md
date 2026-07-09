@@ -1,3 +1,8 @@
+---
+applies_to:
+  load: "conditional"
+  when: "the project uses an ORM or lazy-loaded associations"
+---
 # N_PLUS_1
 
 Guidance for AI agents preventing and detecting N+1 query patterns.

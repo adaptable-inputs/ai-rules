@@ -1,3 +1,7 @@
+---
+applies_to:
+  load: "always"
+---
 # DORA
 
 Engineering policy guidance for AI agents on EU Digital Operational Resilience

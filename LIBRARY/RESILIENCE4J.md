@@ -1,3 +1,9 @@
+---
+applies_to:
+  load: "conditional"
+  when: "resilience4j is a declared dependency"
+  libraries: ["resilience4j"]
+---
 # RESILIENCE4J
 
 Guidance for AI agents implementing and reviewing Resilience4j policies.

@@ -1,3 +1,10 @@
+---
+applies_to:
+  load: "conditional"
+  when: "the project ships shell scripts"
+  languages: ["shell"]
+  globs: ["**/*.sh", "**/*.bash"]
+---
 # SHELL
 
 Guidance for AI agents implementing and reviewing shell scripts.

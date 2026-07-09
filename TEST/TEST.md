@@ -1,3 +1,7 @@
+---
+applies_to:
+  load: "always"
+---
 # TEST
 
 Guidance for AI agents implementing, updating, and reviewing tests.

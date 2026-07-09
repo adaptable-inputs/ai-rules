@@ -1,3 +1,10 @@
+---
+applies_to:
+  load: "conditional"
+  when: "a .csproj or .sln is present"
+  languages: ["csharp"]
+  globs: ["**/*.cs"]
+---
 # C_SHARP
 
 Guidance for AI agents implementing and reviewing C#/.NET code.

@@ -1,3 +1,9 @@
+---
+applies_to:
+  load: "conditional"
+  when: "Chart.yaml is present"
+  tools: ["helm"]
+---
 # HELM
 
 Guidance for AI agents implementing and reviewing Helm charts.

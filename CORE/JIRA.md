@@ -1,3 +1,9 @@
+---
+applies_to:
+  load: "conditional"
+  when: "the project tracks issues in Jira"
+  tools: ["jira"]
+---
 # JIRA
 
 Guidance for AI agents creating and updating Jira tickets and Jira summaries.

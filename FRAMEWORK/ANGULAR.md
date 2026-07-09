@@ -1,3 +1,9 @@
+---
+applies_to:
+  load: "conditional"
+  when: "angular.json is present"
+  frameworks: ["angular"]
+---
 # ANGULAR
 
 Guidance for AI agents implementing and reviewing Angular projects.

@@ -1,3 +1,7 @@
+---
+applies_to:
+  load: "always"
+---
 # READABILITY
 
 Guidance for AI agents on writing code with low cognitive load.
