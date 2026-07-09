@@ -118,7 +118,8 @@ result = value == null ? null : map(value);
 
 ## Code Review Checklist for Readability
 - Is the main execution flow understandable in one pass?
-- Are functions single-purpose and appropriately sized?
+- Does each function do exactly one thing, and fit on one screen without
+  scrolling?
 - Are nested branches and boolean expressions easy to follow?
 - For simple guard mappings, does ternary keep exceptional case first
   (`condition ? exceptional : happy`)?

@@ -19,8 +19,8 @@ Guidance for AI agents implementing and reviewing Lombok usage.
   constructor strategy.
 - If Lombok is available, implement ordinary getters/setters with
   `@Getter`/`@Setter`.
-- If Lombok is available, provide logger instances through the appropriate
-  Lombok log annotation (for example `@Slf4j`).
+- If Lombok is available, declare loggers with the Lombok annotation matching
+  the project's logging backend (`@Slf4j` for SLF4J).
 - Prefer `@Builder` for complex immutable object construction.
 - Prefer explicit annotations over broad convenience annotations when behavior
   matters.
@@ -103,7 +103,7 @@ Do:    use @Getter/@Setter and keep custom methods only for business logic.
 ### 5. Logger Wiring
 ```text
 Don't: declare manual static logger fields in Lombok-enabled classes.
-Do:    use appropriate Lombok log annotation (for example @Slf4j).
+Do:    declare the logger with @Slf4j.
 ```
 
 ### 6. Nullness Strategy Precedence

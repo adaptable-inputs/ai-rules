@@ -170,7 +170,8 @@ Effects synchronize Angular state with non-reactive or imperative systems.
   a valid domain state.
 - Keep validators pure and reusable; place cross-field rules at group level.
 - Avoid server-bound async validation on every keystroke:
-  use `updateOn: 'blur'` / `updateOn: 'submit'` where appropriate.
+  use `updateOn: 'blur'` for field-level checks and `updateOn: 'submit'` when
+  validation needs the whole form.
 - Remember `form.value` excludes disabled controls; use `getRawValue()` only
   when intentionally including disabled fields.
 
@@ -201,7 +202,7 @@ Effects synchronize Angular state with non-reactive or imperative systems.
   serialization.
 - Remove `NgZone.onStable` / `onMicrotaskEmpty` style "wait for stability"
   patterns; prefer `afterNextRender` / `afterEveryRender` or explicit DOM
-  observers where appropriate.
+  observers when the DOM is mutated outside Angular.
 - In zoneless apps, prefer clear Angular change notifications:
   signals read by templates, template/host listeners, `async` pipe, and
   `markForCheck()` at integration boundaries.

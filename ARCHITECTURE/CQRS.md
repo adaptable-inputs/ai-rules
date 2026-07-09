@@ -44,7 +44,8 @@ Responsibility Segregation (CQRS) architectures.
 
 ## Reliability and Operability
 - Use correlation IDs to trace command-to-projection flow.
-- Bound retries and route poison events/messages appropriately.
+- Bound retries with a maximum attempt count, then route poison
+  events/messages to a dead-letter destination.
 - Emit structured logs for command execution and projection failures.
 - Alert on sustained projection lag, retry storms, and replay failures.
 

@@ -14,8 +14,8 @@ Guidance for AI agents implementing and reviewing circuit breaker patterns.
   communication patterns.
 
 ## Placement Rules
-- Place circuit breakers at remote dependency boundaries (HTTP, gRPC, DB,
-  message broker clients as appropriate).
+- Place circuit breakers at every remote dependency boundary: HTTP, gRPC,
+  database, and message broker clients.
 - Do not apply circuit breakers to in-memory pure operations.
 - Keep breaker scope aligned with dependency blast radius.
 

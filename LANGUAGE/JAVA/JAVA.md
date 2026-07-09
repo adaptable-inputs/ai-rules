@@ -186,7 +186,7 @@ String message = String.format(
 - Are stream usages readable and side-effect free?
 - Are literal-template strings with variables using `String.format(...)`
   instead of `+` concatenation?
-- Are persistence/transport concerns separated from domain where appropriate?
+- Are persistence and transport concerns separated from domain types?
 - Are monetary values modeled with JavaMoney and explicit currency instead of
   `float`/`double` or bare `BigDecimal`?
 

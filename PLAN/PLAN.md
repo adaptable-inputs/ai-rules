@@ -52,7 +52,8 @@ Guidance for AI agents creating implementation plans.
 - This end-of-plan conformance check is a hard quality gate.
 
 ## Decision-Complete Plan Requirements
-A plan must specify (at depth appropriate to scope/risk):
+A plan must specify every item below. Expand each item in proportion to its
+risk; never omit one:
 - Goal and success criteria.
 - In-scope and out-of-scope items.
 - Semantic dependency order and target files.

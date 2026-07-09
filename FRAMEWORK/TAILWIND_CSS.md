@@ -75,7 +75,8 @@ Do:    map known variants to explicit class strings.
 ## Code Review Checklist for Tailwind
 - Are class lists readable and grouped by concern?
 - Are design tokens used instead of arbitrary values?
-- Are repeated patterns extracted appropriately?
+- Is every utility pattern repeated three or more times extracted into a
+  component or an `@apply` rule?
 - Are dynamic classes purge-safe and explicit?
 - Are accessibility states (focus/contrast/disabled/error) present?
 - Is generated CSS size and variant usage controlled?

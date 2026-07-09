@@ -91,7 +91,8 @@ Do:    redact secrets and log only safe identifiers/reasons.
 
 ## Code Review Checklist
 - Are all external inputs validated at trust boundaries?
-- Are output sinks context-encoded/escaped appropriately?
+- Is every output sink encoded for its own context (HTML body, HTML attribute,
+  URL, JavaScript, CSS, SQL)?
 - Are secrets absent from source, logs, snapshots, and examples?
 - Is authorization enforced server-side with least-privilege semantics?
 - Are dependency additions justified, maintained, and compliant?

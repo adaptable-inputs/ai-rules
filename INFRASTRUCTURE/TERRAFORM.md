@@ -82,7 +82,7 @@ Do:    review plan diff and apply through gated workflow.
 ```
 
 ## Code Review Checklist for Terraform
-- Are Terraform and provider versions pinned appropriately?
+- Are Terraform and every provider pinned to an exact version?
 - Is remote state backend and locking configured safely?
 - Does the plan show expected change scope and no unexplained destruction?
 - Are module boundaries/ownership clear and maintainable?

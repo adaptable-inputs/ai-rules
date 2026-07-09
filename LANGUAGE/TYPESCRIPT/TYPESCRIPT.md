@@ -125,7 +125,7 @@ Guidance for AI agents implementing and reviewing TypeScript code.
 - Avoid unnecessary type-level complexity that harms compile performance.
 - Keep deeply recursive conditional types bounded and documented.
 - Avoid broad barrel exports that cause accidental import bloat.
-- Prefer `import type` for type-only imports where appropriate.
+- Use `import type` whenever an import is referenced only in type positions.
 
 ## High-Risk Pitfalls
 1. Using `any` broadly and losing type guarantees.

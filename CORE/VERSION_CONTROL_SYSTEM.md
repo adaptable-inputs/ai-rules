@@ -58,12 +58,12 @@ Guidance for version control system usage (Git and others).
 - Reply to every review comment with a respectful, concrete response. Do not
   leave actionable comments unanswered.
 - If the comment is valid:
-  - Apply a fix in the same PR/MR when appropriate.
+  - Apply the fix in the same PR/MR unless it widens the PR's stated scope.
   - If not fixed immediately, create or link a follow-up issue/ticket and
     explain why deferral is acceptable.
 - If the comment is not valid, explain the reasoning with project-specific
   context and keep the tone factual and professional.
-- When appropriate, mark the relevant review thread or conversation as resolved,
+- Once the comment is addressed, mark the relevant review thread as resolved,
   but first check downstream project rules for ownership (for example whether
   the author or reviewer is expected to mark threads resolved).
 - Do not mark a review thread or conversation resolved by deleting discussion;
@@ -107,7 +107,8 @@ Guidance for version control system usage (Git and others).
 ## Ignore File
 - Maintain a VCS ignore file in the repository root (for Git: `.gitignore`).
 - Keep the ignore list minimal but practical to prevent VCS pollution and protect sensitive files.
-- Start from a baseline set, then add project- or tool-specific entries as needed.
+- Start from a baseline set, then add one entry per tool or build output the
+  project actually produces.
 - Remove or override entries if the repository intentionally versions those files.
 
 ### Minimal Must-Have Ignores

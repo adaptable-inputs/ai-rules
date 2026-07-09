@@ -20,7 +20,8 @@ Guidance for AI agents implementing and reviewing Maven builds.
 - Keep parent/BOM usage intentional and documented.
 
 ## Dependency and Plugin Management
-- Centralize versions with `dependencyManagement`/BOM where appropriate.
+- Centralize versions with `dependencyManagement`/BOM when more than one module
+  depends on the same artifact.
 - Avoid floating versions (`LATEST`, `RELEASE`, version ranges) in production
   builds.
 - Keep plugin versions pinned; avoid implicit plugin-version resolution.

@@ -50,7 +50,7 @@ Use this before any `git subtree add/pull` command:
 
 ### Target-version preflight (required)
 Before running any setup/update subtree command, inspect the target ai-rules
-version and adapt behavior as needed:
+version and follow the procedure that version defines:
 - Use the same `REF` that will be passed to `git subtree add`/`git subtree pull`.
 - Read target-version docs:
   - `CHANGELOG.md`

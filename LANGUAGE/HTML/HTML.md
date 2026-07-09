@@ -92,11 +92,12 @@ Guidance for AI agents implementing and reviewing HTML markup.
 ```
 
 ## Code Review Checklist for HTML
-- Are semantic elements used appropriately instead of generic wrappers?
+- Is every `div`/`span` that conveys structure replaced by a semantic element?
 - Is keyboard accessibility preserved for all interactions?
 - Do controls have accessible names and clear labels?
 - Is heading/landmark structure valid and navigable?
-- Is dynamic content escaped/sanitized appropriately?
+- Is every interpolated value escaped, and every HTML string sanitized before
+  insertion?
 - Are duplicate IDs and invalid nesting avoided?
 - Are form validation/error semantics accessible?
 

@@ -39,7 +39,8 @@ Defines baseline testing expectations for all stacks and domains.
 ## Mocks, Stubs, and Fakes
 - Mock boundaries, not core behavior under test.
 - Avoid over-mocking that hides integration risks.
-- Use fakes/stubs for slow or unavailable dependencies where appropriate.
+- Use fakes/stubs for dependencies that are slow, non-deterministic, or
+  unavailable in the test environment.
 - Reset shared test doubles between tests to avoid cross-test coupling.
 
 ## Data and Fixtures

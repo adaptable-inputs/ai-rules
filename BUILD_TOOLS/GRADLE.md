@@ -28,7 +28,8 @@ Guidance for AI agents implementing and reviewing Gradle builds.
 - Keep custom tasks small and deterministic.
 - Avoid heavy imperative logic in build scripts when plugins/conventions are
   more maintainable.
-- Isolate reusable build logic into convention plugins where appropriate.
+- Isolate build logic into a convention plugin when the same logic is needed by
+  more than one module.
 - Keep task inputs/outputs declared for caching correctness.
 
 ## Performance and Caching

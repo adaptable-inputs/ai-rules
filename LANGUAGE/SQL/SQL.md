@@ -103,7 +103,8 @@ never string-interpolate `IN (...)` values.
 - Are all dynamic values parameterized?
 - Are selected columns minimal and intentional?
 - Is ordering explicit where result order matters?
-- Is pagination/indexing appropriate for expected cardinality?
+- Does every query with unbounded result size paginate, and does each filter
+  and sort column have a supporting index?
 - Are transaction boundaries and isolation choices explicit?
 - Are migration scripts backward-compatible and operationally safe?
 - Are query plans acceptable for hot paths?

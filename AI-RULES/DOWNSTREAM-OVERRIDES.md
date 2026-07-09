@@ -27,8 +27,8 @@ be authored by AI agents.
 - Missing downstream extension content always falls back to baseline behavior.
 
 ## File Placement Rules
-- Extend baseline topics at the same relative path under
-  `<AI_PROJECT_PATH>` where appropriate.
+- Extend a baseline topic at the same relative path under
+  `<AI_PROJECT_PATH>` that the baseline file occupies.
 - Materialize only files and directories that are actually extended or added.
 - Avoid copying untouched baseline files into `<AI_PROJECT_PATH>`.
 - Downstream-projects may add additional directories/files not present in
@@ -38,7 +38,8 @@ be authored by AI agents.
 - Downstream extension entry point is `<AI_PROJECT_PATH>/AI.md`.
 - Every Markdown file under `<AI_PROJECT_PATH>` must be transitively reachable
   from `<AI_PROJECT_PATH>/AI.md`.
-- While building link chains, mirror baseline structure where appropriate.
+- While building link chains, mirror the baseline directory structure for any
+  topic that also exists in the baseline.
 - Additional downstream-only files must also be included in the same reachable
   index chain.
 - Maintain index hygiene consistently:

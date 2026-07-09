@@ -43,7 +43,7 @@ thresholds conservatively.
 - Replace branch-heavy variant handling with Strategy/Polymorphism where
   variation is stable.
 - Keep cross-cutting concerns out of core methods (use focused wrappers/aspects
-  only when appropriate per `DESIGN/AOP.md`).
+  only for the cross-cutting concerns listed in `DESIGN/AOP.md`).
 - Use `DESIGN/EARLY_RETURN.md` for guard-clause defaults, guardrails, and
   caveats.
 

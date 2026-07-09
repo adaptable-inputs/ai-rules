@@ -89,7 +89,7 @@ Do:    keep stacks narrowly scoped by environment and ownership.
 ```
 
 ## Code Review Checklist for Pulumi
-- Are Pulumi and provider/plugin versions pinned appropriately?
+- Are Pulumi and every provider/plugin pinned to an exact version?
 - Is stack scope/environment isolation explicit and safe?
 - Is preview evidence provided with expected change scope?
 - Are secret config values protected and absent from logs?
