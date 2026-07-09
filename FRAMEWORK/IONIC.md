@@ -98,25 +98,35 @@ export class CameraService {
 ### 2. Route-Triggered Async Safety
 ```ts
 // Don't: ignore stale async updates during route switches.
-ionViewWillEnter(): void {
-  this.ordersApi.loadOpenOrders().then((orders) => {
-    this.orders = orders;
-  });
+// Bad because a resolved promise from a left view still writes to `orders`.
+class OpenOrdersPageBad {
+  orders: Order[] = [];
+  constructor(private ordersApi: OrdersApi) {}
+
+  ionViewWillEnter(): void {
+    this.ordersApi.loadOpenOrders().then((orders) => {
+      this.orders = orders;
+    });
+  }
 }
 
 // Do: cancel/ignore stale work on view leave.
-private alive = false;
+class OpenOrdersPageGood {
+  orders: Order[] = [];
+  private alive = false;
+  constructor(private ordersApi: OrdersApi) {}
 
-ionViewWillEnter(): void {
-  this.alive = true;
-  void this.ordersApi.loadOpenOrders().then((orders) => {
-    if (!this.alive) return;
-    this.orders = orders;
-  });
-}
+  ionViewWillEnter(): void {
+    this.alive = true;
+    void this.ordersApi.loadOpenOrders().then((orders) => {
+      if (!this.alive) return;
+      this.orders = orders;
+    });
+  }
 
-ionViewDidLeave(): void {
-  this.alive = false;
+  ionViewDidLeave(): void {
+    this.alive = false;
+  }
 }
 ```
 

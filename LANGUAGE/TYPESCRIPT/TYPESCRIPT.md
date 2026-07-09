@@ -148,12 +148,12 @@ Guidance for AI agents implementing and reviewing TypeScript code.
 ### 1. `any` vs `unknown` Narrowing
 ```ts
 // Don't: any bypasses type safety.
-function parsePayload(payload: any): User {
+function parsePayloadBad(payload: any): User {
   return { id: payload.id, name: payload.name };
 }
 
 // Do: unknown + explicit narrowing.
-function parsePayload(payload: unknown): User {
+function parsePayloadGood(payload: unknown): User {
   if (!isUserPayload(payload)) {
     throw new Error("Invalid user payload");
   }
@@ -164,7 +164,7 @@ function parsePayload(payload: unknown): User {
 ### 2. Exhaustive Union Handling
 ```ts
 // Don't: silent default can hide new states.
-function renderStatus(status: Status): string {
+function renderStatusBad(status: Status): string {
   switch (status.kind) {
     case "loading": return "Loading";
     case "ready": return "Ready";
@@ -173,7 +173,7 @@ function renderStatus(status: Status): string {
 }
 
 // Do: enforce exhaustiveness.
-function renderStatus(status: Status): string {
+function renderStatusGood(status: Status): string {
   switch (status.kind) {
     case "loading": return "Loading";
     case "ready": return "Ready";
@@ -203,12 +203,12 @@ enum RetryPolicy {
 // Don't: mixed ordering around decorated class declarations.
 @Injectable()
 /** Handles invoice orchestration. */
-export class InvoiceService {}
+export class InvoiceServiceBad {}
 
 // Do: put JSDoc above the top-most decorator.
 /** Handles invoice orchestration. */
 @Injectable()
-export class InvoiceService {}
+export class InvoiceServiceGood {}
 ```
 
 ## Code Review Checklist for TypeScript

@@ -51,10 +51,14 @@ def rel(p: Path) -> str:
     return p.relative_to(ROOT).as_posix()
 
 
+NON_CATEGORY_DIRS = {"scripts", "node_modules"}
+
+
 def category_dirs() -> list[Path]:
     return sorted(
         d for d in ROOT.iterdir()
-        if d.is_dir() and not d.name.startswith(".") and d.name != "scripts"
+        if d.is_dir() and not d.name.startswith(".")
+        and d.name not in NON_CATEGORY_DIRS
         and any(d.rglob("*.md"))
     )
 

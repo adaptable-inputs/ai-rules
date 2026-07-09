@@ -85,7 +85,7 @@ Do:    add new field, deprecate old field, publish migration window.
 ```
 
 ### 3. Error Extensions
-```json
+```jsonc
 // Don't
 {"errors":[{"message":"failed"}]}
 

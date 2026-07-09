@@ -92,12 +92,12 @@ Guidance for AI agents implementing and reviewing JavaScript code.
 ### 1. Promise Rejection Handling
 ```js
 // Don't: unhandled rejection.
-function saveUser(user) {
+function saveUserBad(user) {
   db.write(user);
 }
 
 // Do: await and handle failure with context.
-async function saveUser(user) {
+async function saveUserGood(user) {
   try {
     await db.write(user);
   } catch (error) {
@@ -116,12 +116,12 @@ async function saveUser(user) {
 ### 2. Boundary Validation
 ```js
 // Don't: trust request body shape.
-function createInvoice(req) {
+function createInvoiceBad(req) {
   return invoiceService.create(req.body.amount, req.body.currency);
 }
 
 // Do: validate and normalize at boundary.
-function createInvoice(req) {
+function createInvoiceGood(req) {
   const payload = validateInvoiceRequest(req.body);
   return invoiceService.create(payload.amount, payload.currency);
 }

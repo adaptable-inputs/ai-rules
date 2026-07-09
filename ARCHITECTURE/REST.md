@@ -91,7 +91,7 @@ Do:    POST /orders/123/cancellations
 ```
 
 ### 2. Error Shape
-```json
+```jsonc
 // Don't
 {"error":"bad request"}
 

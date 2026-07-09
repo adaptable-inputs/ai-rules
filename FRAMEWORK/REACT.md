@@ -191,14 +191,14 @@ function UserProfileBad({ userId }: { userId: string }) {
   const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {
-    async function load() {
+    async function loadBad() {
       const response = await fetch(`/api/users/${userId}`);
       if (!response.ok) return;
       const data = (await response.json()) as User;
       setUser(data);
     }
 
-    void load();
+    void loadBad();
   }, [userId]);
 
   return user ? <ProfileCard user={user} /> : <Spinner />;
@@ -215,7 +215,7 @@ function UserProfileGood({ userId }: { userId: string }) {
     setError(null);
     setUser(null);
 
-    async function load() {
+    async function loadGood() {
       try {
         const response = await fetch(`/api/users/${userId}`, {
           signal: controller.signal,
@@ -237,11 +237,11 @@ function UserProfileGood({ userId }: { userId: string }) {
       }
     }
 
-    void load();
+    void loadGood();
     return () => controller.abort();
   }, [userId]);
 
-  if (error) return <span>Failed to load user.</span>;
+  if (error) return <span>Failed to loadGood user.</span>;
   return user ? <ProfileCard user={user} /> : <Spinner />;
 }
 ```
@@ -254,11 +254,11 @@ function WindowWidthBad() {
   const [width, setWidth] = useState(window.innerWidth);
 
   useEffect(() => {
-    function onResize() {
+    function onResizeBad() {
       setWidth(window.innerWidth);
     }
 
-    window.addEventListener("resize", onResize);
+    window.addEventListener("resize", onResizeBad);
   }, []);
 
   return <span>{width}</span>;
@@ -273,14 +273,14 @@ function WindowWidthGood() {
   useEffect(() => {
     if (typeof window === "undefined") return;
 
-    function onResize() {
+    function onResizeGood() {
       setWidth(window.innerWidth);
     }
 
     // Initialize width immediately after mount.
-    onResize();
-    window.addEventListener("resize", onResize);
-    return () => window.removeEventListener("resize", onResize);
+    onResizeGood();
+    window.addEventListener("resize", onResizeGood);
+    return () => window.removeEventListener("resize", onResizeGood);
   }, []);
 
   return <span>{width}</span>;
