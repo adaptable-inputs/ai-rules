@@ -49,3 +49,5 @@ Concrete steps or checks that would have avoided the issue.
   - Four checks reported success over a real defect; their shared failure mode is silence.
 - [2026-07-09-withheld-suite-leaked-through-the-compiler.md](2026-07-09-withheld-suite-leaked-through-the-compiler.md)
   - A sealed test suite disclosed its contract through a compiler diagnostic.
+- [2026-07-09-the-experimenter-was-the-variable.md](2026-07-09-the-experimenter-was-the-variable.md)
+  - A benchmark's headline measured a sentence in the experimenter's prompt.
