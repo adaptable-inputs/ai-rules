@@ -51,6 +51,24 @@ Guidance for AI agents implementing, updating, and reviewing tests.
 - MUST cover happy paths, edge cases, failure modes, and regression paths.
 - If coverage targets are not met, MUST document exact gaps and risk rationale.
 
+## Tests Are Derived From Requirements
+A test written from the code asserts what the code does. A test written from the requirement asserts what was asked for.
+Only the second can fail in a way that matters, and only the second reveals a requirement nobody implemented.
+
+- Every functional test MUST derive from a stated requirement, and MUST name it: the requirement identifier in the test
+  name, or in a comment on the test.
+- Every stated requirement MUST have at least one test that names it. A requirement with no naming test MUST fail the
+  build; it is a requirement nobody implemented, or a test nobody wrote.
+- A test MUST NOT assert behaviour the requirements do not state. Asserting more than was asked punishes an
+  implementation for a choice it was never given, and the test then measures the test author's taste.
+- Before writing tests, MUST read the requirements for gaps: behaviour the specification leaves undefined, an error path
+  with no stated status, an ordering with no stated tie-break, a boundary with no stated side.
+- On finding a gap, MUST report it and MUST request confirmation before adding a requirement or any test derived from
+  one. MUST NOT invent a requirement, and MUST NOT quietly test the behaviour the implementation happens to have.
+- Where a gap is left open by decision, MUST record it in the requirements as a known gap, naming what is undefined and
+  what the implementations currently do. An undefined behaviour that is written down is a decision; one that is not is a
+  trap.
+
 ## Coverage Exclusions
 Full coverage of production code is the target. Where a unit genuinely cannot be reached, the gap MUST be named and
 justified, never absorbed. A threshold that tolerates a percentage of uncovered code stops naming which code that is,

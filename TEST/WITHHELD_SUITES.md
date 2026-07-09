@@ -22,3 +22,20 @@ suite then certifies nothing.
   forbidden to read, and the pressure to look is structural rather than a lapse of discipline.
 - MUST audit each author's full transcript and produced sources for the suite's paths, symbols, and assertions before
   accepting any result measured against it. An audit that scans nothing MUST fail.
+
+## The Harness
+A withheld suite needs machinery: sealing, grading in a copy, auditing the author's transcript. Re-implementing that
+machinery per project reproduces its defects per project. `adaptable-inputs/ai-test-harness` implements it, and its
+guards are each covered by a test that fails when the guard is weakened.
+
+The reference is a plain name, not a link: the repository is private, and a link checker MUST NOT be made to reach for
+what it cannot fetch.
+
+- MUST use a sealed harness rather than hand-rolled grading. Grading in the author's own tree leaves the suite behind,
+  and the next task compiles against it.
+- MUST run the isolation audit over every author's full transcript and produced sources before accepting any result
+  measured against a withheld suite. An audit over zero transcripts, or over a stub, MUST fail.
+- MUST seal the suite before an author begins, and MUST verify no test source is readable in the author's workspace.
+- MUST NOT accept a token or performance number from an author whose audit found the suite. The number is void.
+- A harness MUST report what it inspected and how much: a count of transcripts scanned, tests run, methods covered.
+  "Nothing found" and "nothing checked" MUST be distinguishable in its output.
