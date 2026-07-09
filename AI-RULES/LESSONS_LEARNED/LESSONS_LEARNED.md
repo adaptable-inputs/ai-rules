@@ -47,3 +47,5 @@ Concrete steps or checks that would have avoided the issue.
   - Update versioned examples before tagging.
 - [2026-07-09-verifications-that-cannot-fail.md](2026-07-09-verifications-that-cannot-fail.md)
   - Four checks reported success over a real defect; their shared failure mode is silence.
+- [2026-07-09-withheld-suite-leaked-through-the-compiler.md](2026-07-09-withheld-suite-leaked-through-the-compiler.md)
+  - A sealed test suite disclosed its contract through a compiler diagnostic.

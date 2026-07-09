@@ -299,6 +299,7 @@ class TestRatchetFails(unittest.TestCase):
             self.assertEqual(rc, 0, out)
 
     def test_stripped_keyword_is_caught(self):
+        """Covers check_keyword_ratchet()."""
         self._expect_fail(
             lambda r: self._sub(r, "SECURITY/SECURITY.md",
                                 "- MUST rotate secrets", "- Rotate secrets"),
@@ -340,6 +341,7 @@ class TestRatchetFails(unittest.TestCase):
             "no obligation keyword")
 
     def test_never_load_preflight_doc_is_caught(self):
+        """Covers check_preflight_readable()."""
         self._expect_fail(
             lambda r: self._sub(r, "CHANGELOG.md",
                                 '  load: "setup"', '  load: "never"\n  reason: "x"'),
@@ -358,12 +360,14 @@ class TestRatchetFails(unittest.TestCase):
             "invalid YAML frontmatter")
 
     def test_orphan_file_is_caught(self):
+        """Covers check_no_orphans()."""
         def edit(repo):
             (repo / "CORE" / "ORPHAN.md").write_text(
                 '---\napplies_to:\n  load: "always"\n---\n# ORPHAN\n', encoding="utf-8")
         self._expect_fail(edit, "orphaned file")
 
     def test_category_missing_from_ai_md_is_caught(self):
+        """Covers check_ai_md_lists_dirs()."""
         def edit(repo):
             d = repo / "WIDGETS"
             d.mkdir()
@@ -372,6 +376,7 @@ class TestRatchetFails(unittest.TestCase):
         self._expect_fail(edit, "not listed in AI.md")
 
     def test_bad_load_value_is_caught(self):
+        """Covers check_frontmatter()."""
         self._expect_fail(
             lambda r: self._sub(r, "CORE/LOGGING.md",
                                 '  load: "always"', '  load: "sometimes"'),
@@ -619,6 +624,7 @@ class TestComplianceFailsafe(unittest.TestCase):
                          "license compatibility binds every project")
 
     def test_positive_only_gate_is_caught(self):
+        """Covers check_compliance_failsafe()."""
         with Sandbox() as repo:
             p = repo / "COMPLIANCE" / "GDPR_BDSG.md"
             s = p.read_text(encoding="utf-8")
@@ -649,6 +655,44 @@ class TestComplianceFailsafe(unittest.TestCase):
 
 
 # --------------------------------------------------------------------------
+# The guards obey the rules they impose
+# --------------------------------------------------------------------------
+class TestGuardsConform(unittest.TestCase):
+    """TEST/TEST.md: "A guard MUST be covered by a test that fails when the guard
+    is removed or weakened." Guards are trusted more than the code they inspect
+    and reviewed less, so nothing may ship uncovered."""
+
+    def _checker_source(self) -> str:
+        return (ROOT / "scripts" / "check_structure.py").read_text(encoding="utf-8")
+
+    def test_every_checker_is_registered_in_main(self):
+        src = self._checker_source()
+        defined = set(re.findall(r"^def (check_\w+)\(", src, re.M))
+        main = src[src.index("def main()"):]
+        for fn in sorted(defined):
+            self.assertIn(f"{fn}()", main,
+                          f"{fn} is defined but never runs: a guard that is not "
+                          f"called cannot fail")
+
+    def test_every_checker_has_a_test_that_names_it(self):
+        defined = set(re.findall(r"^def (check_\w+)\(", self._checker_source(), re.M))
+        tests = (ROOT / "scripts" / "test_rules.py").read_text(encoding="utf-8")
+        missing = [fn for fn in sorted(defined) if fn not in tests]
+        self.assertEqual(missing, [],
+                         "these guards have no test naming them; an uncovered "
+                         "guard is an assertion that it works")
+
+    def test_every_script_is_exercised(self):
+        scripts = {p.stem for p in (ROOT / "scripts").glob("*.py")
+                   if p.stem not in {"test_rules"}}
+        tests = (ROOT / "scripts" / "test_rules.py").read_text(encoding="utf-8")
+        missing = [s for s in sorted(scripts) if f"{s}.py" not in tests]
+        self.assertEqual(missing, [],
+                         "these scripts run in CI or a hook but no test proves "
+                         "they can fail")
+
+
+# --------------------------------------------------------------------------
 # Corpus + checker: no doc orders an exhaustive read
 # --------------------------------------------------------------------------
 class TestNoExhaustiveRead(unittest.TestCase):
@@ -668,6 +712,7 @@ class TestNoExhaustiveRead(unittest.TestCase):
         self.assertEqual(rc, 0, out)
 
     def test_reintroduced_read_gate_is_caught(self):
+        """Covers check_no_exhaustive_read()."""
         with Sandbox() as repo:
             p = repo / "PROGRAMMING" / "PROGRAMMING.md"
             p.write_text(p.read_text(encoding="utf-8") +
@@ -724,6 +769,7 @@ class TestOverrideNotes(unittest.TestCase):
         self.assertEqual(rc, 0, out)
 
     def test_permission_restatement_is_caught(self):
+        """Covers check_override_notes()."""
         self._expect_fail("- Framework docs MAY narrow these rules for specific stacks.",
                           "restates the global permission rule")
 
@@ -749,6 +795,7 @@ class TestOverrideNotes(unittest.TestCase):
         self.assertEqual(rc, 0, out)
 
     def test_obligation_added_to_an_index_is_caught(self):
+        """Covers check_no_rules_in_indexes()."""
         with Sandbox() as repo:
             p = repo / "LIBRARY" / "LIBRARY.md"
             p.write_text(p.read_text(encoding="utf-8") +
