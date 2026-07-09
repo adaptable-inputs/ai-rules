@@ -4,21 +4,12 @@ applies_to:
   when: "junit is a declared test dependency"
   libraries: ["junit"]
   annex: "JUNIT.ANNEX.md"
+  purpose: "JUnit-specific testing patterns for reliable, readable tests"
+  inherits: ["TEST/TEST.md", "LANGUAGE/JAVA/JAVA.md", "LANGUAGE/CONVENTIONS.md", "LANGUAGE/READABILITY.md"]
 ---
 # JUNIT
 
 Guidance for AI agents implementing and reviewing JUnit tests.
-
-## Scope
-- Define JUnit-specific testing patterns for reliable, readable tests.
-- Apply this file to unit/integration tests using JUnit 5.
-
-## Semantic Dependencies
-- Inherit global testing baseline from `TEST/TEST.md`.
-- Inherit language/readability baselines from
-  `LANGUAGE/JAVA/JAVA.md`, `LANGUAGE/CONVENTIONS.md`, and
-  `LANGUAGE/READABILITY.md`.
-- Companion test-library docs MAY specialize mocking/integration behavior.
 
 ## Defaults
 - SHOULD use JUnit 5.

@@ -2,6 +2,8 @@
 applies_to:
   load: "always"
   annex: "LICENSES.ANNEX.md"
+  purpose: "dependency-license acceptance and release-compliance workflow"
+  inherits: ["COMPLIANCE/COMPLIANCE.md"]
 ---
 # LICENSES
 
@@ -10,16 +12,6 @@ closed-source contexts.
 
 This is engineering policy guidance, not legal advice.
 Consult legal counsel for final legal decisions.
-
-## Scope
-- Define dependency-license acceptance and release-compliance workflow.
-- Apply this file whenever adding/upgrading dependencies or distributing
-  artifacts.
-
-## Semantic Dependencies
-- Inherit compliance baseline from `COMPLIANCE/COMPLIANCE.md`.
-- This file is part of the cross-cutting baseline; downstream framework/library/
-  build-tool docs MUST comply with this policy.
 
 ## Decision Framework
 For each dependency (direct and significant transitive):
@@ -75,5 +67,6 @@ Avoid unless legal explicitly approves alternative model:
 - SHOULD keep manual review log for exceptions and legal decisions.
 
 ## Override Notes
+- Downstream framework/library/build-tool docs MUST comply with this policy.
 - Legal/compliance policy MAY be stricter than this file; stricter policy always
   wins.

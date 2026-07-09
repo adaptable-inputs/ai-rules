@@ -4,20 +4,12 @@ applies_to:
   when: "build.gradle or build.gradle.kts is present"
   tools: ["gradle"]
   annex: "GRADLE.ANNEX.md"
+  purpose: "Gradle-specific reproducibility, dependency/plugin, and CI controls"
+  inherits: ["BUILD_TOOLS/BUILD_TOOLS.md", "SECURITY/SECURITY.md", "COMPLIANCE/LICENSES.md", "CI-CD/CI-CD.md"]
 ---
 # GRADLE
 
 Guidance for AI agents implementing and reviewing Gradle builds.
-
-## Scope
-- Define Gradle-specific reproducibility, dependency/plugin, and CI controls.
-- Apply this file to Gradle build scripts and multi-module build design.
-
-## Semantic Dependencies
-- Inherit build-layer baseline from `BUILD_TOOLS/BUILD_TOOLS.md`.
-- Inherit security/compliance constraints from
-  `SECURITY/SECURITY.md` and `COMPLIANCE/LICENSES.md`.
-- Inherit CI expectations from `CI-CD/CI-CD.md`.
 
 ## Defaults
 - SHOULD use Gradle Wrapper (`gradlew`, `gradlew.bat`, `gradle/wrapper/*`).

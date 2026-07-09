@@ -2,24 +2,12 @@
 applies_to:
   load: "always"
   annex: "LOGGING.ANNEX.md"
+  purpose: "logging rules that maximize debuggability without leaking sensitive data or creating observability cost explosions"
+  inherits: ["SECURITY/SECURITY.md", "TEST/TEST.md", "LANGUAGE/CONVENTIONS.md", "LANGUAGE/READABILITY.md"]
 ---
 # LOGGING
 
 Guidance for AI agents implementing and reviewing logging behavior.
-
-## Scope
-- Define logging rules that maximize debuggability without leaking sensitive
-  data or creating observability cost explosions.
-- Apply this guidance when generating code, refactoring logging paths, and
-  reviewing changes that alter emitted logs.
-
-## Semantic Dependencies
-- Inherit security constraints from `SECURITY/SECURITY.md`.
-- Inherit testing expectations from `TEST/TEST.md`.
-- Inherit naming/readability expectations from `LANGUAGE/CONVENTIONS.md` and
-  `LANGUAGE/READABILITY.md`.
-- If a framework/library doc adds stricter logging behavior, follow the
-  specialized rule and keep this baseline as minimum.
 
 ## Defaults
 - MUST use structured logs (JSON or stable key-value pairs), not free-form strings.

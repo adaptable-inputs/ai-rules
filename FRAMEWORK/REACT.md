@@ -4,23 +4,12 @@ applies_to:
   when: "react is a dependency in package.json"
   frameworks: ["react"]
   annex: "REACT.ANNEX.md"
+  purpose: "React-specific component, rendering, and side-effect rules"
+  inherits: ["LANGUAGE/JAVASCRIPT/JAVASCRIPT.md", "LANGUAGE/TYPESCRIPT/TYPESCRIPT.md", "LANGUAGE/HTML/HTML.md", "LANGUAGE/CSS/CSS.md", "SECURITY/SECURITY.md", "TEST/TEST.md", "CORE/LOGGING.md"]
 ---
 # REACT
 
 Guidance for AI agents implementing and reviewing React projects.
-
-## Scope
-- Define React-specific component, rendering, and side-effect rules.
-- Apply this file to React implementation and review tasks.
-
-## Semantic Dependencies
-- Inherit JavaScript baseline from `LANGUAGE/JAVASCRIPT/JAVASCRIPT.md`.
-- Apply `LANGUAGE/TYPESCRIPT/TYPESCRIPT.md` as an additional parent when the
-  React codebase uses TypeScript.
-- Inherit HTML/CSS accessibility and semantics from
-  `LANGUAGE/HTML/HTML.md` and `LANGUAGE/CSS/CSS.md`.
-- Inherit cross-cutting constraints from
-  `SECURITY/SECURITY.md`, `TEST/TEST.md`, `CORE/LOGGING.md`.
 
 ## Defaults
 - SHOULD use functional components and hooks.

@@ -4,22 +4,13 @@ applies_to:
   when: ".github/workflows contains a workflow"
   tools: ["github-actions"]
   annex: "GITHUB_ACTIONS.ANNEX.md"
+  purpose: "GitHub Actions pipeline design and quality-gate constraints"
+  inherits: ["CI-CD/CI-CD.md", "SECURITY/SECURITY.md", "TEST/TEST.md", "BUILD_TOOLS/**", "CORE/VERSION_CONTROL_SYSTEM.md"]
 ---
 # GITHUB_ACTIONS
 
 Guidance for AI agents implementing and reviewing GitHub Actions CI/CD
 workflows.
-
-## Scope
-- Define GitHub Actions pipeline design and quality-gate constraints.
-- Apply this file to workflow files under `.github/workflows/` and reusable
-  workflow definitions.
-
-## Semantic Dependencies
-- Inherit CI/CD baseline from `CI-CD/CI-CD.md`.
-- Inherit build/security/testing constraints from
-  `BUILD_TOOLS/**`, `SECURITY/SECURITY.md`, and `TEST/TEST.md`.
-- Inherit VCS workflow requirements from `CORE/VERSION_CONTROL_SYSTEM.md`.
 
 ## Workflow Defaults
 - SHOULD keep workflows deterministic and fail fast.

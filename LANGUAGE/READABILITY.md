@@ -2,22 +2,12 @@
 applies_to:
   load: "always"
   annex: "READABILITY.ANNEX.md"
+  purpose: "readability constraints that apply across languages and frameworks"
+  inherits: ["DESIGN/CLEAN_CODE.md", "DESIGN/SOLID.md", "LANGUAGE/CONVENTIONS.md"]
 ---
 # READABILITY
 
 Guidance for AI agents on writing code with low cognitive load.
-
-## Scope
-- Define readability constraints that apply across languages and frameworks.
-- Use this file during implementation and review to reduce defect-prone
-  complexity.
-
-## Semantic Dependencies
-- Inherit design constraints from `DESIGN/CLEAN_CODE.md` and `DESIGN/SOLID.md`.
-- `LANGUAGE/CONVENTIONS.md` is a companion baseline that applies alongside this
-  file.
-- Language/framework docs MAY specialize patterns but MUST preserve readability
-  and explainability constraints.
 
 ## Core Principles
 - SHOULD optimize for future readers first, then for terse implementation.

@@ -5,24 +5,12 @@ applies_to:
   languages: ["sql"]
   globs: ["**/*.sql"]
   annex: "SQL.ANNEX.md"
+  purpose: "SQL correctness, safety, and performance baseline"
+  inherits: ["SECURITY/SECURITY.md", "TEST/TEST.md", "LANGUAGE/CONVENTIONS.md", "LANGUAGE/READABILITY.md", "ARCHITECTURE/N_PLUS_1.md"]
 ---
 # SQL
 
 Guidance for AI agents implementing and reviewing SQL.
-
-## Scope
-- Define SQL correctness, safety, and performance baseline.
-- Apply this file for handwritten SQL, generated SQL review, and database
-  migration scripts.
-
-## Semantic Dependencies
-- Inherit security constraints from `SECURITY/SECURITY.md`.
-- Inherit testing expectations from `TEST/TEST.md`.
-- Inherit naming/readability constraints from
-  `LANGUAGE/CONVENTIONS.md` and `LANGUAGE/READABILITY.md`.
-- Inherit architecture guidance from `ARCHITECTURE/N_PLUS_1.md` where relevant.
-- Library docs (JPA/jOOQ) MAY specialize query construction but MUST preserve
-  this baseline.
 
 ## Defaults
 - MUST parameterize all external values; avoid string-concatenated SQL.

@@ -13,15 +13,10 @@ AI-agent rule documents.
 - Keep guidance deep and actionable without contradictory duplication.
 - Provide a stable ordering for issue/branch/PR execution across documents.
 
-## Scope
-- Applies to the non-meta rules corpus referenced by `AI.md`.
-- Excludes `AI-RULES/**` (meta/governance for maintaining this repository).
-- Excludes user/governance docs such as `README.md`, `CONTRIBUTING.md`,
-  `CHANGELOG.md`, and `AGENTS_TEMPLATE.md`.
-
 ## Core Principles
-- Semantic dependencies are authoritative; an agent MUST NOT infer a dependency
-  from a markdown link alone.
+- Semantic dependencies are declared in each doc's `inherits` frontmatter field.
+  They are authoritative; an agent MUST NOT infer a dependency from a markdown
+  link alone.
 - More specific scope MAY override broader scope only when the override is
   explicit and justified.
 - Safety and correctness constraints from broader scope MUST remain in force

@@ -2,6 +2,8 @@
 applies_to:
   load: "always"
   annex: "NIS2_KRITIS.ANNEX.md"
+  purpose: "baseline engineering controls that support NIS2-style cybersecurity and resilience obligations in EU/German critical-operations contexts"
+  inherits: ["COMPLIANCE/COMPLIANCE.md", "SECURITY/SECURITY.md", "INFRASTRUCTURE/**", "CI-CD/**", "CORE/LOGGING.md"]
 ---
 # NIS2_KRITIS
 
@@ -10,19 +12,6 @@ KRITIS-context operational obligations.
 
 This is engineering policy guidance, not legal advice.
 Consult qualified legal counsel for final legal decisions.
-
-## Scope
-- Define baseline engineering controls that support NIS2-style cybersecurity and
-  resilience obligations in EU/German critical-operations contexts.
-- Apply this file when systems are in scope for heightened operational-security
-  and incident-reporting expectations.
-
-## Semantic Dependencies
-- Inherit compliance baseline from `COMPLIANCE/COMPLIANCE.md`.
-- Inherit security controls from `SECURITY/SECURITY.md`.
-- Inherit infrastructure and CI/CD controls from `INFRASTRUCTURE/**` and
-  `CI-CD/**`.
-- Inherit logging/observability constraints from `CORE/LOGGING.md`.
 
 ## Defaults
 - SHOULD keep security governance ownership explicit for critical services.

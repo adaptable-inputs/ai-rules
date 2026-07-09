@@ -4,19 +4,12 @@ applies_to:
   when: "lombok is a declared dependency"
   libraries: ["lombok"]
   annex: "LOMBOK.ANNEX.md"
+  purpose: "when Lombok improves clarity and when explicit code is safer"
+  inherits: ["LANGUAGE/JAVA/JAVA.md", "LANGUAGE/JAVA/EFFECTIVE_JAVA.md", "DESIGN/CLEAN_CODE.md"]
 ---
 # LOMBOK
 
 Guidance for AI agents implementing and reviewing Lombok usage.
-
-## Scope
-- Define when Lombok improves clarity and when explicit code is safer.
-- Apply this file to Java classes using Lombok annotations.
-
-## Semantic Dependencies
-- Inherit Java baseline from `LANGUAGE/JAVA/JAVA.md` and
-  `LANGUAGE/JAVA/EFFECTIVE_JAVA.md`.
-- Inherit design/readability constraints from `DESIGN/CLEAN_CODE.md`.
 
 ## Defaults
 - SHOULD use Lombok to remove low-value boilerplate while preserving clarity.

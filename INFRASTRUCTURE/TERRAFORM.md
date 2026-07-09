@@ -5,23 +5,13 @@ applies_to:
   tools: ["terraform"]
   globs: ["**/*.tf"]
   annex: "TERRAFORM.ANNEX.md"
+  purpose: "Terraform-specific rules for predictable and safe infrastructure delivery"
+  inherits: ["INFRASTRUCTURE/INFRA_AS_CODE.md", "SECURITY/SECURITY.md", "COMPLIANCE/COMPLIANCE.md", "CI-CD/CI-CD.md", "CORE/VERSION_CONTROL_SYSTEM.md"]
 ---
 # TERRAFORM
 
 Guidance for AI agents implementing and reviewing Terraform infrastructure
 changes.
-
-## Scope
-- Define Terraform-specific rules for predictable and safe infrastructure
-  delivery.
-- Apply this file to Terraform configuration, modules, and workflows.
-
-## Semantic Dependencies
-- Inherit IaC baseline from `INFRASTRUCTURE/INFRA_AS_CODE.md`.
-- Inherit security and compliance constraints from `SECURITY/SECURITY.md` and
-  `COMPLIANCE/COMPLIANCE.md`.
-- Inherit CI and workflow constraints from `CI-CD/CI-CD.md` and
-  `CORE/VERSION_CONTROL_SYSTEM.md`.
 
 ## Defaults
 - MUST pin Terraform version and provider versions with explicit constraints.

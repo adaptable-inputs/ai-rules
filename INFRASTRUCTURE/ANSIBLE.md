@@ -4,22 +4,12 @@ applies_to:
   when: "an Ansible playbook is present"
   tools: ["ansible"]
   annex: "ANSIBLE.ANNEX.md"
+  purpose: "Ansible-specific rules for safe, repeatable infrastructure and configuration automation"
+  inherits: ["INFRASTRUCTURE/INFRA_AS_CODE.md", "SECURITY/SECURITY.md", "COMPLIANCE/COMPLIANCE.md", "CI-CD/CI-CD.md", "CORE/VERSION_CONTROL_SYSTEM.md"]
 ---
 # ANSIBLE
 
 Guidance for AI agents implementing and reviewing Ansible automation changes.
-
-## Scope
-- Define Ansible-specific rules for safe, repeatable infrastructure and
-  configuration automation.
-- Apply this file to Ansible playbooks, roles, inventories, and CI automation.
-
-## Semantic Dependencies
-- Inherit IaC baseline from `INFRASTRUCTURE/INFRA_AS_CODE.md`.
-- Inherit security and compliance constraints from `SECURITY/SECURITY.md` and
-  `COMPLIANCE/COMPLIANCE.md`.
-- Inherit CI and workflow constraints from `CI-CD/CI-CD.md` and
-  `CORE/VERSION_CONTROL_SYSTEM.md`.
 
 ## Defaults
 - MUST keep playbooks idempotent and deterministic.

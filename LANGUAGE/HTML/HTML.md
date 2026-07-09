@@ -5,23 +5,12 @@ applies_to:
   languages: ["html"]
   globs: ["**/*.html"]
   annex: "HTML.ANNEX.md"
+  purpose: "semantic, accessible, and secure HTML defaults"
+  inherits: ["LANGUAGE/CONVENTIONS.md", "LANGUAGE/READABILITY.md", "SECURITY/SECURITY.md", "TEST/TEST.md"]
 ---
 # HTML
 
 Guidance for AI agents implementing and reviewing HTML markup.
-
-## Scope
-- Define semantic, accessible, and secure HTML defaults.
-- Apply this file for templates, server-rendered pages, component markup, and
-  static documents.
-
-## Semantic Dependencies
-- Inherit naming/readability constraints from
-  `LANGUAGE/CONVENTIONS.md` and `LANGUAGE/READABILITY.md`.
-- Inherit security constraints from `SECURITY/SECURITY.md`.
-- Inherit testing expectations from `TEST/TEST.md`.
-- CSS/framework docs MAY specialize styling patterns, but SHOULD NOT weaken
-  semantic and accessibility requirements.
 
 ## Defaults
 - SHOULD use semantic HTML elements (`main`, `nav`, `section`, `article`, `button`).

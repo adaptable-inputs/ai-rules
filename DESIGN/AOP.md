@@ -3,20 +3,12 @@ applies_to:
   load: "conditional"
   when: "the project applies aspect-oriented cross-cutting concerns"
   annex: "AOP.ANNEX.md"
+  purpose: "when AOP is appropriate for cross-cutting concerns"
+  inherits: ["DESIGN/CLEAN_CODE.md", "ARCHITECTURE/CLEAN_ARCHITECTURE.md", "SECURITY/SECURITY.md", "CORE/LOGGING.md", "TEST/TEST.md"]
 ---
 # AOP
 
 Guidance for AI agents applying Aspect-Oriented Programming responsibly.
-
-## Scope
-- Define when AOP is appropriate for cross-cutting concerns.
-- Apply this file to aspect design/review across supported frameworks.
-
-## Semantic Dependencies
-- Inherit architecture/design boundaries from
-  `DESIGN/CLEAN_CODE.md` and `ARCHITECTURE/CLEAN_ARCHITECTURE.md`.
-- Inherit security/logging/testing constraints from
-  `SECURITY/SECURITY.md`, `CORE/LOGGING.md`, and `TEST/TEST.md`.
 
 ## Appropriate AOP Use Cases
 - Logging/tracing instrumentation.

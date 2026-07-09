@@ -357,6 +357,17 @@ def check_frontmatter() -> None:
         for g in a.get("globs", []) or []:
             if not isinstance(g, str):
                 fail(f"glob parsed as {type(g).__name__}, quote it: {r}")
+        # Semantic dependencies live here, not in prose. A broken parent
+        # reference silently detaches a doc from its precedence chain.
+        for t in a.get("inherits", []) or []:
+            if not isinstance(t, str):
+                fail(f"inherits entry parsed as {type(t).__name__}, quote it: {r}")
+                continue
+            target = ROOT / t[:-3] if t.endswith("/**") else ROOT / t
+            if not target.exists():
+                fail(f"{r}: inherits {t!r}, which does not exist")
+        if "purpose" in a and not str(a["purpose"]).strip():
+            fail(f"{r}: purpose is empty")
 
 
 def load_of(rel_path: str) -> str | None:

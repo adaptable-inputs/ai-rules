@@ -2,20 +2,13 @@
 applies_to:
   load: "always"
   annex: "CLEAN_CODE.ANNEX.md"
+  purpose: "practical code-quality rules for maintainability and clarity"
+  inherits: ["LANGUAGE/CONVENTIONS.md", "LANGUAGE/READABILITY.md", "DESIGN/SOLID.md"]
 ---
 # CLEAN_CODE
 
 Guidance for AI agents applying clean-code principles in implementation and
 review.
-
-## Scope
-- Define practical code-quality rules for maintainability and clarity.
-- Apply this file across languages/frameworks as a minimum baseline.
-
-## Semantic Dependencies
-- Inherit naming baseline from `LANGUAGE/CONVENTIONS.md`.
-- `LANGUAGE/READABILITY.md` is a companion guideline, not a semantic parent.
-- Inherit design constraints from `DESIGN/SOLID.md`.
 
 ## Core Principles
 - SHOULD prioritize clarity over cleverness.

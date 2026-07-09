@@ -4,22 +4,12 @@ applies_to:
   when: "jooq is a declared dependency"
   libraries: ["jooq"]
   annex: "JOOQ.ANNEX.md"
+  purpose: "jOOQ usage rules for type-safe SQL and predictable query behavior"
+  inherits: ["LANGUAGE/SQL/SQL.md", "LANGUAGE/JAVA/JAVA.md", "ARCHITECTURE/N_PLUS_1.md", "ARCHITECTURE/ARCHITECTURE.md", "FRAMEWORK/SPRING_BOOT.md"]
 ---
 # JOOQ
 
 Guidance for AI agents implementing and reviewing jOOQ-based data access.
-
-## Scope
-- Define jOOQ usage rules for type-safe SQL and predictable query behavior.
-- Apply this file to repository/query-layer implementation and review.
-
-## Semantic Dependencies
-- Inherit SQL baseline from `LANGUAGE/SQL/SQL.md`.
-- Inherit Java baseline from `LANGUAGE/JAVA/JAVA.md`.
-- Inherit N+1 constraints from `ARCHITECTURE/N_PLUS_1.md`.
-- Inherit transaction/boundary constraints from
-  `ARCHITECTURE/ARCHITECTURE.md` and `FRAMEWORK/SPRING_BOOT.md` where
-  applicable.
 
 ## Defaults
 - SHOULD prefer generated jOOQ types for compile-time safety.

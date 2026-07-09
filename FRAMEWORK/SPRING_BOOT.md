@@ -4,23 +4,12 @@ applies_to:
   when: "spring-boot is a declared dependency"
   frameworks: ["spring-boot"]
   annex: "SPRING_BOOT.ANNEX.md"
+  purpose: "Spring Boot-specific defaults for layering, configuration, and runtime behavior"
+  inherits: ["LANGUAGE/JAVA/JAVA.md", "LANGUAGE/JAVA/EFFECTIVE_JAVA.md", "ARCHITECTURE/CLEAN_ARCHITECTURE.md", "ARCHITECTURE/REST.md", "SECURITY/SECURITY.md", "TEST/TEST.md", "CORE/LOGGING.md"]
 ---
 # SPRING_BOOT
 
 Guidance for AI agents implementing and reviewing Spring Boot applications.
-
-## Scope
-- Define Spring Boot-specific defaults for layering, configuration, and runtime
-  behavior.
-- Apply this file to Spring Boot service/application code and review.
-
-## Semantic Dependencies
-- Inherit Java baseline from `LANGUAGE/JAVA/JAVA.md` and
-  `LANGUAGE/JAVA/EFFECTIVE_JAVA.md`.
-- Inherit architecture constraints from `ARCHITECTURE/CLEAN_ARCHITECTURE.md`
-  and `ARCHITECTURE/REST.md` where relevant.
-- Inherit cross-cutting constraints from
-  `SECURITY/SECURITY.md`, `TEST/TEST.md`, `CORE/LOGGING.md`.
 
 ## Defaults
 - SHOULD prefer constructor injection (for example with Lombok

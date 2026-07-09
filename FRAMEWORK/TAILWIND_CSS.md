@@ -4,20 +4,12 @@ applies_to:
   when: "a tailwind.config file is present"
   frameworks: ["tailwind"]
   annex: "TAILWIND_CSS.ANNEX.md"
+  purpose: "Tailwind-specific rules for scalable, readable, and accessible styling"
+  inherits: ["LANGUAGE/CSS/CSS.md", "LANGUAGE/HTML/HTML.md"]
 ---
 # TAILWIND_CSS
 
 Guidance for AI agents implementing and reviewing Tailwind CSS code.
-
-## Scope
-- Define Tailwind-specific rules for scalable, readable, and accessible styling.
-- Apply this file to Tailwind class usage, config, and component extraction.
-
-## Semantic Dependencies
-- Inherit CSS baseline from `LANGUAGE/CSS/CSS.md`.
-- Inherit HTML accessibility baseline from `LANGUAGE/HTML/HTML.md`.
-- Project/framework-specific docs MAY add component conventions, but SHOULD
-  preserve this file's maintainability constraints.
 
 ## Defaults
 - SHOULD prefer utility-first styling with clear class grouping by concern

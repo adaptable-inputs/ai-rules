@@ -2,33 +2,19 @@
 applies_to:
   load: "always"
   annex: "CODE_REVIEW_PLATFORM.ANNEX.md"
+  purpose: "the protected-branch, merge-authority, and review-thread rules that hold regardless of hosting platform"
+  inherits: ["CORE/VERSION_CONTROL_SYSTEM.md", "REVIEW/CODE_REVIEW.md", "SECURITY/SECURITY.md", "TEST/TEST.md", "COMPLIANCE/COMPLIANCE.md", "CORE/GITHUB.md", "CORE/GITLAB.md"]
 ---
 # CODE_REVIEW_PLATFORM
 
 Platform-neutral delivery and review workflow contract shared by every code
 hosting platform.
 
-## Scope
-- Define the protected-branch, merge-authority, and review-thread rules that
-  hold regardless of hosting platform.
-- Apply this file whenever code is hosted on a platform with branch protection
-  and a review workflow.
-- This file does not define CI pipeline authoring rules; see `CI-CD/CI-CD.md`.
-
 ## Terminology
 - "change request" means a pull request (GitHub) or merge request (GitLab).
 - "review thread" means a conversation (GitHub) or discussion (GitLab).
 - Platform docs map these terms to their native vocabulary and do not restate
   the rules below.
-
-## Semantic Dependencies
-- Inherit baseline branch/PR/MR workflow rules from
-  `CORE/VERSION_CONTROL_SYSTEM.md`.
-- Inherit review quality expectations from `REVIEW/CODE_REVIEW.md`.
-- Inherit security/testing/compliance gates from `SECURITY/SECURITY.md`,
-  `TEST/TEST.md`, and `COMPLIANCE/COMPLIANCE.md`.
-- Platform docs (`CORE/GITHUB.md`, `CORE/GITLAB.md`) specialize this file and do
-  not replace baseline VCS workflow requirements.
 
 ## Protected Branch Policy (Mandatory)
 - MUST treat protected branches as read-only for AI agents.

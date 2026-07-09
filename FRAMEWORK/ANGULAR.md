@@ -4,26 +4,12 @@ applies_to:
   when: "angular.json is present"
   frameworks: ["angular"]
   annex: "ANGULAR.ANNEX.md"
+  purpose: "Angular-specific component, template, reactive-state, and runtime rules"
+  inherits: ["LANGUAGE/JAVASCRIPT/JAVASCRIPT.md", "LANGUAGE/TYPESCRIPT/TYPESCRIPT.md", "LANGUAGE/HTML/HTML.md", "LANGUAGE/CSS/CSS.md", "ARCHITECTURE/CLEAN_ARCHITECTURE.md", "ARCHITECTURE/REST.md", "SECURITY/SECURITY.md", "TEST/TEST.md", "CORE/LOGGING.md"]
 ---
 # ANGULAR
 
 Guidance for AI agents implementing and reviewing Angular projects.
-
-## Scope
-- Define Angular-specific component, template, reactive-state, and runtime rules.
-- Apply this file to Angular implementation and review tasks.
-
-## Semantic Dependencies
-- Inherit JavaScript/TypeScript baselines from
-  `LANGUAGE/JAVASCRIPT/JAVASCRIPT.md` and
-  `LANGUAGE/TYPESCRIPT/TYPESCRIPT.md`.
-- Inherit HTML/CSS accessibility and semantics from
-  `LANGUAGE/HTML/HTML.md` and `LANGUAGE/CSS/CSS.md`.
-- Inherit architecture constraints from
-  `ARCHITECTURE/CLEAN_ARCHITECTURE.md` and `ARCHITECTURE/REST.md` where
-  relevant.
-- Inherit cross-cutting constraints from
-  `SECURITY/SECURITY.md`, `TEST/TEST.md`, `CORE/LOGGING.md`.
 
 ## Defaults
 - SHOULD follow Angular style guide conventions.

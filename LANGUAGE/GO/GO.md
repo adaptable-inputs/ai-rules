@@ -5,23 +5,12 @@ applies_to:
   languages: ["go"]
   globs: ["**/*.go"]
   annex: "GO.ANNEX.md"
+  purpose: "baseline Go rules for correctness, maintainability, and production safety"
+  inherits: ["SECURITY/SECURITY.md", "TEST/TEST.md", "CORE/LOGGING.md", "LANGUAGE/CONVENTIONS.md", "LANGUAGE/READABILITY.md"]
 ---
 # GO
 
 Guidance for AI agents implementing and reviewing Go code.
-
-## Scope
-- Define baseline Go rules for correctness, maintainability, and production
-  safety.
-- Apply this file for Go code generation and review tasks.
-
-## Semantic Dependencies
-- Inherit cross-cutting constraints from `SECURITY/SECURITY.md`,
-  `TEST/TEST.md`, and `CORE/LOGGING.md`.
-- Inherit shared language constraints from `LANGUAGE/CONVENTIONS.md` and
-  `LANGUAGE/READABILITY.md`.
-- Framework/library-specific Go docs MAY specialize API usage but MUST NOT
-  weaken this baseline.
 
 ## Defaults
 - SHOULD prefer simple, explicit code over abstraction-heavy indirection.

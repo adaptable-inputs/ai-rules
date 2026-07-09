@@ -5,23 +5,12 @@ applies_to:
   languages: ["kotlin"]
   globs: ["**/*.kt", "**/*.kts"]
   annex: "KOTLIN.ANNEX.md"
+  purpose: "baseline Kotlin rules for correctness, maintainability, and runtime safety"
+  inherits: ["SECURITY/SECURITY.md", "TEST/TEST.md", "CORE/LOGGING.md", "LANGUAGE/CONVENTIONS.md", "LANGUAGE/READABILITY.md"]
 ---
 # KOTLIN
 
 Guidance for AI agents implementing and reviewing Kotlin code.
-
-## Scope
-- Define baseline Kotlin rules for correctness, maintainability, and runtime
-  safety.
-- Apply this file for Kotlin code generation and review tasks.
-
-## Semantic Dependencies
-- Inherit cross-cutting constraints from `SECURITY/SECURITY.md`,
-  `TEST/TEST.md`, and `CORE/LOGGING.md`.
-- Inherit shared language constraints from `LANGUAGE/CONVENTIONS.md` and
-  `LANGUAGE/READABILITY.md`.
-- Framework/library-specific Kotlin docs MAY specialize API usage but MUST NOT
-  weaken this baseline.
 
 ## Defaults
 - SHOULD keep null-safety explicit and avoid defeating type guarantees.

@@ -4,25 +4,13 @@ applies_to:
   when: "the project deploys to GCP"
   tools: ["gcp"]
   annex: "GCP.ANNEX.md"
+  purpose: "GCP-specific platform guardrails for secure and reliable operations"
+  inherits: ["INFRASTRUCTURE/INFRASTRUCTURE.md", "INFRASTRUCTURE/INFRA_AS_CODE.md", "SECURITY/SECURITY.md", "COMPLIANCE/COMPLIANCE.md", "CI-CD/CI-CD.md", "CORE/VERSION_CONTROL_SYSTEM.md"]
 ---
 # GCP
 
 Guidance for AI agents implementing and reviewing Google Cloud Platform (GCP)
 configuration and operations choices.
-
-## Scope
-- Define GCP-specific platform guardrails for secure and reliable operations.
-- Apply this file when architecture or infrastructure changes materially affect
-  GCP organization, folder, project, network, identity, data, or observability
-  posture.
-
-## Semantic Dependencies
-- Inherit infrastructure baseline from `INFRASTRUCTURE/INFRASTRUCTURE.md`.
-- Inherit IaC/process constraints from `INFRASTRUCTURE/INFRA_AS_CODE.md`.
-- Inherit security/compliance constraints from `SECURITY/SECURITY.md` and
-  `COMPLIANCE/COMPLIANCE.md`.
-- Inherit CI/CD and workflow constraints from `CI-CD/CI-CD.md` and
-  `CORE/VERSION_CONTROL_SYSTEM.md`.
 
 ## Defaults
 - SHOULD use org/folder/project hierarchy for environment and ownership isolation.

@@ -5,23 +5,12 @@ applies_to:
   languages: ["csharp"]
   globs: ["**/*.cs"]
   annex: "C_SHARP.ANNEX.md"
+  purpose: "baseline C#/.NET rules for correctness, maintainability, and runtime safety"
+  inherits: ["SECURITY/SECURITY.md", "TEST/TEST.md", "CORE/LOGGING.md", "LANGUAGE/CONVENTIONS.md", "LANGUAGE/READABILITY.md"]
 ---
 # C_SHARP
 
 Guidance for AI agents implementing and reviewing C#/.NET code.
-
-## Scope
-- Define baseline C#/.NET rules for correctness, maintainability, and runtime
-  safety.
-- Apply this file for C#/.NET code generation and review tasks.
-
-## Semantic Dependencies
-- Inherit cross-cutting constraints from `SECURITY/SECURITY.md`,
-  `TEST/TEST.md`, and `CORE/LOGGING.md`.
-- Inherit shared language constraints from `LANGUAGE/CONVENTIONS.md` and
-  `LANGUAGE/READABILITY.md`.
-- Framework/library-specific C#/.NET docs MAY specialize API usage but MUST NOT
-  weaken this baseline.
 
 ## Defaults
 - SHOULD enable and respect nullable reference type warnings.

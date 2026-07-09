@@ -4,24 +4,13 @@ applies_to:
   when: "code is hosted on GitHub"
   tools: ["github"]
   annex: "GITHUB.ANNEX.md"
+  purpose: "GitHub-specific delivery and review workflow constraints"
+  inherits: ["CORE/CODE_REVIEW_PLATFORM.md"]
 ---
 # GITHUB
 
 Guidance for AI agents using GitHub for branch protection, pull requests, and
 review lifecycle rules.
-
-## Scope
-- Define GitHub-specific delivery and review workflow constraints.
-- Apply this file when code hosting and review platform is GitHub.
-- This file does not define GitHub Actions pipeline authoring rules; see
-  `CI-CD/CI-CD.md` for CI/CD pipeline and workflow authoring guidance.
-
-## Semantic Dependencies
-- Inherit the full platform contract from `CORE/CODE_REVIEW_PLATFORM.md`.
-  Protected-branch policy, merge authority, review-thread ownership, description
-  requirements, and review workflow are defined there and are not restated here.
-- This file specializes GitHub platform behavior and does not replace baseline
-  VCS workflow requirements.
 
 ## Terminology Mapping
 - "change request" is a pull request (PR).

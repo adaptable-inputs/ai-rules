@@ -3,23 +3,12 @@ applies_to:
   load: "conditional"
   when: "the project uses an ORM or lazy-loaded associations"
   annex: "N_PLUS_1.ANNEX.md"
+  purpose: "anti-N+1 rules across ORM, SQL, and GraphQL/resolver-based systems"
+  inherits: ["SECURITY/SECURITY.md", "TEST/TEST.md", "CORE/LOGGING.md", "LANGUAGE/SQL/SQL.md", "ARCHITECTURE/ARCHITECTURE.md", "LIBRARY/JPA.md", "LIBRARY/JOOQ.md", "ARCHITECTURE/GRAPHQL.md"]
 ---
 # N_PLUS_1
 
 Guidance for AI agents preventing and detecting N+1 query patterns.
-
-## Scope
-- Define anti-N+1 rules across ORM, SQL, and GraphQL/resolver-based systems.
-- Apply this file to data access implementation and review.
-
-## Semantic Dependencies
-- Inherit cross-cutting constraints from
-  `SECURITY/SECURITY.md`, `TEST/TEST.md`, `CORE/LOGGING.md`.
-- Inherit SQL/query baseline from `LANGUAGE/SQL/SQL.md`.
-- Inherit architecture constraints from `ARCHITECTURE/ARCHITECTURE.md`.
-- Inherit framework/library specifics from:
-  `LIBRARY/JPA.md`, `LIBRARY/JOOQ.md`, and `ARCHITECTURE/GRAPHQL.md` where
-  applicable.
 
 ## Core Rule
 - SHOULD avoid per-entity follow-up queries in loops or repeated resolver calls.

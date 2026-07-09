@@ -5,26 +5,12 @@ applies_to:
   languages: ["java"]
   globs: ["**/*.java"]
   annex: "JAVA.ANNEX.md"
+  purpose: "the baseline Java ruleset for correctness, maintainability, and interoperability"
+  inherits: ["SECURITY/SECURITY.md", "TEST/TEST.md", "CORE/LOGGING.md", "LANGUAGE/CONVENTIONS.md", "LANGUAGE/READABILITY.md"]
 ---
 # JAVA
 
 Guidance for AI agents implementing and reviewing Java code.
-
-## Scope
-- Define the baseline Java ruleset for correctness, maintainability, and
-  interoperability.
-- Apply this file for all Java code generation and code review tasks.
-- Use Java specialization layers as additions, not substitutes for this
-  baseline.
-
-## Semantic Dependencies
-- Inherit cross-cutting constraints from:
-  `SECURITY/SECURITY.md`, `TEST/TEST.md`, `CORE/LOGGING.md`.
-- Inherit shared language constraints from:
-  `LANGUAGE/CONVENTIONS.md`, `LANGUAGE/READABILITY.md`.
-- Java specialization docs MAY narrow and enrich this baseline.
-- Framework/library docs (for example Spring, JPA) MAY specialize API usage
-  but MUST NOT weaken Java safety constraints.
 
 ## Defaults
 - SHOULD prefer immutability for value types and DTOs.

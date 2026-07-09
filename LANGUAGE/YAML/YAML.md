@@ -5,22 +5,12 @@ applies_to:
   languages: ["yaml"]
   globs: ["**/*.yml", "**/*.yaml"]
   annex: "YAML.ANNEX.md"
+  purpose: "YAML authoring rules for correctness, readability, and secure configuration management"
+  inherits: ["SECURITY/SECURITY.md", "LANGUAGE/CONVENTIONS.md", "LANGUAGE/READABILITY.md"]
 ---
 # YAML
 
 Guidance for AI agents implementing and reviewing YAML configuration files.
-
-## Scope
-- Define YAML authoring rules for correctness, readability, and secure
-  configuration management.
-- Apply this file to CI/CD, infrastructure, and application config YAML files.
-
-## Semantic Dependencies
-- Inherit security constraints from `SECURITY/SECURITY.md`.
-- Inherit naming/readability constraints from
-  `LANGUAGE/CONVENTIONS.md` and `LANGUAGE/READABILITY.md`.
-- Tool-specific docs (Kubernetes, Helm, GitLab) MAY specialize schema rules but
-  MUST preserve these baseline safety constraints.
 
 ## Defaults
 - SHOULD keep YAML files deterministic and explicit.

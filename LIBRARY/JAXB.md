@@ -4,19 +4,12 @@ applies_to:
   when: "jaxb is a declared dependency"
   libraries: ["jaxb"]
   annex: "JAXB.ANNEX.md"
+  purpose: "JAXB usage rules for safe and stable XML serialization/deserialization"
+  inherits: ["LANGUAGE/JAVA/JAVA.md", "SECURITY/SECURITY.md", "TEST/TEST.md", "COMPLIANCE/**"]
 ---
 # JAXB
 
 Guidance for AI agents implementing and reviewing JAXB XML binding.
-
-## Scope
-- Define JAXB usage rules for safe and stable XML serialization/deserialization.
-- Apply this file to XML contract-bound integrations.
-
-## Semantic Dependencies
-- Inherit Java baseline from `LANGUAGE/JAVA/JAVA.md`.
-- Inherit security constraints from `SECURITY/SECURITY.md`.
-- Inherit compliance/testing constraints from `COMPLIANCE/**` and `TEST/TEST.md`.
 
 ## Defaults
 - SHOULD use JAXB when XML contract interop requires it.

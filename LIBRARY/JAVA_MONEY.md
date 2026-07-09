@@ -4,24 +4,13 @@ applies_to:
   when: "javax.money is a declared dependency"
   libraries: ["javamoney"]
   annex: "JAVA_MONEY.ANNEX.md"
+  purpose: "mandatory modeling and arithmetic rules for monetary values"
+  inherits: ["LANGUAGE/JAVA/JAVA.md", "LANGUAGE/JAVA/EFFECTIVE_JAVA.md", "LANGUAGE/SQL/SQL.md", "ARCHITECTURE/N_PLUS_1.md"]
 ---
 # JAVA_MONEY
 
 Guidance for AI agents implementing and reviewing JavaMoney usage for monetary
 values in Java.
-
-## Scope
-- Define mandatory modeling and arithmetic rules for monetary values.
-- Apply this file whenever Java code stores, computes, compares, or transfers
-  money.
-- Treat this file as the default monetary approach for Java codebases.
-
-## Semantic Dependencies
-- Inherit Java baseline from `LANGUAGE/JAVA/JAVA.md`.
-- Inherit design heuristics from `LANGUAGE/JAVA/EFFECTIVE_JAVA.md`.
-- Inherit SQL/persistence constraints from `LANGUAGE/SQL/SQL.md`,
-  `ARCHITECTURE/N_PLUS_1.md`, and framework docs when persistence is involved.
-- Cross-cutting baselines are inherited transitively via the parents above.
 
 ## Defaults
 - MUST use JavaMoney (`javax.money`, typically implemented with Moneta) for

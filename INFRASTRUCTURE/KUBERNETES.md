@@ -4,19 +4,12 @@ applies_to:
   when: "Kubernetes manifests are present"
   tools: ["kubernetes"]
   annex: "KUBERNETES.ANNEX.md"
+  purpose: "Kubernetes workload, deployment, and runtime safety defaults"
+  inherits: ["INFRASTRUCTURE/DOCKER.md", "LANGUAGE/YAML/YAML.md", "SECURITY/SECURITY.md"]
 ---
 # KUBERNETES
 
 Guidance for AI agents implementing and reviewing Kubernetes manifests.
-
-## Scope
-- Define Kubernetes workload, deployment, and runtime safety defaults.
-- Apply this file to manifests, controllers, and cluster deployment reviews.
-
-## Semantic Dependencies
-- Inherit container baseline from `INFRASTRUCTURE/DOCKER.md`.
-- Inherit YAML safety rules from `LANGUAGE/YAML/YAML.md`.
-- Inherit security constraints from `SECURITY/SECURITY.md`.
 
 ## Defaults
 - SHOULD define `requests` and `limits` for CPU/memory explicitly.

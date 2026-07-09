@@ -2,6 +2,8 @@
 applies_to:
   load: "always"
   annex: "EPRIVACY_TTDSG.ANNEX.md"
+  purpose: "baseline engineering controls for cookie/device storage and communications-tracking behavior in EU/German contexts"
+  inherits: ["COMPLIANCE/COMPLIANCE.md", "COMPLIANCE/GDPR_BDSG.md", "SECURITY/SECURITY.md", "CORE/LOGGING.md"]
 ---
 # EPRIVACY_TTDSG
 
@@ -10,18 +12,6 @@ controls for client-side storage and tracking technologies.
 
 This is engineering policy guidance, not legal advice.
 Consult qualified legal counsel for final legal decisions.
-
-## Scope
-- Define baseline engineering controls for cookie/device storage and
-  communications-tracking behavior in EU/German contexts.
-- Apply this file when implementing web/mobile telemetry, tracking,
-  personalization, or client-side identifier storage.
-
-## Semantic Dependencies
-- Inherit compliance baseline from `COMPLIANCE/COMPLIANCE.md`.
-- Inherit privacy controls from `COMPLIANCE/GDPR_BDSG.md`.
-- Inherit security controls from `SECURITY/SECURITY.md`.
-- Inherit logging constraints from `CORE/LOGGING.md`.
 
 ## Defaults
 - MUST disable non-essential tracking/storage by default until valid consent exists.

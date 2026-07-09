@@ -5,23 +5,12 @@ applies_to:
   languages: ["ruby"]
   globs: ["**/*.rb"]
   annex: "RUBY.ANNEX.md"
+  purpose: "baseline Ruby rules for correctness, maintainability, and production safety"
+  inherits: ["SECURITY/SECURITY.md", "TEST/TEST.md", "CORE/LOGGING.md", "LANGUAGE/CONVENTIONS.md", "LANGUAGE/READABILITY.md"]
 ---
 # RUBY
 
 Guidance for AI agents implementing and reviewing Ruby code.
-
-## Scope
-- Define baseline Ruby rules for correctness, maintainability, and production
-  safety.
-- Apply this file for Ruby code generation and review tasks.
-
-## Semantic Dependencies
-- Inherit cross-cutting constraints from `SECURITY/SECURITY.md`,
-  `TEST/TEST.md`, and `CORE/LOGGING.md`.
-- Inherit shared language constraints from `LANGUAGE/CONVENTIONS.md` and
-  `LANGUAGE/READABILITY.md`.
-- Framework/library-specific Ruby docs MAY specialize API usage but MUST NOT
-  weaken this baseline.
 
 ## Defaults
 - SHOULD prefer explicit object contracts over ad-hoc dynamic behavior.

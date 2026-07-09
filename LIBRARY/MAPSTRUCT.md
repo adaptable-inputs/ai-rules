@@ -4,19 +4,12 @@ applies_to:
   when: "mapstruct is a declared dependency"
   libraries: ["mapstruct"]
   annex: "MAPSTRUCT.ANNEX.md"
+  purpose: "MapStruct mapping rules for explicit, type-safe DTO/entity conversion"
+  inherits: ["LANGUAGE/JAVA/JAVA.md", "ARCHITECTURE/CLEAN_ARCHITECTURE.md"]
 ---
 # MAPSTRUCT
 
 Guidance for AI agents implementing and reviewing MapStruct mappings.
-
-## Scope
-- Define MapStruct mapping rules for explicit, type-safe DTO/entity conversion.
-- Apply this file to mapping-layer implementation and review.
-
-## Semantic Dependencies
-- Inherit Java baseline from `LANGUAGE/JAVA/JAVA.md`.
-- Inherit architecture boundary constraints from
-  `ARCHITECTURE/CLEAN_ARCHITECTURE.md`.
 
 ## Defaults
 - SHOULD prefer MapStruct for repetitive structural mapping.

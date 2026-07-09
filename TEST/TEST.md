@@ -2,19 +2,11 @@
 applies_to:
   load: "always"
   annex: "TEST.ANNEX.md"
+  inherits: ["CORE/CORE.md", "CORE/RULE_DEPENDENCY_TREE.md"]
 ---
 # TEST
 
 Guidance for AI agents implementing, updating, and reviewing tests.
-
-## Scope
-Defines baseline testing expectations for all stacks and domains.
-
-## Semantic Dependencies (Upstream Rules)
-- Inherits `CORE/CORE.md` and `CORE/RULE_DEPENDENCY_TREE.md` precedence.
-- Security-sensitive scenarios MUST also satisfy `SECURITY/SECURITY.md`.
-- Language/framework/library-specific test techniques MAY specialize this
-  baseline but MUST NOT weaken it without explicit rationale.
 
 ## Testing Defaults
 - MUST add or update tests for every behavior change.
@@ -72,6 +64,7 @@ When delivering a change, include:
 - Follow-up issue references for deferred test debt.
 
 ## Override Notes
+- Security-sensitive scenarios MUST also satisfy `SECURITY/SECURITY.md`.
 - Downstream docs MAY specialize this baseline (for example framework-specific
   testing patterns), but MUST NOT reduce determinism, coverage of critical
   paths, or reporting clarity without explicit justification.

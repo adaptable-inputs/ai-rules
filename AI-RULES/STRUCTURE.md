@@ -22,7 +22,14 @@ applies_to:
 ```
 
 - `load` MUST be one of: `always`, `entry`, `index`, `conditional`, `task`,
-  `setup`, `never`.
+  `setup`, `never`, `annex`.
+- `purpose` states in one line what the doc governs. It replaces a prose Scope
+  section.
+- `inherits` lists the doc's semantic parents by path. It replaces a prose
+  Semantic Dependencies section, and every target MUST exist.
+- `annex` names the sibling `*.ANNEX.md` holding this doc's examples, pitfalls,
+  review checklist, and testing guidance. An annex MUST carry `annex_of` and
+  `tasks`, and MUST NOT contain an obligation.
 - `load: conditional` MUST carry at least one of `languages`, `frameworks`,
   `libraries`, `tools`, or a `when` clause.
 - `load: never` MUST carry a `reason`.

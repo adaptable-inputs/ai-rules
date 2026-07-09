@@ -3,22 +3,12 @@ applies_to:
   load: "conditional"
   when: "the project publishes or consumes events"
   annex: "EVENT_DRIVEN_ARCHITECTURE.ANNEX.md"
+  purpose: "event-driven architecture constraints for reliability, consistency, and operability"
+  inherits: ["ARCHITECTURE/ARCHITECTURE.md", "ARCHITECTURE/CLEAN_ARCHITECTURE.md", "ARCHITECTURE/CIRCUIT_BREAKER.md", "SECURITY/SECURITY.md", "TEST/TEST.md", "CORE/LOGGING.md"]
 ---
 # EVENT_DRIVEN_ARCHITECTURE
 
 Guidance for AI agents implementing and reviewing event-driven systems.
-
-## Scope
-- Define event-driven architecture constraints for reliability, consistency, and
-  operability.
-- Apply this file to producers, consumers, and event contract evolution.
-
-## Semantic Dependencies
-- Inherit architecture baseline from `ARCHITECTURE/ARCHITECTURE.md` and
-  `ARCHITECTURE/CLEAN_ARCHITECTURE.md`.
-- Inherit resilience constraints from `ARCHITECTURE/CIRCUIT_BREAKER.md`.
-- Inherit cross-cutting constraints from
-  `SECURITY/SECURITY.md`, `TEST/TEST.md`, `CORE/LOGGING.md`.
 
 ## Event Contract Design
 - SHOULD model events as facts about completed domain actions.

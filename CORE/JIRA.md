@@ -4,23 +4,12 @@ applies_to:
   when: "the project tracks issues in Jira"
   tools: ["jira"]
   annex: "JIRA.ANNEX.md"
+  purpose: "Jira-specific ticket-authoring, update, and summary-output rules"
+  inherits: ["CORE/VERSION_CONTROL_SYSTEM.md", "TEST/TEST.md", "SECURITY/SECURITY.md", "COMPLIANCE/COMPLIANCE.md"]
 ---
 # JIRA
 
 Guidance for AI agents creating and updating Jira tickets and Jira summaries.
-
-## Scope
-- Define Jira-specific ticket-authoring, update, and summary-output rules.
-- Apply this file when the issue tracker is Jira (including Jira-integrated
-  workflows in GitHub/GitLab delivery pipelines).
-
-## Semantic Dependencies
-- Inherit workflow and delivery constraints from
-  `CORE/VERSION_CONTROL_SYSTEM.md`.
-- Inherit validation priorities from `TEST/TEST.md`,
-  `SECURITY/SECURITY.md`, and `COMPLIANCE/COMPLIANCE.md`.
-- This file specializes issue-tracker behavior for Jira and does not replace
-  branch/PR/MR workflow requirements from `CORE/VERSION_CONTROL_SYSTEM.md`.
 
 ## General Jira Guidance
 - Keep ticket intent explicit: problem, scope, acceptance criteria, and

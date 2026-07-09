@@ -3,22 +3,12 @@ applies_to:
   load: "conditional"
   when: "the project exposes or consumes a GraphQL API"
   annex: "GRAPHQL.ANNEX.md"
+  purpose: "GraphQL schema and resolver architecture constraints"
+  inherits: ["SECURITY/SECURITY.md", "TEST/TEST.md", "CORE/LOGGING.md", "ARCHITECTURE/ARCHITECTURE.md", "ARCHITECTURE/N_PLUS_1.md"]
 ---
 # GRAPHQL
 
 Guidance for AI agents implementing and reviewing GraphQL APIs.
-
-## Scope
-- Define GraphQL schema and resolver architecture constraints.
-- Apply this file to GraphQL server API design and implementation review.
-
-## Semantic Dependencies
-- Inherit cross-cutting constraints from:
-  `SECURITY/SECURITY.md`, `TEST/TEST.md`, `CORE/LOGGING.md`.
-- Inherit architecture constraints from `ARCHITECTURE/ARCHITECTURE.md` and
-  `ARCHITECTURE/N_PLUS_1.md`.
-- Framework/library docs MAY specialize implementation details but SHOULD keep
-  GraphQL contract and query-safety constraints.
 
 ## Schema Design Defaults
 - SHOULD prefer schema-first design with explicit contracts.

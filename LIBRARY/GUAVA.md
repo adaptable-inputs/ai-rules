@@ -4,19 +4,12 @@ applies_to:
   when: "guava is a declared dependency"
   libraries: ["guava"]
   annex: "GUAVA.ANNEX.md"
+  purpose: "when to use Guava utilities versus JDK/native alternatives"
+  inherits: ["LANGUAGE/JAVA/JAVA.md", "DESIGN/CLEAN_CODE.md", "LANGUAGE/READABILITY.md"]
 ---
 # GUAVA
 
 Guidance for AI agents implementing and reviewing Guava usage.
-
-## Scope
-- Define when to use Guava utilities versus JDK/native alternatives.
-- Apply this file to Java utility, collections, and helper API decisions.
-
-## Semantic Dependencies
-- Inherit Java baseline from `LANGUAGE/JAVA/JAVA.md`.
-- Inherit design/readability constraints from `DESIGN/CLEAN_CODE.md` and
-  `LANGUAGE/READABILITY.md`.
 
 ## Defaults
 - SHOULD prefer JDK standard library when equivalent functionality exists, except for

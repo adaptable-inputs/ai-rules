@@ -4,19 +4,12 @@ applies_to:
   when: "selenium is a declared test dependency"
   libraries: ["selenium"]
   annex: "SELENIUM.ANNEX.md"
+  purpose: "Selenium E2E automation patterns for stable browser testing"
+  inherits: ["TEST/TEST.md", "LANGUAGE/HTML/HTML.md"]
 ---
 # SELENIUM
 
 Guidance for AI agents implementing and reviewing Selenium-based tests.
-
-## Scope
-- Define Selenium E2E automation patterns for stable browser testing.
-- Apply this file to Selenium/WebDriver tests and grid execution strategy.
-
-## Semantic Dependencies
-- Inherit baseline testing constraints from `TEST/TEST.md`.
-- Inherit UI accessibility semantics from `LANGUAGE/HTML/HTML.md`.
-- Use with complementary unit/component tests; avoid over-reliance on E2E.
 
 ## Defaults
 - SHOULD keep Selenium suite focused on critical cross-browser flows.

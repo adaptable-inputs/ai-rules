@@ -3,24 +3,12 @@ applies_to:
   load: "conditional"
   when: "the project exposes or consumes a REST API"
   annex: "REST.ANNEX.md"
+  purpose: "REST API design constraints for correctness, compatibility, and operability"
+  inherits: ["CORE/RULE_DEPENDENCY_TREE.md", "ARCHITECTURE/ARCHITECTURE.md", "ARCHITECTURE/CLEAN_ARCHITECTURE.md"]
 ---
 # REST
 
 Guidance for AI agents implementing and reviewing REST-style APIs.
-
-## Scope
-- Define REST API design constraints for correctness, compatibility, and
-  operability.
-- Apply this file to service interface design and API review.
-
-## Semantic Dependencies
-- Inherit the full cross-cutting baseline as defined in
-  `CORE/RULE_DEPENDENCY_TREE.md` (including security/testing/logging and other
-  mandatory cross-cutting constraints).
-- Inherit architecture boundaries from `ARCHITECTURE/ARCHITECTURE.md` and
-  `ARCHITECTURE/CLEAN_ARCHITECTURE.md`.
-- Specialized framework docs MAY refine implementation details but SHOULD keep
-  protocol/contract constraints here.
 
 ## Resource and URI Design
 - SHOULD model APIs around resources and domain capabilities, not UI internals.

@@ -2,20 +2,12 @@
 applies_to:
   load: "always"
   annex: "COGNITIVE_COMPLEXITY.ANNEX.md"
+  purpose: "mandatory and target limits for method cognitive complexity"
+  inherits: ["CORE/RULE_DEPENDENCY_TREE.md", "DESIGN/CLEAN_CODE.md", "DESIGN/SOLID.md"]
 ---
 # COGNITIVE_COMPLEXITY
 
 Guidance for AI agents to control method-level cognitive complexity.
-
-## Scope
-- Define mandatory and target limits for method cognitive complexity.
-- Apply during implementation, refactoring, and code review.
-- Use this file with clean-code and SOLID guidance, not as an isolated metric game.
-
-## Semantic Dependencies
-- Inherit baseline precedence rules from `CORE/RULE_DEPENDENCY_TREE.md`.
-- Inherit decomposition/readability guidance from `DESIGN/CLEAN_CODE.md`.
-- Inherit responsibility and abstraction guidance from `DESIGN/SOLID.md`.
 
 ## Cognitive Complexity Targets
 - New methods MUST have cognitive complexity `<= 15`.

@@ -2,6 +2,8 @@
 applies_to:
   load: "always"
   annex: "GDPR_BDSG.ANNEX.md"
+  purpose: "baseline engineering controls for personal-data handling aligned with GDPR/BDSG expectations"
+  inherits: ["COMPLIANCE/COMPLIANCE.md", "COMPLIANCE/LICENSES.md", "SECURITY/SECURITY.md", "CORE/LOGGING.md", "TEST/TEST.md", "REVIEW/CODE_REVIEW.md"]
 ---
 # GDPR_BDSG
 
@@ -10,20 +12,6 @@ software decisions in EU/German contexts.
 
 This is engineering policy guidance, not legal advice.
 Consult qualified legal counsel for final legal decisions.
-
-## Scope
-- Define baseline engineering controls for personal-data handling aligned with
-  GDPR/BDSG expectations.
-- Apply this file when systems process, store, transfer, or log personal data
-  (including pseudonymous identifiers where applicable).
-
-## Semantic Dependencies
-- Inherit compliance baseline from `COMPLIANCE/COMPLIANCE.md` and
-  `COMPLIANCE/LICENSES.md`.
-- Inherit security controls from `SECURITY/SECURITY.md`.
-- Inherit logging/data-minimization constraints from `CORE/LOGGING.md`.
-- Inherit testing and review constraints from `TEST/TEST.md` and
-  `REVIEW/CODE_REVIEW.md`.
 
 ## Defaults
 - SHOULD keep personal-data inventory explicit per system boundary.

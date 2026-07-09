@@ -4,20 +4,12 @@ applies_to:
   when: "pom.xml is present"
   tools: ["maven"]
   annex: "MAVEN.ANNEX.md"
+  purpose: "Maven-specific reproducibility, dependency, and lifecycle controls"
+  inherits: ["BUILD_TOOLS/BUILD_TOOLS.md", "SECURITY/SECURITY.md", "COMPLIANCE/LICENSES.md", "CI-CD/CI-CD.md"]
 ---
 # MAVEN
 
 Guidance for AI agents implementing and reviewing Maven builds.
-
-## Scope
-- Define Maven-specific reproducibility, dependency, and lifecycle controls.
-- Apply this file to Maven project configuration and CI build workflows.
-
-## Semantic Dependencies
-- Inherit build-layer baseline from `BUILD_TOOLS/BUILD_TOOLS.md`.
-- Inherit security/compliance constraints from
-  `SECURITY/SECURITY.md` and `COMPLIANCE/LICENSES.md`.
-- Inherit CI gating expectations from `CI-CD/CI-CD.md`.
 
 ## Defaults
 - SHOULD use Maven Wrapper (`mvnw`, `mvnw.cmd`, `.mvn/wrapper/*`) for reproducible builds.

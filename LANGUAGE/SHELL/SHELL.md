@@ -5,21 +5,12 @@ applies_to:
   languages: ["shell"]
   globs: ["**/*.sh", "**/*.bash"]
   annex: "SHELL.ANNEX.md"
+  purpose: "safe and maintainable shell scripting defaults"
+  inherits: ["SECURITY/SECURITY.md", "LANGUAGE/CONVENTIONS.md", "LANGUAGE/READABILITY.md"]
 ---
 # SHELL
 
 Guidance for AI agents implementing and reviewing shell scripts.
-
-## Scope
-- Define safe and maintainable shell scripting defaults.
-- Apply this file to Bash/sh scripting in automation, CI/CD, and local tooling.
-
-## Semantic Dependencies
-- Inherit security constraints from `SECURITY/SECURITY.md`.
-- Inherit readability conventions from `LANGUAGE/CONVENTIONS.md` and
-  `LANGUAGE/READABILITY.md`.
-- Build/CI docs MAY specialize execution contexts but MUST preserve safety
-  constraints here.
 
 ## Defaults
 - SHOULD prefer Bash for non-trivial scripts and declare interpreter explicitly

@@ -2,19 +2,11 @@
 applies_to:
   load: "always"
   annex: "SECURITY.ANNEX.md"
+  inherits: ["CORE/CORE.md", "CORE/RULE_DEPENDENCY_TREE.md", "COMPLIANCE/COMPLIANCE.md", "COMPLIANCE/LICENSES.md", "TEST/TEST.md"]
 ---
 # SECURITY
 
 Guidance for AI agents implementing and reviewing security-relevant changes.
-
-## Scope
-Security is a non-negotiable baseline across all stacks and domains.
-
-## Semantic Dependencies (Upstream Rules)
-- Inherits `CORE/CORE.md` and `CORE/RULE_DEPENDENCY_TREE.md` precedence rules.
-- Works with `COMPLIANCE/COMPLIANCE.md` and `COMPLIANCE/LICENSES.md` for legal
-  and governance constraints.
-- Testing expectations are supplemented by `TEST/TEST.md`.
 
 ## Security Defaults
 - MUST use secure defaults and explicit allow-lists over broad allow-any behavior.

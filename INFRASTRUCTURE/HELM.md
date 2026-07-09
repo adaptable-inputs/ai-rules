@@ -4,19 +4,12 @@ applies_to:
   when: "Chart.yaml is present"
   tools: ["helm"]
   annex: "HELM.ANNEX.md"
+  purpose: "Helm chart authoring, templating, and release management rules"
+  inherits: ["INFRASTRUCTURE/KUBERNETES.md", "LANGUAGE/YAML/YAML.md", "SECURITY/SECURITY.md"]
 ---
 # HELM
 
 Guidance for AI agents implementing and reviewing Helm charts.
-
-## Scope
-- Define Helm chart authoring, templating, and release management rules.
-- Apply this file to chart templates, values files, and release workflows.
-
-## Semantic Dependencies
-- Inherit Kubernetes baseline from `INFRASTRUCTURE/KUBERNETES.md`.
-- Inherit YAML safety from `LANGUAGE/YAML/YAML.md`.
-- Inherit security constraints from `SECURITY/SECURITY.md`.
 
 ## Defaults
 - SHOULD keep charts small, purpose-focused, and versioned.

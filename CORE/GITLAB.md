@@ -4,24 +4,13 @@ applies_to:
   when: "code is hosted on GitLab"
   tools: ["gitlab"]
   annex: "GITLAB.ANNEX.md"
+  purpose: "GitLab-specific delivery and review workflow constraints"
+  inherits: ["CORE/CODE_REVIEW_PLATFORM.md"]
 ---
 # GITLAB
 
 Guidance for AI agents using GitLab for branch protection, merge requests, and
 review lifecycle rules.
-
-## Scope
-- Define GitLab-specific delivery and review workflow constraints.
-- Apply this file when the code hosting and review platform is GitLab.
-- This file does not define GitLab CI pipeline authoring rules; see
-  `CI-CD/CI-CD.md` for CI/CD pipeline and job authoring guidance.
-
-## Semantic Dependencies
-- Inherit the full platform contract from `CORE/CODE_REVIEW_PLATFORM.md`.
-  Protected-branch policy, merge authority, review-thread ownership, description
-  requirements, and review workflow are defined there and are not restated here.
-- This file specializes GitLab platform behavior and does not replace baseline
-  VCS workflow requirements.
 
 ## Terminology Mapping
 - "change request" is a merge request (MR).

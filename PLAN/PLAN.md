@@ -3,30 +3,12 @@ applies_to:
   load: "task"
   tasks: ["plan"]
   annex: "PLAN.ANNEX.md"
+  purpose: "planning standards for implementation tasks"
+  inherits: ["CORE/RULE_DEPENDENCY_TREE.md", "LANGUAGE/LANGUAGE.md", "DESIGN/DESIGN.md", "ARCHITECTURE/ARCHITECTURE.md", "FRAMEWORK/FRAMEWORK.md", "LIBRARY/LIBRARY.md", "BUILD_TOOLS/BUILD_TOOLS.md", "INFRASTRUCTURE/INFRASTRUCTURE.md", "CI-CD/CI-CD.md", "LANGUAGE/**", "DESIGN/**", "ARCHITECTURE/**", "FRAMEWORK/**", "LIBRARY/**", "BUILD_TOOLS/**", "INFRASTRUCTURE/**", "CI-CD/**", "TEST/TEST.md", "SECURITY/SECURITY.md", "COMPLIANCE/COMPLIANCE.md", "CORE/VERSION_CONTROL_SYSTEM.md"]
 ---
 # PLAN
 
 Guidance for AI agents creating implementation plans.
-
-## Scope
-- Define planning standards for implementation tasks.
-- Apply this file before implementation for every implementation concern.
-- Use deeper, decision-complete planning for multi-step or high-risk work.
-
-## Semantic Dependencies
-- Inherit dependency order from `CORE/RULE_DEPENDENCY_TREE.md`.
-- Resolve planning constraints through relevant index docs:
-  `LANGUAGE/LANGUAGE.md`, `DESIGN/DESIGN.md`,
-  `ARCHITECTURE/ARCHITECTURE.md`, `FRAMEWORK/FRAMEWORK.md`,
-  `LIBRARY/LIBRARY.md`, `BUILD_TOOLS/BUILD_TOOLS.md`,
-  `INFRASTRUCTURE/INFRASTRUCTURE.md`, and `CI-CD/CI-CD.md`.
-- Apply corresponding specialized leaf rules under `LANGUAGE/**`,
-  `DESIGN/**`, `ARCHITECTURE/**`, `FRAMEWORK/**`, `LIBRARY/**`,
-  `BUILD_TOOLS/**`, `INFRASTRUCTURE/**`, and `CI-CD/**` when they affect
-  planning decisions and risk.
-- Inherit testing/security/compliance constraints from
-  `TEST/TEST.md`, `SECURITY/SECURITY.md`, and `COMPLIANCE/COMPLIANCE.md`.
-- Inherit workflow constraints from `CORE/VERSION_CONTROL_SYSTEM.md`.
 
 ## Ruleset Read Gate (Mandatory)
 - SHOULD start every planning task by reading the complete ai-rules ruleset.

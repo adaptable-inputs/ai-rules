@@ -5,19 +5,12 @@ applies_to:
   tools: ["docker"]
   globs: ["**/Dockerfile", "**/compose.yaml"]
   annex: "DOCKER.ANNEX.md"
+  purpose: "secure, reproducible, and efficient container build/runtime rules"
+  inherits: ["SECURITY/SECURITY.md", "BUILD_TOOLS/BUILD_TOOLS.md", "INFRASTRUCTURE/INFRASTRUCTURE.md"]
 ---
 # DOCKER
 
 Guidance for AI agents implementing and reviewing Docker containerization.
-
-## Scope
-- Define secure, reproducible, and efficient container build/runtime rules.
-- Apply this file to Dockerfiles and container runtime configuration.
-
-## Semantic Dependencies
-- Inherit security constraints from `SECURITY/SECURITY.md`.
-- Inherit build reproducibility constraints from `BUILD_TOOLS/BUILD_TOOLS.md`.
-- Inherit infrastructure constraints from `INFRASTRUCTURE/INFRASTRUCTURE.md`.
 
 ## Defaults
 - SHOULD use multi-stage builds for production images.

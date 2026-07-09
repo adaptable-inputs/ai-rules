@@ -146,6 +146,22 @@ class TestFrontmatter(unittest.TestCase):
             for g in meta.get("globs", []) or []:
                 self.assertIsInstance(g, str, f"{rel(p)}: glob {g!r} is not a string")
 
+    def test_inherits_targets_exist(self):
+        for p, meta, _ in loadable_docs():
+            for t in meta.get("inherits", []) or []:
+                target = ROOT / t[:-3] if t.endswith("/**") else ROOT / t
+                self.assertTrue(target.exists(), f"{rel(p)}: inherits missing {t}")
+
+    def test_scope_and_semdeps_sections_are_gone(self):
+        # They live in frontmatter now; a prose copy would be a second source
+        # of truth and pure context cost.
+        for p, _, body in loadable_docs():
+            for n, ln in prose_lines(body):
+                m = re.match(r"^## (Scope|Semantic Dependencies)\b", ln)
+                if m and m.group(1) == "Scope" and ln.startswith("## Scope Boundary"):
+                    continue
+                self.assertIsNone(m, f"{rel(p)}:{n}: {ln.strip()} belongs in frontmatter")
+
     def test_conditional_docs_declare_a_selector(self):
         for p, meta, _ in loadable_docs():
             if meta["load"] != "conditional":
@@ -326,6 +342,12 @@ class TestRatchetFails(unittest.TestCase):
             lambda r: self._sub(r, "CHANGELOG.md",
                                 '  load: "setup"', '  load: "never"\n  reason: "x"'),
             "marked load: never")
+
+    def test_broken_inherits_is_caught(self):
+        self._expect_fail(
+            lambda r: self._sub(r, "LIBRARY/JPA.md",
+                                '"LANGUAGE/JAVA/JAVA.md"', '"LANGUAGE/JAVA/NOPE.md"'),
+            "which does not exist")
 
     def test_unquoted_glob_is_caught(self):
         self._expect_fail(

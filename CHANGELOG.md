@@ -58,6 +58,10 @@ Sub-heading template:
   periodic - a condition no code change can establish.
 - Split the EU AI Act logging rule into two statements: `SHOULD` log events for
   traceability, and `MUST NOT` expose sensitive data in AI-system logs.
+- Cut the context an implementation task loads by 29%. Examples, pitfalls, review
+  checklists, and testing guidance moved into task-gated `*.ANNEX.md` siblings;
+  they held 3 obligations across 1,563 bullets. Scope and Semantic Dependencies
+  became the `purpose` and `inherits` frontmatter fields.
 - Added `scripts/test_rules.py`, a 40-test suite covering corpus invariants and
   checker behavior, wired into CI. Each test in `TestRatchetFails` reproduces a
   defect that shipped at least once.

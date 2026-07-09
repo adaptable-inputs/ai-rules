@@ -9,10 +9,6 @@ Defines the obligation vocabulary used by every rule in this repository. An
 agent reading any rule MUST be able to tell, without inference, whether
 deviating from it is forbidden, discouraged, or permitted.
 
-## Scope
-- Applies to every normative statement in the ruleset.
-- Does not apply to prose that describes, explains, or gives examples.
-
 ## Keywords
 Keywords are written in uppercase. Their meaning follows RFC 2119.
 

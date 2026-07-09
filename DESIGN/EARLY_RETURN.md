@@ -2,22 +2,12 @@
 applies_to:
   load: "always"
   annex: "EARLY_RETURN.ANNEX.md"
+  purpose: "when early return is the preferred control-flow style"
+  inherits: ["CORE/RULE_DEPENDENCY_TREE.md", "LANGUAGE/READABILITY.md", "DESIGN/CLEAN_CODE.md", "DESIGN/SOLID.md"]
 ---
 # EARLY_RETURN
 
 Guidance for AI agents to use early return and guard clauses effectively.
-
-## Scope
-- Define when early return is the preferred control-flow style.
-- Apply during implementation, refactoring, and review across languages.
-- Use this file with readability and clean-code guidance, not as isolated style
-  dogma.
-
-## Semantic Dependencies
-- Inherit baseline precedence rules from `CORE/RULE_DEPENDENCY_TREE.md`.
-- Inherit naming/readability constraints from `LANGUAGE/READABILITY.md`.
-- Inherit function cohesion constraints from `DESIGN/CLEAN_CODE.md` and
-  `DESIGN/SOLID.md`.
 
 ## Defaults and Guardrails
 - SHOULD prefer early return/guard clauses to keep the happy path linear.

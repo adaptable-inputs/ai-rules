@@ -4,20 +4,12 @@ applies_to:
   when: "Istio resources are present"
   tools: ["istio"]
   annex: "ISTIO.ANNEX.md"
+  purpose: "Istio traffic, security, and observability policy defaults"
+  inherits: ["INFRASTRUCTURE/KUBERNETES.md", "ARCHITECTURE/CIRCUIT_BREAKER.md", "SECURITY/SECURITY.md"]
 ---
 # ISTIO
 
 Guidance for AI agents implementing and reviewing Istio service mesh policies.
-
-## Scope
-- Define Istio traffic, security, and observability policy defaults.
-- Apply this file to VirtualService, DestinationRule, Gateway, and security
-  policy design.
-
-## Semantic Dependencies
-- Inherit Kubernetes baseline from `INFRASTRUCTURE/KUBERNETES.md`.
-- Inherit resilience constraints from `ARCHITECTURE/CIRCUIT_BREAKER.md`.
-- Inherit security constraints from `SECURITY/SECURITY.md`.
 
 ## Defaults
 - SHOULD keep traffic policies explicit and versioned.

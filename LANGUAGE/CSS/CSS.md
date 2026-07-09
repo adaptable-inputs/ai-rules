@@ -5,22 +5,12 @@ applies_to:
   languages: ["css"]
   globs: ["**/*.css", "**/*.scss"]
   annex: "CSS.ANNEX.md"
+  purpose: "CSS baseline rules for predictable, maintainable, and accessible UI styling"
+  inherits: ["LANGUAGE/CONVENTIONS.md", "LANGUAGE/READABILITY.md", "SECURITY/SECURITY.md"]
 ---
 # CSS
 
 Guidance for AI agents implementing and reviewing CSS.
-
-## Scope
-- Define CSS baseline rules for predictable, maintainable, and accessible UI
-  styling.
-- Apply this file for raw CSS, CSS modules, and framework-generated styles.
-
-## Semantic Dependencies
-- Inherit naming/readability guidance from
-  `LANGUAGE/CONVENTIONS.md` and `LANGUAGE/READABILITY.md`.
-- Inherit security constraints from `SECURITY/SECURITY.md`.
-- Framework styling docs (for example Tailwind) MAY specialize patterns but
-  SHOULD NOT weaken accessibility or maintainability constraints.
 
 ## Defaults
 - SHOULD prefer low-specificity, composable selectors.

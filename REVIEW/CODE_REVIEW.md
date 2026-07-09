@@ -3,30 +3,12 @@ applies_to:
   load: "task"
   tasks: ["review"]
   annex: "CODE_REVIEW.ANNEX.md"
+  purpose: "review workflow, prioritization, and output expectations"
+  inherits: ["REVIEW/REVIEW.md", "CORE/RULE_DEPENDENCY_TREE.md", "LANGUAGE/LANGUAGE.md", "DESIGN/DESIGN.md", "ARCHITECTURE/ARCHITECTURE.md", "FRAMEWORK/FRAMEWORK.md", "LIBRARY/LIBRARY.md", "BUILD_TOOLS/BUILD_TOOLS.md", "INFRASTRUCTURE/INFRASTRUCTURE.md", "CI-CD/CI-CD.md", "LANGUAGE/**", "DESIGN/**", "ARCHITECTURE/**", "FRAMEWORK/**", "LIBRARY/**", "BUILD_TOOLS/**", "INFRASTRUCTURE/**", "CI-CD/**", "SECURITY/SECURITY.md", "TEST/TEST.md", "COMPLIANCE/COMPLIANCE.md"]
 ---
 # CODE_REVIEW
 
 Guidance for AI agents performing code and rules-document reviews.
-
-## Scope
-- Define review workflow, prioritization, and output expectations.
-- Apply this file for PR/MR reviews and doc-rule audits.
-
-## Semantic Dependencies
-- Inherit review-layer boundary from `REVIEW/REVIEW.md`.
-- Inherit dependency order and cross-cutting baseline from
-  `CORE/RULE_DEPENDENCY_TREE.md`.
-- Resolve applicable constraints through index docs:
-  `LANGUAGE/LANGUAGE.md`, `DESIGN/DESIGN.md`,
-  `ARCHITECTURE/ARCHITECTURE.md`, `FRAMEWORK/FRAMEWORK.md`,
-  `LIBRARY/LIBRARY.md`, `BUILD_TOOLS/BUILD_TOOLS.md`,
-  `INFRASTRUCTURE/INFRASTRUCTURE.md`, and `CI-CD/CI-CD.md`.
-- Apply corresponding specialized leaf rules under `LANGUAGE/**`,
-  `DESIGN/**`, `ARCHITECTURE/**`, `FRAMEWORK/**`, `LIBRARY/**`,
-  `BUILD_TOOLS/**`, `INFRASTRUCTURE/**`, and `CI-CD/**`.
-- Inherit security/testing/compliance constraints and priority direction from
-  `SECURITY/SECURITY.md`, `TEST/TEST.md`, `COMPLIANCE/COMPLIANCE.md`.
-- Severity levels are defined by this document's local severity model.
 
 ## Ruleset Read Gate (Mandatory)
 - SHOULD start every review task by reading the complete ai-rules ruleset.

@@ -4,24 +4,13 @@ applies_to:
   when: "a CloudFormation template is present"
   tools: ["cloudformation"]
   annex: "CLOUDFORMATION.ANNEX.md"
+  purpose: "CloudFormation-specific rules for safe and reproducible AWS infrastructure delivery"
+  inherits: ["INFRASTRUCTURE/INFRA_AS_CODE.md", "SECURITY/SECURITY.md", "COMPLIANCE/COMPLIANCE.md", "CI-CD/CI-CD.md", "CORE/VERSION_CONTROL_SYSTEM.md"]
 ---
 # CLOUDFORMATION
 
 Guidance for AI agents implementing and reviewing AWS CloudFormation
 infrastructure changes.
-
-## Scope
-- Define CloudFormation-specific rules for safe and reproducible AWS
-  infrastructure delivery.
-- Apply this file to CloudFormation templates, stacks, change sets, and related
-  deployment workflows.
-
-## Semantic Dependencies
-- Inherit IaC baseline from `INFRASTRUCTURE/INFRA_AS_CODE.md`.
-- Inherit security and compliance constraints from `SECURITY/SECURITY.md` and
-  `COMPLIANCE/COMPLIANCE.md`.
-- Inherit CI and workflow constraints from `CI-CD/CI-CD.md` and
-  `CORE/VERSION_CONTROL_SYSTEM.md`.
 
 ## Defaults
 - SHOULD keep templates declarative, parameterized, and environment-aware.

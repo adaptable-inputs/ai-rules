@@ -4,22 +4,12 @@ applies_to:
   when: "primefaces is a declared dependency"
   frameworks: ["primefaces"]
   annex: "PRIMEFACES.ANNEX.md"
+  purpose: "PrimeFaces-specific rules for JSF lifecycle, state handling, and UI behavior"
+  inherits: ["LANGUAGE/JAVA/JAVA.md", "LANGUAGE/HTML/HTML.md", "LANGUAGE/CSS/CSS.md", "SECURITY/SECURITY.md", "TEST/TEST.md", "CORE/LOGGING.md"]
 ---
 # PRIMEFACES
 
 Guidance for AI agents implementing and reviewing PrimeFaces/JSF projects.
-
-## Scope
-- Define PrimeFaces-specific rules for JSF lifecycle, state handling, and UI
-  behavior.
-- Apply this file to JSF views, backing beans, and PrimeFaces component usage.
-
-## Semantic Dependencies
-- Inherit Java baseline from `LANGUAGE/JAVA/JAVA.md`.
-- Inherit accessibility baseline from `LANGUAGE/HTML/HTML.md` and
-  `LANGUAGE/CSS/CSS.md`.
-- Inherit cross-cutting constraints from
-  `SECURITY/SECURITY.md`, `TEST/TEST.md`, `CORE/LOGGING.md`.
 
 ## Defaults
 - SHOULD keep JSF views presentation-focused.

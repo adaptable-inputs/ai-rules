@@ -3,30 +3,12 @@ applies_to:
   load: "task"
   tasks: ["programming"]
   annex: "PROGRAMMING.ANNEX.md"
+  purpose: "end-to-end implementation workflow expectations for coding tasks"
+  inherits: ["CORE/VERSION_CONTROL_SYSTEM.md", "TEST/TEST.md", "SECURITY/SECURITY.md", "COMPLIANCE/COMPLIANCE.md", "CORE/RULE_DEPENDENCY_TREE.md", "LANGUAGE/LANGUAGE.md", "DESIGN/DESIGN.md", "ARCHITECTURE/ARCHITECTURE.md", "FRAMEWORK/FRAMEWORK.md", "LIBRARY/LIBRARY.md", "BUILD_TOOLS/BUILD_TOOLS.md", "INFRASTRUCTURE/INFRASTRUCTURE.md", "CI-CD/CI-CD.md", "LANGUAGE/**", "DESIGN/**", "ARCHITECTURE/**", "FRAMEWORK/**", "LIBRARY/**", "BUILD_TOOLS/**", "INFRASTRUCTURE/**", "CI-CD/**"]
 ---
 # PROGRAMMING
 
 Guidance for AI agents executing implementation tasks.
-
-## Scope
-- Define end-to-end implementation workflow expectations for coding tasks.
-- Apply this file when making code changes (not pure planning/review-only tasks).
-
-## Semantic Dependencies
-- Inherit workflow and VCS constraints from `CORE/VERSION_CONTROL_SYSTEM.md`.
-- Inherit testing constraints from `TEST/TEST.md`.
-- Inherit security/compliance constraints from `SECURITY/SECURITY.md` and
-  `COMPLIANCE/COMPLIANCE.md`.
-- Inherit dependency order and full cross-cutting baseline from
-  `CORE/RULE_DEPENDENCY_TREE.md`.
-- Resolve constraints through the relevant index docs:
-  `LANGUAGE/LANGUAGE.md`, `DESIGN/DESIGN.md`,
-  `ARCHITECTURE/ARCHITECTURE.md`, `FRAMEWORK/FRAMEWORK.md`,
-  `LIBRARY/LIBRARY.md`, `BUILD_TOOLS/BUILD_TOOLS.md`,
-  `INFRASTRUCTURE/INFRASTRUCTURE.md`, and `CI-CD/CI-CD.md`.
-- Apply corresponding specialized leaf rules under `LANGUAGE/**`,
-  `DESIGN/**`, `ARCHITECTURE/**`, `FRAMEWORK/**`, `LIBRARY/**`,
-  `BUILD_TOOLS/**`, `INFRASTRUCTURE/**`, and `CI-CD/**`.
 
 ## Ruleset Read Gate (Mandatory)
 - SHOULD start every programming task by reading the complete ai-rules ruleset.

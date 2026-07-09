@@ -5,23 +5,12 @@ applies_to:
   languages: ["swift"]
   globs: ["**/*.swift"]
   annex: "SWIFT.ANNEX.md"
+  purpose: "baseline Swift rules for correctness, maintainability, and runtime safety"
+  inherits: ["SECURITY/SECURITY.md", "TEST/TEST.md", "CORE/LOGGING.md", "LANGUAGE/CONVENTIONS.md", "LANGUAGE/READABILITY.md"]
 ---
 # SWIFT
 
 Guidance for AI agents implementing and reviewing Swift code.
-
-## Scope
-- Define baseline Swift rules for correctness, maintainability, and runtime
-  safety.
-- Apply this file for Swift code generation and review tasks.
-
-## Semantic Dependencies
-- Inherit cross-cutting constraints from `SECURITY/SECURITY.md`,
-  `TEST/TEST.md`, and `CORE/LOGGING.md`.
-- Inherit shared language constraints from `LANGUAGE/CONVENTIONS.md` and
-  `LANGUAGE/READABILITY.md`.
-- Framework/library-specific Swift docs MAY specialize API usage but MUST NOT
-  weaken this baseline.
 
 ## Defaults
 - SHOULD prefer value semantics (`struct`, immutable state) when practical.

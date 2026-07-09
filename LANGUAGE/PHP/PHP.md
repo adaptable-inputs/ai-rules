@@ -5,23 +5,12 @@ applies_to:
   languages: ["php"]
   globs: ["**/*.php"]
   annex: "PHP.ANNEX.md"
+  purpose: "baseline PHP rules for correctness, maintainability, and production safety"
+  inherits: ["SECURITY/SECURITY.md", "TEST/TEST.md", "CORE/LOGGING.md", "LANGUAGE/CONVENTIONS.md", "LANGUAGE/READABILITY.md"]
 ---
 # PHP
 
 Guidance for AI agents implementing and reviewing PHP code.
-
-## Scope
-- Define baseline PHP rules for correctness, maintainability, and production
-  safety.
-- Apply this file for PHP code generation and review tasks.
-
-## Semantic Dependencies
-- Inherit cross-cutting constraints from `SECURITY/SECURITY.md`,
-  `TEST/TEST.md`, and `CORE/LOGGING.md`.
-- Inherit shared language constraints from `LANGUAGE/CONVENTIONS.md` and
-  `LANGUAGE/READABILITY.md`.
-- Framework/library-specific PHP docs MAY specialize API usage but MUST NOT
-  weaken this baseline.
 
 ## Defaults
 - SHOULD enable strict typing mode (`declare(strict_types=1)`) for application code.

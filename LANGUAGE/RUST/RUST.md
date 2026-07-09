@@ -5,23 +5,12 @@ applies_to:
   languages: ["rust"]
   globs: ["**/*.rs"]
   annex: "RUST.ANNEX.md"
+  purpose: "baseline Rust rules for correctness, maintainability, and runtime safety"
+  inherits: ["SECURITY/SECURITY.md", "TEST/TEST.md", "CORE/LOGGING.md", "LANGUAGE/CONVENTIONS.md", "LANGUAGE/READABILITY.md"]
 ---
 # RUST
 
 Guidance for AI agents implementing and reviewing Rust code.
-
-## Scope
-- Define baseline Rust rules for correctness, maintainability, and runtime
-  safety.
-- Apply this file for Rust code generation and review tasks.
-
-## Semantic Dependencies
-- Inherit cross-cutting constraints from `SECURITY/SECURITY.md`,
-  `TEST/TEST.md`, and `CORE/LOGGING.md`.
-- Inherit shared language constraints from `LANGUAGE/CONVENTIONS.md` and
-  `LANGUAGE/READABILITY.md`.
-- Framework/library-specific Rust docs MAY specialize API usage but MUST NOT
-  weaken this baseline.
 
 ## Defaults
 - SHOULD prefer explicit ownership and lifetimes over workaround cloning.

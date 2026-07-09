@@ -3,24 +3,13 @@ applies_to:
   load: "conditional"
   when: "the project declares any infrastructure as code"
   annex: "INFRA_AS_CODE.ANNEX.md"
+  purpose: "tool-neutral IaC guardrails for provisioning and evolving infrastructure safely"
+  inherits: ["INFRASTRUCTURE/INFRASTRUCTURE.md", "SECURITY/SECURITY.md", "COMPLIANCE/COMPLIANCE.md", "TEST/TEST.md", "CI-CD/CI-CD.md", "CORE/VERSION_CONTROL_SYSTEM.md"]
 ---
 # INFRA_AS_CODE
 
 Guidance for AI agents implementing and reviewing Infrastructure as Code (IaC)
 changes.
-
-## Scope
-- Define tool-neutral IaC guardrails for provisioning and evolving
-  infrastructure safely.
-- Apply this file when infrastructure definitions are changed through code
-  (for example, Terraform, Pulumi, CloudFormation, or Ansible-managed resources).
-
-## Semantic Dependencies
-- Inherit infrastructure baseline from `INFRASTRUCTURE/INFRASTRUCTURE.md`.
-- Inherit security and compliance constraints from `SECURITY/SECURITY.md` and
-  `COMPLIANCE/COMPLIANCE.md`.
-- Inherit testing and delivery workflow expectations from `TEST/TEST.md`,
-  `CI-CD/CI-CD.md`, and `CORE/VERSION_CONTROL_SYSTEM.md`.
 
 ## IaC Defaults
 - SHOULD keep infrastructure declarative, versioned, and reproducible.

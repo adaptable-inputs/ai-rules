@@ -4,20 +4,12 @@ applies_to:
   when: "resilience4j is a declared dependency"
   libraries: ["resilience4j"]
   annex: "RESILIENCE4J.ANNEX.md"
+  purpose: "safe usage of resilience primitives for remote dependency protection"
+  inherits: ["ARCHITECTURE/CIRCUIT_BREAKER.md", "ARCHITECTURE/MICROSERVICE.md", "CORE/LOGGING.md"]
 ---
 # RESILIENCE4J
 
 Guidance for AI agents implementing and reviewing Resilience4j policies.
-
-## Scope
-- Define safe usage of resilience primitives for remote dependency protection.
-- Apply this file to retry/circuit-breaker/bulkhead/rate-limiter/time-limiter
-  configuration and usage.
-
-## Semantic Dependencies
-- Inherit architecture resilience constraints from
-  `ARCHITECTURE/CIRCUIT_BREAKER.md` and `ARCHITECTURE/MICROSERVICE.md`.
-- Inherit observability requirements from `CORE/LOGGING.md`.
 
 ## Defaults
 - SHOULD keep resilience policy per dependency/use case, not one global profile.

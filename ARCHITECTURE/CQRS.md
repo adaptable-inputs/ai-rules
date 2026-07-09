@@ -3,25 +3,13 @@ applies_to:
   load: "conditional"
   when: "the project separates command and query models"
   annex: "CQRS.ANNEX.md"
+  purpose: "rules for separating write behavior (commands) and read behavior (queries) when domain complexity or scale justifies it"
+  inherits: ["ARCHITECTURE/ARCHITECTURE.md", "ARCHITECTURE/CLEAN_ARCHITECTURE.md", "ARCHITECTURE/EVENT_DRIVEN_ARCHITECTURE.md", "SECURITY/SECURITY.md", "TEST/TEST.md", "CORE/LOGGING.md"]
 ---
 # CQRS
 
 Guidance for AI agents implementing and reviewing Command Query
 Responsibility Segregation (CQRS) architectures.
-
-## Scope
-- Define rules for separating write behavior (commands) and read behavior
-  (queries) when domain complexity or scale justifies it.
-- Apply this file when introducing or reviewing CQRS-style service/module
-  boundaries.
-
-## Semantic Dependencies
-- Inherit architecture baseline from `ARCHITECTURE/ARCHITECTURE.md` and
-  `ARCHITECTURE/CLEAN_ARCHITECTURE.md`.
-- Inherit event integration constraints from
-  `ARCHITECTURE/EVENT_DRIVEN_ARCHITECTURE.md` when projections are event-fed.
-- Inherit cross-cutting constraints from
-  `SECURITY/SECURITY.md`, `TEST/TEST.md`, `CORE/LOGGING.md`.
 
 ## CQRS Decision Rules
 - SHOULD use CQRS only when command and query concerns have materially different scaling, consistency, or model

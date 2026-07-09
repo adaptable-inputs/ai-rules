@@ -4,22 +4,12 @@ applies_to:
   when: "a JPA provider is a declared dependency"
   libraries: ["jpa"]
   annex: "JPA.ANNEX.md"
+  purpose: "JPA mapping and query usage rules for correctness and performance"
+  inherits: ["LANGUAGE/JAVA/JAVA.md", "LANGUAGE/SQL/SQL.md", "ARCHITECTURE/N_PLUS_1.md", "FRAMEWORK/SPRING_BOOT.md"]
 ---
 # JPA
 
 Guidance for AI agents implementing and reviewing JPA-based persistence.
-
-## Scope
-- Define JPA mapping and query usage rules for correctness and performance.
-- Apply this file to entity modeling, repository logic, and transaction design.
-
-## Semantic Dependencies
-- Inherit Java baseline from `LANGUAGE/JAVA/JAVA.md`.
-- Inherit SQL and N+1 constraints from
-  `LANGUAGE/SQL/SQL.md` and `ARCHITECTURE/N_PLUS_1.md`.
-- Inherit framework boundary constraints from `FRAMEWORK/SPRING_BOOT.md`.
-- Cross-cutting baselines are inherited transitively via the language/framework
-  parents above.
 
 ## Defaults
 - SHOULD keep entities persistence-focused; keep business workflows in services.

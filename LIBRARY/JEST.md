@@ -4,19 +4,12 @@ applies_to:
   when: "jest is a declared dev dependency"
   libraries: ["jest"]
   annex: "JEST.ANNEX.md"
+  purpose: "Jest-specific rules for deterministic, maintainable tests"
+  inherits: ["TEST/TEST.md", "LANGUAGE/**"]
 ---
 # JEST
 
 Guidance for AI agents implementing and reviewing Jest tests.
-
-## Scope
-- Define Jest-specific rules for deterministic, maintainable tests.
-- Apply this file to unit/integration tests executed with Jest.
-
-## Semantic Dependencies
-- Inherit baseline testing constraints from `TEST/TEST.md`.
-- Inherit JavaScript/TypeScript language constraints from `LANGUAGE/**` docs.
-- Playwright/Selenium docs MAY cover complementary browser E2E testing.
 
 ## Defaults
 - SHOULD keep tests deterministic and isolated.
@@ -49,5 +42,6 @@ Guidance for AI agents implementing and reviewing Jest tests.
 - MUST quarantine/remediate flaky tests quickly.
 
 ## Override Notes
+- Playwright/Selenium docs MAY cover complementary browser E2E testing.
 - Framework-specific testing utilities MAY extend Jest usage, but deterministic
   async handling and isolation constraints here remain mandatory.

@@ -5,22 +5,12 @@ applies_to:
   languages: ["java"]
   globs: ["**/*.java"]
   annex: "EFFECTIVE_JAVA.ANNEX.md"
+  inherits: ["LANGUAGE/JAVA/JAVA.md", "SECURITY/SECURITY.md", "TEST/TEST.md"]
 ---
 # EFFECTIVE_JAVA
 
 Guidance for AI agents applying Effective-Java-style decisions in modern Java
 codebases.
-
-## Scope
-- Specialize `LANGUAGE/JAVA/JAVA.md` with higher-signal Java design heuristics.
-- Use this file when selecting between multiple valid Java designs.
-
-## Semantic Dependencies
-- Inherit all rules from `LANGUAGE/JAVA/JAVA.md`.
-- Inherit cross-cutting and testing rules from `SECURITY/SECURITY.md` and
-  `TEST/TEST.md`.
-- If this file conflicts with baseline Java guidance, baseline safety rules stay
-  authoritative unless this file explicitly narrows behavior.
 
 ## Core Design Preferences
 - SHOULD prefer static factories over constructors when they improve readability,

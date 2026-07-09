@@ -4,25 +4,13 @@ applies_to:
   when: "the project deploys to Azure"
   tools: ["azure"]
   annex: "AZURE.ANNEX.md"
+  purpose: "Azure-specific platform guardrails for secure and reliable operations"
+  inherits: ["INFRASTRUCTURE/INFRASTRUCTURE.md", "INFRASTRUCTURE/INFRA_AS_CODE.md", "SECURITY/SECURITY.md", "COMPLIANCE/COMPLIANCE.md", "CI-CD/CI-CD.md", "CORE/VERSION_CONTROL_SYSTEM.md"]
 ---
 # AZURE
 
 Guidance for AI agents implementing and reviewing Azure platform configuration
 and operations choices.
-
-## Scope
-- Define Azure-specific platform guardrails for secure and reliable operations.
-- Apply this file when architecture or infrastructure changes materially affect
-  Azure tenant, subscription, network, identity, data, or observability
-  posture.
-
-## Semantic Dependencies
-- Inherit infrastructure baseline from `INFRASTRUCTURE/INFRASTRUCTURE.md`.
-- Inherit IaC/process constraints from `INFRASTRUCTURE/INFRA_AS_CODE.md`.
-- Inherit security/compliance constraints from `SECURITY/SECURITY.md` and
-  `COMPLIANCE/COMPLIANCE.md`.
-- Inherit CI/CD and workflow constraints from `CI-CD/CI-CD.md` and
-  `CORE/VERSION_CONTROL_SYSTEM.md`.
 
 ## Defaults
 - SHOULD use subscription/resource-group isolation for environments and ownership.

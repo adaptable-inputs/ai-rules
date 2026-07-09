@@ -4,23 +4,12 @@ applies_to:
   when: "svelte.config.js is present"
   frameworks: ["svelte"]
   annex: "SVELTE.ANNEX.md"
+  purpose: "Svelte-specific component, reactivity, and state-management rules"
+  inherits: ["LANGUAGE/JAVASCRIPT/JAVASCRIPT.md", "LANGUAGE/TYPESCRIPT/TYPESCRIPT.md", "LANGUAGE/HTML/HTML.md", "LANGUAGE/CSS/CSS.md", "SECURITY/SECURITY.md", "TEST/TEST.md", "CORE/LOGGING.md"]
 ---
 # SVELTE
 
 Guidance for AI agents implementing and reviewing Svelte projects.
-
-## Scope
-- Define Svelte-specific component, reactivity, and state-management rules.
-- Apply this file to Svelte/SvelteKit implementation and review tasks.
-
-## Semantic Dependencies
-- Inherit JavaScript baseline from `LANGUAGE/JAVASCRIPT/JAVASCRIPT.md`.
-- Apply `LANGUAGE/TYPESCRIPT/TYPESCRIPT.md` as an additional parent when the
-  Svelte codebase uses TypeScript.
-- Inherit HTML/CSS accessibility and semantics from
-  `LANGUAGE/HTML/HTML.md` and `LANGUAGE/CSS/CSS.md`.
-- Inherit cross-cutting constraints from
-  `SECURITY/SECURITY.md`, `TEST/TEST.md`, `CORE/LOGGING.md`.
 
 ## Defaults
 - SHOULD keep components focused and small.

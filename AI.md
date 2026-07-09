@@ -17,7 +17,9 @@ An agent MUST NOT read this ruleset exhaustively. Load in this order:
    libraries, build tools, and infrastructure actually in use.
 3. **Load only what matches.** Read a category index, then only those leaf docs
    whose `applies_to` frontmatter matches the detected stack. A Java project
-   MUST NOT load `LANGUAGE/PYTHON/`.
+   MUST NOT load `LANGUAGE/PYTHON/`. A doc's `purpose` says what it governs and
+   its `inherits` names its semantic parents; both live in frontmatter, so
+   neither costs a section.
 4. **Load task overlays by task type**, not by stack: `PROGRAMMING/`, `PLAN/`,
    `REVIEW/`.
 5. **Load annexes only for the tasks they name.** A doc with an `annex:` field

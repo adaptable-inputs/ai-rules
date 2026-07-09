@@ -5,23 +5,12 @@ applies_to:
   languages: ["javascript"]
   globs: ["**/*.js", "**/*.jsx", "**/*.mjs"]
   annex: "JAVASCRIPT.ANNEX.md"
+  purpose: "a complete JavaScript baseline for runtime-safe, maintainable code"
+  inherits: ["SECURITY/SECURITY.md", "TEST/TEST.md", "CORE/LOGGING.md", "LANGUAGE/CONVENTIONS.md", "LANGUAGE/READABILITY.md"]
 ---
 # JAVASCRIPT
 
 Guidance for AI agents implementing and reviewing JavaScript code.
-
-## Scope
-- Define a complete JavaScript baseline for runtime-safe, maintainable code.
-- Apply this file for plain JavaScript projects and as parent guidance for
-  TypeScript and JavaScript-based framework docs.
-
-## Semantic Dependencies
-- Inherit cross-cutting constraints from:
-  `SECURITY/SECURITY.md`, `TEST/TEST.md`, `CORE/LOGGING.md`.
-- Inherit shared language constraints from:
-  `LANGUAGE/CONVENTIONS.md`, `LANGUAGE/READABILITY.md`.
-- Specialized docs (for example TypeScript and framework-specific docs) MAY
-  narrow this guidance but MUST NOT silently weaken it.
 
 ## Defaults
 - SHOULD prefer ESM modules (`import`/`export`) over CommonJS for new code unless the

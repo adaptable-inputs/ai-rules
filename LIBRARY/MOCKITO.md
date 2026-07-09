@@ -4,19 +4,12 @@ applies_to:
   when: "mockito is a declared test dependency"
   libraries: ["mockito"]
   annex: "MOCKITO.ANNEX.md"
+  purpose: "Mockito usage rules for behavior isolation without brittle tests"
+  inherits: ["TEST/TEST.md", "LIBRARY/JUNIT.md"]
 ---
 # MOCKITO
 
 Guidance for AI agents implementing and reviewing Mockito-based tests.
-
-## Scope
-- Define Mockito usage rules for behavior isolation without brittle tests.
-- Apply this file to unit tests using mocks/spies/stubs.
-
-## Semantic Dependencies
-- Inherit baseline testing constraints from `TEST/TEST.md` and
-  `LIBRARY/JUNIT.md`.
-- Mockito guidance specializes mocking behavior only.
 
 ## Defaults
 - SHOULD mock external collaborators, not value objects.

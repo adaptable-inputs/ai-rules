@@ -4,23 +4,12 @@ applies_to:
   when: "Pulumi.yaml is present"
   tools: ["pulumi"]
   annex: "PULUMI.ANNEX.md"
+  purpose: "Pulumi-specific rules for predictable and safe infrastructure provisioning"
+  inherits: ["INFRASTRUCTURE/INFRA_AS_CODE.md", "SECURITY/SECURITY.md", "COMPLIANCE/COMPLIANCE.md", "CI-CD/CI-CD.md", "CORE/VERSION_CONTROL_SYSTEM.md"]
 ---
 # PULUMI
 
 Guidance for AI agents implementing and reviewing Pulumi infrastructure changes.
-
-## Scope
-- Define Pulumi-specific rules for predictable and safe infrastructure
-  provisioning.
-- Apply this file to Pulumi programs, stack configuration, and Pulumi-driven
-  CI workflows.
-
-## Semantic Dependencies
-- Inherit IaC baseline from `INFRASTRUCTURE/INFRA_AS_CODE.md`.
-- Inherit security and compliance constraints from `SECURITY/SECURITY.md` and
-  `COMPLIANCE/COMPLIANCE.md`.
-- Inherit CI and workflow constraints from `CI-CD/CI-CD.md` and
-  `CORE/VERSION_CONTROL_SYSTEM.md`.
 
 ## Defaults
 - MUST pin Pulumi CLI and provider/plugin versions for reproducibility.

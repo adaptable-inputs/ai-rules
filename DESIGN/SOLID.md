@@ -2,20 +2,12 @@
 applies_to:
   load: "always"
   annex: "SOLID.ANNEX.md"
+  purpose: "practical SOLID usage for maintainable, extensible software design"
+  inherits: ["CORE/RULE_DEPENDENCY_TREE.md", "DESIGN/CLEAN_CODE.md", "ARCHITECTURE/CLEAN_ARCHITECTURE.md"]
 ---
 # SOLID
 
 Guidance for AI agents applying SOLID principles pragmatically.
-
-## Scope
-- Define practical SOLID usage for maintainable, extensible software design.
-- Apply this file during design and review, not as rigid dogma.
-
-## Semantic Dependencies
-- Inherit cross-cutting precedence/override model from
-  `CORE/RULE_DEPENDENCY_TREE.md`.
-- `DESIGN/CLEAN_CODE.md` and `ARCHITECTURE/CLEAN_ARCHITECTURE.md` are related
-  companion docs that apply alongside this file.
 
 ## SRP: Single Responsibility Principle
 - SHOULD keep modules with one primary reason to change.

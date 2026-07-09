@@ -2,23 +2,12 @@
 applies_to:
   load: "always"
   annex: "CONVENTIONS.ANNEX.md"
+  purpose: "repository-wide conventions that apply before language/framework specializations"
+  inherits: ["CORE/RULE_DEPENDENCY_TREE.md", "LANGUAGE/READABILITY.md"]
 ---
 # CONVENTIONS
 
 Guidance for AI agents on cross-language naming and formatting conventions.
-
-## Scope
-- Define repository-wide conventions that apply before language/framework
-  specializations.
-- Apply this file when generating code and during code review across all
-  languages.
-
-## Semantic Dependencies
-- Inherit global precedence and override rules from
-  `CORE/RULE_DEPENDENCY_TREE.md`.
-- Inherit readability constraints from `LANGUAGE/READABILITY.md`.
-- Language-specific docs MAY narrow style details but MUST NOT silently weaken
-  clarity or consistency constraints.
 
 ## Precedence Model
 Formatting and naming decisions MUST follow this order:

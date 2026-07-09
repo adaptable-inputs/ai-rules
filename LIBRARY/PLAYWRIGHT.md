@@ -4,20 +4,12 @@ applies_to:
   when: "playwright is a declared dev dependency"
   libraries: ["playwright"]
   annex: "PLAYWRIGHT.ANNEX.md"
+  purpose: "Playwright E2E/integration testing rules for reliability and maintainability"
+  inherits: ["TEST/TEST.md", "LANGUAGE/HTML/HTML.md"]
 ---
 # PLAYWRIGHT
 
 Guidance for AI agents implementing and reviewing Playwright tests.
-
-## Scope
-- Define Playwright E2E/integration testing rules for reliability and
-  maintainability.
-- Apply this file to browser automation tests and test infrastructure.
-
-## Semantic Dependencies
-- Inherit testing baseline from `TEST/TEST.md`.
-- Inherit UI accessibility semantics from `LANGUAGE/HTML/HTML.md`.
-- Complements unit/component testing docs (Jest/JUnit etc.).
 
 ## Defaults
 - SHOULD focus E2E tests on critical user journeys.

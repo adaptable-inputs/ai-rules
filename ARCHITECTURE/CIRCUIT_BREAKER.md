@@ -3,21 +3,12 @@ applies_to:
   load: "conditional"
   when: "the project calls remote dependencies"
   annex: "CIRCUIT_BREAKER.ANNEX.md"
+  purpose: "when and how to apply circuit breakers to remote dependencies"
+  inherits: ["ARCHITECTURE/ARCHITECTURE.md", "SECURITY/SECURITY.md", "TEST/TEST.md", "CORE/LOGGING.md"]
 ---
 # CIRCUIT_BREAKER
 
 Guidance for AI agents implementing and reviewing circuit breaker patterns.
-
-## Scope
-- Define when and how to apply circuit breakers to remote dependencies.
-- Apply this file to service-to-service calls and external IO boundaries.
-
-## Semantic Dependencies
-- Inherit architecture baseline from `ARCHITECTURE/ARCHITECTURE.md`.
-- Inherit cross-cutting defaults from
-  `SECURITY/SECURITY.md`, `TEST/TEST.md`, `CORE/LOGGING.md`.
-- Service communication architecture docs MAY specialize breaker usage for their
-  communication patterns.
 
 ## Placement Rules
 - SHOULD place circuit breakers at every remote dependency boundary: HTTP, gRPC, database, and message broker clients.

@@ -4,20 +4,12 @@ applies_to:
   when: "bun.lockb is present"
   tools: ["bun"]
   annex: "BUN.ANNEX.md"
+  purpose: "Bun-specific dependency/install behavior and compatibility controls"
+  inherits: ["BUILD_TOOLS/NPM.md", "SECURITY/SECURITY.md", "COMPLIANCE/LICENSES.md"]
 ---
 # BUN
 
 Guidance for AI agents using Bun as package manager/runtime tooling.
-
-## Scope
-- Define Bun-specific dependency/install behavior and compatibility controls.
-- Apply this file when Bun is chosen for package management or script runtime.
-
-## Semantic Dependencies
-- Inherit baseline Node dependency controls from `BUILD_TOOLS/NPM.md`.
-- Inherit security/compliance constraints from
-  `SECURITY/SECURITY.md` and `COMPLIANCE/LICENSES.md`.
-- This file specializes Bun-specific behavior and caveats.
 
 ## Defaults
 - SHOULD use one package manager per repository; do not mix lockfiles.

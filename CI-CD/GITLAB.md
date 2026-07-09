@@ -4,20 +4,12 @@ applies_to:
   when: ".gitlab-ci.yml is present"
   tools: ["gitlab-ci"]
   annex: "GITLAB.ANNEX.md"
+  purpose: "GitLab pipeline design and quality-gate constraints"
+  inherits: ["CI-CD/CI-CD.md", "SECURITY/SECURITY.md", "TEST/TEST.md", "BUILD_TOOLS/**", "CORE/VERSION_CONTROL_SYSTEM.md"]
 ---
 # GITLAB
 
 Guidance for AI agents implementing and reviewing GitLab CI/CD pipelines.
-
-## Scope
-- Define GitLab pipeline design and quality-gate constraints.
-- Apply this file to `.gitlab-ci.yml`, reusable templates, and release jobs.
-
-## Semantic Dependencies
-- Inherit CI/CD baseline from `CI-CD/CI-CD.md`.
-- Inherit build/security/testing constraints from
-  `BUILD_TOOLS/**`, `SECURITY/SECURITY.md`, and `TEST/TEST.md`.
-- Inherit VCS workflow requirements from `CORE/VERSION_CONTROL_SYSTEM.md`.
 
 ## Pipeline Defaults
 - SHOULD keep pipelines deterministic and fast-fail.

@@ -3,19 +3,12 @@ applies_to:
   load: "conditional"
   when: "the task involves selecting a design pattern"
   annex: "GOF_DESIGN_PATTERNS.ANNEX.md"
+  purpose: "when GoF patterns are useful and when they are overengineering"
+  inherits: ["DESIGN/SOLID.md", "DESIGN/CLEAN_CODE.md", "ARCHITECTURE/**"]
 ---
 # GOF_DESIGN_PATTERNS
 
 Guidance for AI agents applying GoF patterns pragmatically.
-
-## Scope
-- Define when GoF patterns are useful and when they are overengineering.
-- Apply this file for architecture/design decisions and code review.
-
-## Semantic Dependencies
-- Inherit SOLID and clean-code constraints from `DESIGN/SOLID.md` and
-  `DESIGN/CLEAN_CODE.md`.
-- Inherit architecture boundary constraints from `ARCHITECTURE/**`.
 
 ## Pattern Selection Principles
 - SHOULD use patterns to reduce concrete change cost for known change vectors.

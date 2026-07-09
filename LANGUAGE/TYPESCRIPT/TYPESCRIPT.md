@@ -5,24 +5,12 @@ applies_to:
   languages: ["typescript"]
   globs: ["**/*.ts", "**/*.tsx"]
   annex: "TYPESCRIPT.ANNEX.md"
+  purpose: "TypeScript-specific rules that specialize JavaScript guidance"
+  inherits: ["LANGUAGE/JAVASCRIPT/JAVASCRIPT.md", "SECURITY/SECURITY.md", "TEST/TEST.md", "CORE/LOGGING.md", "LANGUAGE/CONVENTIONS.md", "LANGUAGE/READABILITY.md"]
 ---
 # TYPESCRIPT
 
 Guidance for AI agents implementing and reviewing TypeScript code.
-
-## Scope
-- Define TypeScript-specific rules that specialize JavaScript guidance.
-- Apply this file for all `.ts`/`.tsx` implementation and review tasks.
-
-## Semantic Dependencies
-- Inherit JavaScript baseline from
-  `LANGUAGE/JAVASCRIPT/JAVASCRIPT.md`.
-- Inherit cross-cutting constraints from:
-  `SECURITY/SECURITY.md`, `TEST/TEST.md`, `CORE/LOGGING.md`.
-- Inherit naming/readability expectations from:
-  `LANGUAGE/CONVENTIONS.md`, `LANGUAGE/READABILITY.md`.
-- Framework docs MAY further specialize TypeScript usage, but MUST NOT weaken
-  type-safety and runtime-safety constraints.
 
 ## Compiler and Project Defaults
 - SHOULD enable and keep strict mode enabled (`"strict": true`).

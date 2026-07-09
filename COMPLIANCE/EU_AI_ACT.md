@@ -2,6 +2,8 @@
 applies_to:
   load: "always"
   annex: "EU_AI_ACT.ANNEX.md"
+  purpose: "baseline engineering controls for AI-system lifecycle governance in EU-regulated contexts"
+  inherits: ["COMPLIANCE/COMPLIANCE.md", "SECURITY/SECURITY.md", "CORE/LOGGING.md", "COMPLIANCE/GDPR_BDSG.md", "TEST/TEST.md", "REVIEW/CODE_REVIEW.md"]
 ---
 # EU_AI_ACT
 
@@ -10,21 +12,6 @@ software projects that build, integrate, or operate AI systems.
 
 This is engineering policy guidance, not legal advice.
 Consult qualified legal counsel for final legal decisions.
-
-## Scope
-- Define baseline engineering controls for AI-system lifecycle governance in
-  EU-regulated contexts.
-- Apply this file when software includes AI features, models, or AI-assisted
-  decision flows that MAY be subject to EU AI Act obligations.
-
-## Semantic Dependencies
-- Inherit compliance baseline from `COMPLIANCE/COMPLIANCE.md`.
-- Inherit security controls from `SECURITY/SECURITY.md`.
-- Inherit logging and traceability constraints from `CORE/LOGGING.md`.
-- Inherit privacy controls from `COMPLIANCE/GDPR_BDSG.md` where personal data
-  processing is involved.
-- Inherit testing and review constraints from `TEST/TEST.md` and
-  `REVIEW/CODE_REVIEW.md`.
 
 ## Defaults
 - SHOULD keep AI feature inventory explicit by model, purpose, and owner.

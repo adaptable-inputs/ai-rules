@@ -2,6 +2,8 @@
 applies_to:
   load: "always"
   annex: "DORA.ANNEX.md"
+  purpose: "baseline engineering controls that support DORA-style ICT risk and resilience obligations"
+  inherits: ["COMPLIANCE/COMPLIANCE.md", "SECURITY/SECURITY.md", "INFRASTRUCTURE/**", "CI-CD/**", "CORE/LOGGING.md"]
 ---
 # DORA
 
@@ -10,19 +12,6 @@ Act (DORA) relevant software and operations controls.
 
 This is engineering policy guidance, not legal advice.
 Consult qualified legal counsel for final legal decisions.
-
-## Scope
-- Define baseline engineering controls that support DORA-style ICT risk and
-  resilience obligations.
-- Apply this file when systems support or integrate with regulated financial
-  operations where DORA controls are in scope.
-
-## Semantic Dependencies
-- Inherit compliance baseline from `COMPLIANCE/COMPLIANCE.md`.
-- Inherit security controls from `SECURITY/SECURITY.md`.
-- Inherit infrastructure and CI/CD controls from `INFRASTRUCTURE/**` and
-  `CI-CD/**`.
-- Inherit logging/observability controls from `CORE/LOGGING.md`.
 
 ## Defaults
 - SHOULD keep ICT risk ownership explicit for critical business services.

@@ -4,27 +4,12 @@ applies_to:
   when: "ionic.config.json is present"
   frameworks: ["ionic"]
   annex: "IONIC.ANNEX.md"
+  purpose: "Ionic-specific UI, navigation, native-bridge, and mobile-delivery guardrails"
+  inherits: ["FRAMEWORK/FRAMEWORK.md", "LANGUAGE/JAVASCRIPT/JAVASCRIPT.md", "LANGUAGE/TYPESCRIPT/TYPESCRIPT.md", "LANGUAGE/HTML/HTML.md", "LANGUAGE/CSS/CSS.md", "FRAMEWORK/ANGULAR.md", "FRAMEWORK/REACT.md", "SECURITY/SECURITY.md", "TEST/TEST.md", "CORE/LOGGING.md"]
 ---
 # IONIC
 
 Guidance for AI agents implementing and reviewing Ionic applications.
-
-## Scope
-- Define Ionic-specific UI, navigation, native-bridge, and mobile-delivery
-  guardrails.
-- Apply this file to Ionic Angular and Ionic React projects.
-
-## Semantic Dependencies
-- Inherit framework-layer contract from `FRAMEWORK/FRAMEWORK.md`.
-- Inherit JavaScript baseline from `LANGUAGE/JAVASCRIPT/JAVASCRIPT.md`.
-- Apply `LANGUAGE/TYPESCRIPT/TYPESCRIPT.md` when the Ionic project uses
-  TypeScript.
-- Inherit HTML/CSS semantics and accessibility from
-  `LANGUAGE/HTML/HTML.md` and `LANGUAGE/CSS/CSS.md`.
-- When using Ionic Angular, also apply `FRAMEWORK/ANGULAR.md`.
-- When using Ionic React, also apply `FRAMEWORK/REACT.md`.
-- Inherit cross-cutting constraints from
-  `SECURITY/SECURITY.md`, `TEST/TEST.md`, and `CORE/LOGGING.md`.
 
 ## Defaults and Guardrails
 - SHOULD prefer Ionic with Capacitor for modern mobile and web delivery.

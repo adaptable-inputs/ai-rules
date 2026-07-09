@@ -3,22 +3,12 @@ applies_to:
   load: "conditional"
   when: "the project layers domain against infrastructure"
   annex: "CLEAN_ARCHITECTURE.ANNEX.md"
+  purpose: "dependency-direction and boundary rules for layered architecture"
+  inherits: ["ARCHITECTURE/ARCHITECTURE.md", "DESIGN/SOLID.md", "DESIGN/CLEAN_CODE.md", "SECURITY/SECURITY.md", "TEST/TEST.md", "CORE/LOGGING.md"]
 ---
 # CLEAN_ARCHITECTURE
 
 Guidance for AI agents implementing and reviewing Clean Architecture patterns.
-
-## Scope
-- Define dependency-direction and boundary rules for layered architecture.
-- Apply this file when designing modules/services and reviewing architectural
-  changes.
-
-## Semantic Dependencies
-- Inherit core constraints from `ARCHITECTURE/ARCHITECTURE.md`.
-- Inherit design principles from `DESIGN/SOLID.md` and
-  `DESIGN/CLEAN_CODE.md`.
-- Inherit security/testing/logging baselines from
-  `SECURITY/SECURITY.md`, `TEST/TEST.md`, `CORE/LOGGING.md`.
 
 ## Core Rules
 - Dependencies point inward toward domain policy.

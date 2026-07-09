@@ -4,21 +4,12 @@ applies_to:
   when: "package-lock.json is present"
   tools: ["npm"]
   annex: "NPM.ANNEX.md"
+  purpose: "reproducible dependency-management and script-execution rules"
+  inherits: ["SECURITY/SECURITY.md", "COMPLIANCE/LICENSES.md", "CI-CD/CI-CD.md"]
 ---
 # NPM
 
 Guidance for AI agents managing Node.js dependencies (npm, Yarn, pnpm).
-
-## Scope
-- Define reproducible dependency-management and script-execution rules.
-- Apply this file to Node package manager configuration and CI integration.
-
-## Semantic Dependencies
-- Inherit security constraints from `SECURITY/SECURITY.md`.
-- Inherit compliance constraints from `COMPLIANCE/LICENSES.md`.
-- Inherit CI pipeline constraints from `CI-CD/CI-CD.md`.
-- Tool-specific alternatives (for example Bun) MAY specialize behavior but MUST
-  preserve reproducibility/supply-chain controls.
 
 ## Defaults
 - SHOULD use one package manager per repository.

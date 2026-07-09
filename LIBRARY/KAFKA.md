@@ -4,21 +4,12 @@ applies_to:
   when: "a Kafka client is a declared dependency"
   libraries: ["kafka"]
   annex: "KAFKA.ANNEX.md"
+  purpose: "topic, producer, and consumer design constraints for reliable event streaming"
+  inherits: ["ARCHITECTURE/EVENT_DRIVEN_ARCHITECTURE.md", "SECURITY/SECURITY.md", "CORE/LOGGING.md"]
 ---
 # KAFKA
 
 Guidance for AI agents implementing and reviewing Apache Kafka usage.
-
-## Scope
-- Define topic, producer, and consumer design constraints for reliable event
-  streaming.
-- Apply this file to Kafka client integration and operational design.
-
-## Semantic Dependencies
-- Inherit event-driven architecture constraints from
-  `ARCHITECTURE/EVENT_DRIVEN_ARCHITECTURE.md`.
-- Inherit security and observability baselines from
-  `SECURITY/SECURITY.md` and `CORE/LOGGING.md`.
 
 ## Defaults
 - SHOULD use clear domain-based topic naming and ownership.

@@ -3,22 +3,12 @@ applies_to:
   load: "conditional"
   when: "the system is decomposed into services"
   annex: "MICROSERVICE.ANNEX.md"
+  purpose: "when and how to use microservices safely"
+  inherits: ["ARCHITECTURE/ARCHITECTURE.md", "ARCHITECTURE/CLEAN_ARCHITECTURE.md", "ARCHITECTURE/CIRCUIT_BREAKER.md", "ARCHITECTURE/EVENT_DRIVEN_ARCHITECTURE.md", "SECURITY/SECURITY.md", "TEST/TEST.md", "CORE/LOGGING.md"]
 ---
 # MICROSERVICE
 
 Guidance for AI agents implementing and reviewing microservice architecture.
-
-## Scope
-- Define when and how to use microservices safely.
-- Apply this file for service-boundary design and inter-service integration.
-
-## Semantic Dependencies
-- Inherit architecture baseline from `ARCHITECTURE/ARCHITECTURE.md` and
-  `ARCHITECTURE/CLEAN_ARCHITECTURE.md`.
-- Inherit resilience constraints from `ARCHITECTURE/CIRCUIT_BREAKER.md` and
-  event guidance from `ARCHITECTURE/EVENT_DRIVEN_ARCHITECTURE.md` where used.
-- Inherit cross-cutting constraints from
-  `SECURITY/SECURITY.md`, `TEST/TEST.md`, `CORE/LOGGING.md`.
 
 ## Adoption Criteria
 - SHOULD prefer modular monolith first unless there is a clear need for independent

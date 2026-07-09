@@ -4,22 +4,12 @@ applies_to:
   when: "the project documents in Confluence"
   tools: ["confluence"]
   annex: "CONFLUENCE.ANNEX.md"
+  purpose: "Confluence-specific write/delete safety constraints"
+  inherits: ["CORE/VERSION_CONTROL_SYSTEM.md", "SECURITY/SECURITY.md", "COMPLIANCE/COMPLIANCE.md"]
 ---
 # CONFLUENCE
 
 Guidance for AI agents interacting with Confluence wiki content.
-
-## Scope
-- Define Confluence-specific write/delete safety constraints.
-- Apply this file when a project wiki or knowledge base is hosted in
-  Confluence.
-
-## Semantic Dependencies
-- Inherit workflow constraints from `CORE/VERSION_CONTROL_SYSTEM.md`.
-- Inherit security/compliance handling from `SECURITY/SECURITY.md` and
-  `COMPLIANCE/COMPLIANCE.md`.
-- This file specializes Confluence wiki behavior and does not replace
-  repository VCS workflow rules.
 
 ## Access and Mutation Policy (Mandatory)
 - MUST treat Confluence wiki content as read-only by default.
