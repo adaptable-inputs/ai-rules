@@ -22,6 +22,46 @@ Rules:
 - MUST apply this file and `LANGUAGE/READABILITY.md` to every language, then the specific language document
   (for example Java or TypeScript).
 
+## The Coding Standard Is Always Defined
+A project always has a coding standard. Where none is written down, the standard is whatever the last author happened to
+do, and every review argues taste instead of code. An undeclared standard is not the absence of one.
+
+- Every project MUST name the coding standard its production source targets, in its requirements or architecture
+  documentation.
+- Where no standard is named, the agent MUST adopt the published industry standard for the language, MUST record which
+  one it adopted and where, and MUST NOT invent a house style. Silence selects the default; it does not license
+  improvisation.
+- The standard MUST be machine-checkable, and the checker MUST run in CI and reject a violating change. A standard no
+  tool enforces is a preference.
+- MUST verify that the checker can fail before relying on it. A configuration whose rules are all advisory reports
+  success on violating code; see `TEST/TEST.md`, "Verifying the Tests Themselves".
+- The standard applies to production source. Generated code and vendored third-party source MAY be excluded, and each
+  exclusion MUST be named in the checker's configuration rather than left to a wildcard.
+- MUST NOT weaken the standard to make existing code pass. Fix the code, or record the exemption with the reason and a
+  path to removing it.
+
+Defaults, where the project names nothing:
+
+| Language | Standard | Checker |
+|---|---|---|
+| Java | Google Java Style | Checkstyle, `google_checks.xml` |
+| Kotlin | Kotlin Coding Conventions | `ktlint` |
+| C | GNU Coding Standards | `clang-format`, GNU style |
+| C++ | Google C++ Style Guide | `clang-format`, Google style |
+| C# | Microsoft C# Coding Conventions | `dotnet format`, analyzers |
+| Go | Effective Go | `gofmt`, `go vet` |
+| Python | PEP 8 | `ruff` or `flake8`, `black` |
+| Rust | Rust Style Guide | `rustfmt`, `clippy` |
+| JavaScript, TypeScript | Prettier defaults, ESLint recommended | `prettier`, `eslint` |
+| Ruby | Ruby Style Guide | `rubocop` |
+| PHP | PSR-12 | `php-cs-fixer` |
+| Swift | Swift API Design Guidelines | `swift-format` |
+| SQL | project dialect's published style | a formatter pinned in CI |
+| Shell | Google Shell Style Guide | `shellcheck`, `shfmt` |
+
+A standard chosen here MUST be pinned by version in the build, so a checker upgrade cannot silently change what
+conformance means.
+
 ## Formatting Baseline
 - MUST use auto-formatters where available; MUST NOT hand-format against tooling.
 - SHOULD keep multiline parameter/argument lists when item count is high (typically more than three) or readability
