@@ -386,6 +386,88 @@ class TestRatchetDoesNotCryWolf(unittest.TestCase):
 
 
 # --------------------------------------------------------------------------
+# Corpus: the annex contract
+# --------------------------------------------------------------------------
+class TestAnnex(unittest.TestCase):
+
+    def annexes(self):
+        return [p for p in md_files() if p.name.endswith(".ANNEX.md")]
+
+    def test_every_annex_has_a_parent_that_declares_it(self):
+        for p in self.annexes():
+            meta, _ = frontmatter(p)
+            self.assertEqual(meta["load"], "annex", rel(p))
+            parent = p.parent / meta["annex_of"]
+            self.assertTrue(parent.exists(), f"{rel(p)}: parent missing")
+            pmeta, _ = frontmatter(parent)
+            self.assertEqual(pmeta.get("annex"), p.name,
+                             f"{rel(parent)} does not declare its annex")
+
+    def test_annex_holds_no_obligation(self):
+        # The whole saving rests on this: nothing an agent must obey lives here.
+        # Checklist questions may mention a keyword; a bullet that *states* a
+        # rule may not.
+        for p in self.annexes():
+            _, body = frontmatter(p)
+            for n, ln in prose_lines(body):
+                m = re.match(r"^- (MUST|SHOULD|MAY)( NOT)? ", ln)
+                self.assertIsNone(m, f"{rel(p)}:{n}: obligation in an annex: {ln.strip()[:50]}")
+
+    def test_annex_sections_are_illustrative_only(self):
+        for p in self.annexes():
+            _, body = frontmatter(p)
+            for n, ln in prose_lines(body):
+                m = re.match(r"^## (.*)$", ln)
+                if not m:
+                    continue
+                sec = re.sub(r"\s+(for|in)\s+.*$", "", m.group(1)).strip()
+                self.assertTrue(sec.startswith(cs.ANNEX_SECTIONS),
+                                f"{rel(p)}:{n}: {sec!r} does not belong in an annex")
+
+    def test_parent_no_longer_carries_annex_sections(self):
+        for p, _, body in loadable_docs():
+            for n, ln in prose_lines(body):
+                m = re.match(r"^## (.*)$", ln)
+                if not m:
+                    continue
+                sec = re.sub(r"\s+(for|in)\s+.*$", "", m.group(1)).strip()
+                self.assertFalse(sec.startswith(cs.ANNEX_SECTIONS),
+                                 f"{rel(p)}:{n}: {sec!r} should have moved to the annex")
+
+
+class TestAnnexChecks(unittest.TestCase):
+
+    def test_rule_smuggled_into_an_annex_is_caught(self):
+        with Sandbox() as repo:
+            p = repo / "LIBRARY" / "JPA.ANNEX.md"
+            p.write_text(p.read_text(encoding="utf-8") +
+                         "\n## Defaults\n- MUST do a thing.\n", encoding="utf-8")
+            rc, out = run_structure(repo)
+            self.assertEqual(rc, 1, out)
+            self.assertIn("does not belong in an annex", out)
+
+    def test_parent_not_declaring_its_annex_is_caught(self):
+        with Sandbox() as repo:
+            p = repo / "LIBRARY" / "JPA.md"
+            s = p.read_text(encoding="utf-8")
+            p.write_text(s.replace('  annex: "JPA.ANNEX.md"\n', "", 1), encoding="utf-8")
+            rc, out = run_structure(repo)
+            self.assertEqual(rc, 1, out)
+            self.assertIn("does not declare annex", out)
+
+    def test_malformed_yaml_does_not_crash_the_checker(self):
+        # check_annex_contract once raised a traceback instead of reporting.
+        with Sandbox() as repo:
+            p = repo / "LANGUAGE" / "GO" / "GO.md"
+            s = p.read_text(encoding="utf-8")
+            p.write_text(s.replace('globs: ["**/*.go"]', "globs: [**/*.go]", 1), encoding="utf-8")
+            rc, out = run_structure(repo)
+            self.assertEqual(rc, 1, out)
+            self.assertIn("invalid YAML frontmatter", out)
+            self.assertNotIn("Traceback", out)
+
+
+# --------------------------------------------------------------------------
 # Examples checker
 # --------------------------------------------------------------------------
 class TestExamples(unittest.TestCase):

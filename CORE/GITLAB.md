@@ -3,6 +3,7 @@ applies_to:
   load: "conditional"
   when: "code is hosted on GitLab"
   tools: ["gitlab"]
+  annex: "GITLAB.ANNEX.md"
 ---
 # GITLAB
 
@@ -35,32 +36,6 @@ review lifecycle rules.
 GitLab applies the baseline in `CORE/CODE_REVIEW_PLATFORM.md` without override:
 only the author of a review comment MAY resolve that discussion. There is no
 maintainer-resolution exception on GitLab.
-
-## High-Risk Pitfalls
-1. Self-merging MRs without the explicit owner-authorized exception.
-2. Resolving another reviewer's discussion.
-3. Bypassing required MR gates or force-merging.
-
-## Do / Don't Examples
-### 1. Merge Discipline
-```text
-Don't: merge your own MR because pipeline is green.
-Do:    wait for explicit merge instruction and enforce all MR gates.
-```
-
-### 2. Force Merge
-```text
-Don't: force-merge past a failing required pipeline.
-Do:    fix the pipeline, or ask the user how to proceed.
-```
-
-## Code Review Checklist for GitLab Workflow
-- Were MR gates enforced without force-merge?
-- Are discussion resolutions owned by comment authors?
-
-## Testing Guidance
-- Verify branch protection and MR gate configuration before merge actions.
-- Verify no force-merge or gate-bypass actions were used.
 
 ## Override Notes
 - Project-specific GitLab governance MAY be stricter. The baseline mandates in

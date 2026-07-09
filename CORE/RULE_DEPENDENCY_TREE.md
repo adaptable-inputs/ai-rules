@@ -1,6 +1,7 @@
 ---
 applies_to:
   load: "always"
+  annex: "RULE_DEPENDENCY_TREE.ANNEX.md"
 ---
 # RULE_DEPENDENCY_TREE
 
@@ -264,15 +265,6 @@ When overriding, add a short "override rationale" sentence with:
 - Are parent rules referenced instead of duplicated when no specialization is
   needed?
 - Are any overrides explicit, justified, and bounded?
-
-## Code Review Checklist (Dependency Integrity)
-- Does the PR preserve precedence order and semantic inheritance?
-- Does the change preserve DIP direction (no parent-to-child references outside
-  pure index linking)?
-- Are new rules placed at the correct abstraction layer?
-- Do specialized docs avoid weakening cross-cutting baseline constraints?
-- Are required companion index updates included when adding new docs?
-- Does the change introduce new semantic parents that require follow-up issues?
 
 ## Rollout Ordering Rule
 An agent MUST use root semantic order, not existing file links:

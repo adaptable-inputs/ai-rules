@@ -30,7 +30,14 @@ LINK_ALLOWLIST = {
 # Consumed verbatim by an external tool; frontmatter would leak into its prompt.
 FRONTMATTER_EXEMPT = {".github/copilot-instructions.md"}
 
-VALID_LOAD = {"always", "entry", "index", "conditional", "task", "setup", "never"}
+VALID_LOAD = {"always", "entry", "index", "conditional", "task", "setup", "never",
+              "annex"}
+
+# An annex holds only illustrative material. Between them these four sections
+# contained 3 obligations across 1,563 bullets, and those were relocated before
+# the split. Nothing else may live here, or a rule would hide outside the load.
+ANNEX_SECTIONS = ("Do / Don't Examples", "High-Risk Pitfalls",
+                  "Code Review Checklist", "Testing Guidance")
 CONDITIONAL_KEYS = {"languages", "frameworks", "libraries", "tools", "when"}
 
 # Docs whose normative bullets have been converted to explicit obligation
@@ -231,9 +238,67 @@ def check_ai_md_lists_dirs() -> None:
         fail(f"category listed in AI.md but absent on disk: {name}/")
 
 
+def _applies_to(p: Path):
+    """Parse frontmatter, or None. check_frontmatter reports the bad YAML."""
+    src = p.read_text(encoding="utf-8")
+    if not src.startswith("---\n"):
+        return None
+    end = src.find("\n---\n", 3)
+    if end == -1:
+        return None
+    try:
+        doc = yaml.safe_load(src[4:end])
+    except yaml.YAMLError:
+        return None
+    if not isinstance(doc, dict):
+        return None
+    return doc.get("applies_to")
+
+
+def annex_targets() -> set[str]:
+    """Files named by another doc's `annex:` frontmatter field."""
+    out = set()
+    for p in md_files():
+        if rel(p) in FRONTMATTER_EXEMPT:
+            continue
+        a = _applies_to(p)
+        if not a:
+            continue
+        if a.get("annex"):
+            out.add((p.parent / a["annex"]).resolve().relative_to(ROOT).as_posix())
+    return out
+
+
+def check_annex_contract() -> None:
+    """An annex points back at its parent and holds only illustrative sections."""
+    for p in md_files():
+        if not p.name.endswith(".ANNEX.md"):
+            continue
+        r = rel(p)
+        src = p.read_text(encoding="utf-8")
+        a = _applies_to(p)
+        if not a:
+            continue  # already reported by check_frontmatter
+        parent = p.parent / a.get("annex_of", "")
+        if not parent.exists():
+            fail(f"{r}: annex_of points at a missing file")
+            continue
+        pa = _applies_to(parent)
+        if not pa:
+            continue
+        if pa.get("annex") != p.name:
+            fail(f"{rel(parent)}: does not declare annex: {p.name!r}")
+        for line in src.split("\n"):
+            m = re.match(r"^## (.*)$", line)
+            if m:
+                sec = re.sub(r"\s+(for|in)\s+.*$", "", m.group(1)).strip()
+                if not sec.startswith(ANNEX_SECTIONS):
+                    fail(f"{r}: section {m.group(1)!r} does not belong in an annex")
+
+
 def check_no_orphans() -> None:
     """Every md file is reachable via a markdown link from some other file."""
-    linked: set[str] = set()
+    linked: set[str] = set(annex_targets())
     for p in md_files():
         for target in re.findall(r"\]\(([^)#]+\.md)[^)]*\)", p.read_text(encoding="utf-8")):
             if target.startswith(("http://", "https://")):
@@ -284,6 +349,11 @@ def check_frontmatter() -> None:
             fail(f"load: never needs a reason: {r}")
         if load == "setup" and not a.get("when"):
             fail(f"load: setup needs a when clause: {r}")
+        if load == "annex":
+            if not a.get("annex_of"):
+                fail(f"load: annex needs annex_of: {r}")
+            if not a.get("tasks"):
+                fail(f"load: annex needs tasks: {r}")
         for g in a.get("globs", []) or []:
             if not isinstance(g, str):
                 fail(f"glob parsed as {type(g).__name__}, quote it: {r}")
@@ -404,6 +474,7 @@ def main() -> int:
     check_no_orphans()
     check_frontmatter()
     check_preflight_readable()
+    check_annex_contract()
     check_keyword_ratchet()
     if errors:
         print(f"structure check FAILED with {len(errors)} error(s):\n")

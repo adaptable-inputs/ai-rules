@@ -20,6 +20,12 @@ An agent MUST NOT read this ruleset exhaustively. Load in this order:
    MUST NOT load `LANGUAGE/PYTHON/`.
 4. **Load task overlays by task type**, not by stack: `PROGRAMMING/`, `PLAN/`,
    `REVIEW/`.
+5. **Load annexes only for the tasks they name.** A doc with an `annex:` field
+   has a sibling `*.ANNEX.md` holding its examples, pitfalls, review checklist,
+   and testing guidance. Those sections contain no obligations. An agent MUST
+   NOT load an annex while implementing a change; it MUST load one whose
+   `tasks` include the task at hand (`review`, `test`). This removes about 32%
+   of the context an implementation task would otherwise carry.
 
 ### Never Load
 These MUST NOT be read as project rules. They are repository history and
