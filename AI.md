@@ -26,10 +26,21 @@ These MUST NOT be read as project rules. They are repository history and
 maintainer meta-guidance, and consume context without governing any downstream
 project:
 
-- `CHANGELOG.md` - release history.
 - `AI-RULES/**` - guidance for maintaining *this* repository. Load only when the
-  task is to modify ai-rules itself.
+  task is to modify ai-rules itself. `AI-RULES/UPDATE.md` is the exception; see
+  below.
 - `CONTRIBUTING.md`, `README.md` - human-facing repository docs.
+
+### Load During Setup Only
+These carry `load: setup`. They are not project rules, but the target-version
+preflight in `AGENTS_TEMPLATE.md` requires reading them before any
+`git subtree add` or `git subtree pull`. An agent MUST read them when setting up
+or updating ai-rules, and MUST NOT read them during ordinary project work:
+
+- `CHANGELOG.md` - release history; the preflight reads it to learn what the
+  target version changed.
+- `AI-RULES/UPDATE.md` - the update procedure itself.
+- `AGENTS_TEMPLATE.md` - the bootstrap template.
 
 ## CORE
 - [CORE/CORE.md](CORE/CORE.md) - Core, non-negotiable rules.

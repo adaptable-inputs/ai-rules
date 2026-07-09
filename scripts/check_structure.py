@@ -133,9 +133,52 @@ def check_frontmatter() -> None:
             fail(f"load: conditional needs a selector or when clause: {r}")
         if load == "never" and not a.get("reason"):
             fail(f"load: never needs a reason: {r}")
+        if load == "setup" and not a.get("when"):
+            fail(f"load: setup needs a when clause: {r}")
         for g in a.get("globs", []) or []:
             if not isinstance(g, str):
                 fail(f"glob parsed as {type(g).__name__}, quote it: {r}")
+
+
+def load_of(rel_path: str) -> str | None:
+    p = ROOT / rel_path
+    if not p.exists():
+        return None
+    src = p.read_text(encoding="utf-8")
+    if not src.startswith("---\n"):
+        return None
+    end = src.find("\n---\n", 3)
+    try:
+        return yaml.safe_load(src[4:end])["applies_to"]["load"]
+    except Exception:
+        return None
+
+
+def check_preflight_readable() -> None:
+    """Files the setup preflight must read cannot be marked never-load.
+
+    AGENTS_TEMPLATE.md lists target-version docs an agent MUST read before any
+    subtree command. Marking one of them `load: never` makes the ruleset
+    self-contradictory: required to read, forbidden to read.
+    """
+    tpl = ROOT / "AGENTS_TEMPLATE.md"
+    if not tpl.exists():
+        fail("AGENTS_TEMPLATE.md is missing")
+        return
+    text = tpl.read_text(encoding="utf-8")
+    m = re.search(r"Read target-version docs:\n((?:\s*-\s*`[^`]+`\n)+)", text)
+    if not m:
+        fail("AGENTS_TEMPLATE.md: could not find the 'Read target-version docs' list")
+        return
+    named = re.findall(r"`([^`]+)`", m.group(1))
+    if not named:
+        fail("AGENTS_TEMPLATE.md: target-version doc list is empty")
+    for rel_path in named:
+        load = load_of(rel_path)
+        if load is None:
+            fail(f"preflight names {rel_path}, which has no readable frontmatter")
+        elif load == "never":
+            fail(f"preflight requires reading {rel_path}, but it is marked load: never")
 
 
 def main() -> int:
@@ -143,6 +186,7 @@ def main() -> int:
     check_ai_md_lists_dirs()
     check_no_orphans()
     check_frontmatter()
+    check_preflight_readable()
     if errors:
         print(f"structure check FAILED with {len(errors)} error(s):\n")
         for e in errors:

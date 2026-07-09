@@ -1,7 +1,7 @@
 ---
 applies_to:
-  load: "never"
-  reason: "maintainer meta-guidance for the ai-rules repository itself"
+  load: "setup"
+  when: "running the target-version preflight for ai-rules setup or update"
 ---
 # UPDATE
 

@@ -10,14 +10,23 @@ into other projects (e.g., via git subtree). It is the single source of truth
 for baseline agent rules across repositories.
 
 ## Getting Started
-### Recommended AI agent
+### Agent requirements
 
-**Recommended: latest GPT Codex (xhigh)**  
-*xhigh* reasoning is very important. If you do not have access to it, switch to
-an alternative below.
+Use a frontier model at high or higher reasoning effort. Reasoning effort
+matters more than the choice of model family.
 
-**Alternative: latest Opus**  
-Might work well in most cases, but expect it to be sloppy sometimes.
+The ruleset assumes the agent can:
+
+- Hold multi-level rule precedence in context and resolve conflicts using
+  `CORE/RULE_DEPENDENCY_TREE.md`.
+- Apply the obligation vocabulary in `CORE/NORMATIVE_LANGUAGE.md`, distinguishing
+  `MUST` from `SHOULD` from `MAY`.
+- Follow the conditional loading protocol in `AI.md`, selecting documents by
+  their `applies_to` frontmatter rather than reading the whole ruleset.
+
+An agent that cannot do these will still produce plausible output, but it will
+silently apply the wrong rules. Lower the reasoning effort only after checking
+that behavior holds on your own work.
 
 ### Initial setup
 1. Copy `AGENTS_TEMPLATE.md` into your project root as `AGENTS.md`.
@@ -73,6 +82,8 @@ will remove the subtree from version control and keep it only on your machine.
 - `COMPLIANCE/` - Compliance and licensing rules.
 - `CI-CD/` - CI/CD and automation guidance.
 - `INFRASTRUCTURE/` - Infrastructure and platform guidance.
+- `scripts/` - Repository tooling used by CI. Not a rule category, and not
+  vendored into downstream-projects.
 
 ## Contributing
 - `CONTRIBUTING.md` - Contribution guidelines for this repository.

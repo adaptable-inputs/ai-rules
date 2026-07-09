@@ -32,6 +32,9 @@ applies_to:
 ## Directory Layout
 - Keep top-level categories at the repository root and list them in `AI.md`.
 - Each category must have an index file named after the directory (e.g., `CORE/CORE.md`).
+- `scripts/` is tooling, not a rule category. It has no index file and is not
+  listed in `AI.md`. `scripts/check_structure.py` records the exemption in
+  `NON_CATEGORY_DIRS`; add any future non-category directory there too.
 - Category index files should only link one level down.
 - In index files, every "## Files" entry includes a one-line description.
 - MUST NOT add headings that only link to another file; use the "## Files" list instead.

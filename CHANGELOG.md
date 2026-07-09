@@ -1,7 +1,7 @@
 ---
 applies_to:
-  load: "never"
-  reason: "release history for this repository"
+  load: "setup"
+  when: "running the target-version preflight for ai-rules setup or update"
 ---
 # Changelog
 
