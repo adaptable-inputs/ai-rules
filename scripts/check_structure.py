@@ -41,6 +41,7 @@ KEYWORD_CONVERTED = {
     "CORE/CORE.md",
     "CORE/CODE_REVIEW_PLATFORM.md",
     "CORE/LOGGING.md",
+    "CORE/RULE_DEPENDENCY_TREE.md",
     "CORE/VERSION_CONTROL_SYSTEM.md",
     "LANGUAGE/CONVENTIONS.md",
     "LANGUAGE/READABILITY.md",
@@ -54,7 +55,9 @@ LABEL_BULLET = re.compile(r"^[A-Z][\w /.+-]{0,32}:")
 # A normative bullet opens with a bare imperative verb. Noun phrases
 # ("External API contracts...", "Tests executed...") are list items, and
 # third-person verbs ("Inherits...") are statements of fact. Neither is an
-# obligation. Extend this list when a new rule verb appears.
+# obligation. "Scope" is deliberately absent: it appears as a section name
+# ("Scope and applicability") far more often than as a rule verb.
+# Extend this list when a new rule verb appears.
 IMPERATIVE_VERBS = frozenset("""
 Add Align Alert Apply Avoid Bound Centralize Choose Classify Commit Configure
 Control Cover Create Declare Define Deny Distinguish Document Emit Encode
@@ -62,8 +65,8 @@ Enforce Ensure Evaluate Expose Fail Handle Highlight Include Inherit Interpret
 Introduce Isolate Keep Limit Link Log Maintain Make Mark Minimize Mock Name
 Normalize Optimize Pin Place Preserve Prefer Propagate Provide Publish Push
 Quarantine Redact Reply Report Require Reset Resolve Respect Return Reuse Review
-Rotate Run Scope Separate Set Split Start Store Throw Track Treat Use Validate
-Verify Wrap
+Rotate Run Separate Set Split Start Store Throw Track Treat Update Use
+Validate Verify Wrap
 """.split())
 
 KEYWORD = re.compile(r"\b(MUST NOT|MUST|SHOULD NOT|SHOULD|MAY)\b")
@@ -74,7 +77,7 @@ DESCRIPTIVE_PREFIXES = (
     "Terminology", "Authoring Notes", "Override Notes", "Layer Details",
     "Code Review Checklist", "Testing Guidance", "High-Risk", "Do / Don",
     "Keywords", "Default Force", "Conflicts", "Applying Keywords",
-    "Validation Notes",
+    "Validation Notes", "Authoring Checklist",
 )
 
 errors: list[str] = []

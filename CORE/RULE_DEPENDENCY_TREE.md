@@ -19,17 +19,18 @@ AI-agent rule documents.
   `CHANGELOG.md`, and `AGENTS_TEMPLATE.md`.
 
 ## Core Principles
-- Semantic dependencies are authoritative; existing markdown links are not.
-- More specific scope may override broader scope only when the override is
+- Semantic dependencies are authoritative; an agent MUST NOT infer a dependency
+  from a markdown link alone.
+- More specific scope MAY override broader scope only when the override is
   explicit and justified.
-- Safety and correctness constraints from broader scope remain mandatory unless
-  the broader scope itself marks them as optional.
-- Intermediate technical docs (for example language base docs) must be complete
+- Safety and correctness constraints from broader scope MUST remain in force
+  unless the broader scope itself marks them as optional.
+- Intermediate technical docs (for example language base docs) MUST be complete
   rule sets for their own scope, not thin index stubs.
-- Apply the Dependency Inversion Principle (DIP): more general rule docs must
-  not reference child/specialization docs in normative rule content.
-- Child/specialization docs may reference parent/general docs.
-- Exception: pure index docs may link to child docs for navigation.
+- MUST apply the Dependency Inversion Principle (DIP): more general rule docs
+  MUST NOT reference child/specialization docs in normative rule content.
+- Child/specialization docs MAY reference parent/general docs.
+- Exception: pure index docs MAY link to child docs for navigation.
 
 ## Precedence Model
 Apply rules from top to bottom. Lower layers specialize higher layers.
@@ -122,12 +123,12 @@ These primarily route to child docs and define boundary/selection guidance:
 - `REVIEW/REVIEW.md`
 - `COMPLIANCE/COMPLIANCE.md`
 
-Pure index docs should remain concise and must not duplicate deep, leaf-level
+Pure index docs SHOULD remain concise and MUST NOT duplicate deep, leaf-level
 implementation details.
 
 ### Deep Technical Docs
 All technical docs that define coding/architecture behavior, including
-intermediate parents, must be deep and operational.
+intermediate parents, MUST be deep and operational.
 
 Examples (non-exhaustive):
 - Language parents: `LANGUAGE/JAVASCRIPT/JAVASCRIPT.md`,
@@ -226,7 +227,7 @@ Required sections for deep technical docs:
 - `CI-CD/GITHUB_ACTIONS.md`, `CI-CD/GITLAB.md`
 
 ## Conflict Resolution Rules
-This procedure is authoritative for the whole ruleset. No other doc may define a
+This procedure is authoritative for the whole ruleset. No other doc MAY define a
 different order. When two rules seem to conflict, resolve in this order:
 1. Check if one rule is from a more specific semantic layer.
 2. Check whether the specific doc declares an explicit override.
@@ -234,9 +235,9 @@ different order. When two rules seem to conflict, resolve in this order:
 4. For security/compliance constraints, apply the stricter behavior.
 5. If ambiguity remains, apply the broader rule and record the decision.
 
-An agent resolving a conflict mid-task must apply the outcome of this procedure,
-complete the task, and report the conflict in its final summary. It must not
-stop work, and must not treat "file an issue" as a prerequisite for proceeding.
+An agent resolving a conflict mid-task MUST apply the outcome of this procedure,
+complete the task, and report the conflict in its final summary. It MUST NOT
+stop work, and MUST NOT treat "file an issue" as a prerequisite for proceeding.
 Aligning the specific doc and filing any issue are separate follow-up actions
 for a human maintainer.
 
@@ -274,7 +275,7 @@ When overriding, add a short "override rationale" sentence with:
 - Does the change introduce new semantic parents that require follow-up issues?
 
 ## Rollout Ordering Rule
-Use root semantic order, not existing file links:
+An agent MUST use root semantic order, not existing file links:
 1. Define/adjust dependency model and parent index boundaries.
 2. Upgrade cross-cutting foundations.
 3. Upgrade language/formats.
@@ -282,6 +283,6 @@ Use root semantic order, not existing file links:
 5. Reconcile final root index (`AI.md`).
 
 ## Maintenance
-- Update this file when adding a new technology domain or a new semantic layer.
-- Keep this file aligned with `AI.md` and parent index docs.
-- If dependency structure changes materially, create a dedicated issue and PR.
+- MUST update this file when adding a new technology domain or a new semantic layer.
+- MUST keep this file aligned with `AI.md` and parent index docs.
+- If dependency structure changes materially, SHOULD create a dedicated issue and PR.
