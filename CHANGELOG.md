@@ -14,6 +14,39 @@ Sub-heading template:
 - Released versions: `## [vX.Y.Z] - YYYY-MM-DD`
 
 ## Unreleased
+- Repointed repository self-references from `fabian-barney/ai-rules` to
+  `adaptable-inputs/ai-rules` so the subtree and `ls-remote` commands in
+  `AGENTS_TEMPLATE.md`, `AI-RULES/UPDATE.md`, and `SECURITY.md` resolve to this
+  fork.
+- Added `CORE/NORMATIVE_LANGUAGE.md` defining the obligation vocabulary
+  (`MUST`, `MUST NOT`, `SHOULD`, `SHOULD NOT`, `MAY`) and converted 491
+  bullet-initial statements across 103 docs. A keyword-less imperative bullet
+  has `MUST` force by default while conversion is in progress.
+- Replaced 30 vague qualifiers (`where appropriate`, `as needed`,
+  `when helpful`) with the explicit condition under which each rule fires.
+- Made `CORE/RULE_DEPENDENCY_TREE.md` the single authoritative conflict
+  resolution procedure. `CORE/CORE.md` now defers to it instead of restating a
+  different order, and an agent resolving a conflict mid-task proceeds and
+  reports rather than blocking on a follow-up issue.
+- Added `CORE/CODE_REVIEW_PLATFORM.md` holding the platform-neutral
+  protected-branch, merge-authority, and review-thread contract. `CORE/GITHUB.md`
+  and `CORE/GITLAB.md` had duplicated 44 lines and diverged on who may resolve a
+  review thread; GitHub's looser behavior is now an explicit, scoped override.
+- Added `applies_to` frontmatter to every document, and a loading protocol in
+  `AI.md`. An agent loads `CORE` always, then only the leaf docs matching the
+  detected stack. A Java/Spring/Maven/GitHub project loads 68% fewer words.
+- Stated the `AI-RULES/` scope once in `AI-RULES/AI-RULES.md` instead of
+  repeating it in 17 files, and exempted the three downstream-facing documents
+  that ship with the subtree.
+- Added `scripts/check_structure.py` and `scripts/check_examples.py`, wired into
+  `.github/workflows/docs-check.yml`. They enforce category indexes, `AI.md`
+  completeness, orphan detection, frontmatter validity, the setup preflight
+  contract, fence tags, and parseable code examples.
+- Fixed a `FRAMEWORK/IONIC.md` TypeScript example that never parsed, retagged two
+  `json` blocks containing comments as `jsonc`, and gave unique `*Bad`/`*Good`
+  names to seven paired snippets that redeclared the same symbol.
+- Replaced named-model guidance in `README.md` with the capabilities the ruleset
+  actually requires.
 
 ## [v4.11.0] - 2026-03-27
 - Reordered downstream-project command examples to namespace-first wording:
