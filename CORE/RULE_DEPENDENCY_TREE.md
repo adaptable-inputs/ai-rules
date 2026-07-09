@@ -42,6 +42,7 @@ Apply rules from top to bottom. Lower layers specialize higher layers.
 Always inherited first:
 - `CORE/LOGGING.md`
 - `CORE/VERSION_CONTROL_SYSTEM.md`
+- `CORE/CODE_REVIEW_PLATFORM.md`
 - `CORE/GITHUB.md`
 - `CORE/GITLAB.md`
 - `CORE/CONFLUENCE.md`
@@ -130,8 +131,8 @@ Examples (non-exhaustive):
   `LANGUAGE/C_SHARP/C_SHARP.md`, `LANGUAGE/RUST/RUST.md`,
   `LANGUAGE/KOTLIN/KOTLIN.md`, `LANGUAGE/PHP/PHP.md`,
   `LANGUAGE/RUBY/RUBY.md`, `LANGUAGE/SWIFT/SWIFT.md`
-- Core specializations: `CORE/GITHUB.md`, `CORE/GITLAB.md`,
-  `CORE/CONFLUENCE.md`, `CORE/JIRA.md`
+- Core specializations: `CORE/CODE_REVIEW_PLATFORM.md` (specialized by
+  `CORE/GITHUB.md`, `CORE/GITLAB.md`), `CORE/CONFLUENCE.md`, `CORE/JIRA.md`
 - Framework docs: `FRAMEWORK/ANGULAR.md`, `FRAMEWORK/REACT.md`, etc.
 - Architecture docs: `ARCHITECTURE/REST.md`, `ARCHITECTURE/GRAPHQL.md`, etc.
 - Libraries and tools: `LIBRARY/*`, `BUILD_TOOLS/*`, `INFRASTRUCTURE/*`,

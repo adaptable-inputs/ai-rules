@@ -10,115 +10,63 @@ review lifecycle rules.
   `CI-CD/CI-CD.md` for CI/CD pipeline and workflow authoring guidance.
 
 ## Semantic Dependencies
-- Inherit baseline branch/PR/MR workflow rules from
-  `CORE/VERSION_CONTROL_SYSTEM.md`.
-- Inherit review quality expectations from `REVIEW/CODE_REVIEW.md`.
-- Inherit security/testing/compliance gates from `SECURITY/SECURITY.md`,
-  `TEST/TEST.md`, and `COMPLIANCE/COMPLIANCE.md`.
+- Inherit the full platform contract from `CORE/CODE_REVIEW_PLATFORM.md`.
+  Protected-branch policy, merge authority, review-thread ownership, description
+  requirements, and review workflow are defined there and are not restated here.
 - This file specializes GitHub platform behavior and does not replace baseline
   VCS workflow requirements.
 
-## Protected Branch Policy (Mandatory)
-- Treat protected branches as read-only for AI agents.
-- Do not push directly to protected branches.
-- Use dedicated feature branches for implementation work.
-- Create a PR for any change targeting a protected branch.
+## Terminology Mapping
+- "change request" is a pull request (PR).
+- "review thread" is a conversation.
 
-## Merge Authority and Merge Gates (Mandatory)
-- PR creators must not merge their own PRs.
-- The self-merge restriction may be bypassed only when all of the following are
-  true:
-  - The user gives explicit merge instruction for the specific PR.
-  - The user explicitly confirms in the current session that they are a GitHub
-    repository owner for the target repository and that they authorize
-    bypassing the self-merge restriction.
-  - You, as an AI agent, treat the user as not a repository owner unless this
-    explicit owner confirmation and authorization is present.
-- If the above conditions are not met, do not attempt to merge a PR that you
-  created or substantially authored.
-- Respect branch-protection and ruleset gates; do not bypass required checks,
-  required reviews, approvals, or merge policies.
+## GitHub Specializations
+- Respect branch-protection and ruleset gates, including required status checks
+  and required reviews.
 - Do not use admin bypass behavior to skip required gates.
-- Merging is forbidden by default without explicit user instruction.
-- Never merge a PR while review conversations/threads are unresolved.
-- If asked to merge with unresolved conversations/threads, stop and ask the
-  user how to proceed because merge is not allowed in that state.
-
-## Review Conversation Ownership
-- Prefer the review-comment author to resolve their own
-  conversation/thread when possible.
-- Do not resolve another reviewer's conversation/thread unless downstream policy
-  explicitly allows maintainer resolution or the reviewer has explicitly
-  confirmed resolution in the current review context.
-- If you authored the comment and the issue is fixed, resolve that
-  conversation/thread.
-- Keep review history intact; do not delete comments to hide unresolved work.
-
-## PR Description Requirements
-- When opening a PR, include a short developer-focused implementation summary.
-- Include files reviewers may skim because they are generated, copied, or
-  standard imports.
-- Highlight non-obvious logic and explain why it is implemented that way.
-- Keep scope, validation, and residual risk explicit.
-- Reuse the general PR/MR summary template from
-  `CORE/VERSION_CONTROL_SYSTEM.md`.
-
-## Code Review Workflow for GitHub PRs
-- Apply `REVIEW/CODE_REVIEW.md` severity-first process for every PR review.
-- Place comments on precise affected lines, not only on the PR overview.
 - Use GitHub code suggestions for small, localized fixes.
-- If a requested fix is broader than a local suggestion, offer to implement it
-  in an AI-agent session on the existing branch.
-- After offering broader implementation help, wait for user confirmation before
-  making branch changes.
+
+## Explicit Override: Review Thread Ownership
+`CORE/CODE_REVIEW_PLATFORM.md` permits only a comment's author to resolve its
+review thread. On GitHub this file overrides that default as follows:
+- Prefer the review-comment author to resolve their own conversation when
+  possible.
+- A maintainer may resolve another reviewer's conversation only when downstream
+  policy explicitly allows maintainer resolution, or the reviewer has explicitly
+  confirmed resolution in the current review context.
+
+This override loosens the baseline. It applies to GitHub only and does not
+extend to any other platform doc.
 
 ## High-Risk Pitfalls
-1. Direct pushes to protected branches.
-2. Self-merging PRs without the explicit owner-authorized exception.
-3. Resolving another reviewer's conversation with no explicit policy allowance.
-4. Merging while review conversations/threads are unresolved.
-5. Bypassing required checks/reviews using admin override paths.
-6. PR descriptions that hide generated files or non-obvious logic.
+1. Self-merging PRs without the explicit owner-authorized exception.
+2. Resolving another reviewer's conversation with no explicit policy allowance.
+3. Bypassing required checks/reviews using admin override paths.
 
 ## Do / Don't Examples
-### 1. Protected Branches
-```text
-Don't: push fix commits directly to a protected main branch.
-Do:    create a feature branch and open a PR into the protected branch.
-```
-
-### 2. Merge Discipline
+### 1. Merge Discipline
 ```text
 Don't: merge your own PR because checks are green.
 Do:    wait for explicit merge instruction and enforce all merge gates.
 ```
 
-### 3. Conversation Ownership
+### 2. Admin Bypass
 ```text
-Don't: resolve a reviewer conversation with no policy/approval basis.
-Do:    reply with the fix and let the review-comment author resolve the thread
-       when possible.
+Don't: use admin override to merge past a failing required check.
+Do:    fix the check, or ask the user how to proceed.
 ```
 
 ## Code Review Checklist for GitHub Workflow
-- Is work done on a dedicated feature branch with PR into protected target?
-- Were protected-branch and merge-gate rules enforced without bypass?
-- Is merge authority valid for the acting user and instruction context?
-- Are unresolved review conversations/threads blocking merge?
-- Are conversation resolutions handled by the review-comment author when
-  possible?
-- Does the PR description include summary, skip candidates, and non-obvious
-  rationale?
+- Were branch-protection and ruleset gates enforced without admin bypass?
+- Are conversation resolutions handled by the review-comment author, or under
+  the override above?
 
 ## Testing Guidance
-- Verify branch protection and ruleset requirements before merge actions.
-- Verify required checks and required-review policies are active on target
+- Verify required checks and required-review policies are active on the target
   branch.
-- Verify review conversations/threads are fully resolved before merge.
-- Verify PR descriptions include reviewer-focused summary and risk notes.
 - Verify no admin-bypass merge path was used.
 
 ## Override Notes
-- Project-specific GitHub governance may be stricter, but protected-branch
-  discipline, unresolved review conversations/threads blocking merge, and
-  merge-by-explicit-request behavior remain mandatory.
+- Project-specific GitHub governance may be stricter. The baseline mandates in
+  `CORE/CODE_REVIEW_PLATFORM.md` remain in force except for the review-thread
+  ownership override declared above.
