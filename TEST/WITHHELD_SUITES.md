@@ -23,6 +23,26 @@ suite then certifies nothing.
 - MUST audit each author's full transcript and produced sources for the suite's paths, symbols, and assertions before
   accepting any result measured against it. An audit that scans nothing MUST fail.
 
+## Run Conditions
+A measured run states what it measured. A run assembled by patching a previous one measures the patching, and a run
+whose subject ignored the instruction under test measures the disobedience.
+
+- Each run MUST begin from a reset state: the subject's workspace deleted and recreated, its build output gone, and no
+  artefact of a previous run reachable. Reuse of a warm toolchain cache is permitted and MUST be stated, because
+  clearing it would put network variance into the measurement.
+- Each run MUST use a fresh agent with an empty transcript. A resumed agent carries prior context, so its cost is not
+  comparable, and its cumulative transcript carries any earlier isolation leak into the new result.
+- Every arm of a comparison MUST receive the same task text, differing only in which ruleset and workspace it names. A
+  requirement added mid-study MUST be given to every arm, and the affected runs MUST be repeated, not amended.
+- A run whose subject was patched after grading MUST NOT be reported as a run. Archive it as evidence and repeat it.
+- MUST record, per run: the tokens consumed, whether each gate passed, and how much of the ruleset the subject actually
+  read. Compliance with the instruction under test is a variable, not an assumption.
+- MUST report a failed or voided run rather than dropping it. Dropping failures turns a distribution of runs into a
+  distribution of successes.
+- Where the subject's compliance varies between runs, the measurement MUST report that variance before any ratio drawn
+  from it. A ratio computed across runs that differ in compliance measures the subject, not the ruleset.
+- MUST state the sample size beside every derived figure. A single run yields an observation, never an effect size.
+
 ## The Harness
 A withheld suite needs machinery: sealing, grading in a copy, auditing the author's transcript. Re-implementing that
 machinery per project reproduces its defects per project. `adaptable-inputs/ai-test-harness` implements it, and its
