@@ -49,6 +49,28 @@ Guidance for AI agents implementing, updating, and reviewing tests.
 - MUST cover happy paths, edge cases, failure modes, and regression paths.
 - If coverage targets are not met, MUST document exact gaps and risk rationale.
 
+## Coverage Exclusions
+Full coverage of production code is the target. Where a unit genuinely cannot be reached, the gap MUST be named and
+justified, never absorbed. A threshold that tolerates a percentage of uncovered code stops naming which code that is,
+and the exclusion review is the step most easily skipped once the number looks acceptable.
+
+- Every uncovered unit MUST carry an exclusion that names it and states why the check cannot apply. An uncovered unit
+  with no exclusion MUST fail the build.
+- An exclusion MUST assert one of exactly two things: that no input can reach the unit, or that only a framework reaches
+  it reflectively and the system fails without it. Any other reason is an admission the unit is untested.
+- A framework-reflective exclusion MUST cite the evidence that produced it. Remove the unit, run the system, record what
+  broke. An untested claim that a persistence provider needs an accessor is a guess.
+- The exclusion set MUST be validated on every run, before any result derived from coverage is accepted. Validation MUST
+  fail closed: a malformed, empty, or unjustified entry stops the run rather than excusing the unit.
+- MUST fail on a stale exclusion, one whose unit is now covered or no longer exists. A list that only grows becomes
+  where uncovered code hides.
+- Exclusions MUST be scoped to the subject they describe. One list shared across several implementations makes a valid
+  exclusion look stale and a stale one look valid.
+- MUST NOT raise a coverage threshold, widen a pattern, or delete an assertion to make an uncovered unit disappear.
+  Cover it, exclude it with a reason, or delete the unit.
+- Unreachable production code MUST be deleted rather than excluded. A gap that a deletion would close is not an
+  infeasibility.
+
 ## Verifying the Tests Themselves
 A test that cannot fail is worse than no test, because it is trusted. A green result never seen fail is not evidence.
 
