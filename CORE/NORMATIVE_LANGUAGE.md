@@ -45,6 +45,24 @@ not a licence to omit keywords.
 - `SHOULD` and `SHOULD NOT` MUST be deviable in principle. If deviation is never acceptable, use `MUST` or `MUST NOT`.
 - A `SHOULD` deviation MUST be reported in the agent's final summary.
 
+## Preconditions
+A `MUST` binds only where its subject exists. An obligation written as though its subject always exists becomes
+unsatisfiable the first time it does not, and an agent then either violates it or quietly ignores it. Both outcomes are
+worse than the rule not applying.
+
+- A normative statement whose subject is not universal MUST state the condition under which it binds. "MUST enforce
+  authentication at resource boundaries" binds a service that has resource boundaries and non-public data; it says
+  nothing useful to one that has neither.
+- A `MUST` whose stated precondition does not hold does not apply, and its non-application is not a deviation. Nothing
+  is reported, because nothing was skipped.
+- An agent that cannot satisfy an applicable `MUST` MUST NOT proceed silently. It MUST report the obligation, the reason
+  it cannot be met, and what it did instead, in its final summary.
+- A task instruction MUST NOT be read as waiving an applicable `MUST`. If a task and an applicable `MUST` genuinely
+  conflict, the rule is defective: resolve by `CORE/RULE_DEPENDENCY_TREE.md` Conflict Resolution Rules, complete the
+  task, and report the conflict so the rule can be fixed.
+- Authors MUST NOT weaken a `MUST` to a `SHOULD` to escape an unsatisfiable case. State the precondition instead. A
+  security control that is mandatory where it applies stays `MUST`.
+
 ## Applying Keywords
 - Safety, security, and compliance constraints MUST use `MUST` or `MUST NOT`.
 - Style and structure guidance SHOULD use `SHOULD` or `SHOULD NOT`.

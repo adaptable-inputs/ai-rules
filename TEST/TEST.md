@@ -9,7 +9,9 @@ applies_to:
 Guidance for AI agents implementing, updating, and reviewing tests.
 
 ## Testing Defaults
-- MUST add or update tests for every behavior change.
+- MUST add or update tests for every behavior change, unless a withheld suite the author is forbidden to see covers that
+  change; see "Withheld Verification Suites". The obligation is that the change is tested, not that its author writes
+  the test.
 - SHOULD prefer deterministic and isolated tests.
 - SHOULD keep test suites fast enough for frequent CI execution.
 - MUST use risk-based depth: higher business/security impact requires stronger test coverage across layers.

@@ -48,7 +48,9 @@ Guidance for AI agents implementing and reviewing Spring Boot applications.
 - SHOULD keep log/metric cardinality controlled.
 
 ## Security Baseline
-- MUST enforce authentication/authorization at endpoint and service boundaries.
+- MUST enforce authentication and authorization at every endpoint and service boundary that is externally reachable or
+  exposes non-public data, unless a documented upstream boundary enforces them and the service rejects traffic that
+  bypasses it.
 - MUST keep secrets out of code/config files; use secret management paths.
 - MUST validate and sanitize external input.
 - MUST apply least privilege for outbound clients and data access.

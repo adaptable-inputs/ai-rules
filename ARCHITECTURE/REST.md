@@ -54,7 +54,10 @@ Guidance for AI agents implementing and reviewing REST-style APIs.
 - SHOULD keep response times predictable for hot paths and monitor SLA-critical endpoints.
 
 ## Security Baseline
-- MUST enforce authentication and authorization at resource boundaries.
+- MUST enforce authentication and authorization at every resource boundary that is externally reachable or that exposes
+  non-public data. Where a trusted upstream boundary (gateway, mesh, sidecar) enforces them, MUST document that boundary
+  and MUST ensure the service rejects traffic that bypasses it. An API whose data is public by design MUST say so
+  explicitly; silence is not a declaration.
 - MUST validate and sanitize all input parameters/body fields.
 - MUST NOT expose internal stack traces or sensitive fields in responses.
 - MUST rate-limit and monitor abusive access patterns.
