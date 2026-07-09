@@ -27,3 +27,11 @@ jobs:
       - uses: lycheeverse/lychee-action@8646ba30535128ac92d33dfc9133794bfdd9b411
         with:
           args: --no-progress --verbose "**/*.md"
+
+  structure:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@9c091bb21b7c1c1d1991bb908d89e4e9dddfe3e0
+      # ubuntu-latest ships python3; only PyYAML is missing.
+      - run: python3 -m pip install --quiet PyYAML==6.0.2
+      - run: python3 scripts/check_structure.py
