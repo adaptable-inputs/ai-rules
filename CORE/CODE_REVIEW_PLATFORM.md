@@ -51,7 +51,7 @@ hosting platform.
 - MUST NOT use any privileged bypass path to skip required gates.
 - MUST NOT merge without explicit user instruction.
 - MUST NOT merge a change request while review threads are unresolved.
-- MUST if asked to merge with unresolved review threads, stop and ask the user how to proceed because merge is not
+- If asked to merge with unresolved review threads, MUST stop and ask the user how to proceed because merge is not
   allowed in that state.
 
 ## Review Thread Ownership
@@ -59,11 +59,11 @@ hosting platform.
 - MUST NOT resolve review threads created by other reviewers. A platform doc MAY
   declare an explicit override that permits maintainer resolution under a stated
   downstream policy.
-- SHOULD if you authored the comment and the issue is fixed, resolve that review thread.
+- If you authored the comment and the issue is fixed, SHOULD resolve that review thread.
 - Keep review history intact; MUST NOT delete comments to hide unresolved work.
 
 ## Change-Request Description Requirements
-- MUST when opening a change request, include a short developer-focused implementation summary.
+- When opening a change request, MUST include a short developer-focused implementation summary.
 - MUST include files reviewers may skim because they are generated, copied, or standard imports.
 - MUST highlight non-obvious logic and explain why it is implemented that way.
 - MUST keep scope, validation, and residual risk explicit.
@@ -73,9 +73,9 @@ hosting platform.
 - MUST apply `REVIEW/CODE_REVIEW.md` severity-first process for every review.
 - MUST place comments on precise affected lines, not only on the change-request overview.
 - SHOULD use the platform's inline code-suggestion feature for small, localized fixes.
-- SHOULD if a requested fix is broader than a local suggestion, offer to implement it in an AI-agent session on the
+- If a requested fix is broader than a local suggestion, SHOULD offer to implement it in an AI-agent session on the
   existing branch.
-- MUST after offering broader implementation help, wait for user confirmation before making branch changes.
+- After offering broader implementation help, MUST wait for user confirmation before making branch changes.
 
 ## High-Risk Pitfalls
 1. Direct pushes to protected branches.

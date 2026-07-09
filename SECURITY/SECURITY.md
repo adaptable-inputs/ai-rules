@@ -42,7 +42,7 @@ Security is a non-negotiable baseline across all stacks and domains.
 - SHOULD normalize and canonicalize inputs before policy checks when relevant.
 - MUST use parameterized queries and safe encoders to prevent injection classes.
 - MUST encode/escape output according to sink context (HTML, shell, URL, etc.).
-- MUST for SQL sinks, use parameterized queries/bind variables as the primary defense rather than string escaping.
+- For SQL sinks, MUST use parameterized queries/bind variables as the primary defense rather than string escaping.
 - MUST classify sensitive data and apply minimization, masking, and retention limits.
 
 ## Dependency and Supply-Chain Hygiene

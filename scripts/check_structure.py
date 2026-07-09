@@ -40,8 +40,13 @@ CONDITIONAL_KEYS = {"languages", "frameworks", "libraries", "tools", "when"}
 KEYWORD_CONVERTED = {
     "CORE/CORE.md",
     "CORE/CODE_REVIEW_PLATFORM.md",
+    "CORE/LOGGING.md",
+    "CORE/VERSION_CONTROL_SYSTEM.md",
     "SECURITY/SECURITY.md",
 }
+
+# "Xcode: `DerivedData/`, ..." - a label introducing a list, not a rule.
+LABEL_BULLET = re.compile(r"^[A-Z][\w /.+-]{0,24}:")
 
 KEYWORD = re.compile(r"\b(MUST NOT|MUST|SHOULD NOT|SHOULD|MAY)\b")
 TOP_BULLET = re.compile(r"^[-*] (.*)$")
@@ -213,10 +218,10 @@ def check_keyword_ratchet() -> None:
         if not p.exists():
             fail(f"KEYWORD_CONVERTED names {rel_path}, which does not exist")
             continue
-        body = p.read_text(encoding="utf-8")
+        lines = p.read_text(encoding="utf-8").split("\n")
         section = ""
         fence = False
-        for n, line in enumerate(body.split("\n"), 1):
+        for n, line in enumerate(lines, 1):
             if line.startswith("```"):
                 fence = not fence
                 continue
@@ -229,10 +234,23 @@ def check_keyword_ratchet() -> None:
             m = TOP_BULLET.match(line)
             if not m:
                 continue
+            # A bullet may wrap. Join its continuation lines before looking for
+            # a keyword, or a SHOULD on the second line reads as absent.
             text = m.group(1)
+            k = n  # 1-indexed; lines[k] is the line after this bullet
+            while k < len(lines):
+                nxt = lines[k]
+                if not nxt.strip() or TOP_BULLET.match(nxt) or nxt.lstrip().startswith(("#", "```", "-", "*")):
+                    break
+                text += " " + nxt.strip()
+                k += 1
             if KEYWORD.search(text):
                 continue
             if section.startswith(DESCRIPTIVE_PREFIXES):
+                continue
+            # A bullet ending in ':' introduces nested content; a "Label:" bullet
+            # introduces a list. Neither is an obligation.
+            if text.rstrip().endswith(":") or LABEL_BULLET.match(text):
                 continue
             # An imperative opens with a capitalised bare verb.
             if not re.match(r"[A-Z][a-z]+\b", text):
