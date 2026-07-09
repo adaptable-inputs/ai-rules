@@ -24,4 +24,3 @@ more than the code they inspect and reviewed less, so they MUST meet every stand
   cover for the next one.
 - Every exemption a guard grants MUST name what it exempts and state why the check cannot apply. An exemption without a
   justification is an unchecked case with a nicer name.
-

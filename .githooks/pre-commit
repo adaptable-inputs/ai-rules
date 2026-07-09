@@ -21,3 +21,16 @@ python3 scripts/gen_manifest.py --check || {
 }
 python3 scripts/check_indexes_accurate.py
 python3 scripts/check_structure.py
+
+# markdownlint is the one gate CI runs that the hook did not, so a lint error
+# could reach the branch. Skip only when the tool is genuinely unavailable, and
+# say so -- a silent skip is a gate that cannot fail.
+if command -v npx >/dev/null 2>&1; then
+    npx --yes markdownlint-cli2@0.13.0 "**/*.md" "#node_modules" >/dev/null 2>&1 || {
+        echo "pre-commit: markdownlint failed. Run:"
+        echo "  npx markdownlint-cli2@0.13.0 '**/*.md' '#node_modules'"
+        exit 1
+    }
+else
+    echo "pre-commit: npx unavailable, markdownlint not run; CI will still check it"
+fi

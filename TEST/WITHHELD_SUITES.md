@@ -22,4 +22,3 @@ suite then certifies nothing.
   forbidden to read, and the pressure to look is structural rather than a lapse of discipline.
 - MUST audit each author's full transcript and produced sources for the suite's paths, symbols, and assertions before
   accepting any result measured against it. An audit that scans nothing MUST fail.
-
