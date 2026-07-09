@@ -1,9 +1,5 @@
 # 2026-02-13-github-issue-newline-escaping
 
-## Scope
-- Applies only to this repository.
-- Do not copy these rules into downstream-projects.
-
 ## Issue
 Some GitHub issue bodies were posted with literal `\n` sequences, so GitHub
 rendered them as a single scrambled paragraph instead of formatted Markdown.

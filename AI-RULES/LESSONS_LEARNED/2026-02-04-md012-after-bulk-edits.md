@@ -1,9 +1,5 @@
 # 2026-02-04-md012-after-bulk-edits
 
-## Scope
-- Applies only to this repository.
-- Do not copy these rules into downstream-projects.
-
 ## Issue
 Markdownlint MD012 failures (multiple blank lines) appeared across many files
 after bulk refactors, breaking CI.

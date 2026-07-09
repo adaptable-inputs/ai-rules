@@ -1,9 +1,5 @@
 # 2026-02-22-no-general-semantics-change-for-scope-limited-rules
 
-## Scope
-- Applies only to this repository.
-- Do not copy these rules into downstream-projects.
-
 ## Issue
 While adding `CORE/GITLAB.md`, unrelated baseline wording in
 `CORE/RULE_DEPENDENCY_TREE.md` was changed (`Always inherited first`), which

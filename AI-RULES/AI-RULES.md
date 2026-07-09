@@ -2,6 +2,12 @@
 
 Guidance for maintaining this ai-rules repository.
 
+## Scope
+This scope statement governs every file under `AI-RULES/`, including
+`LESSONS_LEARNED/`. Individual files do not restate it.
+- These rules apply only to this repository.
+- Do not copy these rules into downstream-projects.
+
 ## Terminology
 - "ai-rules" refers to this repository's baseline ruleset and its published tags.
 - "downstream-project" means a project/repository that vendors and uses

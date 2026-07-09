@@ -1,9 +1,5 @@
 # 2026-02-08-react-example-robustness
 
-## Scope
-- Applies only to this repository.
-- Do not copy these rules into downstream-projects.
-
 ## Issue
 React guidance examples were updated in multiple passes and initially missed
 copy/paste robustness details (duplicate component names in paired snippets,

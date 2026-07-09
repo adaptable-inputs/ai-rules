@@ -3,10 +3,6 @@
 Meta guidance for maintainers defining how downstream-project extensions should
 be authored by AI agents.
 
-## Scope
-- Applies only to this repository.
-- Do not copy these rules verbatim into downstream-projects.
-
 ## Path Model
 - Use placeholders in guidance and templates:
   - `<AI_ROOT_PATH>`

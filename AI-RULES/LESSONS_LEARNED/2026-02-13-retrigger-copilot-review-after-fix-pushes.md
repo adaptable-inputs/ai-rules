@@ -1,9 +1,5 @@
 # 2026-02-13-retrigger-copilot-review-after-fix-pushes
 
-## Scope
-- Applies only to this repository.
-- Do not copy these rules into downstream-projects.
-
 ## Issue
 After fixing Copilot findings and pushing follow-up commits, the PR was merged
 without a fresh Copilot review round on the latest commit.

@@ -2,10 +2,6 @@
 
 Repository-standard PR review loop for ai-rules maintenance.
 
-## Scope
-- Applies only to this repository.
-- Do not copy these rules into downstream-projects.
-
 ## Preconditions
 - This loop assumes shared workflow prerequisites are already satisfied for each
   work item:

@@ -1,9 +1,5 @@
 # 2026-02-01-markdownlint
 
-## Scope
-- Applies only to this repository.
-- Do not copy these rules into downstream-projects.
-
 ## Issue
 Markdownlint failures after changes (MD013 line length, MD024 duplicate headings,
 MD047 trailing newline) and a UTF-8 BOM.

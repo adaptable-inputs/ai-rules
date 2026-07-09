@@ -1,9 +1,5 @@
 # 2026-02-13-no-copilot-mentions-in-pr-comments
 
-## Scope
-- Applies only to this repository.
-- Do not copy these rules into downstream-projects.
-
 ## Issue
 Mentioning `@copilot` in PR comments can trigger unintended Copilot behavior,
 including autonomous implementation attempts that interfere with the intended

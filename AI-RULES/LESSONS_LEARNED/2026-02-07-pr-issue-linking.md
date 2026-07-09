@@ -1,9 +1,5 @@
 # 2026-02-07-pr-issue-linking
 
-## Scope
-- Applies only to this repository.
-- Do not copy these rules into downstream-projects.
-
 ## Issue
 Several PRs were merged without being linked to their corresponding GitHub
 issues, so the issues stayed open and project tracking became inconsistent.

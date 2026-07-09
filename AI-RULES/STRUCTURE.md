@@ -2,10 +2,6 @@
 
 Rules for organizing the ai-rules repository itself (not downstream-projects).
 
-## Scope
-- Applies only to this repository.
-- Do not copy these rules into downstream-projects.
-
 ## Directory Layout
 - Keep top-level categories at the repository root and list them in `AI.md`.
 - Each category must have an index file named after the directory (e.g., `CORE/CORE.md`).
