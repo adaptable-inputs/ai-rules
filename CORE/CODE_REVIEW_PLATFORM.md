@@ -44,6 +44,17 @@ Platform-neutral delivery and review workflow contract shared by every code host
 - If you authored the comment and the issue is fixed, SHOULD resolve that review thread.
 - Keep review history intact; MUST NOT delete comments to hide unresolved work.
 
+## Review Evidence
+A review is evidence that someone looked, at a particular version. Deleting a thread destroys the evidence, and merging
+after a fix push without a fresh review certifies a version nobody reviewed.
+
+- MUST resolve a review thread rather than delete it. A deleted thread removes the record that the finding existed and
+  that it was addressed.
+- After pushing commits that address review findings, MUST obtain a fresh review of the resulting version before merge.
+  An approval names the commit it approved, not the branch.
+- MUST link a change request to the issue it closes before merge, so the issue's state follows the merge rather than a
+  human remembering to close it.
+
 ## Change-Request Description Requirements
 - When opening a change request, MUST include a short developer-focused implementation summary.
 - MUST include the files reviewers can skim because they are generated, copied, or standard imports.

@@ -48,6 +48,16 @@ Guidance for version control system usage (Git and others).
   - `Validation:`
 - MUST use platform-neutral `PR/MR` wording in shared guidance.
 
+## Derived Artifacts
+A release once carried outdated version references because a versioned example was not regenerated before the tag. The
+instruction to update it existed and was followed by nobody, which is what an instruction without a check achieves.
+
+- Any artifact derived from source (a generated index, a manifest, a versioned example, a lockfile) MUST be regenerated
+  and verified in CI, and MUST NOT be hand-edited.
+- A release MUST fail when any derived artifact is stale. MUST NOT rely on a step in a release document being
+  remembered.
+- A derived artifact MUST be regenerated in the same change as the source it derives from, so a reviewer sees both.
+
 ## PR/MR Review Comment Handling
 - MUST evaluate every review comment and explicitly judge whether it is valid or not for the current scope.
 - MUST reply to every review comment with a respectful, concrete response. Do not leave actionable comments unanswered.

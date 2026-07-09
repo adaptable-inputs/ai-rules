@@ -40,6 +40,21 @@ Guidance for AI agents executing implementation tasks.
 - SHOULD evaluate new dependencies using `FRAMEWORK/FRAMEWORK.md`, `LIBRARY/LIBRARY.md`, and `COMPLIANCE/LICENSES.md`.
 - SHOULD keep runtime/build impact of dependency additions explicit.
 
+## Blast Radius of a Change
+Four lessons in this repository record a lint rule broken by an unrelated edit, and one records baseline semantics
+changed while adding a specialized document. The common cause is a change that reached further than its author intended,
+and the common cure is to check the whole, not the diff.
+
+- A change MUST NOT alter behaviour or semantics outside its stated scope. Wording, defaults, and baselines untouched by
+  the task MUST stay untouched, even where an improvement is obvious. Record the improvement as follow-up work.
+- After a bulk, mechanical, or scripted edit, MUST run the project's full check suite over the whole repository, not
+  over the changed files. A mechanical edit breaks files it never opened.
+- After a mechanical edit, MUST verify that only the intended property changed. Compare the normalized content, or the
+  parsed form, before and after; a diff that looks small can still alter meaning.
+- When emitting text into a foreign syntax (Markdown, HTML, JSON, a shell command, an issue body), MUST encode for that
+  syntax and MUST verify the rendered result, not the payload sent. A literal escape sequence in a request body renders
+  as itself.
+
 ## Verification Requirements
 - SHOULD add tests for new behavior and bug fixes.
 - SHOULD add regression tests before risky refactors where behavior is ambiguous.
