@@ -34,7 +34,7 @@ Guidance for AI agents implementing and reviewing GitLab CI/CD pipelines.
 
 ## Secrets and Security
 - Use masked/protected CI variables for credentials.
-- Do not echo secrets in job logs.
+- MUST NOT echo secrets in job logs.
 - Restrict deployment jobs to protected branches/tags and required approvals.
 - Pin container images used by CI jobs where possible.
 

@@ -13,14 +13,14 @@ Guidance for AI agents implementing and reviewing Mockito-based tests.
 
 ## Defaults
 - Mock external collaborators, not value objects.
-- Prefer constructor injection in production code to simplify mocking.
+- SHOULD prefer constructor injection in production code to simplify mocking.
 - Keep stubbing minimal and explicit.
 - Verify behavior only where interaction contract matters.
-- Prefer state/observable outcome assertions over interaction-heavy assertions.
+- SHOULD prefer state/observable outcome assertions over interaction-heavy assertions.
 
 ## Stubbing Rules
 - Stub only methods exercised by test scenario.
-- Avoid broad deep-stub patterns unless no alternative.
+- SHOULD avoid broad deep-stub patterns unless no alternative.
 - Keep `when`/`then` setup readable and scenario-focused.
 - Use argument matchers consistently (avoid mixed raw + matcher misuse).
 
@@ -28,15 +28,15 @@ Guidance for AI agents implementing and reviewing Mockito-based tests.
 - Verify meaningful interactions, not every call by default.
 - Use explicit/precise verification for critical side effects
   (for example once/never checks and argument constraints).
-- Prefer strict stubbing to catch unused or mismatched stubs.
-- Avoid over-verifying call counts in non-critical paths.
-- Prefer `verifyNoMoreInteractions` sparingly and intentionally.
+- SHOULD prefer strict stubbing to catch unused or mismatched stubs.
+- SHOULD avoid over-verifying call counts in non-critical paths.
+- SHOULD prefer `verifyNoMoreInteractions` sparingly and intentionally.
 
 ## Anti-Pattern Guardrails
-- Avoid mocking the class under test.
-- Avoid static/global mocking unless absolutely necessary.
-- Avoid using spies to patch design smells; refactor boundaries instead.
-- Avoid returning mutable shared objects from stubs unless intentional.
+- SHOULD avoid mocking the class under test.
+- SHOULD avoid static/global mocking unless absolutely necessary.
+- SHOULD avoid using spies to patch design smells; refactor boundaries instead.
+- SHOULD avoid returning mutable shared objects from stubs unless intentional.
 
 ## High-Risk Pitfalls
 1. Over-mocked tests coupled to implementation details.

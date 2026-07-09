@@ -16,7 +16,7 @@ Guidance for AI agents implementing and reviewing Rust code.
   weaken this baseline.
 
 ## Defaults
-- Prefer explicit ownership and lifetimes over workaround cloning.
+- SHOULD prefer explicit ownership and lifetimes over workaround cloning.
 - Keep type/state invariants encoded in types where practical.
 - Use `Result`/`Option` explicitly and avoid panic-driven normal flow.
 - Keep `unsafe` usage minimal, justified, and encapsulated.
@@ -24,7 +24,7 @@ Guidance for AI agents implementing and reviewing Rust code.
 
 ## Ownership and API Design
 - Design APIs that communicate ownership/borrowing intent clearly.
-- Avoid unnecessary `clone()` in hot paths; address lifetime design first.
+- SHOULD avoid unnecessary `clone()` in hot paths; address lifetime design first.
 - Keep module boundaries cohesive and explicit.
 - Keep trait abstractions purposeful, not premature.
 
@@ -36,7 +36,7 @@ Guidance for AI agents implementing and reviewing Rust code.
 
 ## Async and Concurrency Rules
 - Keep async boundaries explicit and runtime-aware.
-- Avoid blocking operations on async executors.
+- SHOULD avoid blocking operations on async executors.
 - Keep shared mutable state synchronized and minimized.
 - Use channels/message passing where it improves clarity and safety.
 - Keep cancellation/timeout behavior explicit for external IO.

@@ -15,15 +15,15 @@ Guidance for AI agents implementing and reviewing jOOQ-based data access.
   applicable.
 
 ## Defaults
-- Prefer generated jOOQ types for compile-time safety.
+- SHOULD prefer generated jOOQ types for compile-time safety.
 - Keep SQL logic in data-access boundaries, not service/controller layers.
 - Keep query composition readable and explicit.
-- Prefer explicit projections over broad row mapping where possible.
+- SHOULD prefer explicit projections over broad row mapping where possible.
 - Keep transaction boundaries aligned with use-case orchestration.
 
 ## Query Composition Rules
 - Extract reusable query fragments only when readability improves.
-- Avoid giant chained query builders with hidden conditions.
+- SHOULD avoid giant chained query builders with hidden conditions.
 - Keep joins/conditions explicit and index-aware.
 - Parameterize all external values.
 - Validate generated SQL and query plans for hot paths.
@@ -36,7 +36,7 @@ Guidance for AI agents implementing and reviewing jOOQ-based data access.
 
 ## Transaction and Consistency
 - Use transactional context explicitly for write workflows.
-- Avoid mixing conflicting ORM contexts in same transaction without clear
+- SHOULD avoid mixing conflicting ORM contexts in same transaction without clear
   strategy.
 - Keep retries/locking behavior intentional for conflict-prone operations.
 

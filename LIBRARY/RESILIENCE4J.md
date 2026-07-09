@@ -28,7 +28,7 @@ Guidance for AI agents implementing and reviewing Resilience4j policies.
 
 ## Configuration Guardrails
 - Keep retry attempts bounded with backoff + jitter.
-- Avoid retrying non-retryable business exceptions.
+- SHOULD avoid retrying non-retryable business exceptions.
 - Keep circuit-breaker thresholds/window sizes aligned with traffic profile.
 - Keep bulkhead pool/queue settings aligned with capacity planning.
 - Keep rate-limit and timeout values documented per dependency SLA.

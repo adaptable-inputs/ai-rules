@@ -29,7 +29,7 @@ Guidance for AI agents performing code and rules-document reviews.
 - In downstream-projects, also read every Markdown file transitively reachable
   from the downstream extension entry point described in
   `AI-RULES/DOWNSTREAM-PROJECT.md`.
-- Do not skip reachable Markdown files and do not pick files ad-hoc.
+- MUST NOT skip reachable Markdown files and do not pick files ad-hoc.
 - After the full read is complete, irrelevant rules may be removed from active
   context.
 
@@ -72,7 +72,7 @@ Each finding should include:
 
 ## Output Quality Rules
 - Prioritize concrete findings over summaries.
-- Avoid vague comments; anchor findings to code locations.
+- SHOULD avoid vague comments; anchor findings to code locations.
 - Distinguish confirmed issues from assumptions/questions.
 - State verification gaps explicitly (what was not tested/checked).
 

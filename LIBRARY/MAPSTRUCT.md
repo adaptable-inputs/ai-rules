@@ -12,26 +12,26 @@ Guidance for AI agents implementing and reviewing MapStruct mappings.
   `ARCHITECTURE/CLEAN_ARCHITECTURE.md`.
 
 ## Defaults
-- Prefer MapStruct for repetitive structural mapping.
+- SHOULD prefer MapStruct for repetitive structural mapping.
 - Keep mapping logic explicit and compile-time verified.
 - Keep mappers focused per bounded context/boundary.
 - Keep business logic out of mappers.
 
 ## Mapping Policy
-- Prefer explicit field mappings when names differ.
+- SHOULD prefer explicit field mappings when names differ.
 - Configure unmapped target policy intentionally (fail fast for unexpected gaps).
 - Keep update mappings (`@MappingTarget`) explicit about null handling.
 - Keep nested/collection mappings readable and test-covered.
 
 ## Null and Default Handling
 - Define null value strategy intentionally.
-- Avoid surprising defaults that hide missing source data.
+- SHOULD avoid surprising defaults that hide missing source data.
 - Keep partial-update semantics explicit and predictable.
 
 ## Composition and Reuse
 - Split large mappers into cohesive units.
 - Reuse helper mappers for shared value transformations.
-- Avoid circular mapper dependencies.
+- SHOULD avoid circular mapper dependencies.
 - Keep generated code reviewable via explicit annotations/config.
 
 ## High-Risk Pitfalls

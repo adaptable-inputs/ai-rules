@@ -20,17 +20,17 @@ Guidance for AI agents implementing and reviewing Angular projects.
 
 ## Defaults
 - Follow Angular style guide conventions.
-- Prefer standalone APIs (`bootstrapApplication`, standalone components,
+- SHOULD prefer standalone APIs (`bootstrapApplication`, standalone components,
   function providers) for new code.
-- Prefer `inject()` over constructor parameter injection in new code.
+- SHOULD prefer `inject()` over constructor parameter injection in new code.
 - Apply these rules by default in generated code and code reviews; deviate only
   with explicit, project-specific rationale.
 - Before using version-sensitive or experimental APIs, verify the project's
   Angular major version and choose a supported fallback when needed.
 - Keep components and directives focused on presentation concerns.
-- Prefer signal-based local state and `computed` derivations.
+- SHOULD prefer signal-based local state and `computed` derivations.
 - Treat signal `effect()` as a controlled escape hatch, not a default tool.
-- Prefer explicit boundaries: component UI logic in components, shared logic in
+- SHOULD prefer explicit boundaries: component UI logic in components, shared logic in
   services/utilities.
 
 ## Structure
@@ -40,7 +40,7 @@ Guidance for AI agents implementing and reviewing Angular projects.
 - Match file names to the primary identifier and use hyphenated file names.
 
 ## Components and Templates
-- Prefer `input()`, `output()`, and `model()` APIs for new components.
+- SHOULD prefer `input()`, `output()`, and `model()` APIs for new components.
 - Mark members initialized by Angular (`input`, `output`, queries) as
   `readonly` where applicable.
 - Use `protected` for class members that are only read from the template.
@@ -48,27 +48,27 @@ Guidance for AI agents implementing and reviewing Angular projects.
   not by DOM event name (for example `handleClick()`).
 - Keep templates declarative; move complex logic into TypeScript (often
   `computed`).
-- Prefer `@if`, `@for`, and `@switch` blocks in modern Angular code.
+- SHOULD prefer `@if`, `@for`, and `@switch` blocks in modern Angular code.
 - In every `@for`, use a stable `track` expression (`id`/`uuid`), not
   incidental identity.
 - Use `$index` tracking only for truly static collections that never reorder or
   change length.
-- Avoid identity tracking (`track item`) except as a last resort.
-- Prefer native granular bindings (`[class.foo]`, `[style.width.px]`) over
+- SHOULD avoid identity tracking (`track item`) except as a last resort.
+- SHOULD prefer native granular bindings (`[class.foo]`, `[style.width.px]`) over
   `ngClass` / `ngStyle`.
 - Use `[class]` / `[style]` only when intentionally setting the full
   attribute.
 
 ## State, Signals, and RxJS
 - Keep one clear source of truth; derive secondary state via `computed`.
-- Avoid propagating state changes via `effect()`; use `computed` or explicit
+- SHOULD avoid propagating state changes via `effect()`; use `computed` or explicit
   actions instead.
 - Use RxJS composition operators (`switchMap`, `combineLatest`, `map`, etc.)
   instead of nested subscriptions.
-- Prefer one reactive model per component/template:
+- SHOULD prefer one reactive model per component/template:
   use `async` pipe for `Observable` view models, read signal view models
   directly, and convert at boundaries with `toSignal()` / `toObservable()`.
-- Avoid mixing `Observable` and signal binding styles in the same template
+- SHOULD avoid mixing `Observable` and signal binding styles in the same template
   unless there is a strong reason.
 - When using `toSignal()` / `toObservable()` outside an injection context
   (for example plain utility modules, static functions, or code created outside
@@ -88,7 +88,7 @@ Guidance for AI agents implementing and reviewing Angular projects.
 - Signals created by `toSignal()` do not expose completion state.
   If completion matters (for example to render "done"), model it explicitly in
   stream/state (for example `{ status, value, error }`).
-- Avoid manual subscriptions in components unless an imperative side effect is
+- SHOULD avoid manual subscriptions in components unless an imperative side effect is
   required.
 - For imperative subscriptions, use `takeUntilDestroyed()` (or equivalent
   `DestroyRef` cleanup) to prevent leaks.
@@ -126,12 +126,12 @@ Effects synchronize Angular state with non-reactive or imperative systems.
   subscriptions, observers, and similar handles).
 - `effect()` creation requires an injection context:
   outside constructors/field initializers, pass an explicit `Injector`.
-- Prefer `afterRenderEffect`/`afterNextRender` for DOM read/write that must
+- SHOULD prefer `afterRenderEffect`/`afterNextRender` for DOM read/write that must
   happen after render.
 - `afterRenderEffect` and `afterNextRender` callbacks run only on browser
   platforms, and components are not guaranteed to be hydrated before callbacks
   run; keep DOM access hydration-safe.
-- Do not mutate SSR-produced DOM structure in post-render hooks unless
+- MUST NOT mutate SSR-produced DOM structure in post-render hooks unless
   hydration behavior is intentionally controlled.
 
 ## Dependency Injection and Services
@@ -140,7 +140,7 @@ Effects synchronize Angular state with non-reactive or imperative systems.
 - Scope providers intentionally (component/route/root) based on lifetime.
 - Keep cross-cutting HTTP concerns in interceptors, not duplicated in
   components.
-- Prefer functional interceptors for predictable behavior in complex setups.
+- SHOULD prefer functional interceptors for predictable behavior in complex setups.
 
 ## Routing and Data Loading
 - Define route trees per feature and lazy-load feature boundaries with
@@ -148,7 +148,7 @@ Effects synchronize Angular state with non-reactive or imperative systems.
 - Use route guards/resolvers where navigation-level guarantees are required.
 - Keep route-level dependencies near routes, using route provider scopes when
   helpful.
-- Avoid unnecessary deep lazy-loading chains that create navigation waterfalls.
+- SHOULD avoid unnecessary deep lazy-loading chains that create navigation waterfalls.
 
 ## HTTP and Error Handling
 - Keep HTTP access in data services, not scattered across templates/components.
@@ -159,28 +159,28 @@ Effects synchronize Angular state with non-reactive or imperative systems.
 - Model loading, success, and error states explicitly in UI-facing view models.
 - Handle errors at the boundary where context exists (service/component), and
   map to actionable user-facing state.
-- Do not swallow errors silently; either recover with an explicit fallback or
+- MUST NOT swallow errors silently; either recover with an explicit fallback or
   report/log through the chosen observability path.
 - Keep cross-cutting concerns (auth headers, retries, correlation IDs,
   standardized error mapping) in interceptors.
 
 ## Forms
-- Prefer typed reactive forms for medium/large business forms.
-- Prefer `NonNullableFormBuilder` or `{ nonNullable: true }` where null is not
+- SHOULD prefer typed reactive forms for medium/large business forms.
+- SHOULD prefer `NonNullableFormBuilder` or `{ nonNullable: true }` where null is not
   a valid domain state.
 - Keep validators pure and reusable; place cross-field rules at group level.
-- Avoid server-bound async validation on every keystroke:
+- SHOULD avoid server-bound async validation on every keystroke:
   use `updateOn: 'blur'` for field-level checks and `updateOn: 'submit'` when
   validation needs the whole form.
 - Remember `form.value` excludes disabled controls; use `getRawValue()` only
   when intentionally including disabled fields.
 
 ## Change Detection and Performance
-- Prefer `ChangeDetectionStrategy.OnPush` for reusable or heavy component
+- SHOULD prefer `ChangeDetectionStrategy.OnPush` for reusable or heavy component
   subtrees.
 - Treat `OnPush` inputs as immutable boundaries; replace object references
   rather than mutating in place.
-- Avoid expensive template calls and repeated allocations during change
+- SHOULD avoid expensive template calls and repeated allocations during change
   detection.
 - Use stable track keys in list rendering to minimize DOM churn.
 - Use `ChangeDetectorRef.markForCheck()` only when integrating with
@@ -223,8 +223,8 @@ Effects synchronize Angular state with non-reactive or imperative systems.
 - Evaluate third-party DOM-manipulating libraries for hydration compatibility.
 
 ## Security
-- Never build Angular templates from user-controlled strings.
-- Prefer template binding over direct DOM APIs.
+- MUST NOT build Angular templates from user-controlled strings.
+- SHOULD prefer template binding over direct DOM APIs.
 - If direct DOM interaction is unavoidable, sanitize untrusted values with
   `DomSanitizer.sanitize` and the correct `SecurityContext`.
 - Treat `bypassSecurityTrust*` as exceptional and document trust boundaries.

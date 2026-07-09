@@ -17,27 +17,27 @@ Guidance for AI agents implementing and reviewing Kotlin code.
 
 ## Defaults
 - Keep null-safety explicit and avoid defeating type guarantees.
-- Prefer immutable data and explicit state transitions.
+- SHOULD prefer immutable data and explicit state transitions.
 - Use coroutines for structured async/concurrent workflows.
 - Keep exceptions specific and boundary mapping explicit.
 - Keep domain logic separated from framework/runtime plumbing.
 
 ## Null-Safety and Type Contracts
 - Model optionality with nullable types intentionally.
-- Avoid `!!` unless a bounded invariant is proven and documented.
+- SHOULD avoid `!!` unless a bounded invariant is proven and documented.
 - Keep DTO/domain nullability contracts explicit and consistent.
-- Prefer sealed/value types for constrained domain state where suitable.
+- SHOULD prefer sealed/value types for constrained domain state where suitable.
 
 ## Coroutines and Concurrency Rules
 - Use structured concurrency with explicit parent scope ownership.
-- Avoid `GlobalScope` for application business workflows.
+- SHOULD avoid `GlobalScope` for application business workflows.
 - Keep dispatcher selection explicit for IO/CPU-sensitive paths.
 - Propagate cancellation signals and timeouts for external calls.
 - Prevent shared mutable-state races with explicit synchronization.
 
 ## Exception and Resource Handling
 - Throw/map specific exceptions with actionable context.
-- Do not swallow exceptions silently.
+- MUST NOT swallow exceptions silently.
 - Use `use {}` and lifecycle-aware resource management for deterministic cleanup.
 - Preserve cause chains when wrapping exceptions at boundaries.
 

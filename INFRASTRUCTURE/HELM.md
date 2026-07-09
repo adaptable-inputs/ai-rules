@@ -20,25 +20,25 @@ Guidance for AI agents implementing and reviewing Helm charts.
 ## Chart Structure and Values Governance
 - Keep default `values.yaml` safe and production-aware.
 - Group values by domain concern (image, resources, probes, ingress, etc.).
-- Avoid hidden behavior behind implicit defaults.
-- Prefer explicit booleans/enums over magic strings.
+- SHOULD avoid hidden behavior behind implicit defaults.
+- SHOULD prefer explicit booleans/enums over magic strings.
 - Keep backward compatibility for chart consumers when evolving values.
 
 ## Templating Rules
-- Prefer simple, readable template expressions.
-- Avoid deep nested conditionals in templates.
+- SHOULD prefer simple, readable template expressions.
+- SHOULD avoid deep nested conditionals in templates.
 - Use helper templates for repeated fragments.
 - Validate required values explicitly (fail early with clear messages).
-- Avoid business logic in chart templates.
+- SHOULD avoid business logic in chart templates.
 
 ## Release and Upgrade Strategy
 - Use semantic versioning for charts.
 - Document breaking value/schema changes clearly.
-- Prefer additive changes and deprecation windows.
+- SHOULD prefer additive changes and deprecation windows.
 - Keep rollback strategy tested for critical services.
 
 ## Security and Secret Handling
-- Do not commit plaintext secrets in chart values.
+- MUST NOT commit plaintext secrets in chart values.
 - Integrate secret management mechanisms (sealed/external secrets) as policy
   requires.
 - Keep service account and security context defaults least-privilege.

@@ -26,13 +26,13 @@ Guidance for AI agents applying Aspect-Oriented Programming responsibly.
 - Keep pointcuts narrow, explicit, and auditable.
 - Keep aspect ordering deterministic when multiple aspects apply.
 - Keep side effects observable and documented.
-- Avoid hidden control-flow changes that surprise maintainers.
+- SHOULD avoid hidden control-flow changes that surprise maintainers.
 
 ## Aspect Design Rules
 - Keep advice logic small and focused.
 - Keep cross-cutting seams at clear method contracts; avoid embedding multiple
   unrelated concerns inside one large method body.
-- Avoid mutating method arguments/results unless explicitly intended.
+- SHOULD avoid mutating method arguments/results unless explicitly intended.
 - Preserve exception semantics unless mapping is deliberate.
 - Keep aspect configuration centralized and discoverable.
 

@@ -40,7 +40,7 @@ Consult qualified legal counsel for final legal decisions.
 - Keep generated/synthetic content disclosure controls where applicable.
 - Keep user-facing limitations and confidence caveats explicit for
   decision-support outputs.
-- Avoid presenting probabilistic outputs as deterministic facts.
+- SHOULD avoid presenting probabilistic outputs as deterministic facts.
 
 ## Human Oversight and Decision Boundaries
 - Keep human review/override controls for high-impact decision contexts.

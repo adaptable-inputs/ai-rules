@@ -19,42 +19,42 @@ Guidance for AI agents implementing and reviewing Java code.
   but must not weaken Java safety constraints.
 
 ## Defaults
-- Prefer immutability for value types and DTOs.
-- Prefer constructor injection and explicit dependencies.
+- SHOULD prefer immutability for value types and DTOs.
+- SHOULD prefer constructor injection and explicit dependencies.
 - Keep methods/classes focused and cohesive.
-- Prefer interfaces for contracts and dependency boundaries.
-- Prefer explicit domain-specific types over primitive obsession.
-- Prefer checked validation and fail-fast preconditions at boundaries.
+- SHOULD prefer interfaces for contracts and dependency boundaries.
+- SHOULD prefer explicit domain-specific types over primitive obsession.
+- SHOULD prefer checked validation and fail-fast preconditions at boundaries.
 
 ## Exact Numeric Domains (Money, Rates, Quantities)
-- Do not use `float`/`double` when values must stay exact (for example money).
-- Prefer smallest-unit integers (for example cents in `long`) when unit and
+- MUST NOT use `float`/`double` when values must stay exact (for example money).
+- SHOULD prefer smallest-unit integers (for example cents in `long`) when unit and
   range are stable for the domain.
-- Always prefer JavaMoney (JSR 354, typically Moneta) for monetary values in
+- MUST prefer JavaMoney (JSR 354, typically Moneta) for monetary values in
   Java.
 - Restrict raw `BigDecimal` money handling to boundary conversions where
   JavaMoney types cannot be used directly.
-- Avoid `new BigDecimal(double)`; if `BigDecimal` is unavoidable, construct
+- SHOULD avoid `new BigDecimal(double)`; if `BigDecimal` is unavoidable, construct
   from `String` for exact decimal values, or use `BigDecimal.valueOf(long)` for
   whole-number smallest-unit amounts, and centralize scale + rounding rules.
 - Keep unit/currency attached to the amount type to prevent accidental mixing.
 
 ## Nullability and Optional
-- Avoid returning `null` from public APIs where absence is expected;
+- SHOULD avoid returning `null` from public APIs where absence is expected;
   prefer `Optional<T>` for return values when semantically meaningful.
-- Do not use `Optional` for fields, method parameters, or serialization models
+- MUST NOT use `Optional` for fields, method parameters, or serialization models
   unless there is a strong documented reason.
 - Keep null-handling explicit at boundaries and legacy integration points.
 
 ## Collections and Mutability
 - Return immutable or unmodifiable views where mutation is not intended.
 - Make defensive copies for mutable inputs/outputs crossing boundaries.
-- Prefer specific collection interfaces in signatures (`List`, `Map`, `Set`).
-- Avoid exposing internal mutable collections directly.
+- SHOULD prefer specific collection interfaces in signatures (`List`, `Map`, `Set`).
+- SHOULD avoid exposing internal mutable collections directly.
 
 ## Exception Design
 - Throw specific exception types with actionable context.
-- Do not swallow exceptions silently.
+- MUST NOT swallow exceptions silently.
 - Keep exception mapping consistent at API boundaries.
 - Preserve root cause when wrapping exceptions.
 - Use checked exceptions for genuinely recoverable scenarios; otherwise use
@@ -64,25 +64,25 @@ Guidance for AI agents implementing and reviewing Java code.
 - Keep constructors light; avoid side effects and IO in constructors.
 - Use builders for objects with many optional parameters.
 - Keep equals/hashCode/toString aligned with type semantics.
-- Avoid large utility classes with mixed responsibilities.
-- Avoid boolean parameter combinations that hide intent; introduce
+- SHOULD avoid large utility classes with mixed responsibilities.
+- SHOULD avoid boolean parameter combinations that hide intent; introduce
   explicit value objects or methods.
 
 ## Concurrency Baseline
-- Avoid shared mutable state by default.
-- Prefer immutable handoff between threads.
+- SHOULD avoid shared mutable state by default.
+- SHOULD prefer immutable handoff between threads.
 - When synchronization is required, define and document invariants.
 - Use high-level concurrency utilities over manual thread management.
 - Keep blocking calls out of latency-critical paths where possible.
 
 ## Streams and Functional Style
 - Use streams for readable transformations, not as a blanket replacement.
-- Avoid side effects inside stream operations.
+- SHOULD avoid side effects inside stream operations.
 - Keep stream pipelines understandable; extract named methods when complex.
-- Prefer loops when they are clearer than chained stream operations.
+- SHOULD prefer loops when they are clearer than chained stream operations.
 
 ## String Construction and Formatting
-- Prefer `String.format(...)` over `+` concatenation when constructing a
+- SHOULD prefer `String.format(...)` over `+` concatenation when constructing a
   string from a literal template and variables.
 - Use clear, stable format templates for user-facing or logged text.
 - In tight loops or append-heavy code paths, prefer `StringBuilder`.
@@ -91,7 +91,7 @@ Guidance for AI agents implementing and reviewing Java code.
 - Keep domain models independent from persistence/transport annotations when
   practical.
 - Use dedicated DTOs for external boundaries.
-- Avoid leaking persistence entities across API boundaries by default.
+- SHOULD avoid leaking persistence entities across API boundaries by default.
 
 ## High-Risk Pitfalls
 1. Returning internal mutable state directly.

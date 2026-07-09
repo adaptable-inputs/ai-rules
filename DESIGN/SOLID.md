@@ -15,21 +15,21 @@ Guidance for AI agents applying SOLID principles pragmatically.
 ## SRP: Single Responsibility Principle
 - Keep modules with one primary reason to change.
 - Separate orchestration, policy, and IO responsibilities.
-- Avoid classes that mix domain logic, persistence, and transport concerns.
+- SHOULD avoid classes that mix domain logic, persistence, and transport concerns.
 
 ## OCP: Open/Closed Principle
 - Design extension seams where change vectors are expected.
-- Prefer composition/polymorphism over branching explosion for variants.
-- Avoid speculative abstractions without credible extension need.
+- SHOULD prefer composition/polymorphism over branching explosion for variants.
+- SHOULD avoid speculative abstractions without credible extension need.
 
 ## LSP: Liskov Substitution Principle
 - Subtypes must honor base type contracts.
-- Do not strengthen preconditions or weaken postconditions.
+- MUST NOT strengthen preconditions or weaken postconditions.
 - Keep behavioral compatibility explicit in inheritance hierarchies.
 
 ## ISP: Interface Segregation Principle
-- Prefer narrow interfaces focused on client needs.
-- Avoid large kitchen-sink interfaces.
+- SHOULD prefer narrow interfaces focused on client needs.
+- SHOULD avoid large kitchen-sink interfaces.
 - Keep interface methods cohesive and role-specific.
 
 ## DIP: Dependency Inversion Principle
@@ -39,7 +39,7 @@ Guidance for AI agents applying SOLID principles pragmatically.
 
 ## Tradeoff Guidance
 - SOLID is a decision aid, not a hard quota.
-- Prefer simple direct code when extension pressure is low.
+- SHOULD prefer simple direct code when extension pressure is low.
 - Introduce abstraction when it reduces expected change cost.
 - Document deliberate deviations when pragmatic constraints apply.
 

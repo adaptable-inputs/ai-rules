@@ -16,7 +16,7 @@ Guidance for AI agents implementing and reviewing circuit breaker patterns.
 ## Placement Rules
 - Place circuit breakers at every remote dependency boundary: HTTP, gRPC,
   database, and message broker clients.
-- Do not apply circuit breakers to in-memory pure operations.
+- MUST NOT apply circuit breakers to in-memory pure operations.
 - Keep breaker scope aligned with dependency blast radius.
 
 ## Configuration Defaults
@@ -29,8 +29,8 @@ Guidance for AI agents implementing and reviewing circuit breaker patterns.
 
 ## Fallback Strategy
 - Use fallback only when correctness is preserved.
-- Prefer explicit degraded mode responses over silent stale/incorrect data.
-- Avoid fallback chains that hide systemic failures.
+- SHOULD prefer explicit degraded mode responses over silent stale/incorrect data.
+- SHOULD avoid fallback chains that hide systemic failures.
 - Record fallback activation as observable event.
 
 ## State Semantics

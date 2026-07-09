@@ -15,26 +15,26 @@ Guidance for AI agents implementing and reviewing microservice architecture.
   `SECURITY/SECURITY.md`, `TEST/TEST.md`, `CORE/LOGGING.md`.
 
 ## Adoption Criteria
-- Prefer modular monolith first unless there is a clear need for independent
+- SHOULD prefer modular monolith first unless there is a clear need for independent
   scaling, deployment cadence, ownership, or isolation.
 - Define measurable reasons for each service split.
-- Avoid splitting by technical layers; split by business capability.
+- SHOULD avoid splitting by technical layers; split by business capability.
 
 ## Service Boundary Rules
 - Each service owns a clear domain capability and bounded context.
 - Keep APIs small, stable, and domain-oriented.
-- Avoid shared domain model libraries that force lockstep releases.
+- SHOULD avoid shared domain model libraries that force lockstep releases.
 - Keep ownership explicit (team/service accountability).
 
 ## Data Ownership and Consistency
 - Each service owns its data store/schema.
-- Avoid shared database writes across services.
+- SHOULD avoid shared database writes across services.
 - Use explicit integration patterns for cross-service consistency
   (events, sagas, compensating actions).
-- Do not assume distributed transactions by default.
+- MUST NOT assume distributed transactions by default.
 
 ## Communication Strategy
-- Prefer asynchronous messaging for decoupled workflows.
+- SHOULD prefer asynchronous messaging for decoupled workflows.
 - Use synchronous calls only when immediate response is required.
 - Timebox and protect remote calls with timeout/retry/circuit-breaker patterns.
 - Keep contracts versioned and backward-compatible.
@@ -50,7 +50,7 @@ Guidance for AI agents implementing and reviewing microservice architecture.
 - Enforce service-to-service authentication and authorization.
 - Apply least privilege for data and network access.
 - Validate all incoming payloads at service boundaries.
-- Avoid exposing internal topology details via public errors.
+- SHOULD avoid exposing internal topology details via public errors.
 
 ## High-Risk Pitfalls
 1. Premature microservice adoption without clear boundaries.

@@ -22,7 +22,7 @@ review lifecycle rules.
 
 ## GitLab Specializations
 - Respect MR gates, including required checks and required approvals.
-- Do not use force-merge behavior to skip required gates.
+- MUST NOT use force-merge behavior to skip required gates.
 - Use GitLab code suggestions for small, localized fixes.
 
 ## Review Thread Ownership

@@ -16,7 +16,7 @@ Guidance for AI agents implementing and reviewing Python code.
   weaken this baseline.
 
 ## Defaults
-- Prefer explicit, readable code over clever one-liners.
+- SHOULD prefer explicit, readable code over clever one-liners.
 - Use type hints for public APIs and complex internal boundaries.
 - Keep module boundaries cohesive and side effects explicit.
 - Use virtual environments and pinned dependencies for reproducibility.
@@ -25,17 +25,17 @@ Guidance for AI agents implementing and reviewing Python code.
 ## Typing and API Design
 - Type public function/method signatures and return values.
 - Use domain-specific types/dataclasses for structured business data.
-- Avoid broad `Any` usage unless explicitly justified.
+- SHOULD avoid broad `Any` usage unless explicitly justified.
 - Keep `Optional`/`None` handling explicit at call boundaries.
 
 ## Error Handling and Resource Safety
 - Raise specific exceptions with actionable context.
-- Do not swallow exceptions silently.
+- MUST NOT swallow exceptions silently.
 - Use context managers for files/sockets/transactions/locks.
 - Preserve root cause context when mapping exceptions at boundaries.
 
 ## State, Concurrency, and Async Rules
-- Avoid shared mutable global state by default.
+- SHOULD avoid shared mutable global state by default.
 - Keep thread/process safety explicit when concurrency is used.
 - Use `async`/`await` for IO-bound concurrency, not CPU-bound work.
 - Keep async cancellation and timeout behavior explicit for external calls.

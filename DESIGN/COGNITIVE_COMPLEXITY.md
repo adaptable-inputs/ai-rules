@@ -38,7 +38,7 @@ thresholds conservatively.
 
 ## Complexity Reduction Heuristics
 - Extract nested decision logic into named methods with single responsibility.
-- Prefer early return/guard clauses to flatten nested condition pyramids.
+- SHOULD prefer early return/guard clauses to flatten nested condition pyramids.
 - Separate orchestration from domain decision logic.
 - Replace branch-heavy variant handling with Strategy/Polymorphism where
   variation is stable.

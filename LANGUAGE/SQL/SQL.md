@@ -27,13 +27,13 @@ Guidance for AI agents implementing and reviewing SQL.
 - Use explicit primary keys and foreign key constraints unless there is a
   documented reason not to.
 - Keep migrations forward-only and idempotent where feasible.
-- Prefer additive schema changes for compatibility.
+- SHOULD prefer additive schema changes for compatibility.
 - Backfill large data in batches to avoid long locks.
 
 ## Query Performance Rules
 - Design indexes for real access patterns, not assumptions.
 - Validate query plans for hot-path queries.
-- Avoid N+1 query patterns; batch or join intentionally.
+- SHOULD avoid N+1 query patterns; batch or join intentionally.
 - Use pagination for large result sets.
 - Be explicit with join cardinality and filtering predicates.
 
@@ -44,9 +44,9 @@ Guidance for AI agents implementing and reviewing SQL.
 - Keep write ordering deterministic when consistency depends on it.
 
 ## Security Rules
-- Never interpolate untrusted input into SQL strings.
+- MUST NOT interpolate untrusted input into SQL strings.
 - Minimize granted DB privileges by role.
-- Avoid returning sensitive columns unless required.
+- SHOULD avoid returning sensitive columns unless required.
 - Treat migration scripts as security-sensitive artifacts.
 
 ## High-Risk Pitfalls

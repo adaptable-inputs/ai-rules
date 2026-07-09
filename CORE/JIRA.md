@@ -21,7 +21,7 @@ Guidance for AI agents creating and updating Jira tickets and Jira summaries.
 - Keep descriptions structured and scannable; avoid large prose blocks.
 - Keep acceptance criteria testable and observable.
 - Keep language factual and implementation-neutral where possible.
-- Always link related code-delivery artifacts (branch, PR/MR, release notes)
+- MUST link related code-delivery artifacts (branch, PR/MR, release notes)
   when reporting status.
 
 ## Ticket Description Edit Policy (Mandatory)
@@ -141,7 +141,7 @@ rewrite a description.
 - Keep implementation bullets short and non-detailed.
 - Include all MRs/PRs in every delivery summary; do not omit partial or
   supporting merge requests.
-- Always include PO and QA guidance on what to validate.
+- MUST include PO and QA guidance on what to validate.
 
 ### 1. Single-Ticket Delivery Summary
 ```md

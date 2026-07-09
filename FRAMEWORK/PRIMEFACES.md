@@ -19,36 +19,36 @@ Guidance for AI agents implementing and reviewing PrimeFaces/JSF projects.
 - Keep business logic in services/use-cases, not backing beans.
 - Use explicit bean scopes (`@RequestScoped`, `@ViewScoped`, `@SessionScoped`)
   based on lifecycle need.
-- Prefer reusable composites/components for repeated UI patterns.
+- SHOULD prefer reusable composites/components for repeated UI patterns.
 
 ## State and Scope Rules
 - Keep view/session state minimal.
-- Avoid storing large mutable graphs in session scope.
+- SHOULD avoid storing large mutable graphs in session scope.
 - Keep conversation state explicit; clear state on flow completion.
-- Do not use broader scope than needed.
+- MUST NOT use broader scope than needed.
 
 ## Component and Ajax Usage
 - Keep partial updates targeted (`update`/`process` scopes explicit).
-- Avoid broad page re-renders for small interactions.
+- SHOULD avoid broad page re-renders for small interactions.
 - Keep component IDs stable and predictable.
-- Prefer declarative component configuration over heavy imperative JS hacks.
+- SHOULD prefer declarative component configuration over heavy imperative JS hacks.
 
 ## Validation and Error Handling
 - Use Bean Validation for model constraints.
 - Keep validation messages user-actionable.
 - Handle conversion/validation failures consistently.
-- Avoid swallowing backend exceptions in UI layer.
+- SHOULD avoid swallowing backend exceptions in UI layer.
 
 ## Performance Baseline
 - Minimize component tree complexity in heavy pages.
-- Avoid unnecessary nested forms/components.
+- SHOULD avoid unnecessary nested forms/components.
 - Lazy-load large datasets where possible.
 - Profile expensive render phases and optimize high-cost components.
 
 ## Security Baseline
 - Enforce authorization on backend operations, not only UI rendering.
 - Protect against CSRF/XSS with framework and platform controls.
-- Avoid exposing sensitive data in hidden fields/view state.
+- SHOULD avoid exposing sensitive data in hidden fields/view state.
 - Keep file upload and input handling strictly validated.
 
 ## High-Risk Pitfalls

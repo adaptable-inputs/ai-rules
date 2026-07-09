@@ -15,36 +15,36 @@ Guidance for AI agents implementing and reviewing CSS.
   should not weaken accessibility or maintainability constraints.
 
 ## Defaults
-- Prefer low-specificity, composable selectors.
+- SHOULD prefer low-specificity, composable selectors.
 - Use design tokens/variables for colors, spacing, typography, and sizing.
 - Keep style concerns separate from markup structure where practical.
-- Prefer modern layout systems (`flex`, `grid`) over float/position hacks.
+- SHOULD prefer modern layout systems (`flex`, `grid`) over float/position hacks.
 - Keep responsive behavior mobile-first unless project constraints differ.
 
 ## Selector and Specificity Rules
-- Avoid IDs in selectors for styling.
+- SHOULD avoid IDs in selectors for styling.
 - Keep selector depth shallow.
-- Avoid `!important` except for controlled utility/override cases with
+- SHOULD avoid `!important` except for controlled utility/override cases with
   documented rationale.
-- Prefer class-based selectors over element and descendant-heavy chains.
+- SHOULD prefer class-based selectors over element and descendant-heavy chains.
 - Keep state styles explicit (`is-active`, `has-error` patterns).
 
 ## Architecture and Reuse
 - Use consistent naming strategy (BEM/utility/component-based) per project.
 - Co-locate component styles with component ownership boundaries.
-- Avoid global leakage; scope styles where tooling supports it.
+- SHOULD avoid global leakage; scope styles where tooling supports it.
 - Remove dead styles during refactors.
 
 ## Accessibility and UX Baseline
 - Preserve visible focus indicators for keyboard navigation.
 - Ensure color contrast meets accessibility requirements.
-- Do not communicate state by color alone.
+- MUST NOT communicate state by color alone.
 - Respect user preferences (`prefers-reduced-motion`, dark mode policy where
   applicable).
 
 ## Performance Baseline
-- Avoid expensive selectors and overly broad wildcard patterns.
-- Avoid unnecessary layout thrash via frequent class/style mutations.
+- SHOULD avoid expensive selectors and overly broad wildcard patterns.
+- SHOULD avoid unnecessary layout thrash via frequent class/style mutations.
 - Keep animation properties to performant transforms/opacity when possible.
 - Limit large paint-heavy effects on scrolling/high-frequency interactions.
 

@@ -17,7 +17,7 @@ values in Java.
 - Cross-cutting baselines are inherited transitively via the parents above.
 
 ## Defaults
-- Always prefer JavaMoney (`javax.money`, typically implemented with Moneta)
+- MUST prefer JavaMoney (`javax.money`, typically implemented with Moneta)
   for monetary values in Java.
 - Model business monetary amounts as `MonetaryAmount` (or domain wrappers
   around it), not `BigDecimal` alone.
@@ -28,7 +28,7 @@ values in Java.
 
 ## Modeling and API Design
 - Use `MonetaryAmount` in domain/service method parameters and return types.
-- Do not pass `(BigDecimal amount, String currency)` pairs through internal
+- MUST NOT pass `(BigDecimal amount, String currency)` pairs through internal
   APIs.
 - Keep conversion to/from persistence and transport models in boundary adapters.
 - Use dedicated domain value objects when additional invariants are required

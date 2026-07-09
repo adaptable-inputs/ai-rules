@@ -13,22 +13,22 @@ Guidance for AI agents implementing and reviewing Tailwind CSS code.
   preserve this file's maintainability constraints.
 
 ## Defaults
-- Prefer utility-first styling with clear class grouping by concern
+- SHOULD prefer utility-first styling with clear class grouping by concern
   (layout, spacing, typography, color, state).
 - Keep class lists readable and intentional.
 - Use design tokens via Tailwind theme configuration instead of ad-hoc values.
-- Prefer component extraction when class lists become repetitive or complex.
+- SHOULD prefer component extraction when class lists become repetitive or complex.
 
 ## Utility and Composition Rules
 - Keep utilities local to component intent.
-- Avoid giant one-off class strings with many conditionals.
-- Prefer reusable abstractions for repeated UI patterns.
+- SHOULD avoid giant one-off class strings with many conditionals.
+- SHOULD prefer reusable abstractions for repeated UI patterns.
 - Use `@apply` sparingly and only when it improves maintainability.
 - Keep variant usage (`sm:`, `md:`, `hover:`, `focus:`) predictable and minimal.
 
 ## Design System Alignment
 - Centralize colors, spacing, typography scales in config.
-- Avoid arbitrary values unless genuinely required.
+- SHOULD avoid arbitrary values unless genuinely required.
 - Keep naming aligned with design language, not implementation details.
 - Review custom plugins/utilities for long-term maintainability.
 
@@ -36,14 +36,14 @@ Guidance for AI agents implementing and reviewing Tailwind CSS code.
 - Preserve focus-visible states.
 - Ensure color contrast compliance.
 - Ensure disabled/loading/error states are visually and semantically clear.
-- Avoid motion-heavy transitions without reduced-motion consideration.
+- SHOULD avoid motion-heavy transitions without reduced-motion consideration.
 
 ## Performance Baseline
 - Ensure content paths are configured so unused classes are purged.
-- Avoid dynamically constructed class names that evade static extraction.
+- SHOULD avoid dynamically constructed class names that evade static extraction.
 - Keep generated CSS size bounded and monitored through the project's build and
   delivery standards.
-- Prefer stable class composition over runtime string-generation complexity.
+- SHOULD prefer stable class composition over runtime string-generation complexity.
 
 ## High-Risk Pitfalls
 1. Utility sprawl making components unreadable.

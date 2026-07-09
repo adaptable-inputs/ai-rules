@@ -16,7 +16,7 @@ Guidance for AI agents implementing and reviewing Swift code.
   weaken this baseline.
 
 ## Defaults
-- Prefer value semantics (`struct`, immutable state) when practical.
+- SHOULD prefer value semantics (`struct`, immutable state) when practical.
 - Keep optional handling explicit and avoid force-unwrapping in runtime paths.
 - Use Swift concurrency (`async`/`await`, actors) with explicit isolation.
 - Keep API contracts and error paths explicit and testable.
@@ -24,20 +24,20 @@ Guidance for AI agents implementing and reviewing Swift code.
 
 ## Optionals and Type Contracts
 - Model absence with optionals intentionally.
-- Avoid `!` unless a bounded invariant is proven and documented.
+- SHOULD avoid `!` unless a bounded invariant is proven and documented.
 - Keep boundary parsing/validation explicit for external input.
 - Use enums/value objects for constrained domain states where suitable.
 
 ## Concurrency and Isolation Rules
 - Use structured concurrency for async workflows.
 - Use actors or other safe synchronization for shared mutable state.
-- Avoid blocking the main actor with long-running work.
+- SHOULD avoid blocking the main actor with long-running work.
 - Keep cancellation and timeout behavior explicit for external IO.
 - Keep task ownership/lifecycle clear to avoid orphaned async work.
 
 ## Error and Resource Handling
 - Throw/map specific errors with actionable context.
-- Do not suppress errors silently.
+- MUST NOT suppress errors silently.
 - Use deterministic cleanup for files/network/resources.
 - Preserve cause context when mapping low-level failures.
 

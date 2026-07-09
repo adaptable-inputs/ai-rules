@@ -25,14 +25,14 @@ configuration and operations choices.
 - Keep labeling standards mandatory for ownership, environment, and cost center.
 
 ## Identity and Access Guardrails
-- Prefer workload identity federation and short-lived credentials.
+- SHOULD prefer workload identity federation and short-lived credentials.
 - Minimize broad primitive roles and high-privilege grants.
 - Keep service-account key creation heavily restricted and monitored.
 - Keep cross-project access explicit and least-privilege.
 
 ## Network and Data Protection
 - Keep VPC/firewall intent explicit and least-open.
-- Avoid broad ingress/egress rules unless explicitly justified.
+- SHOULD avoid broad ingress/egress rules unless explicitly justified.
 - Keep sensitive services private behind controlled access layers.
 - Enforce key-management and secret handling controls for regulated data paths.
 

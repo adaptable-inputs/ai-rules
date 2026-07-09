@@ -16,7 +16,7 @@ Guidance for AI agents implementing and reviewing YAML configuration files.
 
 ## Defaults
 - Keep YAML files deterministic and explicit.
-- Prefer spaces over tabs (tabs are invalid in YAML indentation).
+- SHOULD prefer spaces over tabs (tabs are invalid in YAML indentation).
 - Keep indentation consistent (typically 2 spaces unless ecosystem demands 4).
 - Keep keys stable and semantically named.
 - Keep list item structure consistent across entries.
@@ -24,25 +24,25 @@ Guidance for AI agents implementing and reviewing YAML configuration files.
 ## Type and Parsing Safety
 - Quote ambiguous scalars when type ambiguity is risky (`on`, `off`, `yes`,
   `no`, version-like numbers, leading-zero values).
-- Prefer explicit booleans and numbers when schema expects them.
-- Avoid relying on parser-specific coercion behavior.
+- SHOULD prefer explicit booleans and numbers when schema expects them.
+- SHOULD avoid relying on parser-specific coercion behavior.
 - Keep date/time values explicit and consistently formatted.
 
 ## Anchors, Aliases, and Merge Keys
 - Use anchors/aliases sparingly and only when they improve maintainability.
-- Avoid deep merge trees that obscure effective configuration.
-- Prefer explicit repetition over complex indirection when readability suffers.
+- SHOULD avoid deep merge trees that obscure effective configuration.
+- SHOULD prefer explicit repetition over complex indirection when readability suffers.
 - Document non-obvious anchor/merge usage in nearby comments.
 
 ## Secrets and Security
-- Never commit plaintext secrets in YAML files.
+- MUST NOT commit plaintext secrets in YAML files.
 - Use secret references/injection mechanisms provided by target platform.
 - Keep environment-specific secret values outside source control.
 - Validate secret key names and expected presence in deployment pipelines.
 
 ## Environment and Drift Management
 - Keep base and environment overlays aligned with clear override intent.
-- Avoid copy-paste divergence across environment files.
+- SHOULD avoid copy-paste divergence across environment files.
 - Track schema version fields explicitly when supported.
 - Keep default values safe; production overrides should be minimal and explicit.
 

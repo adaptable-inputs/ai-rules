@@ -14,7 +14,7 @@ Guidance for AI agents implementing and reviewing shell scripts.
   constraints here.
 
 ## Defaults
-- Prefer Bash for non-trivial scripts and declare interpreter explicitly
+- SHOULD prefer Bash for non-trivial scripts and declare interpreter explicitly
   (`#!/usr/bin/env bash`).
 - Enable strict mode for Bash scripts:
   `set -euo pipefail` and safe `IFS` handling when needed.
@@ -30,22 +30,22 @@ Guidance for AI agents implementing and reviewing shell scripts.
 - Keep exit codes meaningful and consistent.
 
 ## Security Guardrails
-- Never build shell commands by concatenating untrusted input.
-- Avoid `eval` unless there is no alternative and input is tightly controlled.
-- Do not print secrets/tokens to logs.
+- MUST NOT build shell commands by concatenating untrusted input.
+- SHOULD avoid `eval` unless there is no alternative and input is tightly controlled.
+- MUST NOT print secrets/tokens to logs.
 - Use least-privilege execution; avoid unnecessary `sudo`.
 - Validate file paths and arguments before destructive operations.
 
 ## Portability and Environment
 - Be explicit about shell features requiring Bash vs POSIX sh.
-- Avoid relying on environment-specific behavior without checks.
+- SHOULD avoid relying on environment-specific behavior without checks.
 - Use `command -v` for dependency checks.
-- Avoid hidden reliance on interactive shell state.
+- SHOULD avoid hidden reliance on interactive shell state.
 
 ## Data and Loop Handling
-- Prefer arrays over word-splitting where Bash arrays are available.
+- SHOULD prefer arrays over word-splitting where Bash arrays are available.
 - Use `read -r` to preserve backslashes.
-- Avoid parsing command output with brittle text assumptions when machine-
+- SHOULD avoid parsing command output with brittle text assumptions when machine-
   readable alternatives exist.
 - Be careful with globbing and empty-match behavior.
 

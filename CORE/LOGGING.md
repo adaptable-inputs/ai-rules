@@ -20,7 +20,7 @@ Guidance for AI agents implementing and reviewing logging behavior.
 - Use structured logs (JSON or stable key-value pairs), not free-form strings.
 - Emit one log entry per meaningful event; avoid duplicate logs for the same
   failure path.
-- Always include stable context keys:
+- MUST include stable context keys:
   `timestamp`, `level`, `service`, `component`, `operation`, `traceId`
   (or equivalent correlation key).
 - Keep message text concise and action-oriented; put variable context in fields.
@@ -37,14 +37,14 @@ Guidance for AI agents implementing and reviewing logging behavior.
   termination.
 
 Level selection rules:
-- Do not log expected domain outcomes as `ERROR` (for example validation
+- MUST NOT log expected domain outcomes as `ERROR` (for example validation
   failures caused by user input).
-- Do not log the same exception at multiple layers unless each layer adds
+- MUST NOT log the same exception at multiple layers unless each layer adds
   distinct value.
 - If an exception is rethrown unchanged, log it at one boundary only.
 
 ## Event Design Rules
-- Prefer event names that describe domain intent (`invoice.paid`,
+- SHOULD prefer event names that describe domain intent (`invoice.paid`,
   `auth.login.failed`) over technical noise.
 - Keep key names stable over time; treat field renames as compatibility
   changes for dashboards/alerts.
@@ -54,9 +54,9 @@ Level selection rules:
   `sampled=true/false`).
 
 ## Sensitive Data and Privacy Guardrails
-- Never log secrets: passwords, API keys, tokens, private keys, session
+- MUST NOT log secrets: passwords, API keys, tokens, private keys, session
   secrets, connection strings with credentials.
-- Do not log full personal data payloads; log minimal identifiers only when
+- MUST NOT log full personal data payloads; log minimal identifiers only when
   needed for supportability and allowed by policy.
 - Redact or hash sensitive identifiers before emission.
 - If uncertain whether data is sensitive, treat it as sensitive and redact.
@@ -64,12 +64,12 @@ Level selection rules:
   sensitive request payload fragments.
 
 ## Cardinality and Volume Control
-- Avoid unbounded/high-cardinality fields in indexed logs:
+- SHOULD avoid unbounded/high-cardinality fields in indexed logs:
   raw user input, full URLs with query strings, full stack traces as labels,
   random IDs as metric labels.
 - Put high-cardinality details in non-indexed payload fields when required.
 - Apply rate limiting or sampling for repetitive failures and noisy warnings.
-- Never log inside tight loops at `INFO`/`WARN`/`ERROR` without throttling.
+- MUST NOT log inside tight loops at `INFO`/`WARN`/`ERROR` without throttling.
 - Ensure retries do not multiply identical log storms.
 
 ## Error Logging and Exception Boundaries
@@ -91,7 +91,7 @@ Level selection rules:
 ## Operational Reliability
 - Logging failures must never crash core request handling.
 - Use async/non-blocking appenders carefully; define backpressure/drop policy.
-- Prefer bounded queues over unbounded memory growth in logging pipelines.
+- SHOULD prefer bounded queues over unbounded memory growth in logging pipelines.
 - Validate log formatter behavior under malformed payloads.
 
 ## High-Risk Pitfalls

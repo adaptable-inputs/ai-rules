@@ -24,18 +24,18 @@ Guidance for AI agents implementing and reviewing PHP code.
 
 ## Typing and API Contracts
 - Type parameters, return values, and properties where supported.
-- Avoid mixed/dynamic shapes for core domain contracts.
+- SHOULD avoid mixed/dynamic shapes for core domain contracts.
 - Use value objects/DTOs for structured domain data.
 - Validate external input at boundaries before domain processing.
 
 ## Error and Resource Handling
 - Throw/map specific exception types with actionable context.
-- Do not suppress errors silently.
+- MUST NOT suppress errors silently.
 - Use deterministic cleanup for external resources (files/sockets/locks).
 - Keep error-to-response mapping explicit at API boundaries.
 
 ## State and Side-Effect Control
-- Avoid hidden mutable globals and implicit state.
+- SHOULD avoid hidden mutable globals and implicit state.
 - Keep side effects explicit in service boundaries.
 - Keep static state and singleton usage minimal and intentional.
 - Keep IO interactions isolated for testability.

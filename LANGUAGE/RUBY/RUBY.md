@@ -16,7 +16,7 @@ Guidance for AI agents implementing and reviewing Ruby code.
   weaken this baseline.
 
 ## Defaults
-- Prefer explicit object contracts over ad-hoc dynamic behavior.
+- SHOULD prefer explicit object contracts over ad-hoc dynamic behavior.
 - Keep domain logic separate from framework/transport concerns.
 - Keep side effects explicit and isolated to boundary layers.
 - Keep dependency usage minimal and maintainable.
@@ -25,17 +25,17 @@ Guidance for AI agents implementing and reviewing Ruby code.
 ## API and Object Design
 - Keep class/module responsibilities cohesive.
 - Use explicit method arguments and return expectations for critical paths.
-- Avoid metaprogramming for core business logic when plain Ruby is clearer.
+- SHOULD avoid metaprogramming for core business logic when plain Ruby is clearer.
 - Keep mutation boundaries intentional and documented.
 
 ## Error Handling and Reliability
 - Raise/map specific exceptions with contextual information.
-- Do not rescue broad exceptions without bounded rationale.
+- MUST NOT rescue broad exceptions without bounded rationale.
 - Keep retries/timeouts explicit for external dependencies.
 - Preserve root cause context when mapping errors at boundaries.
 
 ## State and Side-Effect Control
-- Avoid hidden global state and implicit mutable singletons.
+- SHOULD avoid hidden global state and implicit mutable singletons.
 - Keep transactional boundaries explicit for stateful operations.
 - Keep IO operations at service/adapter boundaries for testability.
 - Keep logging redacted and purpose-minimal for sensitive fields.

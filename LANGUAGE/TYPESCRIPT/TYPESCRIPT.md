@@ -26,12 +26,12 @@ Guidance for AI agents implementing and reviewing TypeScript code.
   enable only with explicit rationale.
 
 ## Typing Strategy
-- Prefer precise domain types over broad primitives and ad-hoc objects.
-- Prefer `type` aliases for unions/utility composition and `interface` for
+- SHOULD prefer precise domain types over broad primitives and ad-hoc objects.
+- SHOULD prefer `type` aliases for unions/utility composition and `interface` for
   extendable object contracts; use whichever is clearer for the case.
-- Avoid `any`.
+- SHOULD avoid `any`.
   If unavoidable at a boundary, isolate it and narrow immediately.
-- Prefer `unknown` for untrusted inputs and narrow with type guards.
+- SHOULD prefer `unknown` for untrusted inputs and narrow with type guards.
 - Model state variants with discriminated unions instead of boolean flags.
 - Use `readonly` for immutable APIs and value objects.
 
@@ -67,7 +67,7 @@ Guidance for AI agents implementing and reviewing TypeScript code.
   replace it with a named type.
 - If fields encode domain semantics, promote immediately
   (for example pricing, tax, policy, risk, authorization).
-- Do not accept `object`, `Record<string, unknown>`, or `any` for
+- MUST NOT accept `object`, `Record<string, unknown>`, or `any` for
   domain-shaped data contracts.
 - In public APIs, prefer named parameter/return types;
   callers may still pass inline literals when structural typing permits.
@@ -76,20 +76,20 @@ Guidance for AI agents implementing and reviewing TypeScript code.
 - TypeScript types do not validate runtime data.
 - Validate untrusted external data at boundaries (HTTP, queue, env, file).
 - Convert validated payloads into internal domain types before deeper logic.
-- Do not expose transport-layer DTOs as internal domain models by default.
+- MUST NOT expose transport-layer DTOs as internal domain models by default.
 
 ## Nullability and Optionality
 - Keep `null`/`undefined` handling explicit.
-- Avoid non-null assertions (`!`) unless a documented invariant exists.
-- Prefer control-flow narrowing and guard functions over assertions.
+- SHOULD avoid non-null assertions (`!`) unless a documented invariant exists.
+- SHOULD prefer control-flow narrowing and guard functions over assertions.
 - Use optional properties intentionally; avoid optional fields for required
   lifecycle states.
 
 ## API and Module Design
 - Keep public API signatures stable and explicit.
-- Prefer return types that communicate failure explicitly
+- SHOULD prefer return types that communicate failure explicitly
   (`Result`-like unions, typed errors) for expected error paths.
-- Avoid large "utility" modules mixing unrelated concerns.
+- SHOULD avoid large "utility" modules mixing unrelated concerns.
 - Keep module side effects explicit and minimal.
 
 ## Naming Conventions
@@ -102,29 +102,29 @@ Guidance for AI agents implementing and reviewing TypeScript code.
 - Treat abbreviations as one word for casing (`userId`, `httpServer`).
 
 ## Enums and Alternatives
-- Prefer union literals (`type Status = "Draft" | "Published"`) when values
+- SHOULD prefer union literals (`type Status = "Draft" | "Published"`) when values
   are simple and no runtime enum object is required.
 - Use enums when runtime reflection/iteration or interop requires them.
-- Avoid heterogeneous enums.
-- Prefer explicit string values for externally persisted or serialized enums.
+- SHOULD avoid heterogeneous enums.
+- SHOULD prefer explicit string values for externally persisted or serialized enums.
 
 ## Error Handling
 - Throw `Error` subclasses with actionable context.
-- Do not throw raw strings or untyped objects.
+- MUST NOT throw raw strings or untyped objects.
 - Preserve error cause chains when wrapping.
 - For async paths, ensure rejected promises are observed and handled.
 
 ## Decorators and JSDoc Order
 - For decorated classes, place JSDoc immediately above the top-most decorator.
 - Keep decorators contiguous and directly above the class declaration.
-- Do not place JSDoc between a decorator and the class declaration.
+- MUST NOT place JSDoc between a decorator and the class declaration.
 - Use one ordering style consistently across the codebase to avoid formatter and
   tooling ambiguity.
 
 ## Performance and Build Hygiene
-- Avoid unnecessary type-level complexity that harms compile performance.
+- SHOULD avoid unnecessary type-level complexity that harms compile performance.
 - Keep deeply recursive conditional types bounded and documented.
-- Avoid broad barrel exports that cause accidental import bloat.
+- SHOULD avoid broad barrel exports that cause accidental import bloat.
 - Use `import type` whenever an import is referenced only in type positions.
 
 ## High-Risk Pitfalls

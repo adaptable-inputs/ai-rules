@@ -19,9 +19,9 @@ Guidance for AI agents implementing and reviewing Kubernetes manifests.
 - Use namespaces and RBAC intentionally.
 
 ## Workload and Rollout Rules
-- Prefer rolling updates with controlled surge/unavailable values.
+- SHOULD prefer rolling updates with controlled surge/unavailable values.
 - Keep replica counts and autoscaling policy explicit.
-- Avoid mutable image tags (`latest`) in production.
+- SHOULD avoid mutable image tags (`latest`) in production.
 - Use `PodDisruptionBudget` for critical services.
 - Keep rollout/rollback strategy documented for critical apps.
 
@@ -39,7 +39,7 @@ Guidance for AI agents implementing and reviewing Kubernetes manifests.
 ## Configuration and Secrets
 - Separate config by environment with controlled overlays.
 - Keep config maps/secrets versioned and auditable.
-- Avoid coupling runtime behavior to undocumented env vars.
+- SHOULD avoid coupling runtime behavior to undocumented env vars.
 
 ## Observability and Operations
 - Expose metrics/logging in a platform-compatible way.

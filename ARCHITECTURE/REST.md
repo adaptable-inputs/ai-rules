@@ -29,7 +29,7 @@ Guidance for AI agents implementing and reviewing REST-style APIs.
 - `PUT`: full replacement, idempotent.
 - `PATCH`: partial update with explicit patch semantics.
 - `DELETE`: remove/deactivate resource with clear idempotency expectations.
-- Do not overload methods with mismatched behavior.
+- MUST NOT overload methods with mismatched behavior.
 
 ## Status Codes and Error Model
 - Use standard status codes consistently.
@@ -37,10 +37,10 @@ Guidance for AI agents implementing and reviewing REST-style APIs.
   (`code`, `message`, `details`, `traceId`).
 - Distinguish validation failures (`4xx`) from server/dependency failures
   (`5xx`).
-- Avoid returning `200` for failed operations.
+- SHOULD avoid returning `200` for failed operations.
 
 ## Versioning and Compatibility
-- Prefer backward-compatible additive changes.
+- SHOULD prefer backward-compatible additive changes.
 - Deprecate before removal and document timelines.
 - Version APIs only when compatibility cannot be preserved.
 - Keep response fields stable; avoid semantic field repurposing.
@@ -59,14 +59,14 @@ Guidance for AI agents implementing and reviewing REST-style APIs.
 
 ## Caching and Performance
 - Use cache headers intentionally for cacheable responses.
-- Avoid over-fetching payloads; use targeted representations.
+- SHOULD avoid over-fetching payloads; use targeted representations.
 - Keep response times predictable for hot paths and monitor SLA-critical
   endpoints.
 
 ## Security Baseline
 - Enforce authentication and authorization at resource boundaries.
 - Validate and sanitize all input parameters/body fields.
-- Do not expose internal stack traces or sensitive fields in responses.
+- MUST NOT expose internal stack traces or sensitive fields in responses.
 - Rate-limit and monitor abusive access patterns.
 
 ## High-Risk Pitfalls

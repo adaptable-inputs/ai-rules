@@ -15,16 +15,16 @@ Guidance for AI agents implementing and reviewing GraphQL APIs.
   GraphQL contract and query-safety constraints.
 
 ## Schema Design Defaults
-- Prefer schema-first design with explicit contracts.
+- SHOULD prefer schema-first design with explicit contracts.
 - Use clear domain naming for types, fields, and operations.
 - Keep type nullability intentional; avoid accidental nullable sprawl.
 - Separate input and output models explicitly.
-- Avoid exposing persistence-internal shape directly in schema.
+- SHOULD avoid exposing persistence-internal shape directly in schema.
 
 ## Evolution and Compatibility
-- Prefer additive changes.
+- SHOULD prefer additive changes.
 - Deprecate fields before removal and document migration timelines.
-- Avoid semantic redefinition of existing fields.
+- SHOULD avoid semantic redefinition of existing fields.
 - Version at graph/domain boundary only when compatibility cannot be preserved.
 
 ## Resolver Architecture
@@ -42,13 +42,13 @@ Guidance for AI agents implementing and reviewing GraphQL APIs.
 
 ## Caching and Consistency
 - Define cacheability and invalidation strategy per field/resource class.
-- Avoid caching staleness-sensitive data without clear TTL/invalidation rules.
+- SHOULD avoid caching staleness-sensitive data without clear TTL/invalidation rules.
 - Keep mutation side effects explicit for downstream cache invalidation.
 
 ## Error Handling
 - Keep GraphQL errors machine-readable via `extensions.code` (or equivalent).
 - Distinguish authorization, validation, and internal failures.
-- Avoid leaking sensitive internals in error messages.
+- SHOULD avoid leaking sensitive internals in error messages.
 - Ensure partial-data-with-errors behavior is intentional and documented.
 
 ## Security Baseline

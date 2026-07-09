@@ -22,7 +22,7 @@ Formatting and naming decisions must follow this order:
 3. Project-local conventions that do not conflict with 1 or 2.
 
 Rules:
-- Do not override established language standards with team preference.
+- MUST NOT override established language standards with team preference.
 - If multiple style tools exist, choose one canonical formatter/linter path.
 - Resolve ambiguity by favoring consistency with existing code in the module.
 
@@ -33,13 +33,13 @@ Rules:
 - In multiline comma-separated lists, keep one item per line.
 - Use trailing delimiters in multiline lists when language/tooling supports it.
 - Keep import/group ordering deterministic.
-- Avoid alignment formatting that is fragile under edits.
+- SHOULD avoid alignment formatting that is fragile under edits.
 
 ## Naming Baseline
 - Use English names by default.
 - Domain-native non-English terms are acceptable when they are canonical,
   precise, and consistently used.
-- Prefer descriptive names over compressed/cryptic names.
+- SHOULD prefer descriptive names over compressed/cryptic names.
 - Names should express intent and role, not implementation mechanics.
 - Keep naming consistent within module boundaries.
 
@@ -54,15 +54,15 @@ Apply language-standard casing as default:
   pattern.
 
 ## Abbreviation Policy
-- Avoid abbreviations unless broadly recognized.
+- SHOULD avoid abbreviations unless broadly recognized.
 - Initialism casing must follow the target language/ecosystem style guide.
 - When the language style does not mandate all-caps initialisms, treat
   abbreviations as one word for casing (`userId`, `httpClient`, `xmlParser`).
-- Do not mix styles for the same identifier family in one codebase.
-- Prefer expanding obscure domain shorthand in public APIs.
+- MUST NOT mix styles for the same identifier family in one codebase.
+- SHOULD prefer expanding obscure domain shorthand in public APIs.
 
 ## Identifier Quality Rules
-- Prefer semantic/domain types over raw basic types (`String`, numeric types)
+- SHOULD prefer semantic/domain types over raw basic types (`String`, numeric types)
   when language/runtime/library support makes that practical.
 - Boolean names should read as predicates (`isActive`, `hasAccess`).
 - Collections should use plural names.
@@ -70,8 +70,8 @@ Apply language-standard casing as default:
   over primitive numerics when feasible.
 - If basic numeric/string fields are still required, keep unit/domain semantics
   explicit in naming (`timeoutMs`, `expiresAt`, `orderId`).
-- Avoid misleading names that imply stronger guarantees than implementation.
-- Avoid generic names (`data`, `result`, `temp`) unless scope is tiny and clear.
+- SHOULD avoid misleading names that imply stronger guarantees than implementation.
+- SHOULD avoid generic names (`data`, `result`, `temp`) unless scope is tiny and clear.
 
 Pragmatic exceptions where basic types may be required:
 - External API/serialization contracts that mandate primitive/string shapes.
@@ -81,7 +81,7 @@ Pragmatic exceptions where basic types may be required:
 ## Comment and Documentation Naming
 - Keep comment terminology aligned with code identifiers.
 - Rename related comments/docs when renaming key identifiers.
-- Avoid stale terminology drift between code and documentation.
+- SHOULD avoid stale terminology drift between code and documentation.
 
 ## High-Risk Pitfalls
 1. Project-specific naming that contradicts language standards.

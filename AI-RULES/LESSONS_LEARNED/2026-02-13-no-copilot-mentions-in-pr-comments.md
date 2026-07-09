@@ -6,7 +6,7 @@ including autonomous implementation attempts that interfere with the intended
 issue/branch/PR ownership and review loop.
 
 ## Prevention
-- Do not mention `@copilot` in PR comments.
+- MUST NOT mention `@copilot` in PR comments.
 - Use passive polling for Copilot review status instead of comment mentions.
 - If a re-review is needed, use the repository PR review loop workflow without
   `@copilot` mentions.

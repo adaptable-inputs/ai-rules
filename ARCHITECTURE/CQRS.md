@@ -20,7 +20,7 @@ Responsibility Segregation (CQRS) architectures.
 ## CQRS Decision Rules
 - Use CQRS only when command and query concerns have materially different
   scaling, consistency, or model complexity.
-- Do not apply CQRS by default for simple CRUD domains.
+- MUST NOT apply CQRS by default for simple CRUD domains.
 - Document why separation is needed before introducing additional moving parts.
 
 ## Command-Side Rules

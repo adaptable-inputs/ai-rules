@@ -18,37 +18,37 @@ review.
 - Prioritize clarity over cleverness.
 - Keep code intent obvious for future maintainers.
 - Keep responsibilities cohesive and boundaries explicit.
-- Prefer incremental improvement over large speculative rewrites.
+- SHOULD prefer incremental improvement over large speculative rewrites.
 
 ## Naming and Intent
 - Use precise, domain-driven names.
-- Avoid ambiguous abbreviations.
+- SHOULD avoid ambiguous abbreviations.
 - Keep naming consistent across module boundaries.
 - Rename related symbols/comments when intent changes.
 
 ## Function and Method Design
 - Keep functions focused on one responsibility.
-- Avoid long parameter lists; group related data into value objects.
-- Prefer guard clauses over deep nested conditionals.
+- SHOULD avoid long parameter lists; group related data into value objects.
+- SHOULD prefer guard clauses over deep nested conditionals.
 - Keep side effects explicit.
 
 ## Error Handling
 - Fail fast on invalid input/invariants.
 - Use meaningful exception/error types.
-- Do not swallow errors silently.
+- MUST NOT swallow errors silently.
 - Keep error paths observable and actionable.
 
 ## Duplication and Abstraction
 - Remove duplication that increases maintenance risk.
-- Avoid premature abstraction with unclear reuse value.
+- SHOULD avoid premature abstraction with unclear reuse value.
 - Extract shared behavior when duplication is stable and semantic.
 - Keep abstractions aligned to domain concepts, not accidental code shape.
 
 ## Module and Dependency Hygiene
 - Keep modules cohesive and dependency direction clear.
-- Avoid cyclic dependencies.
+- SHOULD avoid cyclic dependencies.
 - Keep public APIs minimal and stable.
-- Avoid hidden coupling through globals/static mutable state.
+- SHOULD avoid hidden coupling through globals/static mutable state.
 
 ## High-Risk Pitfalls
 1. Clever compact code that hides intent.

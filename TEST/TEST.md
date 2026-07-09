@@ -13,7 +13,7 @@ Defines baseline testing expectations for all stacks and domains.
 
 ## Testing Defaults
 - Add or update tests for every behavior change.
-- Prefer deterministic and isolated tests.
+- SHOULD prefer deterministic and isolated tests.
 - Keep test suites fast enough for frequent CI execution.
 - Use risk-based depth: higher business/security impact requires stronger test
   coverage across layers.
@@ -30,7 +30,7 @@ Defines baseline testing expectations for all stacks and domains.
   - Keep suite small, stable, and non-flaky.
 
 ## Determinism and Flakiness Control
-- Avoid reliance on wall-clock time, random seeds, network timing, and shared
+- SHOULD avoid reliance on wall-clock time, random seeds, network timing, and shared
   mutable state without explicit control.
 - Use stable fixtures and explicit setup/teardown.
 - Control time/randomness with test doubles where feasible.
@@ -38,15 +38,15 @@ Defines baseline testing expectations for all stacks and domains.
 
 ## Mocks, Stubs, and Fakes
 - Mock boundaries, not core behavior under test.
-- Avoid over-mocking that hides integration risks.
+- SHOULD avoid over-mocking that hides integration risks.
 - Use fakes/stubs for dependencies that are slow, non-deterministic, or
   unavailable in the test environment.
 - Reset shared test doubles between tests to avoid cross-test coupling.
 
 ## Data and Fixtures
 - Keep fixtures in test-only paths.
-- Do not ship test fixtures in production artifacts.
-- Prefer minimal fixture data that expresses intent clearly.
+- MUST NOT ship test fixtures in production artifacts.
+- SHOULD prefer minimal fixture data that expresses intent clearly.
 - Use scenario-based datasets for edge and failure-path coverage.
 
 ## Coverage and Confidence

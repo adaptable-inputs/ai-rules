@@ -20,7 +20,7 @@ changes.
 - Use remote state backends with locking enabled.
 - Keep module boundaries clear and reusable; avoid monolithic root configs.
 - Keep variable and output contracts explicit and documented.
-- Prefer declarative data sources over imperative external scripts.
+- SHOULD prefer declarative data sources over imperative external scripts.
 
 ## Planning and Apply Rules
 - Run `terraform fmt` and `terraform validate` before plan/apply.
@@ -37,12 +37,12 @@ changes.
 
 ## Module and Dependency Discipline
 - Keep modules cohesive with clear inputs/outputs.
-- Avoid circular module dependencies and hidden provider coupling.
+- SHOULD avoid circular module dependencies and hidden provider coupling.
 - Keep provider aliases explicit when multi-account/multi-region applies.
-- Prefer explicit `depends_on` only when implicit graph is insufficient.
+- SHOULD prefer explicit `depends_on` only when implicit graph is insufficient.
 
 ## Secrets and Sensitive Data
-- Do not commit secrets in `.tf`, `.tfvars`, or generated plan artifacts.
+- MUST NOT commit secrets in `.tf`, `.tfvars`, or generated plan artifacts.
 - Mark sensitive outputs as `sensitive = true`.
 - Source secrets from secure stores and runtime injection paths.
 - Keep CI logs redacted for sensitive values.

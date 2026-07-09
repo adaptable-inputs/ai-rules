@@ -39,18 +39,18 @@ Guidance for AI agents implementing and reviewing Pulumi infrastructure changes.
 ## Stack and State Governance
 - Use secure backend/state storage and controlled access.
 - Keep stack isolation strict across dev/test/stage/prod.
-- Avoid sharing one stack across unrelated systems/teams.
+- SHOULD avoid sharing one stack across unrelated systems/teams.
 - Keep state access audited and least-privilege.
 
 ## Config and Secret Handling
 - Use Pulumi secret config for sensitive values.
-- Do not commit plaintext secrets in stack config files.
-- Prefer short-lived workload identity over static cloud credentials.
+- MUST NOT commit plaintext secrets in stack config files.
+- SHOULD prefer short-lived workload identity over static cloud credentials.
 - Keep sensitive outputs minimized and redacted in logs.
 
 ## Component and Dependency Discipline
 - Keep component abstractions cohesive and narrowly scoped.
-- Avoid hidden provider selection; pass provider context explicitly.
+- SHOULD avoid hidden provider selection; pass provider context explicitly.
 - Keep cross-stack references explicit, versioned, and bounded.
 - Prevent cyclic dependencies across stacks/components.
 

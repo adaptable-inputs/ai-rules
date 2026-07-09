@@ -15,7 +15,7 @@ Guidance for AI agents to use early return and guard clauses effectively.
   `DESIGN/SOLID.md`.
 
 ## Defaults and Guardrails
-- Prefer early return/guard clauses to keep the happy path linear.
+- SHOULD prefer early return/guard clauses to keep the happy path linear.
 - Validate inputs and preconditions early; on invalid or error states, return
   (or exit) immediately.
 - Reduce nested branching depth before extracting deeper abstractions.

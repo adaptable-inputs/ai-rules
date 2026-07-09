@@ -20,8 +20,8 @@ Guidance for AI agents implementing and reviewing Ionic applications.
   `SECURITY/SECURITY.md`, `TEST/TEST.md`, and `CORE/LOGGING.md`.
 
 ## Defaults and Guardrails
-- Prefer Ionic with Capacitor for modern mobile and web delivery.
-- Prefer official Ionic UI components before creating custom equivalents.
+- SHOULD prefer Ionic with Capacitor for modern mobile and web delivery.
+- SHOULD prefer official Ionic UI components before creating custom equivalents.
 - Keep UI concerns in pages/components and platform integration in dedicated
   services/adapters.
 - Keep native plugin usage behind small abstractions to simplify testing and
@@ -40,7 +40,7 @@ Guidance for AI agents implementing and reviewing Ionic applications.
 - Keep back-navigation behavior deterministic across iOS, Android, and web.
 
 ## Native Bridge and Plugin Policy
-- Prefer official Capacitor plugins before third-party plugins.
+- SHOULD prefer official Capacitor plugins before third-party plugins.
 - Validate plugin maintenance, platform support, and permission footprint
   before adoption.
 - Keep platform checks centralized in service boundaries, not scattered through
@@ -50,14 +50,14 @@ Guidance for AI agents implementing and reviewing Ionic applications.
 
 ## Performance and UX
 - Keep first-screen rendering lightweight and lazy-load deeper route trees.
-- Avoid unnecessary re-renders and large synchronous work on interaction paths.
+- SHOULD avoid unnecessary re-renders and large synchronous work on interaction paths.
 - Keep list rendering efficient (`trackBy`/stable keys, incremental loading).
 - Keep touch interactions responsive and avoid blocking animations with heavy
   synchronous logic.
 
 ## Security
-- Do not render untrusted HTML in Ionic views.
-- Do not persist secrets in plaintext storage.
+- MUST NOT render untrusted HTML in Ionic views.
+- MUST NOT persist secrets in plaintext storage.
 - Keep token/session storage strategy aligned with project security policy.
 - Validate deep-link and external-intent inputs before navigation or execution.
 

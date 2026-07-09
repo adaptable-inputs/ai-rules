@@ -29,7 +29,7 @@ Guidance for AI agents creating implementation plans.
 - In downstream-projects, also read every Markdown file transitively reachable
   from the downstream extension entry point described in
   `AI-RULES/DOWNSTREAM-PROJECT.md`.
-- Do not skip reachable Markdown files and do not pick files ad-hoc.
+- MUST NOT skip reachable Markdown files and do not pick files ad-hoc.
 - After the full read is complete, irrelevant rules may be removed from active
   context.
 
@@ -38,7 +38,7 @@ Guidance for AI agents creating implementation plans.
 - The plan may be lightweight for low-risk, trivial changes, but it must still
   be decision-complete for its scope and risk while stating required elements
   tersely.
-- Do not start implementation when no plan exists.
+- MUST NOT start implementation when no plan exists.
 
 ## Plan Step Ordering Gates (Mandatory)
 - Every plan must include a ruleset-read step as the very first task.
@@ -64,18 +64,18 @@ risk; never omit one:
 
 ## Plan Quality Rules
 - Keep steps concrete and implementable.
-- Avoid ambiguous TODO-style phrasing.
+- SHOULD avoid ambiguous TODO-style phrasing.
 - Keep assumptions explicit; avoid hidden decisions.
 - Mark where follow-up issues are needed.
 - Keep plan aligned with one-issue/one-branch/one-PR workflow when required.
 - Prioritize system-level architecture and design decisions in planning.
-- Do not over-index on fine-grained implementation details that are better
+- MUST NOT over-index on fine-grained implementation details that are better
   handled during execution unless they materially change risk/scope.
 
 ## Risk and Dependency Handling
 - Identify external dependencies and blockers early.
 - Call out coupling across layers and documents.
-- Prefer dependency-first ordering (parent constraints before child
+- SHOULD prefer dependency-first ordering (parent constraints before child
   specialization).
 - Include rollback options for high-impact changes.
 

@@ -17,10 +17,10 @@ Security is a non-negotiable baseline across all stacks and domains.
   optional integrations by default.
 - Apply least privilege to identities, tokens, credentials, and runtime roles.
 - Fail closed on authentication/authorization checks.
-- Prefer defense in depth (multiple controls) over single-point controls.
+- SHOULD prefer defense in depth (multiple controls) over single-point controls.
 
 ## Secrets and Credentials
-- Never commit secrets to source control, docs, examples, logs, or test
+- MUST NOT commit secrets to source control, docs, examples, logs, or test
   snapshots.
 - Use secret managers or secure runtime injection.
 - Rotate secrets on exposure, incident, or owner change.
@@ -32,7 +32,7 @@ Security is a non-negotiable baseline across all stacks and domains.
   controls.
 - Enforce authorization at trusted boundaries, not only in client/UI paths.
 - Validate token audience/issuer/expiry and reject malformed claims.
-- Do not rely on obscurity (hidden routes, client checks) as access control.
+- MUST NOT rely on obscurity (hidden routes, client checks) as access control.
 - Deny by default when user/role/context is ambiguous.
 
 ## Input, Output, and Data Protection
@@ -45,14 +45,14 @@ Security is a non-negotiable baseline across all stacks and domains.
 - Classify sensitive data and apply minimization, masking, and retention limits.
 
 ## Dependency and Supply-Chain Hygiene
-- Prefer mature dependencies with active maintenance and clear ownership.
+- SHOULD prefer mature dependencies with active maintenance and clear ownership.
 - Pin versions and commit lock files where the ecosystem supports it.
 - Track vulnerability advisories and patch high/critical findings quickly.
 - Require explicit justification for new runtime dependencies.
 - Validate provenance/signatures where tooling supports it.
 
 ## Error Handling and Observability
-- Do not expose stack traces, internal identifiers, or secret material to
+- MUST NOT expose stack traces, internal identifiers, or secret material to
   untrusted callers.
 - Return safe, actionable error responses without leaking internals.
 - Log security-relevant events (auth failures, policy denials, suspicious

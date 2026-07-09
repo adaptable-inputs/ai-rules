@@ -48,7 +48,7 @@ Consult qualified legal counsel for final legal decisions.
 ## Resilience, Continuity, and Recovery
 - Keep backup, restore, and recovery objectives explicit for critical systems.
 - Keep disaster-recovery exercises and failover validation periodic.
-- Avoid single points of failure in infrastructure/control planes where feasible.
+- SHOULD avoid single points of failure in infrastructure/control planes where feasible.
 - Keep change management gates strong for critical production paths.
 
 ## High-Risk Pitfalls

@@ -16,7 +16,7 @@ Guidance for AI agents implementing and reviewing Go code.
   weaken this baseline.
 
 ## Defaults
-- Prefer simple, explicit code over abstraction-heavy indirection.
+- SHOULD prefer simple, explicit code over abstraction-heavy indirection.
 - Keep package boundaries cohesive with clear ownership.
 - Return errors explicitly and handle them near boundaries.
 - Use `context.Context` consistently for request-scoped cancellation/timeouts.
@@ -26,20 +26,20 @@ Guidance for AI agents implementing and reviewing Go code.
 - Keep exported APIs small and stable.
 - Use interfaces at boundaries where polymorphism is required, not everywhere.
 - Keep package init logic minimal and side-effect free.
-- Avoid cyclic package dependencies and hidden global coupling.
+- SHOULD avoid cyclic package dependencies and hidden global coupling.
 
 ## Error Handling and Resource Safety
 - Return rich, contextual errors and preserve root cause context.
-- Do not ignore returned errors.
+- MUST NOT ignore returned errors.
 - Keep panic usage exceptional (programmer errors/unrecoverable states).
 - Close resources deterministically (`defer` with explicit error handling where
   needed).
 
 ## Concurrency and Context Rules
-- Prefer message passing/channel patterns over shared mutable state when
+- SHOULD prefer message passing/channel patterns over shared mutable state when
   practical.
 - Guard shared state explicitly when unavoidable.
-- Avoid goroutine leaks; ensure cancellation and completion paths exist.
+- SHOULD avoid goroutine leaks; ensure cancellation and completion paths exist.
 - Pass `context.Context` as first parameter for request-scoped operations.
 - Keep timeouts/deadlines explicit for external IO.
 

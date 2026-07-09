@@ -17,33 +17,33 @@ Guidance for AI agents implementing and reviewing C#/.NET code.
 
 ## Defaults
 - Enable and respect nullable reference type warnings.
-- Prefer explicit dependency injection over static/global dependencies.
+- SHOULD prefer explicit dependency injection over static/global dependencies.
 - Keep async flows truly asynchronous end-to-end for IO paths.
 - Keep exceptions specific, contextual, and centrally mapped at boundaries.
 - Keep domain logic separated from transport/persistence concerns.
 
 ## Nullability and API Contracts
 - Treat nullable annotations as part of API contract.
-- Avoid returning null where an explicit optional/result model is clearer.
+- SHOULD avoid returning null where an explicit optional/result model is clearer.
 - Validate external inputs at boundaries and fail fast with clear errors.
 - Keep DTO/domain model nullability intent explicit and consistent.
 
 ## Async, Concurrency, and Cancellation
 - Use `async`/`await` for IO-bound work; avoid sync-over-async patterns.
 - Propagate `CancellationToken` for request-scoped operations.
-- Avoid blocking calls (`.Result`, `.Wait()`) in async paths.
+- SHOULD avoid blocking calls (`.Result`, `.Wait()`) in async paths.
 - Keep shared mutable state synchronized and minimized.
 
 ## Exception and Resource Handling
 - Throw and map specific exception types with actionable context.
-- Do not swallow exceptions silently.
+- MUST NOT swallow exceptions silently.
 - Use `using`/`await using` for deterministic disposal.
 - Preserve inner exception/root cause when wrapping.
 
 ## Architectural Boundaries
 - Keep dependency direction explicit and testable.
 - Keep service classes cohesive with one primary responsibility.
-- Avoid static utility sprawl for domain behavior.
+- SHOULD avoid static utility sprawl for domain behavior.
 - Keep configuration and secrets out of code.
 
 ## High-Risk Pitfalls

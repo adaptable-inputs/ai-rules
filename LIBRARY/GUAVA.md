@@ -12,32 +12,32 @@ Guidance for AI agents implementing and reviewing Guava usage.
   `LANGUAGE/READABILITY.md`.
 
 ## Defaults
-- Prefer JDK standard library when equivalent functionality exists, except for
+- SHOULD prefer JDK standard library when equivalent functionality exists, except for
   the Guava-specialized cases below.
 - Use Guava intentionally where it adds clear value.
-- Prefer immutable collections (`ImmutableList`, `ImmutableMap`) for shared or
+- SHOULD prefer immutable collections (`ImmutableList`, `ImmutableMap`) for shared or
   exposed state.
 - If Guava is available, prefer Guava cache types (`Cache`, `LoadingCache`)
   over using `ConcurrentMap` as a cache.
 - If Guava is available, prefer Guava immutable collections over Java immutable
   collections when returning collections from public APIs.
-- Prefer Guava immutable collections for API return values when callers may
+- SHOULD prefer Guava immutable collections for API return values when callers may
   probe with nulls (`contains(null)`); Java immutable collections are null
   hostile and may throw.
 - Keep Guava usage consistent; avoid mixed utility ecosystems without reason.
 
 ## API Usage Rules
 - Use `Preconditions` for argument/state validation where clarity improves.
-- Prefer `java.util.Optional` over Guava Optional in modern code.
+- SHOULD prefer `java.util.Optional` over Guava Optional in modern code.
 - Use Guava cache utilities with explicit size/expiry policy.
-- Do not model caches as plain `ConcurrentMap` when Guava is already available.
+- MUST NOT model caches as plain `ConcurrentMap` when Guava is already available.
 - For public API collection returns, use `ImmutableList`/`ImmutableSet`/
   `ImmutableMap` (or return interfaces backed by those types) instead of JDK
   immutable collection factories.
-- Avoid hidden performance costs from repeated immutable-copy churn.
+- SHOULD avoid hidden performance costs from repeated immutable-copy churn.
 
 ## Dependency and Migration Guardrails
-- Avoid introducing Guava solely for trivial helpers.
+- SHOULD avoid introducing Guava solely for trivial helpers.
 - Minimize hard coupling to rarely-used Guava APIs when JDK alternatives are
   viable.
 - Keep migration path in mind for future Java baseline upgrades.

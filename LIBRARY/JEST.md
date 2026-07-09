@@ -15,28 +15,28 @@ Guidance for AI agents implementing and reviewing Jest tests.
 - Keep tests deterministic and isolated.
 - Use descriptive `describe`/`it` names reflecting behavior.
 - Reset shared state between tests.
-- Prefer explicit assertions over brittle snapshots when scope is small.
+- SHOULD prefer explicit assertions over brittle snapshots when scope is small.
 - Keep async tests explicit (`await`, `resolves`, `rejects`).
 
 ## Mocking and Module Isolation
 - Mock boundaries (network, filesystem, external services), not core logic.
 - Keep mock setup local to scenario where possible.
 - Reset/restore mocks between tests.
-- Avoid deep global mocks that hide behavior changes.
+- SHOULD avoid deep global mocks that hide behavior changes.
 
 ## Async and Timer Rules
-- Always await async operations.
-- Avoid dangling promises and unhandled rejections.
+- MUST await async operations.
+- SHOULD avoid dangling promises and unhandled rejections.
 - Use fake timers only when needed and restore real timers after test.
 - Keep timer-based tests explicit about scheduled operations.
 
 ## Snapshot Discipline
 - Use snapshots for large stable outputs where explicit assertions are noisy.
 - Keep snapshots focused and reviewed like code.
-- Avoid broad snapshot capture that hides meaningful regression signals.
+- SHOULD avoid broad snapshot capture that hides meaningful regression signals.
 
 ## Flakiness Controls
-- Avoid real network/time randomness in unit tests.
+- SHOULD avoid real network/time randomness in unit tests.
 - Control random inputs with deterministic seeds.
 - Keep test order independence.
 - Quarantine/remediate flaky tests quickly.

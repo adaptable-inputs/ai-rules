@@ -16,29 +16,29 @@ Guidance for AI agents implementing and reviewing JPA-based persistence.
 
 ## Defaults
 - Keep entities persistence-focused; keep business workflows in services.
-- Prefer explicit mappings for non-trivial columns/relations.
+- SHOULD prefer explicit mappings for non-trivial columns/relations.
 - Use `@Enumerated(EnumType.STRING)` for enums.
-- Prefer LAZY associations by default; fetch explicitly per use case.
+- SHOULD prefer LAZY associations by default; fetch explicitly per use case.
 - Keep transaction boundaries explicit and use-case aligned.
 
 ## Mapping and Entity Design
 - Keep equals/hashCode on entities identity-safe.
-- Avoid exposing mutable collections directly.
+- SHOULD avoid exposing mutable collections directly.
 - Keep cascade rules minimal and intentional.
-- Avoid bidirectional relationships unless they add real query/navigation value.
+- SHOULD avoid bidirectional relationships unless they add real query/navigation value.
 - Keep embeddables/value objects for cohesive grouped fields.
 
 ## Query and Fetch Strategy
-- Avoid N+1 via fetch joins/entity graphs/DTO projections.
-- Prefer explicit queries for non-trivial reads.
-- Avoid large object graph loading when only subset fields are needed.
+- SHOULD avoid N+1 via fetch joins/entity graphs/DTO projections.
+- SHOULD prefer explicit queries for non-trivial reads.
+- SHOULD avoid large object graph loading when only subset fields are needed.
 - Validate generated SQL for critical queries.
 
 ## Transaction and Consistency
 - Keep transactions short; avoid remote IO inside transaction scope.
 - Be explicit about locking strategy for concurrency-sensitive writes.
 - Handle optimistic lock exceptions intentionally.
-- Avoid Open Session in View dependence for core business behavior.
+- SHOULD avoid Open Session in View dependence for core business behavior.
 
 ## High-Risk Pitfalls
 1. N+1 queries from lazy relations in loops/serialization.

@@ -7,5 +7,5 @@ breaking CI.
 
 ## Prevention
 - Wrap placeholder commands in backticks or fenced code blocks.
-- Avoid raw angle-bracket tokens in prose; use code formatting instead.
+- SHOULD avoid raw angle-bracket tokens in prose; use code formatting instead.
 - Run markdownlint (or scan for angle-bracket tokens) before pushing docs changes.

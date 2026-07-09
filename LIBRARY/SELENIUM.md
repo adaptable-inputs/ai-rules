@@ -18,10 +18,10 @@ Guidance for AI agents implementing and reviewing Selenium-based tests.
 - Keep browser/environment setup reproducible.
 
 ## Locator and Wait Rules
-- Prefer stable locators (IDs/data-test attributes/accessible labels).
-- Avoid brittle xpath/CSS selectors tied to transient layout.
+- SHOULD prefer stable locators (IDs/data-test attributes/accessible labels).
+- SHOULD avoid brittle xpath/CSS selectors tied to transient layout.
 - Use explicit waits with clear conditions.
-- Avoid sleep-based synchronization.
+- SHOULD avoid sleep-based synchronization.
 
 ## Test Architecture
 - Use page objects or equivalent abstraction for repeated interactions.

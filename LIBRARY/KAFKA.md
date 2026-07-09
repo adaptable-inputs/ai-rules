@@ -23,7 +23,7 @@ Guidance for AI agents implementing and reviewing Apache Kafka usage.
 - Keep topic partitioning strategy aligned with throughput/order requirements.
 - Keep retention/compaction policy intentional.
 - Use schema registry/contract governance where available.
-- Avoid leaking internal model churn into public event contracts.
+- SHOULD avoid leaking internal model churn into public event contracts.
 
 ## Producer Rules
 - Keep key strategy intentional for partition affinity/order semantics.
@@ -32,7 +32,7 @@ Guidance for AI agents implementing and reviewing Apache Kafka usage.
 - Treat producer idempotence as a producer-session guarantee only; handle
   end-to-end deduplication/idempotency at consumer/workflow boundaries.
 - Handle send failures with clear retry/error policy.
-- Avoid fire-and-forget publishing without observability.
+- SHOULD avoid fire-and-forget publishing without observability.
 
 ## Consumer Rules
 - Keep handlers idempotent and retry-safe.

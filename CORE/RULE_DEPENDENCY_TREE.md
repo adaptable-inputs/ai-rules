@@ -40,6 +40,7 @@ Apply rules from top to bottom. Lower layers specialize higher layers.
 ### Layer Details
 #### 1) Cross-cutting baseline
 Always inherited first:
+- `CORE/NORMATIVE_LANGUAGE.md`
 - `CORE/LOGGING.md`
 - `CORE/VERSION_CONTROL_SYSTEM.md`
 - `CORE/CODE_REVIEW_PLATFORM.md`

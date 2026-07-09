@@ -15,18 +15,18 @@ Guidance for AI agents implementing and reviewing Gradle builds.
 ## Defaults
 - Use Gradle Wrapper (`gradlew`, `gradlew.bat`, `gradle/wrapper/*`).
 - Pin plugin and dependency versions explicitly.
-- Prefer Kotlin DSL for new builds unless project standard is Groovy DSL.
+- SHOULD prefer Kotlin DSL for new builds unless project standard is Groovy DSL.
 - Keep build scripts declarative and deterministic.
 
 ## Dependency and Plugin Management
 - Centralize versions via version catalogs or clear convention mechanism.
-- Avoid dynamic versions (`latest.release`, `+`) in production builds.
+- SHOULD avoid dynamic versions (`latest.release`, `+`) in production builds.
 - Keep plugin management explicit.
 - Keep dependency constraints clear in multi-module projects.
 
 ## Task and Build Logic Design
 - Keep custom tasks small and deterministic.
-- Avoid heavy imperative logic in build scripts when plugins/conventions are
+- SHOULD avoid heavy imperative logic in build scripts when plugins/conventions are
   more maintainable.
 - Isolate build logic into a convention plugin when the same logic is needed by
   more than one module.
@@ -34,13 +34,13 @@ Guidance for AI agents implementing and reviewing Gradle builds.
 
 ## Performance and Caching
 - Use configuration cache/build cache intentionally and keep builds compatible.
-- Avoid tasks with hidden side effects that break caching.
+- SHOULD avoid tasks with hidden side effects that break caching.
 - Keep build scans/metrics to identify bottlenecks in CI.
 - Keep parallelism settings explicit and environment-aware.
 
 ## Multi-Module Governance
 - Keep module boundaries explicit and acyclic.
-- Avoid broad allprojects/subprojects mutation patterns that hide coupling.
+- SHOULD avoid broad allprojects/subprojects mutation patterns that hide coupling.
 - Keep dependency direction aligned with architecture boundaries.
 
 ## Security and Supply Chain

@@ -25,17 +25,21 @@ Those belong in their respective domains (`LANGUAGE/**`, `FRAMEWORK/**`,
 `LIBRARY/**`, `BUILD_TOOLS/**`, `INFRASTRUCTURE/**`, `CI-CD/**`).
 
 ## Application Contract for AI Agents
+- Interpret every rule using the obligation vocabulary in
+  [NORMATIVE_LANGUAGE.md](NORMATIVE_LANGUAGE.md).
 - Apply CORE guidance by default before any domain-specific specialization.
-- Do not weaken CORE constraints in downstream docs unless an explicit override
+- MUST NOT weaken CORE constraints in downstream docs unless an explicit override
   is documented and justified in the specialized doc.
 - Resolve rule conflicts using the Conflict Resolution Rules in
   [RULE_DEPENDENCY_TREE.md](RULE_DEPENDENCY_TREE.md). That procedure is
   authoritative; do not apply a different order here.
-- Never block a task on an unresolved conflict. Apply the resolution the
+- MUST NOT block a task on an unresolved conflict. Apply the resolution the
   procedure yields, complete the task, and report the conflict in your final
   summary so a human can file the follow-up.
 
 ## Files
+- [NORMATIVE_LANGUAGE.md](NORMATIVE_LANGUAGE.md) - Obligation vocabulary
+  (MUST/SHOULD/MAY) used by every rule in this repository.
 - [VERSION_CONTROL_SYSTEM.md](VERSION_CONTROL_SYSTEM.md) - Commit/branch/PR workflow, issue linkage, and VCS hygiene.
 - [CONFLUENCE.md](CONFLUENCE.md) - Confluence wiki read-only and non-overridable no-delete safety rules.
 - [CODE_REVIEW_PLATFORM.md](CODE_REVIEW_PLATFORM.md) - Platform-neutral

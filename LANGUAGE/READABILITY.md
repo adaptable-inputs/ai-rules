@@ -16,25 +16,25 @@ Guidance for AI agents on writing code with low cognitive load.
 
 ## Core Principles
 - Optimize for future readers first, then for terse implementation.
-- Prefer explicitness over cleverness.
+- SHOULD prefer explicitness over cleverness.
 - Keep one level of abstraction per function where practical.
 - Make control flow and error flow immediately visible.
 
 ## Cognitive Complexity Rules
 - Keep functions focused on one responsibility.
-- Avoid deep nesting; prefer guard clauses and early returns.
+- SHOULD avoid deep nesting; prefer guard clauses and early returns.
 - Split large conditional trees into named predicates or strategy objects.
-- Avoid mixing orchestration, transformation, and IO concerns in one function.
-- Prefer clear linear flow over intertwined branching.
+- SHOULD avoid mixing orchestration, transformation, and IO concerns in one function.
+- SHOULD prefer clear linear flow over intertwined branching.
 - Use `DESIGN/EARLY_RETURN.md` for focused early-return defaults and guardrails.
 
 ## Expression and Statement Clarity
-- Avoid cascading ternary expressions.
+- SHOULD avoid cascading ternary expressions.
 - For simple two-branch guard mappings, prefer a single ternary return or
   assignment over verbose `if` blocks.
 - In ternary guard mappings, keep exceptional case first:
   `condition ? exceptional : happy`.
-- Avoid deeply nested function calls in a single line when intent is unclear.
+- SHOULD avoid deeply nested function calls in a single line when intent is unclear.
 - Introduce intermediate variables for non-trivial expressions.
 - Name intermediate values semantically, not mechanically.
 - Keep boolean logic readable; extract complex predicates into named helpers.
@@ -45,18 +45,18 @@ Guidance for AI agents on writing code with low cognitive load.
   concepts.
 - Keep related logic close; avoid jumping across distant utility modules for
   core business flow.
-- Prefer small cohesive modules over large mixed-responsibility files.
+- SHOULD prefer small cohesive modules over large mixed-responsibility files.
 
 ## Comments and Documentation
-- Prefer self-explanatory code over explanatory comments.
+- SHOULD prefer self-explanatory code over explanatory comments.
 - Use comments for intent, invariants, and non-obvious tradeoffs.
 - Remove or update comments when code changes.
-- Avoid narrative comments that duplicate code step-by-step.
+- SHOULD avoid narrative comments that duplicate code step-by-step.
 
 ## Error Path Readability
 - Keep happy path and failure path clearly separated.
 - Use explicit error types/messages that communicate cause and recovery context.
-- Avoid broad error-handling blocks that hide control flow outcomes.
+- SHOULD avoid broad error-handling blocks that hide control flow outcomes.
 
 ## High-Risk Pitfalls
 1. Deeply nested conditionals obscuring business intent.

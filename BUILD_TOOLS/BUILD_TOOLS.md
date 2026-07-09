@@ -27,7 +27,7 @@ Those belong in `FRAMEWORK/**`, `LIBRARY/**`, `INFRASTRUCTURE/**`, and
 `CI-CD/**`.
 
 ## Specialization Contract
-- Prefer the standard build tool for the language/ecosystem unless a strong,
+- SHOULD prefer the standard build tool for the language/ecosystem unless a strong,
   explicit reason exists to deviate.
 - Tool-specific docs may narrow parent guidance when tool semantics require it.
 - Any narrowing/override of inherited guidance must be explicit and justified in

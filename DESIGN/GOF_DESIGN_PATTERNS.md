@@ -13,9 +13,9 @@ Guidance for AI agents applying GoF patterns pragmatically.
 
 ## Pattern Selection Principles
 - Use patterns to reduce concrete change cost for known change vectors.
-- Do not introduce patterns solely for textbook conformity.
+- MUST NOT introduce patterns solely for textbook conformity.
 - Keep pattern intent explicit in naming/docs when it aids maintainability.
-- Prefer simpler direct code when variation pressure is low.
+- SHOULD prefer simpler direct code when variation pressure is low.
 
 ## Creational Pattern Guidance
 - Factory Method / Abstract Factory:
@@ -46,10 +46,10 @@ Guidance for AI agents applying GoF patterns pragmatically.
   replace state-driven condition pyramids.
 
 ## Anti-Pattern Guardrails
-- Avoid speculative pattern layering without real variability pressure.
-- Avoid pattern names as substitutes for clear domain names.
-- Avoid hidden complexity behind facade/proxy without observability.
-- Avoid singleton-as-global-variable design.
+- SHOULD avoid speculative pattern layering without real variability pressure.
+- SHOULD avoid pattern names as substitutes for clear domain names.
+- SHOULD avoid hidden complexity behind facade/proxy without observability.
+- SHOULD avoid singleton-as-global-variable design.
 
 ## High-Risk Pitfalls
 1. Pattern inflation for simple code paths.

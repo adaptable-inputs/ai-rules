@@ -29,7 +29,7 @@ Guidance for AI agents executing implementation tasks.
 - In downstream-projects, also read every Markdown file transitively reachable
   from the downstream extension entry point described in
   `AI-RULES/DOWNSTREAM-PROJECT.md`.
-- Do not skip reachable Markdown files and do not pick files ad-hoc.
+- MUST NOT skip reachable Markdown files and do not pick files ad-hoc.
 - After the full read is complete, irrelevant rules may be removed from active
   context.
 
@@ -56,13 +56,13 @@ Guidance for AI agents executing implementation tasks.
 
 ## Implementation Quality Rules
 - Keep changes scoped; avoid unrelated refactors.
-- Prefer explicit, readable logic over compact clever solutions.
+- SHOULD prefer explicit, readable logic over compact clever solutions.
 - Keep boundaries clear (domain vs transport vs infrastructure).
 - Keep side effects explicit and controlled.
 - Preserve backward compatibility unless change explicitly requires breakage.
 
 ## Dependency and Tooling Decisions
-- Avoid new dependencies unless necessary and justified.
+- SHOULD avoid new dependencies unless necessary and justified.
 - Evaluate new dependencies using `FRAMEWORK/FRAMEWORK.md`,
   `LIBRARY/LIBRARY.md`, and `COMPLIANCE/LICENSES.md`.
 - Keep runtime/build impact of dependency additions explicit.

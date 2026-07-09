@@ -15,11 +15,11 @@ codebases.
   authoritative unless this file explicitly narrows behavior.
 
 ## Core Design Preferences
-- Prefer static factories over constructors when they improve readability,
+- SHOULD prefer static factories over constructors when they improve readability,
   caching, or subtype flexibility.
 - Use builders for objects with many optional parameters or invariants.
-- Prefer immutable value types and make defensive copies of mutable state.
-- Prefer composition over inheritance unless subtype truly models an `is-a`
+- SHOULD prefer immutable value types and make defensive copies of mutable state.
+- SHOULD prefer composition over inheritance unless subtype truly models an `is-a`
   relationship.
 - Minimize visibility of classes/members; keep APIs as small as possible.
 
@@ -30,35 +30,35 @@ codebases.
 - Keep `toString` useful for diagnostics but free of secrets.
 
 ## Generics and Collections
-- Prefer generic types over raw types.
+- SHOULD prefer generic types over raw types.
 - Favor lists over arrays for API boundaries unless primitive array performance
   is required.
 - Use bounded wildcards intentionally (`? extends`, `? super`) to improve API
   flexibility.
-- Prefer empty collections over `null` returns.
+- SHOULD prefer empty collections over `null` returns.
 
 ## Optional and Nullability
 - Return `Optional<T>` when absence is part of API semantics.
-- Avoid `Optional` in fields/parameters unless there is a strong documented
+- SHOULD avoid `Optional` in fields/parameters unless there is a strong documented
   reason.
-- Do not use `Optional.get()` without presence checks.
+- MUST NOT use `Optional.get()` without presence checks.
 
 ## Exceptions and Resource Management
 - Throw domain-relevant exception types with actionable context.
 - Use checked exceptions only for recoverable conditions.
 - Use try-with-resources for closeable resources.
-- Never ignore exceptions; if suppressed intentionally, document rationale.
+- MUST NOT ignore exceptions; if suppressed intentionally, document rationale.
 
 ## Concurrency Guidance
-- Prefer immutable/shared-nothing designs over synchronization.
+- SHOULD prefer immutable/shared-nothing designs over synchronization.
 - Use high-level concurrency abstractions (`ExecutorService`,
   `CompletableFuture`, Structured Concurrency/virtual-thread APIs where
   available) over ad-hoc thread creation.
 - Document thread-safety guarantees for shared components.
-- Avoid exposing mutable static state.
+- SHOULD avoid exposing mutable static state.
 
 ## Serialization and Compatibility
-- Prefer explicit DTO/schema mappers over default Java serialization.
+- SHOULD prefer explicit DTO/schema mappers over default Java serialization.
 - If Java serialization is unavoidable, declare `serialVersionUID` and treat
   serialized forms as compatibility contracts.
 - Validate invariants after deserialization.

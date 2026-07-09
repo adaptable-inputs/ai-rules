@@ -37,8 +37,8 @@ workflows.
 
 ## Secrets and Security
 - Use GitHub Secrets/Variables and environment protection rules for credentials.
-- Do not print secrets or sensitive payloads in workflow logs.
-- Prefer OIDC-based short-lived cloud credentials over long-lived static keys.
+- MUST NOT print secrets or sensitive payloads in workflow logs.
+- SHOULD prefer OIDC-based short-lived cloud credentials over long-lived static keys.
 - Restrict deploy jobs to protected branches/tags and required approvals.
 - Keep `GITHUB_TOKEN` permissions minimal; elevate only where required.
 

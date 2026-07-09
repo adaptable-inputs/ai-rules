@@ -3,7 +3,7 @@
 Compact, actionable notes to prevent repeat mistakes.
 
 ## Scope
-- Avoid duplicate lessons; update an existing entry if the issue matches.
+- SHOULD avoid duplicate lessons; update an existing entry if the issue matches.
 - Keep each lesson focused on a single concern. If multiple issues occur, split
   them into separate files.
 
@@ -25,7 +25,7 @@ Concrete steps or checks that would have avoided the issue.
 - [2026-02-13-retrigger-copilot-review-after-fix-pushes.md](2026-02-13-retrigger-copilot-review-after-fix-pushes.md)
   - Re-trigger Copilot review after every fix push before merge.
 - [2026-02-13-no-copilot-mentions-in-pr-comments.md](2026-02-13-no-copilot-mentions-in-pr-comments.md)
-  - Never mention `@copilot` in PR comments.
+  - MUST NOT mention `@copilot` in PR comments.
 - [2026-02-13-github-issue-newline-escaping.md](2026-02-13-github-issue-newline-escaping.md)
   - Prevent scrambled issue bodies by using `--body-file` for create/edit.
 - [2026-02-08-react-example-robustness.md](2026-02-08-react-example-robustness.md)
@@ -37,7 +37,7 @@ Concrete steps or checks that would have avoided the issue.
 - [2026-02-04-review-comments-resolution.md](2026-02-04-review-comments-resolution.md)
   - Resolve review comments instead of deleting them.
 - [2026-02-03-markdownlint-angle-brackets.md](2026-02-03-markdownlint-angle-brackets.md)
-  - Avoid inline HTML from placeholder tokens.
+  - SHOULD avoid inline HTML from placeholder tokens.
 - [2026-02-01-markdownlint.md](2026-02-01-markdownlint.md) - Markdownlint and BOM prevention checklist.
 - [2026-02-01-release-version-examples.md](2026-02-01-release-version-examples.md)
   - Update versioned examples before tagging.

@@ -6,7 +6,7 @@ Guidance for maintaining this ai-rules repository.
 This scope statement governs every file under `AI-RULES/`, including
 `LESSONS_LEARNED/`. Individual files do not restate it.
 - These rules apply only to this repository.
-- Do not copy these rules into downstream-projects.
+- MUST NOT copy these rules into downstream-projects.
 
 ## Terminology
 - "ai-rules" refers to this repository's baseline ruleset and its published tags.
@@ -29,7 +29,7 @@ This scope statement governs every file under `AI-RULES/`, including
 
 ## Maintenance
 Additional maintenance rules:
-- Avoid redundancy across AI-RULES docs. If a new focused file supersedes content here, remove the overlap
+- SHOULD avoid redundancy across AI-RULES docs. If a new focused file supersedes content here, remove the overlap
   and link to the single source of truth instead.
 - If a task requires a second attempt, add a short lesson under
   `AI-RULES/LESSONS_LEARNED/` and link it.

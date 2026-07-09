@@ -21,13 +21,13 @@ Guidance for AI agents implementing and reviewing Playwright tests.
 - Keep setup/teardown reusable through fixtures.
 
 ## Locator and Interaction Rules
-- Prefer accessible-role/text/test-id locators.
-- Avoid selectors tied to fragile DOM structure.
+- SHOULD prefer accessible-role/text/test-id locators.
+- SHOULD avoid selectors tied to fragile DOM structure.
 - Keep waits condition-based, not sleep-based.
 - Keep user actions explicit and semantically aligned.
 
 ## Flakiness Controls
-- Avoid real third-party dependencies when stubbing is possible.
+- SHOULD avoid real third-party dependencies when stubbing is possible.
 - Isolate each test scenario state.
 - Use retries sparingly; fix root cause first.
 - Keep parallelization aware of shared-resource contention.

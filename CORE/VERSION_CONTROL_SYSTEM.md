@@ -3,7 +3,7 @@
 Guidance for version control system usage (Git and others).
 
 ## Commit Messages
-- Always include the ticket or issue identifier and ticket/issue title (or a
+- MUST include the ticket or issue identifier and ticket/issue title (or a
   concise equivalent summary aligned with that title).
 - Example format: `<ticket-or-issue-id> <ticket-or-issue-title>: <change>`.
 - Add optional context about what changed and why when it improves clarity.
@@ -19,7 +19,7 @@ Guidance for version control system usage (Git and others).
   issue/ticket).
 - Keep each branch scoped to that single concern.
 - Push successful intermediate states to VCS so progress stays recoverable.
-- Do not push knowingly non-working code unless this is explicitly requested.
+- MUST NOT push knowingly non-working code unless this is explicitly requested.
 - Create a PR/MR for implementation work before reporting completion when you
   have access to GitHub, GitLab, or a similar review system.
 - When opening a PR/MR, auto-detect the target branch from downstream-project
@@ -66,7 +66,7 @@ Guidance for version control system usage (Git and others).
 - Once the comment is addressed, mark the relevant review thread as resolved,
   but first check downstream project rules for ownership (for example whether
   the author or reviewer is expected to mark threads resolved).
-- Do not mark a review thread or conversation resolved by deleting discussion;
+- MUST NOT mark a review thread or conversation resolved by deleting discussion;
   keep decisions auditable in the comment thread.
 
 ### PR/MR Summary Template (Code Reviewer Audience)
@@ -98,7 +98,7 @@ Guidance for version control system usage (Git and others).
 ## Dependency Lock Files
 - Commit dependency lock files for the package managers used by the project
   (for example `package-lock.json`, `pnpm-lock.yaml`, `yarn.lock`).
-- Do not add ignore rules that exclude required lock files from VCS.
+- MUST NOT add ignore rules that exclude required lock files from VCS.
 - In CI, install dependencies from lock files in frozen/immutable mode when
   supported by the package manager.
 - Exceptions are allowed only when explicitly documented (for example,
@@ -138,7 +138,7 @@ Build output, dependencies, caches, logs
 - If a language/framework/library/build tool doc includes a "VCS Ignore Additions" section,
   add those patterns when using it.
 - Keep additions scoped to generated output and local tooling noise.
-- Do not ignore files that are meant to be versioned for reproducible builds.
+- MUST NOT ignore files that are meant to be versioned for reproducible builds.
 
 ## IDE/Tooling Additions
 Apply only when the tool is used:
@@ -149,5 +149,5 @@ Apply only when the tool is used:
   (plus `.idea/`, `.gradle/`, `build/` if not already)
 
 ## Safeguards
-- Do not commit secrets; rotate and remove them from history if exposed.
+- MUST NOT commit secrets; rotate and remove them from history if exposed.
 - Review ignore rules when adding new tools to avoid accidental leaks.

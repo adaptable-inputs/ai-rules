@@ -34,19 +34,19 @@ Guidance for AI agents implementing and reviewing Clean Architecture patterns.
 ## Boundary Contracts
 - Define ports/interfaces at policy boundaries.
 - Keep boundary DTOs stable and explicit.
-- Avoid leaking framework-specific annotations/types into domain core.
+- SHOULD avoid leaking framework-specific annotations/types into domain core.
 - Keep mapping between boundary DTOs and domain models explicit.
 
 ## Dependency Injection and Composition
 - Compose concrete dependencies at outermost composition root.
 - Inject abstractions into use cases.
-- Avoid service locators and hidden global singletons in core policy.
+- SHOULD avoid service locators and hidden global singletons in core policy.
 
 ## Transaction and Side-Effect Placement
 - Keep side effects in outer layers/gateways.
 - Keep use-case logic deterministic where possible.
 - Keep transaction scope aligned with use-case boundary.
-- Avoid domain-layer calls directly to infrastructure.
+- SHOULD avoid domain-layer calls directly to infrastructure.
 
 ## High-Risk Pitfalls
 1. Framework annotations leaking into domain models.

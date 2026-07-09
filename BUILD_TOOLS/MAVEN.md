@@ -22,15 +22,15 @@ Guidance for AI agents implementing and reviewing Maven builds.
 ## Dependency and Plugin Management
 - Centralize versions with `dependencyManagement`/BOM when more than one module
   depends on the same artifact.
-- Avoid floating versions (`LATEST`, `RELEASE`, version ranges) in production
+- SHOULD avoid floating versions (`LATEST`, `RELEASE`, version ranges) in production
   builds.
 - Keep plugin versions pinned; avoid implicit plugin-version resolution.
 - Minimize duplicate transitive dependency paths and exclusions.
 
 ## Profile and Environment Rules
 - Keep profiles explicit and purpose-driven.
-- Avoid profiles that change core artifact semantics unexpectedly.
-- Prefer environment-independent default build; use profiles for explicit
+- SHOULD avoid profiles that change core artifact semantics unexpectedly.
+- SHOULD prefer environment-independent default build; use profiles for explicit
   deployment/runtime variations.
 - Document required profile combinations for release builds.
 

@@ -21,7 +21,7 @@ Guidance for AI agents using Bun as package manager/runtime tooling.
 
 ## Install and Lockfile Behavior
 - Use deterministic install behavior in CI.
-- Prefer `bun install --frozen-lockfile` (or equivalent reproducible mode) for
+- SHOULD prefer `bun install --frozen-lockfile` (or equivalent reproducible mode) for
   release pipelines.
 - Use `bun install --lockfile-only` only when intentionally updating lock
   metadata.
@@ -31,18 +31,18 @@ Guidance for AI agents using Bun as package manager/runtime tooling.
 - Bun dependency lifecycle script behavior differs from npm ecosystem defaults.
 - Configure trusted dependencies explicitly in `bunfig.toml` via
   `trustedDependencies` when lifecycle scripts are required.
-- Do not blanket-trust all dependency scripts.
+- MUST NOT blanket-trust all dependency scripts.
 - Validate build/install outcome for packages requiring postinstall steps.
 
 ## Compatibility Guardrails
 - Verify package manager features needed by monorepo/workspace setup.
 - Validate CI images/runners include expected Bun version.
 - Keep fallback path documented if Bun compatibility blocks delivery.
-- Avoid mixing Bun runtime assumptions into scripts intended for Node-only
+- SHOULD avoid mixing Bun runtime assumptions into scripts intended for Node-only
   environments without explicit checks.
 
 ## Security and Credential Handling
-- Never commit registry credentials/tokens.
+- MUST NOT commit registry credentials/tokens.
 - Use CI secret injection for registry auth.
 - Scan dependencies and lockfile for vulnerabilities.
 - Keep trusted dependency policy minimal and auditable.

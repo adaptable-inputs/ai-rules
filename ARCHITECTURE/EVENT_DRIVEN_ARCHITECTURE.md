@@ -28,7 +28,7 @@ Guidance for AI agents implementing and reviewing event-driven systems.
 - Make handlers idempotent.
 - Define deduplication strategy for repeated deliveries.
 - Treat ordering guarantees as explicit contracts, not assumptions.
-- Avoid hard dependency on global ordering unless required and documented.
+- SHOULD avoid hard dependency on global ordering unless required and documented.
 
 ## Reliability Patterns
 - Use retries for transient failures with backoff/jitter.
@@ -40,11 +40,11 @@ Guidance for AI agents implementing and reviewing event-driven systems.
 - Use eventual consistency intentionally for cross-boundary workflows.
 - Document consistency expectations and SLA (propagation delays, compensation).
 - Use sagas/compensations for multi-step distributed workflows.
-- Avoid hidden coupling via undocumented event dependencies.
+- SHOULD avoid hidden coupling via undocumented event dependencies.
 
 ## Security and Governance
 - Validate event payloads at producer and consumer boundaries.
-- Do not include secrets in event payloads.
+- MUST NOT include secrets in event payloads.
 - Enforce producer/consumer access controls per topic/stream.
 - Keep schema registry or equivalent governance controls where available.
 

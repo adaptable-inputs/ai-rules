@@ -22,27 +22,27 @@ Guidance for AI agents managing Node.js dependencies (npm, Yarn, pnpm).
 - Keep scripts explicit and side-effect aware.
 
 ## Dependency Policy
-- Prefer stable, maintained packages with compatible licenses.
+- SHOULD prefer stable, maintained packages with compatible licenses.
 - Minimize runtime dependencies; avoid redundant utility overlap.
 - Pin major versions deliberately; upgrade with changelog review.
 - Use overrides/resolutions intentionally and document rationale.
 
 ## Script and Workspace Rules
 - Keep package scripts composable and predictable.
-- Avoid scripts that depend on implicit global tools.
+- SHOULD avoid scripts that depend on implicit global tools.
 - For monorepos, keep workspace boundaries explicit.
-- Avoid cross-package script coupling without clear contracts.
+- SHOULD avoid cross-package script coupling without clear contracts.
 
 ## Supply-Chain and Security Guardrails
-- Do not commit auth tokens in `.npmrc`.
+- MUST NOT commit auth tokens in `.npmrc`.
 - Use secret-injection in CI for registry credentials.
 - Enable dependency vulnerability scanning in CI.
 - Verify integrity/signature mechanisms where supported.
-- Avoid automatic postinstall script trust for unknown packages.
+- SHOULD avoid automatic postinstall script trust for unknown packages.
 
 ## Performance and Reliability
 - Use caching in CI keyed by lockfile and runtime version.
-- Avoid unnecessary reinstall churn.
+- SHOULD avoid unnecessary reinstall churn.
 - Keep node_modules out of VCS.
 - Keep install/build logs actionable and fail fast on dependency errors.
 

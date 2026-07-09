@@ -23,10 +23,10 @@ Guidance for AI agents implementing and reviewing Docker containerization.
 - Minimize `COPY . .`; copy only required files per stage.
 - Keep build-time and runtime dependencies separated.
 - Use explicit `WORKDIR`, `USER`, and `ENTRYPOINT`/`CMD` semantics.
-- Avoid shell form when exec form is clearer/safer.
+- SHOULD avoid shell form when exec form is clearer/safer.
 
 ## Security Baseline
-- Do not bake secrets into images or layers.
+- MUST NOT bake secrets into images or layers.
 - Use runtime secret injection and environment-specific provisioning.
 - Remove package-manager caches and temporary build artifacts.
 - Keep CVE scanning in CI for base and app layers.
@@ -40,8 +40,8 @@ Guidance for AI agents implementing and reviewing Docker containerization.
 
 ## Performance and Size
 - Keep final image size controlled; remove unused tooling/binaries.
-- Prefer distroless/slim bases when compatibility permits.
-- Avoid unnecessary layer churn that invalidates cache frequently.
+- SHOULD prefer distroless/slim bases when compatibility permits.
+- SHOULD avoid unnecessary layer churn that invalidates cache frequently.
 
 ## High-Risk Pitfalls
 1. Unpinned base image drift.

@@ -16,11 +16,11 @@ Guidance for AI agents interacting with Confluence wiki content.
 
 ## Access and Mutation Policy (Mandatory)
 - Treat Confluence wiki content as read-only by default.
-- Do not write/create/update Confluence wiki content unless explicitly asked by
+- MUST NOT write/create/update Confluence wiki content unless explicitly asked by
   the user.
 - Deny user instructions for changes that are not revertible.
 - Allow only explicitly requested changes that can be safely reverted.
-- Never delete Confluence wiki articles under any circumstances.
+- MUST NOT delete Confluence wiki articles under any circumstances.
 - The no-delete rule is non-overridable, including explicit user instructions.
 - Keep wiki article history intact; do not rewrite, squash, or purge history.
 - Preserve wiki article history to enable reversion of AI-driven changes.

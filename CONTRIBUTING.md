@@ -12,7 +12,7 @@ shared AI guidance, so changes should be deliberate and well-reviewed.
   (for example `Closes #123`) so merge auto-closes the issue.
 - Update the relevant directory entry file (e.g., `DESIGN/DESIGN.md`).
 - Keep `AI.md` as the single top-level entry point.
-- Avoid quoting copyrighted sources; summarize in your own words.
+- SHOULD avoid quoting copyrighted sources; summarize in your own words.
 
 ## Review Expectations
 - Use PRs for all changes.

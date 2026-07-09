@@ -17,7 +17,7 @@ Guidance for AI agents implementing and reviewing HTML markup.
 
 ## Defaults
 - Use semantic HTML elements (`main`, `nav`, `section`, `article`, `button`).
-- Prefer native controls over ARIA-heavy custom widgets when possible.
+- SHOULD prefer native controls over ARIA-heavy custom widgets when possible.
 - Keep document structure valid and predictable:
   one `<main>` per page, logical heading hierarchy, meaningful landmarks.
 - Keep markup declarative and free of presentation-only hacks.
@@ -40,19 +40,19 @@ Guidance for AI agents implementing and reviewing HTML markup.
 - Keep required/optional semantics explicit.
 
 ## Security and Injection Guardrails
-- Never inject untrusted HTML directly into DOM output without sanitization.
-- Avoid inline event handlers (`onclick`) in generated markup.
-- Prefer escaping by default for dynamic text content.
+- MUST NOT inject untrusted HTML directly into DOM output without sanitization.
+- SHOULD avoid inline event handlers (`onclick`) in generated markup.
+- SHOULD prefer escaping by default for dynamic text content.
 - Treat URL-bearing attributes (`href`, `src`) as untrusted inputs and validate
   schemes.
 - For links opened via `target="_blank"`, include `rel="noopener"`
   (typically `noopener noreferrer`) to prevent reverse-tabnabbing.
 
 ## Performance and Maintainability
-- Avoid deeply nested DOM structures without semantic justification.
+- SHOULD avoid deeply nested DOM structures without semantic justification.
 - Keep reusable UI structures componentized where framework allows.
-- Prefer lazy-loading for non-critical media where applicable.
-- Avoid duplicated IDs and non-unique `id` attributes.
+- SHOULD prefer lazy-loading for non-critical media where applicable.
+- SHOULD avoid duplicated IDs and non-unique `id` attributes.
 
 ## High-Risk Pitfalls
 1. Generic `<div>` usage where semantic elements exist.

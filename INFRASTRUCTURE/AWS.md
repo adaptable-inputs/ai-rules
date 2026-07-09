@@ -24,7 +24,7 @@ and operations choices.
 - Keep tagging standards mandatory for ownership, environment, and cost center.
 
 ## Identity and Access Guardrails
-- Prefer role assumption and short-lived credentials over long-lived static
+- SHOULD prefer role assumption and short-lived credentials over long-lived static
   access keys.
 - Keep human admin access behind strong MFA and audit controls.
 - Restrict cross-account trust with explicit conditions and least privilege.
@@ -32,7 +32,7 @@ and operations choices.
 
 ## Network and Data Protection
 - Keep VPC, subnet, and security-group intent explicit and least-open.
-- Avoid unrestricted ingress/egress rules unless explicitly justified.
+- SHOULD avoid unrestricted ingress/egress rules unless explicitly justified.
 - Keep data services private and fronted by controlled access layers.
 - Enforce key-management policy and rotation where required.
 

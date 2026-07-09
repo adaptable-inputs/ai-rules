@@ -21,8 +21,8 @@ Guidance for AI agents implementing and reviewing Lombok usage.
   `@Getter`/`@Setter`.
 - If Lombok is available, declare loggers with the Lombok annotation matching
   the project's logging backend (`@Slf4j` for SLF4J).
-- Prefer `@Builder` for complex immutable object construction.
-- Prefer explicit annotations over broad convenience annotations when behavior
+- SHOULD prefer `@Builder` for complex immutable object construction.
+- SHOULD prefer explicit annotations over broad convenience annotations when behavior
   matters.
 
 ## Annotation Selection Policy
@@ -47,7 +47,7 @@ Guidance for AI agents implementing and reviewing Lombok usage.
   is not available.
 - Keep null contracts explicit on fields, parameters, and return types under
   the active nullness annotation strategy.
-- Do not choose Lombok nullness annotations when JSpecify is present.
+- MUST NOT choose Lombok nullness annotations when JSpecify is present.
 
 ## Risky Annotations and Guardrails
 - `@SneakyThrows`: use only with explicit rationale and bounded scope.
@@ -60,7 +60,7 @@ Guidance for AI agents implementing and reviewing Lombok usage.
 - Keep `lombok.config` committed and consistent.
 - Configure `lombok.copyableAnnotations` for framework-required constructor
   annotations where needed.
-- Avoid IDE/build mismatch where generated code differs.
+- SHOULD avoid IDE/build mismatch where generated code differs.
 
 ## High-Risk Pitfalls
 1. `@Data` on entities with incorrect equals/hashCode semantics.

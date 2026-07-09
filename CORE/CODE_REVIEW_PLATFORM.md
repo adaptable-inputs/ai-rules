@@ -27,37 +27,37 @@ hosting platform.
 
 ## Protected Branch Policy (Mandatory)
 - Treat protected branches as read-only for AI agents.
-- Do not push directly to protected branches.
+- MUST NOT push directly to protected branches.
 - Use dedicated feature branches for implementation work.
 - Create a change request for any change targeting a protected branch.
 
 ## Merge Authority and Merge Gates (Mandatory)
-- Change-request creators must not merge their own change requests.
-- The self-merge restriction may be bypassed only when all of the following are
+- Change-request creators MUST NOT merge their own change requests.
+- The self-merge restriction MAY be bypassed only when all of the following are
   true:
   - The user gives explicit merge instruction for the specific change request.
   - The user explicitly confirms in the current session that they own the target
     repository and that they authorize bypassing the self-merge restriction.
   - You, as an AI agent, treat the user as not a repository owner unless this
     explicit owner confirmation and authorization is present.
-- If the above conditions are not met, do not attempt to merge a change request
+- If the above conditions are not met, MUST NOT attempt to merge a change request
   that you created or substantially authored.
-- Respect all merge gates; do not bypass required checks, required reviews,
+- Respect all merge gates; MUST NOT bypass required checks, required reviews,
   approvals, or merge policies.
-- Do not use any privileged bypass path to skip required gates.
+- MUST NOT use any privileged bypass path to skip required gates.
 - Merging is forbidden by default without explicit user instruction.
-- Never merge a change request while review threads are unresolved.
+- MUST NOT merge a change request while review threads are unresolved.
 - If asked to merge with unresolved review threads, stop and ask the user how to
   proceed because merge is not allowed in that state.
 
 ## Review Thread Ownership
-- Only the author of a review comment may resolve that review thread.
-- Do not resolve review threads created by other reviewers. A platform doc may
+- Only the author of a review comment MAY resolve that review thread.
+- MUST NOT resolve review threads created by other reviewers. A platform doc MAY
   declare an explicit override that permits maintainer resolution under a stated
   downstream policy.
 - If you authored the comment and the issue is fixed, resolve that review
   thread.
-- Keep review history intact; do not delete comments to hide unresolved work.
+- Keep review history intact; MUST NOT delete comments to hide unresolved work.
 
 ## Change-Request Description Requirements
 - When opening a change request, include a short developer-focused

@@ -30,7 +30,7 @@ Consult qualified legal counsel for final legal decisions.
 ## Data Classification and Collection Rules
 - Classify data by sensitivity and purpose before implementation changes.
 - Collect only fields required for current documented purpose.
-- Avoid collecting special-category personal data unless explicitly justified and
+- SHOULD avoid collecting special-category personal data unless explicitly justified and
   approved.
 - Keep telemetry/analytics payloads free of unnecessary personal data.
 

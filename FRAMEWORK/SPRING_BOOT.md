@@ -16,12 +16,12 @@ Guidance for AI agents implementing and reviewing Spring Boot applications.
   `SECURITY/SECURITY.md`, `TEST/TEST.md`, `CORE/LOGGING.md`.
 
 ## Defaults
-- Prefer constructor injection (for example with Lombok
+- SHOULD prefer constructor injection (for example with Lombok
   `@RequiredArgsConstructor`), avoid field injection.
 - Keep controllers thin; move orchestration/business rules into services or
   use-case classes.
 - Keep persistence logic in repositories/adapters, not controllers.
-- Prefer explicit DTOs for API boundaries.
+- SHOULD prefer explicit DTOs for API boundaries.
 - Use `@ConfigurationProperties` for structured config over scattered
   `@Value` usage.
 
@@ -35,13 +35,13 @@ Guidance for AI agents implementing and reviewing Spring Boot applications.
 - Validate request payloads with Bean Validation.
 - Keep exception-to-response mapping centralized (`@ControllerAdvice`).
 - Use consistent API error payload shapes with trace correlation.
-- Avoid exposing internal exception details to clients.
+- SHOULD avoid exposing internal exception details to clients.
 
 ## Transactions and Persistence
 - Keep transaction boundaries explicit and use-case aligned.
-- Avoid long transactions with remote/network calls inside.
+- SHOULD avoid long transactions with remote/network calls inside.
 - Choose JPA or jOOQ intentionally per query complexity.
-- Avoid Open Session in View reliance for business-critical flows.
+- SHOULD avoid Open Session in View reliance for business-critical flows.
 
 ## Asynchrony and Scheduling
 - Use async/scheduling only with explicit thread pool configuration.

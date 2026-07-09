@@ -17,17 +17,17 @@ Guidance for AI agents implementing and reviewing Svelte projects.
 
 ## Defaults
 - Keep components focused and small.
-- Prefer explicit props/events/store boundaries over hidden cross-component
+- SHOULD prefer explicit props/events/store boundaries over hidden cross-component
   coupling.
 - Keep business logic outside template markup when complexity grows.
-- Prefer derived/reactive values for view state over duplicated mutable state.
+- SHOULD prefer derived/reactive values for view state over duplicated mutable state.
 
 ## Reactivity and State Rules
 - Keep one source of truth for each state concern.
-- Avoid cascading reactive statements that create implicit update loops.
+- SHOULD avoid cascading reactive statements that create implicit update loops.
 - Use stores for cross-component/shared state.
 - Keep component-local state local unless there is clear sharing need.
-- Avoid mutating shared objects in-place without explicit intent.
+- SHOULD avoid mutating shared objects in-place without explicit intent.
 
 ## Side Effects and Lifecycle
 - Keep setup/teardown side effects explicit in lifecycle hooks.
@@ -35,18 +35,18 @@ Guidance for AI agents implementing and reviewing Svelte projects.
   (`$:` in Svelte 3/4, or `$effect` when using Svelte 5+ runes) and avoid
   uncontrolled reactive side-effect chains.
 - Clean up subscriptions/listeners/timers in teardown paths.
-- Avoid running heavy side effects during rendering paths.
+- SHOULD avoid running heavy side effects during rendering paths.
 - Guard browser-only APIs when SSR/hydration is relevant.
 
 ## Template and Accessibility
-- Prefer semantic HTML and accessible controls.
+- SHOULD prefer semantic HTML and accessible controls.
 - Ensure keyboard/focus behavior for interactive elements.
 - Keep template expressions simple; extract complex logic into script section.
-- Avoid duplicated conditional fragments when component extraction improves
+- SHOULD avoid duplicated conditional fragments when component extraction improves
   readability.
 
 ## Performance Baseline
-- Avoid unnecessary store subscriptions and broad reactive dependencies.
+- SHOULD avoid unnecessary store subscriptions and broad reactive dependencies.
 - Use keyed each-blocks for stable list updates.
 - Keep expensive computations memoized/derived outside repeated render logic.
 - Split large components by feature boundary.

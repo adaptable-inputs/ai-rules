@@ -20,7 +20,7 @@ Guidance for AI agents implementing and reviewing Istio service mesh policies.
 
 ## Traffic Management Rules
 - Define clear routing intent in VirtualService rules.
-- Avoid conflicting route matches and overlapping wildcard policies.
+- SHOULD avoid conflicting route matches and overlapping wildcard policies.
 - Coordinate retries, timeouts, and outlier detection to avoid traffic storms.
 - Use canary/weighted rollout for high-risk changes.
 - Keep gateway ingress exposure tightly controlled.
@@ -29,7 +29,7 @@ Guidance for AI agents implementing and reviewing Istio service mesh policies.
 - Enforce mTLS according to environment policy.
 - Use AuthorizationPolicy with least privilege.
 - Keep trust-domain and identity assumptions explicit.
-- Avoid permissive policies as long-term defaults.
+- SHOULD avoid permissive policies as long-term defaults.
 
 ## Observability and Operations
 - Ensure mesh telemetry is enabled and consumed meaningfully.

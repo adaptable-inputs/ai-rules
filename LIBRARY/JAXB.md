@@ -14,12 +14,12 @@ Guidance for AI agents implementing and reviewing JAXB XML binding.
 ## Defaults
 - Use JAXB when XML contract interop requires it.
 - Keep JAXB DTOs separate from core domain models.
-- Prefer explicit annotations over implicit mapping defaults.
+- SHOULD prefer explicit annotations over implicit mapping defaults.
 - Keep schema and binding models versioned and documented.
 
 ## Mapping and Contract Rules
 - Keep field names/types aligned with external schema contract.
-- Avoid leaking internal domain semantics into XML contract types.
+- SHOULD avoid leaking internal domain semantics into XML contract types.
 - Keep namespace handling explicit and consistent.
 - Preserve backward compatibility when evolving XML contracts.
 
@@ -27,7 +27,7 @@ Guidance for AI agents implementing and reviewing JAXB XML binding.
 - Validate untrusted XML against schema where feasible.
 - Fail fast on invalid payloads with actionable errors.
 - Configure XML parser securely (XXE/entity expansion protections).
-- Avoid permissive parsing that masks malformed input.
+- SHOULD avoid permissive parsing that masks malformed input.
 
 ## High-Risk Pitfalls
 1. Mixing JAXB DTOs directly into domain/business logic.

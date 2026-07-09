@@ -25,14 +25,14 @@ and operations choices.
 - Keep tagging standards mandatory for ownership, environment, and cost center.
 
 ## Identity and Access Guardrails
-- Prefer managed identities and short-lived auth flows over static secrets.
+- SHOULD prefer managed identities and short-lived auth flows over static secrets.
 - Keep privileged role assignments minimal, time-bound, and auditable.
 - Restrict cross-subscription access with explicit scopes and conditions.
 - Treat broad built-in role assignments as exceptions requiring justification.
 
 ## Network and Data Protection
 - Keep virtual network and NSG intent explicit and least-open.
-- Avoid unrestricted inbound/outbound rules unless explicitly justified.
+- SHOULD avoid unrestricted inbound/outbound rules unless explicitly justified.
 - Keep critical data services private and fronted by controlled access paths.
 - Enforce key-management and secret-store controls where required.
 

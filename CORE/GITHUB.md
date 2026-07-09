@@ -23,13 +23,13 @@ review lifecycle rules.
 ## GitHub Specializations
 - Respect branch-protection and ruleset gates, including required status checks
   and required reviews.
-- Do not use admin bypass behavior to skip required gates.
+- MUST NOT use admin bypass behavior to skip required gates.
 - Use GitHub code suggestions for small, localized fixes.
 
 ## Explicit Override: Review Thread Ownership
 `CORE/CODE_REVIEW_PLATFORM.md` permits only a comment's author to resolve its
 review thread. On GitHub this file overrides that default as follows:
-- Prefer the review-comment author to resolve their own conversation when
+- SHOULD prefer the review-comment author to resolve their own conversation when
   possible.
 - A maintainer may resolve another reviewer's conversation only when downstream
   policy explicitly allows maintainer resolution, or the reviewer has explicitly

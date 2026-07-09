@@ -117,7 +117,7 @@ Use these rules whenever a setup/update/mode-switch flow needs a `REF`.
         (This creates a commit.)
      - Undo the commit but keep files:
         `git reset --mixed HEAD~1`
-     - Always restore `.git/info/exclude` from the backup copy, even if subtree
+     - MUST restore `.git/info/exclude` from the backup copy, even if subtree
         commands fail. Use try/finally behavior so restore runs on both success
         and failure paths.
      - When ensuring required entries after restore, add only missing lines and
@@ -229,7 +229,7 @@ Steps:
      confirm.
 
 ## Expectations
-- Prefer tagged releases unless explicitly asked for a branch.
-- Do not overwrite local extensions or custom rules.
+- SHOULD prefer tagged releases unless explicitly asked for a branch.
+- MUST NOT overwrite local extensions or custom rules.
 - In local mode, keep `<AI_PROJECT_PATH>/` local-only and excluded from VCS.
 - In git mode, keep `<AI_PROJECT_PATH>/` tracked so the team can share it.

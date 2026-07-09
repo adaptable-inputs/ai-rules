@@ -19,7 +19,7 @@ infrastructure changes.
 ## Defaults
 - Keep templates declarative, parameterized, and environment-aware.
 - Keep stack boundaries cohesive and ownership explicit.
-- Prefer nested stacks/modules for reuse over copy-pasted large templates.
+- SHOULD prefer nested stacks/modules for reuse over copy-pasted large templates.
 - Keep change sets as the default review path before stack updates.
 - Keep stack policies/termination protection enabled for critical stacks.
 
@@ -33,7 +33,7 @@ infrastructure changes.
 - Keep stack naming conventions stable across environments.
 - Separate environments/accounts to reduce blast radius.
 - Keep resource tags/metadata mandatory for ownership and cost governance.
-- Avoid unmanaged/manual changes outside stack control.
+- SHOULD avoid unmanaged/manual changes outside stack control.
 
 ## Drift, Import, and Migration
 - Run drift detection for critical stacks regularly.
@@ -42,7 +42,7 @@ infrastructure changes.
 - Keep migration and rollback steps explicit for high-impact changes.
 
 ## Secrets and Access
-- Do not hardcode secrets in templates or parameter defaults.
+- MUST NOT hardcode secrets in templates or parameter defaults.
 - Retrieve secrets through secure references/services.
 - Keep IAM permissions least-privilege for deploy roles.
 - Keep stack outputs free of sensitive data where possible.

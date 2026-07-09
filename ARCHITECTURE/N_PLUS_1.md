@@ -16,7 +16,7 @@ Guidance for AI agents preventing and detecting N+1 query patterns.
   applicable.
 
 ## Core Rule
-- Avoid per-entity follow-up queries in loops or repeated resolver calls.
+- SHOULD avoid per-entity follow-up queries in loops or repeated resolver calls.
 - Batch related data fetches per logical level of the response graph.
 
 ## Detection Heuristics
@@ -33,8 +33,8 @@ Guidance for AI agents preventing and detecting N+1 query patterns.
 - Keep batch size and pagination controls explicit.
 
 ## ORM-Specific Guardrails
-- Prefer explicit fetch joins/entity graphs/projections for known access paths.
-- Avoid broad eager loading by default; tune fetch plans per use case.
+- SHOULD prefer explicit fetch joins/entity graphs/projections for known access paths.
+- SHOULD avoid broad eager loading by default; tune fetch plans per use case.
 - Keep lazy loading away from view/serialization layers.
 - Validate generated SQL for non-trivial ORM queries.
 
@@ -42,11 +42,11 @@ Guidance for AI agents preventing and detecting N+1 query patterns.
 - Use per-request DataLoader or equivalent batching abstraction.
 - Ensure loaders are request-scoped to prevent cache leakage across users.
 - Batch by field/resource shape with deterministic key mapping.
-- Avoid nested resolver-side queries without loader mediation.
+- SHOULD avoid nested resolver-side queries without loader mediation.
 
 ## Performance and Correctness Tradeoffs
-- Prefer predictable query count over highly dynamic implicit loading.
-- Avoid giant fetch joins that explode row multiplicity without pagination.
+- SHOULD prefer predictable query count over highly dynamic implicit loading.
+- SHOULD avoid giant fetch joins that explode row multiplicity without pagination.
 - Keep response payload size aligned with use-case requirements.
 - Combine pagination with batching to bound memory and query costs.
 

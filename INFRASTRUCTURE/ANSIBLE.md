@@ -18,7 +18,7 @@ Guidance for AI agents implementing and reviewing Ansible automation changes.
 - Keep playbooks idempotent and deterministic.
 - Keep role boundaries cohesive and reusable.
 - Keep inventory and variable scopes explicit per environment.
-- Prefer module-based tasks over shell/command calls where possible.
+- SHOULD prefer module-based tasks over shell/command calls where possible.
 - Keep privilege escalation explicit, minimal, and auditable.
 
 ## Execution and Change Rules
@@ -29,20 +29,20 @@ Guidance for AI agents implementing and reviewing Ansible automation changes.
 
 ## Inventory and Variable Governance
 - Keep inventory ownership and environment boundaries explicit.
-- Avoid global variable sprawl; keep variable precedence predictable.
-- Do not embed secrets in plaintext variable files.
+- SHOULD avoid global variable sprawl; keep variable precedence predictable.
+- MUST NOT embed secrets in plaintext variable files.
 - Use vault/secret-manager integrations for sensitive values.
 
 ## Role and Task Discipline
 - Keep tasks small and focused; avoid monolithic playbooks.
 - Keep handlers explicit for service restart/reload side effects.
-- Avoid hidden cross-host coupling and ordering assumptions.
+- SHOULD avoid hidden cross-host coupling and ordering assumptions.
 - Use tags intentionally for scoped execution paths.
 
 ## Security and Access
 - Keep SSH/API credentials out of repository content.
 - Enforce least privilege for automation accounts.
-- Avoid broad `become: true` defaults across all tasks.
+- SHOULD avoid broad `become: true` defaults across all tasks.
 - Keep logs free of sensitive values (`no_log` where needed).
 
 ## High-Risk Pitfalls

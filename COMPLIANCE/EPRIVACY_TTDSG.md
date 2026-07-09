@@ -34,13 +34,13 @@ Consult qualified legal counsel for final legal decisions.
 
 ## Client-Side Identifier and Storage Rules
 - Minimize persistent identifiers and storage duration.
-- Avoid hidden fingerprinting-like techniques without explicit legal approval.
+- SHOULD avoid hidden fingerprinting-like techniques without explicit legal approval.
 - Rotate or scope identifiers where feasible to reduce tracking surface.
 - Keep client-side storage contents free of unnecessary personal data.
 
 ## Telemetry and Analytics Boundaries
 - Use aggregated/anonymized data where possible for analytics.
-- Avoid transmitting raw user-content or sensitive fields in telemetry.
+- SHOULD avoid transmitting raw user-content or sensitive fields in telemetry.
 - Keep third-party analytics integrations bounded and configurable by consent
   state.
 - Ensure consent state is enforced across all telemetry emitters.

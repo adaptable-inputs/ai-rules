@@ -18,13 +18,13 @@ Guidance for AI agents implementing and reviewing JUnit tests.
 - Keep tests deterministic and isolated.
 - Use descriptive test names based on behavior and expectation.
 - Keep one primary assertion intent per test.
-- Prefer Arrange-Act-Assert structure.
+- SHOULD prefer Arrange-Act-Assert structure.
 
 ## Test Design Rules
 - Test observable behavior, not implementation details.
-- Prefer small focused tests over large scenario monoliths.
+- SHOULD prefer small focused tests over large scenario monoliths.
 - Keep setup explicit and local; avoid hidden magic fixtures.
-- Avoid shared mutable state across tests.
+- SHOULD avoid shared mutable state across tests.
 - Use nested tests only when they improve readability and context.
 
 ## Lifecycle and Fixtures
@@ -38,9 +38,9 @@ Guidance for AI agents implementing and reviewing JUnit tests.
 - Keep parameter sources readable and domain-relevant.
 
 ## Flakiness Controls
-- Avoid real network/time randomness in unit tests.
+- SHOULD avoid real network/time randomness in unit tests.
 - Use fake clocks and controlled randomness where needed.
-- Avoid order-dependent tests.
+- SHOULD avoid order-dependent tests.
 - Keep concurrency tests deterministic and bounded.
 
 ## High-Risk Pitfalls

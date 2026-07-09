@@ -20,7 +20,7 @@ changes.
 - Keep infrastructure declarative, versioned, and reproducible.
 - Treat IaC as the source of truth; avoid manual console drift.
 - Keep changes small, reviewable, and environment-scoped.
-- Prefer immutable replacements over ad-hoc in-place mutation for high-risk
+- SHOULD prefer immutable replacements over ad-hoc in-place mutation for high-risk
   components where feasible.
 
 ## Change Management and Approval Gates
@@ -33,11 +33,11 @@ changes.
 - Keep state backends protected, access-controlled, and auditable.
 - Use locking/concurrency controls to avoid concurrent apply corruption.
 - Run periodic drift detection and reconcile intentionally.
-- Do not normalize unmanaged/manual changes as acceptable steady state.
+- MUST NOT normalize unmanaged/manual changes as acceptable steady state.
 
 ## Secrets, Identity, and Access
-- Do not commit secrets or static privileged keys in IaC code or variables.
-- Prefer short-lived credentials (for example OIDC/workload identity) over
+- MUST NOT commit secrets or static privileged keys in IaC code or variables.
+- SHOULD prefer short-lived credentials (for example OIDC/workload identity) over
   long-lived static credentials.
 - Enforce least privilege for provisioning identities and runtime roles.
 - Keep sensitive outputs minimized and redacted in logs/artifacts.
@@ -53,7 +53,7 @@ changes.
 - Define rollback strategy before risky changes (revert, redeploy, or
   replacement path).
 - Validate dependency ordering for create/update/delete operations.
-- Prefer staged rollout for broad-impact infrastructure changes.
+- SHOULD prefer staged rollout for broad-impact infrastructure changes.
 - Keep disaster-recovery-sensitive resources protected from accidental
   destruction.
 

@@ -16,24 +16,24 @@ Guidance for AI agents implementing and reviewing JavaScript code.
   narrow this guidance but must not silently weaken it.
 
 ## Defaults
-- Prefer ESM modules (`import`/`export`) over CommonJS for new code unless the
+- SHOULD prefer ESM modules (`import`/`export`) over CommonJS for new code unless the
   runtime/toolchain explicitly requires CommonJS.
 - Keep modules focused; avoid files that mix unrelated responsibilities.
 - Use `const` by default, `let` only when reassignment is required, avoid `var`.
-- Prefer explicit `===`/`!==` over loose equality.
-- Prefer nullish and optional operators (`??`, `?.`) over deep guard pyramids.
-- Prefer pure functions and explicit inputs/outputs for business logic.
+- SHOULD prefer explicit `===`/`!==` over loose equality.
+- SHOULD prefer nullish and optional operators (`??`, `?.`) over deep guard pyramids.
+- SHOULD prefer pure functions and explicit inputs/outputs for business logic.
 
 ## Runtime Boundaries and Validation
 - Treat all external data as untrusted:
   HTTP payloads, message queues, environment variables, filesystem input.
 - Validate boundary data explicitly before domain use.
 - Normalize data once at boundary adapters; keep core logic on normalized shapes.
-- Never assume dynamic payload shape from naming conventions or comments.
+- MUST NOT assume dynamic payload shape from naming conventions or comments.
 
 ## Async and Concurrency Rules
-- Always handle promise rejections.
-- Do not fire-and-forget async work unless intentional and observably tracked.
+- MUST handle promise rejections.
+- MUST NOT fire-and-forget async work unless intentional and observably tracked.
 - Use `Promise.all` only when all tasks may fail-fast together.
 - Use `Promise.allSettled` when partial success is acceptable.
 - Set explicit timeouts/cancellation where IO can hang.
@@ -43,31 +43,31 @@ Guidance for AI agents implementing and reviewing JavaScript code.
 - Throw `Error` (or subclasses), not raw strings/objects.
 - Add contextual metadata when rethrowing (`cause`, operation identifiers).
 - Distinguish expected domain outcomes from exceptional failures.
-- Do not swallow errors silently; map, log, or rethrow intentionally.
+- MUST NOT swallow errors silently; map, log, or rethrow intentionally.
 
 ## State and Mutation
-- Avoid shared mutable state across modules.
-- Prefer immutable updates (`{ ...obj }`, `map`, `filter`) for predictable flow.
+- SHOULD avoid shared mutable state across modules.
+- SHOULD prefer immutable updates (`{ ...obj }`, `map`, `filter`) for predictable flow.
 - Clone cautiously at boundaries; avoid unnecessary deep cloning in hot paths.
 - Keep side effects at edges (IO adapters, framework handlers), not in pure
   domain helpers.
 
 ## Control Flow and Readability
-- Prefer guard clauses and early returns to reduce nesting.
+- SHOULD prefer guard clauses and early returns to reduce nesting.
 - Keep functions focused on one responsibility.
-- Avoid cascading ternary expressions.
+- SHOULD avoid cascading ternary expressions.
 - Keep boolean conditions explicit; extract named predicates when complex.
 
 ## Performance Baseline
-- Do not optimize blindly; measure first.
-- Avoid repeated expensive work inside loops when values can be precomputed.
-- Avoid accidental quadratic behavior in list operations on large data.
+- MUST NOT optimize blindly; measure first.
+- SHOULD avoid repeated expensive work inside loops when values can be precomputed.
+- SHOULD avoid accidental quadratic behavior in list operations on large data.
 - Be careful with synchronous CPU-heavy work on event-loop-critical paths.
 
 ## Security Baseline
-- Never build code paths that evaluate untrusted strings (`eval`, dynamic
+- MUST NOT build code paths that evaluate untrusted strings (`eval`, dynamic
   function constructors) unless there is no alternative and controls are strict.
-- Avoid unsafe shell command construction from untrusted input.
+- SHOULD avoid unsafe shell command construction from untrusted input.
 - Sanitize/encode output for the target context (HTML, URL, shell).
 - For SQL, use parameterized queries/prepared statements rather than string
   escaping.

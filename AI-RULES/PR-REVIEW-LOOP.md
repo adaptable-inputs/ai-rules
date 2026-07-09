@@ -32,7 +32,7 @@ Repository-standard PR review loop for ai-rules maintenance.
     "After the loop reaches zero valid Copilot findings, should I also merge
     the PR?"
     Store as `MERGE_AFTER_CLEAN_LOOP=true|false`.
-- Do not ask these questions again in the same session, even when handling
+- MUST NOT ask these questions again in the same session, even when handling
   multiple issues or PRs.
 - After these one-time decisions are captured, run unattended unless blocked.
 
@@ -144,7 +144,7 @@ Operational rules:
 - Treat missing/ambiguous required-check state as gate failure.
 - Passing CI alone is never sufficient for merge.
 - A prior Copilot review that predates the latest push never satisfies the gate.
-- Never merge in a state where Copilot review is still pending/running for the
+- MUST NOT merge in a state where Copilot review is still pending/running for the
   latest push.
 
 ## Completion
@@ -157,10 +157,10 @@ Operational rules:
 
 ## Guardrails
 - Keep PRs focused; do not bundle unrelated repository changes.
-- Never delete review comments to make threads disappear.
+- MUST NOT delete review comments to make threads disappear.
 - For invalid findings, leave a clear rationale before resolving.
-- Never trigger Copilot review via PR comments (for example `@copilot review`
+- MUST NOT trigger Copilot review via PR comments (for example `@copilot review`
   or `/copilot review`).
-- Never mention `@copilot` in PR comments.
-- Do not use fixed wait timers (for example, "wait 5 minutes after push") as a
+- MUST NOT mention `@copilot` in PR comments.
+- MUST NOT use fixed wait timers (for example, "wait 5 minutes after push") as a
   merge/review gate; use PR timeline and review state instead.

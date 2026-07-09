@@ -18,7 +18,7 @@ Guidance for AI agents implementing and reviewing React projects.
 ## Defaults
 - Use functional components and hooks.
 - Keep components small and focused.
-- Prefer composition over inheritance.
+- SHOULD prefer composition over inheritance.
 - Treat `useEffect` as a controlled escape hatch, not a default tool.
 
 ## Naming Conventions
@@ -29,10 +29,10 @@ Guidance for AI agents implementing and reviewing React projects.
 
 ## State and Data
 - Keep state minimal and local where possible.
-- Avoid prop drilling by introducing context sparingly.
-- Avoid unnecessary re-renders; memoize only when it matters.
+- SHOULD avoid prop drilling by introducing context sparingly.
+- SHOULD avoid unnecessary re-renders; memoize only when it matters.
 - Derive values during render when possible.
-- Prefer framework/server data-loading primitives over client `useEffect` fetching.
+- SHOULD prefer framework/server data-loading primitives over client `useEffect` fetching.
 
 ## Testing
 - Follow general testing expectations in `TEST/TEST.md`.
@@ -102,7 +102,7 @@ or cancel external work.
 - Extract repeated side-effect behavior into focused custom hooks.
 - For subscription-style state (for example window size), prefer custom hooks
   based on `useSyncExternalStore`.
-- Avoid effect chains:
+- SHOULD avoid effect chains:
   use one cohesive effect, or model flow with explicit actions/reducer/state machine.
 - Handle non-abort async errors explicitly (state/reporting); do not `throw`
   from fire-and-forget async effect tasks.
@@ -282,13 +282,13 @@ function WindowWidthGood() {
 ```
 
 ## Dependency Rules
-- Never mark an effect callback `async`; create an inner async function.
+- MUST NOT mark an effect callback `async`; create an inner async function.
 - Effect callbacks return either cleanup or nothing.
 - If an effect reads a reactive value, include it in dependencies.
 - If adding a dependency breaks behavior, fix the design; do not hide the dep.
-- Avoid inline object/function dependencies unless they are intentionally unstable.
+- SHOULD avoid inline object/function dependencies unless they are intentionally unstable.
 - Stabilize dependencies only at true boundaries (`useMemo` / `useCallback`).
-- Never disable `react-hooks/exhaustive-deps` globally.
+- MUST NOT disable `react-hooks/exhaustive-deps` globally.
 - Enable `eslint-plugin-react-hooks` with `rules-of-hooks` and
   `exhaustive-deps`.
 

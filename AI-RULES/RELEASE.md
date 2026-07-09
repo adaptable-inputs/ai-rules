@@ -32,5 +32,5 @@ Version selection:
 9. Verify the release page and tag exist.
 
 ## Notes
-- Prefer tagged releases; do not release from feature branches.
+- SHOULD prefer tagged releases; do not release from feature branches.
 - Keep release notes concise and aligned with the changelog.

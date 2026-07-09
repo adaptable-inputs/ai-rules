@@ -12,7 +12,7 @@ be authored by AI agents.
   - `<AI_ROOT_PATH>=ai`
   - `<AI_RULES_PATH>=<AI_ROOT_PATH>/AI-RULES`
   - `<AI_PROJECT_PATH>=<AI_ROOT_PATH>/PROJECT`
-- Never hardcode `ai` when placeholders are available.
+- MUST NOT hardcode `ai` when placeholders are available.
 
 ## Extension Semantics and Conflict Precedence
 - Baseline rules under `<AI_RULES_PATH>` remain authoritative defaults.
@@ -26,7 +26,7 @@ be authored by AI agents.
 - Extend a baseline topic at the same relative path under
   `<AI_PROJECT_PATH>` that the baseline file occupies.
 - Materialize only files and directories that are actually extended or added.
-- Avoid copying untouched baseline files into `<AI_PROJECT_PATH>`.
+- SHOULD avoid copying untouched baseline files into `<AI_PROJECT_PATH>`.
 - Downstream-projects may add additional directories/files not present in
   baseline for project-specific guidance not covered by baseline.
 
