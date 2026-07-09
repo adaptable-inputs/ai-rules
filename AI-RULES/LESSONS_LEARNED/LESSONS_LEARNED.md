@@ -45,3 +45,5 @@ Concrete steps or checks that would have avoided the issue.
 - [2026-02-01-markdownlint.md](2026-02-01-markdownlint.md) - Markdownlint and BOM prevention checklist.
 - [2026-02-01-release-version-examples.md](2026-02-01-release-version-examples.md)
   - Update versioned examples before tagging.
+- [2026-07-09-verifications-that-cannot-fail.md](2026-07-09-verifications-that-cannot-fail.md)
+  - Four checks reported success over a real defect; their shared failure mode is silence.

@@ -49,10 +49,30 @@ Guidance for AI agents implementing, updating, and reviewing tests.
 - MUST cover happy paths, edge cases, failure modes, and regression paths.
 - If coverage targets are not met, MUST document exact gaps and risk rationale.
 
+## Verifying the Tests Themselves
+A test that cannot fail is worse than no test, because it is trusted. A green result never seen fail is not evidence.
+
+- MUST observe every new test or checker failing on the defect it exists to catch, before relying on it. Inject the
+  defect, watch the guard reject it, then restore.
+- A verification MUST fail closed. Absence of a report, a summary, or a finding is a failure, not a pass. MUST require a
+  positive success signal, and MUST NOT infer success from the absence of complaints.
+- MUST confirm the tool reports what it claims. A quiet flag that suppresses the test summary, a severity threshold no
+  emitted finding reaches, and a crashed sub-process whose exit code reads as "no findings" each report success over a
+  real defect.
+- A test MUST assert the contract, not one way of satisfying it. If two conforming implementations differ, the test MUST
+  accept both.
+- If the correctness of a test is uncertain, MUST validate it against a purpose-built reference: a minimal
+  implementation that conforms, and one that violates the rule under test. The test MUST pass the first and fail the
+  second. MUST NOT settle the question by reasoning about the test alone.
+- MUST NOT locate the code under test by reflective search over names the contract does not fix. A named surface turns a
+  missing operation into a compile error; a reflective lookup turns it into a silent pass.
+- When a checker is fixed, MUST add the reproducing test in the same change, named after the defect that shipped.
+
 ## CI and Reporting Expectations
 - MUST run relevant tests before opening a PR.
 - MUST report what was executed and what was not.
 - In CI, MUST fail builds on test failures.
+- MUST treat a missing or empty test report as a build failure, never as a passing run with nothing to say.
 - SHOULD publish actionable reports/artifacts for failed runs when available.
 
 ## Validation Notes for Delivery
