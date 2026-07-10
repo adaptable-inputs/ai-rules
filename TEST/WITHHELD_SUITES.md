@@ -43,6 +43,38 @@ whose subject ignored the instruction under test measures the disobedience.
   from it. A ratio computed across runs that differ in compliance measures the subject, not the ruleset.
 - MUST state the sample size beside every derived figure. A single run yields an observation, never an effect size.
 
+## The Instrument and the Treatment
+Two things break during a study, and they are not repaired alike. The **instrument** measures the run; the **treatment**
+is what the subject is given. The test for which one a thing is: *does the subject read it?* If yes, it is treatment.
+
+- MUST classify every artefact of a study as instrument or treatment, in writing, before the first run.
+- The instrument MAY be corrected at any time. A run whose measurement the correction invalidates MUST be re-taken, and
+  the reason recorded.
+- The treatment MUST NOT be altered while any run is in flight, and MUST NOT be altered between runs of one study. A
+  correction to the treatment opens a new study; it does not improve the current one.
+- A correction to the treatment MUST NOT be admitted because it is correct. "This change is an improvement" is available
+  for every such change, and is the argument that invalidates the runs already taken.
+- The artefact under test MUST NOT be the artefact being edited. Where a subject reads a repository, work in a copy, or
+  wait until the run is graded.
+- A study MAY be stopped early because its treatment is known to be flawed. It MUST NOT be stopped early because its
+  results are disliked. The decision, its reason, and its timing MUST be recorded before the remaining runs are drawn.
+- Treatment artefacts MUST be frozen by a checked digest, not by intention. A freeze that a person verifies when they
+  remember to is a habit described as a mechanism. The tool that emits the treatment MUST refuse a digest mismatch.
+- A reference value MUST be taken from an artefact that meets the standard the reference will be used to enforce. A
+  baseline pinned from a failing run is a floor that descends to meet it.
+
+## Prior Answers Are Withheld Too
+Sealing the answer key is not sealing the answers. Once one subject's work is graded and left on disk, it is a better
+crib than the suite: it is complete, it conforms, and it is written in the language the next subject is required to
+write.
+
+- Every subject's workspace MUST be unreadable to every other subject, and the audit MUST check it. Forbidding it in the
+  task text is not a control.
+- The audit MUST be given every peer workspace by name. Omitting them MUST fail rather than pass.
+- Where subjects run sequentially, the isolation of subject N MUST be re-established against subjects 1..N-1, not only
+  against the suite. A control that was vacuous for the first run because nothing existed to copy is not thereby sound
+  for the second.
+
 ## The Harness
 A withheld suite needs machinery: sealing, grading in a copy, auditing the author's transcript. Re-implementing that
 machinery per project reproduces its defects per project. `adaptable-inputs/ai-test-harness` implements it, and its

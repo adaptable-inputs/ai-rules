@@ -19,6 +19,11 @@ Guidance for AI agents using GitHub for branch protection, pull requests, and re
 - MUST respect branch-protection and ruleset gates, including required status checks and required reviews.
 - MUST NOT use admin bypass behavior to skip required gates.
 - SHOULD use GitHub code suggestions for small, localized fixes.
+- MUST pass an issue, pull-request, or comment body as a file: `gh issue create --body-file <path>`,
+  `gh issue edit <id> --body-file <path>`. A body passed as an inline argument travels through a shell and a JSON
+  payload, and its newlines arrive as the two characters `\n`. This is the GitHub mechanism for the encoding obligation
+  in [PROGRAMMING.md](../PROGRAMMING/PROGRAMMING.md), "Blast Radius of a Change".
+- Where the body originates as JSON, MUST decode it once before posting, and MUST NOT post a doubly-encoded payload.
 
 ## Explicit Override: Review Thread Ownership
 `CORE/CODE_REVIEW_PLATFORM.md` permits only a comment's author to resolve its review thread. On GitHub this file

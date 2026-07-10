@@ -135,9 +135,6 @@ A test that cannot fail is worse than no test, because it is trusted. A green re
   defect, watch the guard reject it, then restore.
 - A verification MUST fail closed. Absence of a report, a summary, or a finding is a failure, not a pass. MUST require a
   positive success signal, and MUST NOT infer success from the absence of complaints.
-- MUST confirm the tool reports what it claims. A quiet flag that suppresses the test summary, a severity threshold no
-  emitted finding reaches, and a crashed sub-process whose exit code reads as "no findings" each report success over a
-  real defect.
 - A test MUST assert the contract, not one way of satisfying it. If two conforming implementations differ, the test MUST
   accept both.
 - If the correctness of a test is uncertain, MUST validate it against a purpose-built reference: a minimal
@@ -145,7 +142,9 @@ A test that cannot fail is worse than no test, because it is trusted. A green re
   second. MUST NOT settle the question by reasoning about the test alone.
 - MUST NOT locate the code under test by reflective search over names the contract does not fix. A named surface turns a
   missing operation into a compile error; a reflective lookup turns it into a silent pass.
-- When a checker is fixed, MUST add the reproducing test in the same change, named after the defect that shipped.
+
+Rules for checkers, linters, and CI gates specifically are in [GUARDS.md](GUARDS.md), which loads when a change touches
+one.
 
 ## Traceability
 An untraced test proves nothing about the requirement it was meant to cover, and an untraced requirement is one nobody

@@ -24,6 +24,16 @@ Concrete steps or checks that would have avoided the issue.
 ```
 
 ## Files
+- [2026-07-10-the-instrument-and-the-treatment.md](2026-07-10-the-instrument-and-the-treatment.md)
+  - Repair the instrument mid-study; never the treatment. Freeze the treatment by a checked digest.
+- [2026-07-10-a-guard-that-chooses-what-it-inspects.md](2026-07-10-a-guard-that-chooses-what-it-inspects.md)
+  - A guard that discovers its own subjects will discover none, and report innocence.
+- [2026-07-10-coverage-of-one-channel-is-not-coverage-of-the-guard.md](2026-07-10-coverage-of-one-channel-is-not-coverage-of-the-guard.md)
+  - Every input a guard inspects needs its own defect case; a channel confounded by its subject verifies nothing.
+- [2026-07-10-one-thing-two-paths.md](2026-07-10-one-thing-two-paths.md)
+  - A producer and a consumer that name one artefact must resolve to one location, proven by a test.
+- [2026-07-10-a-requirement-that-names-its-fix.md](2026-07-10-a-requirement-that-names-its-fix.md)
+  - State the observable; naming the mechanism makes a checklist that can be satisfied while the property fails.
 - [2026-02-22-no-general-semantics-change-for-scope-limited-rules.md](2026-02-22-no-general-semantics-change-for-scope-limited-rules.md)
   - Keep scope-limited rule additions from changing baseline semantics.
 - [2026-02-13-retrigger-copilot-review-after-fix-pushes.md](2026-02-13-retrigger-copilot-review-after-fix-pushes.md)

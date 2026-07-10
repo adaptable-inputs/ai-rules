@@ -45,6 +45,21 @@ not a licence to omit keywords.
 - `SHOULD` and `SHOULD NOT` MUST be deviable in principle. If deviation is never acceptable, use `MUST` or `MUST NOT`.
 - A `SHOULD` deviation MUST be reported in the agent's final summary.
 
+## State the Observable, Not the Mechanism
+A requirement names a property that can be observed. Naming a way to achieve it replaces the question "did the property
+hold?" with "did you apply the named technique?", and those two answers diverge exactly where the interesting defects
+live. A suggested mechanism points at the cases its author thought of, and away from every other.
+
+- A normative statement MUST state the observable property. It MUST NOT name an implementation technique as the
+  obligation.
+- A mechanism MAY be offered as a non-normative illustration, and MUST then be marked as one. An example inside a `MUST`
+  is read as the definition of compliance.
+- Where a property is measurable, a requirement SHOULD oblige the measurement rather than a claim about it. "Bounded by
+  a constant; measure it at one item and at four, and report both" is verifiable. "Uses a bounded number of queries" is
+  a self-assessment.
+- An actor's account of its own behaviour MUST NOT be accepted as verification of that behaviour, including when the
+  actor is diligent and the account is true.
+
 ## Preconditions
 A `MUST` binds only where its subject exists. An obligation written as though its subject always exists becomes
 unsatisfiable the first time it does not, and an agent then either violates it or quietly ignores it. Both outcomes are

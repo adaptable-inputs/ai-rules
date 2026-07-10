@@ -53,6 +53,31 @@ rule.
   governing rule. An exhaustive read of an entire ruleset on every task is such a defect; so is a rule that loads always
   and binds almost nothing.
 
+## One Thing Has One Path
+Where a producer writes an artefact and a consumer reads it, they name one location or they eventually name two. Two
+locations agree until the day they do not, and the disagreement is silent: both hold plausible content, and the guard
+watches the copy nobody uses.
+
+- Where two components name the same artefact, a test MUST assert that they resolve to the same location. Agreement
+  established by reading the code is agreement until the next edit.
+- MUST NOT carry a measurement or an artefact between tools by hand. A manual step between a result and its report is a
+  place where the two can differ, and it will be taken by whoever is tired. Give the tool a command for it.
+- Code MUST NOT resolve a path relative to its own location in order to reach something that lives outside its
+  repository. Resolve from an explicit argument, or from the repository root, and MUST require the argument.
+- After relocating a script, every path it resolves relative to itself MUST be re-derived. Moving code does not move its
+  assumptions, and the copy that runs is not necessarily the copy that is versioned.
+- A guard MUST verify the artefact its consumers actually load, not one produced beside it under another name.
+- Failing closed is not the same as being correct. Code that exits rather than lying is safe and can still be entirely
+  unrunnable; its silence lasts exactly until someone runs it.
+
+## What Is Frozen Is Frozen By A Check
+A value fixed by intention drifts. A value fixed by a digest that something verifies does not.
+
+- Where an artefact is required to remain unchanged across a sequence of operations, its digest MUST be recorded in
+  version control and MUST be verified by the tool that consumes it, which MUST refuse a mismatch.
+- MUST NOT describe a habit as a mechanism. "The hash is checked before every run" is false when the check is a person
+  remembering; write the check, or write down that there is none.
+
 ## Files
 - [NORMATIVE_LANGUAGE.md](NORMATIVE_LANGUAGE.md) - Obligation vocabulary (MUST/SHOULD/MAY) used by every rule in this
   repository.
