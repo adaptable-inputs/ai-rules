@@ -16,6 +16,26 @@ Core, non-negotiable baseline rules for all technology stacks in this repository
 - MUST NOT block a task on an unresolved conflict. Apply the resolution the procedure yields, complete the task, and
   report the conflict in your final summary so a human can file the follow-up.
 
+## Authorization Before Touching What You Do Not Own
+An agent MAY manage what it created: processes it started, files it wrote, directories it made. Everything else belongs
+to someone, and an agent that cannot name the owner MUST NOT act on it.
+
+- MUST NOT signal, kill, delete, move, or modify any process or file the agent did not create in the current session,
+  without explicit authorization. Ask, and wait for an answer.
+- Ownership descends the process tree. An agent that started a process owns that process and every descendant it
+  spawned, and MAY signal any of them. Ownership does not ascend: a child the agent did not start confers no claim on
+  its parent, and no claim on that parent's other children.
+- MUST scope a destructive command by something that identifies the agent's own work: a process identifier captured when
+  it was started, its descendants, a directory the agent created, a path it wrote. MUST NOT scope by a behavioural
+  pattern such as "matches this name" or "is the parent of a sleeping process", which selects by what a process does
+  rather than by who started it, and so sweeps in what belongs to others.
+- MUST check ownership before signalling a process. Where the owner is not the agent's own user, MUST stop and ask.
+- MUST NOT escalate to an uncatchable signal without having observed a catchable one fail for a reason the agent
+  understands.
+- A glob that can match outside a directory the agent created MUST NOT be passed to a destructive command.
+- Being unable to do damage is not the same as not attempting it. An attempted action on something the agent does not
+  own MUST be reported, whether or not it succeeded.
+
 ## Context Economy Never Buys Correctness
 The loading protocol exists so an agent reads what governs its task and nothing else. It exists to remove waste, not to
 ration correctness. A smaller context that omits a rule the task is subject to is not an optimization; it is a missed
