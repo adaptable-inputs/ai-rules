@@ -88,6 +88,24 @@ is made of.
 - Where a second channel does not exist, MUST build one, or MUST state plainly that the property is unverified. An
   unverifiable claim MUST NOT be reported as verified.
 
+## Bounded Correction
+A failed verification MUST be acted on, and the acting MUST be bounded. An unbounded retry loop mistakes persistence for
+progress: it will keep changing code until the check passes, and a check that passes after enough undirected edits has
+stopped verifying anything.
+
+- On a failed verification, MUST attempt to correct the defect rather than restate the failure. Reporting a red test
+  without acting on it leaves the work unfinished.
+- Each attempt MUST begin with a stated hypothesis about the cause, and MUST change what that hypothesis implicates.
+  MUST NOT retry the same change, and MUST NOT alter the check to make it pass.
+- After each attempt, MUST re-verify through the independent channel that found the defect, not through the change
+  itself. See "The Second Verification Pass".
+- MUST make at most three attempts. After the third, MUST stop, MUST report the defect, the three hypotheses, what each
+  attempt changed, and what the independent channel observed after each.
+- MUST NOT weaken, skip, or delete the failing check to end the loop. A check removed to make a build green is a defect
+  promoted to a policy.
+- Where an attempt makes the failure worse, or reveals that the specification is silent on the behaviour under test,
+  MUST stop before exhausting the three and MUST report that instead. Attempts are a budget, not a quota.
+
 ## Coverage Exclusions
 Full coverage of production code is the target. Where a unit genuinely cannot be reached, the gap MUST be named and
 justified, never absorbed. A threshold that tolerates a percentage of uncovered code stops naming which code that is,
