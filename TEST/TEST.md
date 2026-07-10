@@ -69,6 +69,25 @@ Only the second can fail in a way that matters, and only the second reveals a re
   what the implementations currently do. An undefined behaviour that is written down is a decision; one that is not is a
   trap.
 
+## The Second Verification Pass
+One pass tells you a thing agrees with itself. A guard that checks its own output, a formatter that validates its own
+rewrite, an agent that reports its own compliance: each is a closed loop, and a closed loop cannot detect the error it
+is made of.
+
+- Work MUST be verified twice, and the second pass MUST observe through a different channel from the first. Re-running
+  the same command proves determinism, not correctness.
+- The second pass MUST NOT share a code path, a parser, or an assumption with the first. Where the first reads a report,
+  the second reads the artifact. Where the first calls a method, the second drives the interface. Where the first trusts
+  a self-report, the second reads the record.
+- The second pass MUST run after the work is declared complete, from a clean state, on what was actually produced rather
+  than on what was intended.
+- An actor's account of its own behaviour MUST NOT be accepted as a verification of that behaviour. It is a claim, and
+  the record is the evidence. Where the two disagree, the record governs.
+- MUST record what each pass observed, separately. "Verified" without naming the two observations is one pass wearing a
+  second name.
+- Where a second channel does not exist, MUST build one, or MUST state plainly that the property is unverified. An
+  unverifiable claim MUST NOT be reported as verified.
+
 ## Coverage Exclusions
 Full coverage of production code is the target. Where a unit genuinely cannot be reached, the gap MUST be named and
 justified, never absorbed. A threshold that tolerates a percentage of uncovered code stops naming which code that is,
